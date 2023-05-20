@@ -4,7 +4,9 @@
     "keywords": [
         "laravel",
         "filament",
+        "plugin",
         "preview",
+        "previewer",
         "modal"
     ],
     "homepage": "https://github.com/pboivin/filament-peek",
@@ -39,8 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pboivin\\FilamentPeek\\": "src",
-            "Pboivin\\FilamentPeek\\Database\\Factories\\": "database/factories"
+            "Pboivin\\FilamentPeek\\": "src"
         }
     },
     "autoload-dev": {
