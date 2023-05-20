@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Pages\Concerns;
+namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Support\Exceptions\Halt;
 use InvalidArgumentException;
@@ -25,7 +25,7 @@ trait HasPreview
 
     protected function getPreviewModalTitle(): string
     {
-        return 'Preview'; // translate
+        return __('filament-peek::ui.preview-modal-title');
     }
 
     protected function getPreviewModalDataRecordKey(): string

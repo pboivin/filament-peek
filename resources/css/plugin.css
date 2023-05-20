@@ -1,1 +1,23 @@
 @tailwind utilities;
+
+.filament-preview-modal {
+    @apply fixed top-0 left-0 w-screen h-screen z-[9999];
+    @apply flex flex-col bg-white text-gray-900 text-sm font-medium;
+    @apply m-0 p-0 !important;
+}
+
+.filament-preview-modal-header {
+    @apply flex items-center justify-between p-4 bg-white border-b;
+}
+
+.filament-preview-modal-body {
+    @apply flex-grow p-4 bg-gray-100;
+}
+
+.filament-preview-modal-body iframe {
+    @apply pointer-events-none;
+}
+
+body.is-preview-modal-visible {
+    @apply overflow-hidden
+}
