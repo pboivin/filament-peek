@@ -1,10 +1,11 @@
 {
     "name": "pboivin/filament-peek",
-    "description": "This is my package filament-peek",
+    "description": "Full-screen before-save record previewer for Filament.",
     "keywords": [
-        "pboivin",
         "laravel",
-        "filament-peek"
+        "filament",
+        "preview",
+        "modal"
     ],
     "homepage": "https://github.com/pboivin/filament-peek",
     "license": "MIT",

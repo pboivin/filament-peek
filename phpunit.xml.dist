@@ -19,7 +19,7 @@
     verbose="true"
 >
     <testsuites>
-        <testsuite name="Pboivin Test Suite">
+        <testsuite name="Filament Peek">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
