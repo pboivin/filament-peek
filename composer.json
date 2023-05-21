@@ -25,6 +25,7 @@
         "illuminate/contracts": "^9.0|^10.0"
     },
     "require-dev": {
+        "calebporzio/sushi": "^2.4",
         "laravel/pint": "^1.0",
         "nunomaduro/collision": "^6.0",
         "nunomaduro/larastan": "^2.0.1",
@@ -46,7 +47,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Pboivin\\FilamentPeek\\Tests\\": "tests"
+            "Pboivin\\FilamentPeek\\Tests\\": "tests",
+            "Pboivin\\FilamentPeek\\Tests\\Fixtures\\": "tests/fixtures/src",
+            "Pboivin\\FilamentPeek\\Tests\\Factories\\": "tests/fixtures/database/factories"
         }
     },
     "scripts": {
@@ -70,10 +73,7 @@
         "laravel": {
             "providers": [
                 "Pboivin\\FilamentPeek\\FilamentPeekServiceProvider"
-            ],
-            "aliases": {
-                "FilamentPeek": "Pboivin\\FilamentPeek\\Facades\\FilamentPeek"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
