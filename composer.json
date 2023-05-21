@@ -47,9 +47,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Pboivin\\FilamentPeek\\Tests\\": "tests",
-            "Pboivin\\FilamentPeek\\Tests\\Fixtures\\": "tests/fixtures/src",
-            "Pboivin\\FilamentPeek\\Tests\\Factories\\": "tests/fixtures/database/factories"
+            "Pboivin\\FilamentPeek\\Tests\\": "tests/src",
+            "Pboivin\\FilamentPeek\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "scripts": {

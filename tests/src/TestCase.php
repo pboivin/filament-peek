@@ -7,16 +7,14 @@ use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Support\SupportServiceProvider;
-use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
+use Pboivin\FilamentPeek\Tests\Models\User;
 
 class TestCase extends Orchestra
 {
-    use LazilyRefreshDatabase;
-
     protected function getPackageProviders($app)
     {
 
@@ -32,7 +30,18 @@ class TestCase extends Orchestra
         ];
     }
 
-    // public function getEnvironmentSetUp($app)
-    // {
-    // }
+    protected function defineDatabaseMigrations(): void
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+    }
+
+    protected function getEnvironmentSetUp($app): void
+    {
+        $app['config']->set('auth.providers.users.model', User::class);
+
+        $app['config']->set('view.paths', array_merge(
+            $app['config']->get('view.paths'),
+            [__DIR__ . '/../resources/views'],
+        ));
+    }
 }
