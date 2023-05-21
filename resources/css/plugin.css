@@ -1,26 +1,26 @@
 @tailwind utilities;
 
-.filament-preview-modal {
+.filament-peek-preview-modal {
     @apply fixed top-0 left-0 w-screen h-screen z-[9999];
     @apply flex flex-col bg-white text-gray-900 text-sm font-medium;
     @apply m-0 p-0 !important;
     @apply dark:bg-gray-800 dark:text-gray-300;
 }
 
-.filament-preview-modal-header {
+.filament-peek-preview-modal-header {
     @apply flex items-center justify-between p-4 bg-white border-b;
     @apply dark:bg-gray-800 dark:border-gray-700;
 }
 
-.filament-preview-modal-body {
+.filament-peek-preview-modal-body {
     @apply flex-grow p-4 bg-gray-100;
     @apply dark:bg-gray-900;
 }
 
-.filament-preview-modal-body iframe {
+.filament-peek-preview-modal-body iframe {
     @apply pointer-events-none shadow-2xl;
 }
 
-body.is-preview-modal-open {
+body.is-filament-peek-preview-modal-open {
     @apply overflow-hidden
 }

@@ -1,13 +1,13 @@
 {{-- Modal controlled via livewire page component --}}
 @if ($this->isPreviewModalOpen ?? false)
     <div
-        class="filament-preview-modal"
+        class="filament-peek-preview-modal"
         role="alertdialog"
         aria-modal="true"
-        aria-labelledby="filament-preview-modal-title"
+        aria-labelledby="filament-peek-preview-modal-title"
     >
-        <div class="filament-preview-modal-header">
-            <div id="filament-preview-modal-title">
+        <div class="filament-peek-preview-modal-header">
+            <div id="filament-peek-preview-modal-title">
                 {{ $this->getPreviewModalTitle() }}
             </div>
 
@@ -16,7 +16,7 @@
             </x-filament::button>
         </div>
 
-        <div class="filament-preview-modal-body">
+        <div class="filament-peek-preview-modal-body">
             <iframe
                 @if ($previewModalUrl = $this->getPreviewModalUrl())
                     src="{!! $previewModalUrl !!}"
@@ -34,6 +34,6 @@
 {{-- Alpine.js listener to interact with body scroll --}}
 <div
     x-data
-    x-on:open-preview-modal.window="document.body.classList.add('is-preview-modal-open')"
-    x-on:close-preview-modal.window="document.body.classList.remove('is-preview-modal-open')"
+    x-on:open-preview-modal.window="document.body.classList.add('is-filament-peek-preview-modal-open')"
+    x-on:close-preview-modal.window="document.body.classList.remove('is-filament-peek-preview-modal-open')"
 ></div>
