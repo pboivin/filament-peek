@@ -17,6 +17,7 @@ class FilamentPeekServiceProvider extends PluginServiceProvider
     {
         $package->name(static::$name)
             ->hasTranslations()
+            ->hasConfigFile()
             ->hasViews();
     }
 }

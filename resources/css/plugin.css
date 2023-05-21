@@ -12,13 +12,30 @@
     @apply dark:bg-gray-800 dark:border-gray-700;
 }
 
+.filament-peek-device-presets {
+    @apply hidden xl:flex;
+}
+
+.filament-peek-device-presets button {
+    @apply mx-2 disabled:opacity-25;
+}
+
+.filament-peek-device-presets button svg {
+    @apply w-6 h-6;
+}
+
 .filament-peek-preview-modal-body {
     @apply flex-grow p-4 bg-gray-100;
     @apply dark:bg-gray-900;
 }
 
+.filament-peek-preview-modal-body.allow-iframe-overflow {
+    @apply overflow-y-auto;
+}
+
 .filament-peek-preview-modal-body iframe {
-    @apply pointer-events-none shadow-2xl;
+    @apply pointer-events-none shadow-2xl mx-auto;
+    transition: all 200ms;
 }
 
 body.is-filament-peek-preview-modal-open {
