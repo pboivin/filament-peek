@@ -5,7 +5,7 @@ namespace Pboivin\FilamentPeek\Pages\Concerns;
 use Filament\Support\Exceptions\Halt;
 use InvalidArgumentException;
 
-trait HasPreview
+trait HasPreviewModal
 {
     public bool $isPreviewModalOpen = false;
 
