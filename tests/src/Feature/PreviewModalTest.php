@@ -1,9 +1,8 @@
 <?php
 
-use function Pest\Laravel\get;
-
 use Pboivin\FilamentPeek\Tests\Models\Post;
 use Pboivin\FilamentPeek\Tests\Models\User;
+use function Pest\Laravel\get;
 
 it('can login', function () {
     $this->actingAs(User::factory()->create());

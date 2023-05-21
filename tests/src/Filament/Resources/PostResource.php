@@ -55,9 +55,9 @@ class PostResource extends Resource
                     Forms\Components\FileUpload::make('main_image_upload')
                         ->label('Main image upload')
                         ->columnSpanFull(),
-                    ]),
+                ]),
 
-                    PreviewLink::make(),
+                PreviewLink::make(),
             ]);
     }
 

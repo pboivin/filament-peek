@@ -2,9 +2,9 @@
 
 namespace Pboivin\FilamentPeek\Tests\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 use Pboivin\FilamentPeek\Tests\Database\Factories\PostFactory;
 
 class Post extends Model
@@ -50,7 +50,7 @@ class Post extends Model
     public function getMainImage()
     {
         if ($this->main_image_upload) {
-            return '/storage/' . $this->main_image_upload;
+            return '/storage/'.$this->main_image_upload;
         }
 
         return $this->main_image_url;
