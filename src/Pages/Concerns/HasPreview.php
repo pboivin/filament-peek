@@ -7,7 +7,7 @@ use InvalidArgumentException;
 
 trait HasPreview
 {
-    public bool $isPreviewModalVisible = false;
+    public bool $isPreviewModalOpen = false;
 
     public ?string $previewModalHtmlContent = null;
 
@@ -59,7 +59,7 @@ trait HasPreview
         return $data;
     }
 
-    public function showPreviewModal(): void
+    public function openPreviewModal(): void
     {
         try {
             $this->previewModalData = $this->mutatePreviewModalData($this->preparePreviewModalData());
@@ -72,24 +72,24 @@ trait HasPreview
                 throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
             }
         } catch (Halt $exception) {
-            $this->previewModalUrl = null;
-
-            $this->previewModalHtmlContent = null;
+            $this->closePreviewModal();
 
             return;
         }
 
-        $this->isPreviewModalVisible = true;
+        $this->isPreviewModalOpen = true;
 
-        $this->dispatchBrowserEvent('show-preview-modal');
+        $this->dispatchBrowserEvent('open-preview-modal');
     }
 
-    public function hidePreviewModal(): void
+    public function closePreviewModal(): void
     {
-        $this->isPreviewModalVisible = false;
+        $this->isPreviewModalOpen = false;
+
+        $this->previewModalUrl = null;
 
         $this->previewModalHtmlContent = null;
 
-        $this->dispatchBrowserEvent('hide-preview-modal');
+        $this->dispatchBrowserEvent('close-preview-modal');
     }
 }

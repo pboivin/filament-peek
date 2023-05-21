@@ -22,6 +22,6 @@ class PreviewAction extends Action
 
         $this->color('secondary');
 
-        $this->action('showPreviewModal');
+        $this->action('openPreviewModal');
     }
 }

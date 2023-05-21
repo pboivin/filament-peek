@@ -1,5 +1,5 @@
 {{-- Modal controlled via livewire page component --}}
-@if ($this->isPreviewModalVisible ?? false)
+@if ($this->isPreviewModalOpen ?? false)
     <div
         class="filament-preview-modal"
         role="alertdialog"
@@ -11,7 +11,7 @@
                 {{ $this->getPreviewModalTitle() }}
             </div>
 
-            <x-filament::button color="secondary" wire:click="hidePreviewModal">
+            <x-filament::button color="secondary" wire:click="closePreviewModal">
                 {{ __('filament-peek::ui.close-modal-action-label') }}
             </x-filament::button>
         </div>
@@ -34,6 +34,6 @@
 {{-- Alpine.js listener to interact with body scroll --}}
 <div
     x-data
-    x-on:show-preview-modal.window="document.body.classList.add('is-preview-modal-visible')"
-    x-on:hide-preview-modal.window="document.body.classList.remove('is-preview-modal-visible')"
+    x-on:open-preview-modal.window="document.body.classList.add('is-preview-modal-open')"
+    x-on:close-preview-modal.window="document.body.classList.remove('is-preview-modal-open')"
 ></div>

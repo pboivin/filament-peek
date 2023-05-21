@@ -21,6 +21,6 @@
     @apply pointer-events-none shadow-2xl;
 }
 
-body.is-preview-modal-visible {
+body.is-preview-modal-open {
     @apply overflow-hidden
 }
