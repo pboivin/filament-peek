@@ -2,7 +2,9 @@
 
 namespace Pboivin\FilamentPeek;
 
+use Filament\Facades\Filament;
 use Filament\PluginServiceProvider;
+use Illuminate\View\View;
 use Spatie\LaravelPackageTools\Package;
 
 class FilamentPeekServiceProvider extends PluginServiceProvider
@@ -19,5 +21,19 @@ class FilamentPeekServiceProvider extends PluginServiceProvider
             ->hasTranslations()
             ->hasConfigFile()
             ->hasViews();
+    }
+
+    public function packageRegistered(): void
+    {
+        parent::packageRegistered();
+
+        $this->app->resolving('filament', function () {
+            Filament::serving(function () {
+                Filament::registerRenderHook(
+                    'body.end',
+                    fn (): View => view('filament-peek::preview-modal'),
+                );
+            });
+        });
     }
 }

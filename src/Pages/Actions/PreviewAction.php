@@ -4,6 +4,7 @@ namespace Pboivin\FilamentPeek\Pages\Actions;
 
 use Filament\Pages\Actions\Action;
 use Filament\Support\Actions\Concerns\CanCustomizeProcess;
+use Illuminate\Support\Facades\View;
 
 class PreviewAction extends Action
 {
@@ -23,5 +24,7 @@ class PreviewAction extends Action
         $this->color('secondary');
 
         $this->action('openPreviewModal');
+
+        View::share('is_filament_peek_preview_action_setup', true);
     }
 }

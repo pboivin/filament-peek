@@ -1,4 +1,4 @@
-@if ($this->isPreviewModalOpen ?? false)
+@if ($is_filament_peek_preview_action_setup ?? false)
     <div
         class="filament-peek-preview-modal"
         role="alertdialog"
@@ -12,6 +12,16 @@
             allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
 
             canRotatePreset: false,
+
+            modalTitle: null,
+
+            modalStyle: {
+                display: 'none',
+            },
+
+            iframeUrl: null,
+
+            iframeContent: null,
 
             iframeStyle: {
                 width: '100%',
@@ -48,13 +58,33 @@
                 this.iframeStyle.maxWidth = newMaxWidth;
                 this.iframeStyle.maxHeight = newMaxHeight;
             },
+
+            onOpenPreviewModal($event) {
+                document.body.classList.add('is-filament-peek-preview-modal-open');
+
+                this.modalTitle = $event.detail.modalTitle;
+                this.iframeUrl = $event.detail.iframeUrl;
+                this.iframeContent = $event.detail.iframeContent;
+                this.modalStyle.display = 'flex';
+            },
+
+            onClosePreviewModal() {
+                document.body.classList.remove('is-filament-peek-preview-modal-open');
+
+                this.modalStyle.display = 'none';
+                this.modalTitle = null;
+                this.iframeUrl = null;
+                this.iframeContent = null;
+            },
         }"
         x-init="setDevicePreset()"
+        x-on:open-preview-modal.window="onOpenPreviewModal($event)"
+        x-on:close-preview-modal.window="onClosePreviewModal()"
+        x-bind:style="modalStyle"
+        x-cloak
     >
         <div class="filament-peek-preview-modal-header">
-            <div id="filament-peek-preview-modal-title">
-                {{ $this->getPreviewModalTitle() }}
-            </div>
+            <div id="filament-peek-preview-modal-title" x-text="modalTitle"></div>
 
             @if (config('filament-peek.devicePresets', false))
                 <div class="filament-peek-device-presets">
@@ -73,7 +103,7 @@
                 </div>
             @endif
 
-            <x-filament::button color="secondary" wire:click="closePreviewModal">
+            <x-filament::button color="secondary" x-on:click="$dispatch('close-preview-modal')">
                 {{ __('filament-peek::ui.close-modal-action-label') }}
             </x-filament::button>
         </div>
@@ -82,21 +112,21 @@
             'filament-peek-preview-modal-body' => true,
             'allow-iframe-overflow' => config('filament-peek.allowIframeOverflow', false),
         ]) }}">
-            <iframe
-                @if ($previewModalUrl = $this->getPreviewModalUrl())
-                    src="{!! $previewModalUrl !!}"
-                @elseif ($previewModalHtmlContent = $this->getPreviewModalHtmlContent())
-                    srcdoc="{!! htmlentities($previewModalHtmlContent) !!}"
-                @endif
-                frameborder="0"
-                x-bind:style="iframeStyle"
-            ></iframe>
+            <template x-if="iframeUrl">
+                <iframe
+                    x-bind:src="iframeUrl"
+                    x-bind:style="iframeStyle"
+                    frameborder="0"
+                ></iframe>
+            </template>
+
+            <template x-if="!iframeUrl && iframeContent">
+                <iframe
+                    x-bind:srcdoc="iframeContent"
+                    x-bind:style="iframeStyle"
+                    frameborder="0"
+                ></iframe>
+            </template>
         </div>
     </div>
 @endif
-
-<div
-    x-data
-    x-on:open-preview-modal.window="document.body.classList.add('is-filament-peek-preview-modal-open')"
-    x-on:close-preview-modal.window="document.body.classList.remove('is-filament-peek-preview-modal-open')"
-></div>
