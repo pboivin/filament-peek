@@ -6,12 +6,14 @@ use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
+use Filament\Notifications\NotificationsServiceProvider;
 use Filament\Support\SupportServiceProvider;
+use Filament\Tables\TablesServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
-use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 use Pboivin\FilamentPeek\Tests\Models\User;
+use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -25,8 +27,11 @@ class TestCase extends Orchestra
             LivewireServiceProvider::class,
             SupportServiceProvider::class,
             FormsServiceProvider::class,
+            TablesServiceProvider::class,
+            NotificationsServiceProvider::class,
             FilamentServiceProvider::class,
             FilamentPeekServiceProvider::class,
+            TestServiceProvider::class,
         ];
     }
 
