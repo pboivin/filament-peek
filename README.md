@@ -99,12 +99,14 @@ return [
 
 ## Basic Usage with Blade Views
 
-In your `EditRecord` page:
+In your `EditRecord` pages:
 
 1. Add the `HasPreviewModal` trait.
 2. Add the `PreviewAction` class to the returned array in `getActions()`.
 3. Override the `getPreviewModalView()` method to define your Blade view.
 4. If your view expects a `$page` variable, override the `getPreviewModalDataRecordKey()` method to define it. By default, this variable will be `$record`.
+
+The modal can also be used on `CreateRecord` pages and, if needed, `ListRecords` pages.
 
 #### Complete Example
 
