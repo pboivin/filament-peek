@@ -226,7 +226,7 @@ class PageController extends Controller
 }
 ```
 
-## Using a Preview Link
+## Embedding a Preview Link into the Form
 
 Instead of `PreviewAction`, you can use the `PreviewLink` view field to integrate the Preview button directly in your form (e.g. in a sidebar):
 
