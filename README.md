@@ -1,5 +1,13 @@
 # Peek
 
+<p>
+<a href="https://github.com/pboivin/filament-peek/actions"><img src="https://github.com/pboivin/filament-peek/workflows/run-tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/pboivin/filament-peek"><img src="https://img.shields.io/packagist/v/pboivin/filament-peek" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/pboivin/filament-peek"><img src="https://img.shields.io/packagist/l/pboivin/filament-peek" alt="License"></a>
+</p>
+
+<br>
+
 A Filament plugin that adds a full-screen preview modal to your Edit pages. The modal can be used before save to preview a modified record.
 
 ![Screenshot of the edit page](./art/01_edit.png)
