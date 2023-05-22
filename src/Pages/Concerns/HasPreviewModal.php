@@ -32,12 +32,19 @@ trait HasPreviewModal
     protected function preparePreviewModalData(): array
     {
         $data = $this->form->getState();
+        $record = null;
 
-        $data = $this->mutateFormDataBeforeSave($data);
+        if (method_exists($this, 'mutateFormDataBeforeCreate')) {
+            $data = $this->mutateFormDataBeforeCreate($data);
 
-        $record = $this->getRecord();
+            $record = $this->getModel()::make($data);
+        } elseif (method_exists($this, 'mutateFormDataBeforeSave')) {
+            $data = $this->mutateFormDataBeforeSave($data);
 
-        $record->fill($data);
+            $record = $this->getRecord();
+
+            $record->fill($data);
+        }
 
         return [
             $this->getPreviewModalDataRecordKey() => $record,
