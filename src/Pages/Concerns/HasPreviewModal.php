@@ -29,11 +29,6 @@ trait HasPreviewModal
         return 'record';
     }
 
-    protected function getPreviewModalHtmlContent(): ?string
-    {
-        return $this->previewModalHtmlContent;
-    }
-
     protected function preparePreviewModalData(): array
     {
         $data = $this->form->getState();
