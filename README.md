@@ -213,11 +213,13 @@ class EditPage extends EditRecord
     
     protected function getPreviewModalUrl(): ?string
     {
-        $previewToken = "preview-" . uniqid();
+        $token = uniqid();
 
-        session()->put($previewToken, $this->previewModalData);
+        $sessionKey = "preview-$token";
 
-        return route('pages.preview', ['token' => $previewToken]);
+        session()->put($sessionKey, $this->previewModalData);
+
+        return route('pages.preview', ['token' => $token]);
     }
 }
 ```
@@ -231,7 +233,9 @@ class PageController extends Controller
 
     public function preview($token)
     {
-        $previewData = session($token);
+        $previewData = session("preview-$token");
+
+        abort_if(is_null($previewData), 404);
         
         // ...
     }
