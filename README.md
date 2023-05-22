@@ -22,13 +22,15 @@ You can install the package via composer:
 composer require pboivin/filament-peek
 ```
 
+The requirements are **PHP 8.0** and **Filament 2.0**
+
+## Configuration
+
 You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="filament-peek-config"
 ```
-
-## Configuration
 
 This is the contents of the published config file:
 
