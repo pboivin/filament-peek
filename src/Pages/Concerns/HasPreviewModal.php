@@ -46,7 +46,7 @@ trait HasPreviewModal
 
         return [
             $this->getPreviewModalDataRecordKey() => $record,
-            'isFilamentPreviewModal' => true,
+            'isPeekPreviewModal' => true,
         ];
     }
 

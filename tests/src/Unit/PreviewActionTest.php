@@ -28,5 +28,5 @@ it('sets the view hook to render the modal', function () {
 
     $shared = View::getShared();
 
-    expect($shared['is_filament_peek_preview_action_setup'])->toBeTrue();
+    expect($shared[PreviewAction::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
 });

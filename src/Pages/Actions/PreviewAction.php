@@ -10,6 +10,8 @@ class PreviewAction extends Action
 {
     use CanCustomizeProcess;
 
+    const PREVIEW_ACTION_SETUP_HOOK = '__is_filament_peek_preview_action_setup';
+
     public static function getDefaultName(): ?string
     {
         return 'preview';
@@ -25,6 +27,6 @@ class PreviewAction extends Action
 
         $this->action('openPreviewModal');
 
-        View::share('is_filament_peek_preview_action_setup', true);
+        View::share(self::PREVIEW_ACTION_SETUP_HOOK, true);
     }
 }

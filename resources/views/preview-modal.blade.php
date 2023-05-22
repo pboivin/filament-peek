@@ -1,4 +1,4 @@
-@if ($is_filament_peek_preview_action_setup ?? false)
+@if (View::shared(\Pboivin\FilamentPeek\Pages\Actions\PreviewAction::PREVIEW_ACTION_SETUP_HOOK))
     <div
         class="filament-peek-preview-modal"
         role="alertdialog"
