@@ -212,7 +212,7 @@ class EditPage extends EditRecord
 
 Then, you can fetch the preview data from the controller through the session (or cache):
 
-```
+```php
 class PageController extends Controller
 {
     // ...
