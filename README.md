@@ -172,14 +172,14 @@ class EditPage extends EditRecord
     
     protected function mutatePreviewModalData($data): array
     {
-        $data['name'] = 'Bob';
+        $data['message'] = 'This is a preview';
 
         return $data;
     }
 }
 ```
 
-This would make a `$name` variable available to the view when rendered in the preview modal.
+This would make a `$message` variable available to the view when rendered in the preview modal.
 
 Inside of `mutatePreviewModalData()` you can access:
 - the modified record with unsaved changes: `$data['record']`
