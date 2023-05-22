@@ -92,7 +92,7 @@ In your `EditRecord` page:
 
 #### Complete Example
 
-**app/Filament/Resources/PageResource/Pages/EditPage.php**
+`app/Filament/Resources/PageResource/Pages/EditPage.php`
 
 ```php
 namespace App\Filament\Resources\PageResource\Pages;
@@ -131,7 +131,7 @@ class EditPage extends EditRecord
 
 If you're using the same Blade view for the site page and the preview modal, you can detect if the view is currently rendered in a preview modal by checking for the `$isPeekPreviewModal` variable:
 
-**resources/views/pages/show.blade.php**
+`resources/views/pages/show.blade.php`
 
 ```blade
 <x-layout>
