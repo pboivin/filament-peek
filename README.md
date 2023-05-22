@@ -12,6 +12,8 @@ A Filament plugin that adds a full-screen preview modal to your Edit pages. The 
 
 ![Screenshot of the edit page](./art/01_edit.png)
 
+---
+
 ![Screenshot of the preview modal](./art/02_preview.png)
 
 ## Installation
