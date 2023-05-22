@@ -231,6 +231,8 @@ class PageController extends Controller
 Instead of `PreviewAction`, you can use the `PreviewLink` view field to integrate the Preview button directly in your form (e.g. in a sidebar):
 
 ```php 
+use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
+
 class PageResource extends Resource
 {
     // ...
