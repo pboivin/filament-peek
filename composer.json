@@ -1,6 +1,6 @@
 {
     "name": "pboivin/filament-peek",
-    "description": "Full-screen before-save record previewer for Filament.",
+    "description": "Full-screen page preview modal for Filament",
     "keywords": [
         "laravel",
         "filament",
