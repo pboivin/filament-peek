@@ -80,10 +80,17 @@
                 this.iframeContent = null;
                 this.isOpen = false;
             },
+
+            handleEscapeKey() {
+                if (!this.isOpen) return;
+
+                this.onClosePreviewModal();
+            },
         }"
         x-init="setDevicePreset()"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:close-preview-modal.window="onClosePreviewModal()"
+        x-on:keyup.escape="handleEscapeKey()"
         x-bind:style="modalStyle"
         x-cloak
         x-trap="isOpen"
