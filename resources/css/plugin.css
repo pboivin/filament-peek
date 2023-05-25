@@ -29,13 +29,18 @@
     @apply dark:bg-gray-900;
 }
 
+.filament-peek-preview-modal-body iframe {
+    @apply shadow-2xl mx-auto;
+    transition: all 200ms;
+    pointer-events: none;
+}
+
 .filament-peek-preview-modal-body.allow-iframe-overflow {
     @apply overflow-y-auto;
 }
 
-.filament-peek-preview-modal-body iframe {
-    @apply pointer-events-none shadow-2xl mx-auto;
-    transition: all 200ms;
+.filament-peek-preview-modal-body.allow-iframe-pointer-events iframe {
+    pointer-events: initial;
 }
 
 body.is-filament-peek-preview-modal-open {

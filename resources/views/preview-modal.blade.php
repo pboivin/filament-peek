@@ -52,7 +52,7 @@
                 this.canRotatePreset = this.devicePresets[name].canRotatePreset || false;
             },
 
-            rotateDevicePreset(name) {
+            rotateDevicePreset() {
                 const newMaxWidth = this.iframeStyle.maxHeight;
                 const newMaxHeight = this.iframeStyle.maxWidth;
                 this.iframeStyle.maxWidth = newMaxWidth;
@@ -111,6 +111,7 @@
         <div class="{{ Arr::toCssClasses([
             'filament-peek-preview-modal-body' => true,
             'allow-iframe-overflow' => config('filament-peek.allowIframeOverflow', false),
+            'allow-iframe-pointer-events' => config('filament-peek.allowIframePointerEvents', false),
         ]) }}">
             <template x-if="iframeUrl">
                 <iframe
