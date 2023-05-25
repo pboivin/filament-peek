@@ -5,6 +5,8 @@
         aria-modal="true"
         aria-labelledby="filament-peek-preview-modal-title"
         x-data="{
+            isOpen: false,
+
             devicePresets: @js(config('filament-peek.devicePresets', false)),
 
             initialDevicePreset: @js(config('filament-peek.initialDevicePreset', 'fullscreen')),
@@ -66,6 +68,7 @@
                 this.iframeUrl = $event.detail.iframeUrl;
                 this.iframeContent = $event.detail.iframeContent;
                 this.modalStyle.display = 'flex';
+                this.isOpen = true;
             },
 
             onClosePreviewModal() {
@@ -75,13 +78,22 @@
                 this.modalTitle = null;
                 this.iframeUrl = null;
                 this.iframeContent = null;
+                this.isOpen = false;
+            },
+
+            handleEscapeKey() {
+                if (!this.isOpen) return;
+
+                this.onClosePreviewModal();
             },
         }"
         x-init="setDevicePreset()"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:close-preview-modal.window="onClosePreviewModal()"
+        x-on:keyup.escape="handleEscapeKey()"
         x-bind:style="modalStyle"
         x-cloak
+        x-trap="isOpen"
     >
         <div class="filament-peek-preview-modal-header">
             <div id="filament-peek-preview-modal-title" x-text="modalTitle"></div>
