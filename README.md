@@ -201,7 +201,7 @@ class PageController extends Controller
 
 ## Embedding a Preview Link into the Form
 
-Instead of `PreviewAction`, you can use the `PreviewLink` view field to integrate the Preview button directly in your form (e.g. in a sidebar):
+Instead of `PreviewAction`, you can use the `PreviewLink` component to integrate the Preview button directly in your form (e.g. in a sidebar):
 
 ```php 
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
