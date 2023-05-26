@@ -161,7 +161,7 @@ class EditPage extends EditRecord
 
 ## Using a Preview URL
 
-If you're not using Blade views to render your front-end, you may still be able to implement page previews using a custom URL and the PHP session (or cache):
+If you're not using Blade views to render your front-end, you may still be able to implement page previews using a custom URL and the PHP session (or cache). Instead of `getPreviewModalView()`, override the `getPreviewModalUrl()` method to return the preview URL:
 
 ```php
 class EditPage extends EditRecord
@@ -198,6 +198,11 @@ class PageController extends Controller
     }
 }
 ```
+
+This technique can also be used to implement page previews with a decoupled front-end (e.g Next.js):
+
+- From `getPreviewModalUrl()`, generate the preview token and return a **front-end** preview URL.
+- Then from the front-end page component, fetch the preview data from the **back-end** preview URL.
 
 ## Embedding a Preview Link into the Form
 
