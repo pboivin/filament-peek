@@ -34,68 +34,19 @@ You can publish the config file with:
 php artisan vendor:publish --tag="filament-peek-config"
 ```
 
-This is the contents of the published config file:
+This will add a `config/filament-peek.php` file to your project. Here are the main options you can configure:
 
-```php
-return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Device Presets
-    |--------------------------------------------------------------------------
-    |
-    | Device presets allow users to quickly resize the preview iframe to
-    | specific dimensions. Set this to `false` to deactivate device presets.
-    |
-    */
+| Name | Type | Description |
+|---|---|---|
+| `devicePresets` | `array\|false` | Device presets allow users to quickly resize the preview iframe to specific dimensions. Set this to `false` to deactivate device presets. |
+| `initialDevicePreset` | `string` | The default device preset to be activated when the preview modal is open. |
+| `allowIframeOverflow` | `bool` | Set this to `true` if you want to allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
+| `allowIframePointerEvents` | `bool` | Set this to `true` if you want to allow all pointer events (clicks, etc.) within the iframe. By default, only scrolling is allowed. |
 
-    'devicePresets' => [
-        'fullscreen' => [
-            'icon' => 'heroicon-o-desktop-computer',
-            'width' => '100%',
-            'height' => '100%',
-            'canRotatePreset' => false,
-        ],
-        'tablet-landscape' => [
-            'icon' => 'heroicon-o-device-tablet',
-            'rotateIcon' => true,
-            'width' => '1080px',
-            'height' => '810px',
-            'canRotatePreset' => true,
-        ],
-        'mobile' => [
-            'icon' => 'heroicon-o-device-mobile',
-            'width' => '375px',
-            'height' => '667px',
-            'canRotatePreset' => true,
-        ],
-    ],
+## How it Works
 
-    /*
-    |--------------------------------------------------------------------------
-    | Initial Device Preset
-    |--------------------------------------------------------------------------
-    |
-    | The default device preset to be activated when the modal is open.
-    |
-    */
-
-    'initialDevicePreset' => 'fullscreen',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Allow Iframe Overflow
-    |--------------------------------------------------------------------------
-    |
-    | Set this to `true` if you want to allow the iframe dimensions to go beyond
-    | the capacity of the available preview modal area.
-    |
-    */
-
-    'allowIframeOverflow' => false,
-
-];
-```
+You start by adding a preview action button to the top of your page or an inline preview link somewhere in your form (e.g. in a sidebar). When the user clicks the button, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
 
 ## Basic Usage with Blade Views
 
