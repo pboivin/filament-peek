@@ -57,8 +57,8 @@
             rotateDevicePreset() {
                 const newMaxWidth = this.iframeStyle.maxHeight;
                 const newMaxHeight = this.iframeStyle.maxWidth;
-                this.iframeStyle.maxWidth = newMaxWidth;
-                this.iframeStyle.maxHeight = newMaxHeight;
+
+                this.setIframeDimensions(newMaxWidth, newMaxHeight);
             },
 
             onOpenPreviewModal($event) {
