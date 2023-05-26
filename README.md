@@ -46,7 +46,7 @@ This will add a `config/filament-peek.php` file to your project. Here are the ma
 
 ## How it Works
 
-You start by adding a preview action button to the top of your page. Alternatively, you can add preview link component somewhere in your form (e.g. in a sidebar). When the user clicks the button, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
+You start by adding a preview action button to the top of your page. Alternatively, you can add a preview link component somewhere in your form (e.g. in a sidebar). When the user clicks the button, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
 
 ## Basic Usage with Blade Views
 
