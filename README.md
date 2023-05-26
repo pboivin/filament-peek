@@ -229,9 +229,9 @@ class PageResource extends Resource
 
 ## Pointer Events
 
-By default, only scrolling is allowed in the preview iframe. If this doesn't work for your use-case, you can enable all pointer events with the `allowIframePointerEvents` option.
+By default, only scrolling is allowed in the preview iframe. If this doesn't work for your use-case, you can enable all pointer events with the [`allowIframePointerEvents` configuration](#configuration).
 
-If you need finer control over pointer events in your previews, first set this option to `true`. Then, in your page template, add the required CSS or JS. Here's a exemple disabling preview pointer events only for `<a>` tags:
+If you need finer control over pointer events in your previews, first set this option to `true`. Then, in your page template, add the required CSS or JS. Here's an exemple disabling preview pointer events only for `<a>` tags:
 
 `resources/views/pages/show.blade.php`
 
