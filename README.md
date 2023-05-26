@@ -46,7 +46,7 @@ This will add a `config/filament-peek.php` file to your project. Here are the ma
 
 ## How it Works
 
-You start by adding a preview action button to the top of your page or an inline preview link somewhere in your form (e.g. in a sidebar). When the user clicks the button, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
+You start by adding a preview action button to the top of your page. Alternatively, you can add preview link component somewhere in your form (e.g. in a sidebar). When the user clicks the button, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
 
 ## Basic Usage with Blade Views
 
@@ -220,6 +220,22 @@ class PageResource extends Resource
             ]);
     }
 }
+```
+
+## Pointer Events
+
+By default, only scrolling is allowed in the preview iframe. If this doesn't work for your use-case, you can enable all pointer events with the `allowIframePointerEvents` option. If you need finer control over pointer events in your previews, first set this option to `true`. Then, in your page template, add the required CSS or JS. Here's a exemple disabling preview pointer events only for `<a>` tags:
+
+`resources/views/pages/show.blade.php`
+
+```blade
+...
+
+@isset($isPeekPreviewModal)
+    <style>
+        a { pointer-events: none !important; }
+    </style>
+@endisset
 ```
 
 ## Testing
