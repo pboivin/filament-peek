@@ -2,19 +2,21 @@
 
 namespace Pboivin\FilamentPeek\Forms\Components;
 
-use Filament\Forms\Components\ViewField;
+use Filament\Forms\Components\Component;
 use Illuminate\Support\Facades\View;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
 
-class PreviewLink extends ViewField
+class PreviewLink extends Component
 {
     protected string $view = 'filament-peek::components.preview-link';
 
-    public static function make(string $name = ''): static
+    public static function make(): static
     {
         View::share(PreviewAction::PREVIEW_ACTION_SETUP_HOOK, true);
 
-        $static = parent::make($name ?: 'filament_peek_preview_link');
+        $static = app(static::class);
+
+        $static->configure();
 
         $static->label(__('filament-peek::ui.preview-action-label'));
 

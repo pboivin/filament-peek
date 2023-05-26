@@ -34,68 +34,19 @@ You can publish the config file with:
 php artisan vendor:publish --tag="filament-peek-config"
 ```
 
-This is the contents of the published config file:
+This will add a `config/filament-peek.php` file to your project. Here are the main options you can configure:
 
-```php
-return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Device Presets
-    |--------------------------------------------------------------------------
-    |
-    | Device presets allow users to quickly resize the preview iframe to
-    | specific dimensions. Set this to `false` to deactivate device presets.
-    |
-    */
+| Name | Type | Description |
+|---|---|---|
+| `devicePresets` | `array\|false` | Device presets allow users to quickly resize the preview iframe to specific dimensions. Set this to `false` to deactivate device presets. |
+| `initialDevicePreset` | `string` | The default device preset to be activated when the preview modal is open. |
+| `allowIframeOverflow` | `bool` | Set this to `true` if you want to allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
+| `allowIframePointerEvents` | `bool` | Set this to `true` if you want to allow all pointer events (clicks, etc.) within the iframe. By default, only scrolling is allowed. |
 
-    'devicePresets' => [
-        'fullscreen' => [
-            'icon' => 'heroicon-o-desktop-computer',
-            'width' => '100%',
-            'height' => '100%',
-            'canRotatePreset' => false,
-        ],
-        'tablet-landscape' => [
-            'icon' => 'heroicon-o-device-tablet',
-            'rotateIcon' => true,
-            'width' => '1080px',
-            'height' => '810px',
-            'canRotatePreset' => true,
-        ],
-        'mobile' => [
-            'icon' => 'heroicon-o-device-mobile',
-            'width' => '375px',
-            'height' => '667px',
-            'canRotatePreset' => true,
-        ],
-    ],
+## How it Works
 
-    /*
-    |--------------------------------------------------------------------------
-    | Initial Device Preset
-    |--------------------------------------------------------------------------
-    |
-    | The default device preset to be activated when the modal is open.
-    |
-    */
-
-    'initialDevicePreset' => 'fullscreen',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Allow Iframe Overflow
-    |--------------------------------------------------------------------------
-    |
-    | Set this to `true` if you want to allow the iframe dimensions to go beyond
-    | the capacity of the available preview modal area.
-    |
-    */
-
-    'allowIframeOverflow' => false,
-
-];
-```
+You start by adding a preview action button to the top of your page. Alternatively, you can add preview link component somewhere in your form (e.g. in a sidebar). When the user clicks the button, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
 
 ## Basic Usage with Blade Views
 
@@ -250,7 +201,7 @@ class PageController extends Controller
 
 ## Embedding a Preview Link into the Form
 
-Instead of `PreviewAction`, you can use the `PreviewLink` view field to integrate the Preview button directly in your form (e.g. in a sidebar):
+Instead of `PreviewAction`, you can use the `PreviewLink` component to integrate the Preview button directly in your form (e.g. in a sidebar):
 
 ```php 
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
@@ -269,6 +220,22 @@ class PageResource extends Resource
             ]);
     }
 }
+```
+
+## Pointer Events
+
+By default, only scrolling is allowed in the preview iframe. If this doesn't work for your use-case, you can enable all pointer events with the `allowIframePointerEvents` option. If you need finer control over pointer events in your previews, first set this option to `true`. Then, in your page template, add the required CSS or JS. Here's a exemple disabling preview pointer events only for `<a>` tags:
+
+`resources/views/pages/show.blade.php`
+
+```blade
+...
+
+@isset($isPeekPreviewModal)
+    <style>
+        a { pointer-events: none !important; }
+    </style>
+@endisset
 ```
 
 ## Testing

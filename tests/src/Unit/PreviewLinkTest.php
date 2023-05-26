@@ -4,12 +4,6 @@ use Illuminate\Support\Facades\View;
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
 
-it('has a default name', function () {
-    $previewLink = PreviewLink::make();
-
-    expect($previewLink->getName())->toBe('filament_peek_preview_link');
-});
-
 it('has a default label', function () {
     $previewLink = PreviewLink::make();
 
