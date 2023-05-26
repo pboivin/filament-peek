@@ -199,7 +199,7 @@ class PageController extends Controller
 }
 ```
 
-This technique can also be used to implement page previews with a decoupled front-end (e.g Next.js):
+This technique can also be used to implement page previews with a decoupled front-end (e.g. Next.js):
 
 - From `getPreviewModalUrl()`, generate the preview token and return a **front-end** preview URL.
 - Then from the front-end page component, fetch the preview data from the **back-end** preview URL.
@@ -229,7 +229,9 @@ class PageResource extends Resource
 
 ## Pointer Events
 
-By default, only scrolling is allowed in the preview iframe. If this doesn't work for your use-case, you can enable all pointer events with the `allowIframePointerEvents` option. If you need finer control over pointer events in your previews, first set this option to `true`. Then, in your page template, add the required CSS or JS. Here's a exemple disabling preview pointer events only for `<a>` tags:
+By default, only scrolling is allowed in the preview iframe. If this doesn't work for your use-case, you can enable all pointer events with the `allowIframePointerEvents` option.
+
+If you need finer control over pointer events in your previews, first set this option to `true`. Then, in your page template, add the required CSS or JS. Here's a exemple disabling preview pointer events only for `<a>` tags:
 
 `resources/views/pages/show.blade.php`
 
