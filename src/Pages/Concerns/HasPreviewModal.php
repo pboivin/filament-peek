@@ -59,12 +59,13 @@ trait HasPreviewModal
 
     public function openPreviewModal(): void
     {
+        $previewModalUrl = null;
         $previewModalHtmlContent = null;
 
         try {
             $this->previewModalData = $this->mutatePreviewModalData($this->preparePreviewModalData());
 
-            if ($this->getPreviewModalUrl()) {
+            if ($previewModalUrl = $this->getPreviewModalUrl()) {
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
                 $previewModalHtmlContent = view($view, $this->previewModalData)->render();
@@ -79,7 +80,7 @@ trait HasPreviewModal
 
         $this->dispatchBrowserEvent('open-preview-modal', [
             'modalTitle' => $this->getPreviewModalTitle(),
-            'iframeUrl' => $this->getPreviewModalUrl(),
+            'iframeUrl' => $previewModalUrl,
             'iframeContent' => $previewModalHtmlContent,
         ]);
     }
