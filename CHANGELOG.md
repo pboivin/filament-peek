@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 0.2.1 - 2023-05-28
+
+- fix: Remove duplicated call to getPreviewModalUrl
+- test: Add HasPreviewModal tests
+
+
 ## 0.2.0 - 2023-05-26
 
 - feat: Add pointer events config
