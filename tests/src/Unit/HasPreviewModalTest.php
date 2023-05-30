@@ -4,7 +4,10 @@ use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Resources\Resource;
+use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\View\View as ViewView;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 use Tests\TestCase;
 
@@ -125,6 +128,35 @@ it('dispatches close preview modal browser event', function () {
     expect(count($page->dispatchQueue))->toEqual(1);
 
     expect($page->dispatchQueue[0]['event'])->toEqual('close-preview-modal');
+});
+
+it('renders the preview modal view', function () {
+    $this->mock(ViewFactory::class, function ($mock) {
+        $view = Mockery::mock(View::class, function ($mock) {
+            $mock->shouldReceive('render')->andReturn('TEST');
+        });
+
+        $mock->shouldReceive('make')->andReturn($view);
+    });
+    
+    $page = invade(new class extends EditRecordDummy
+    {
+        protected function getPreviewModalView(): ?string
+        {
+            return 'preview';
+        }
+    });
+
+    expect(count($page->dispatchQueue))->toEqual(0);
+
+    $page->openPreviewModal();
+
+    expect(count($page->dispatchQueue))->toEqual(1);
+
+    expect($page->dispatchQueue[0]['event'])->toEqual('open-preview-modal');
+    expect($page->dispatchQueue[0]['data']['modalTitle'])->toEqual('Preview');
+    expect($page->dispatchQueue[0]['data']['iframeUrl'])->toBeNull();
+    expect($page->dispatchQueue[0]['data']['iframeContent'])->toEqual('TEST');
 });
 
 class CreateRecordDummy extends CreateRecord
