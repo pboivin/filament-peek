@@ -7,7 +7,6 @@ use Filament\Resources\Resource;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\View\View as ViewView;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 use Tests\TestCase;
 
@@ -138,7 +137,7 @@ it('renders the preview modal view', function () {
 
         $mock->shouldReceive('make')->andReturn($view);
     });
-    
+
     $page = invade(new class extends EditRecordDummy
     {
         protected function getPreviewModalView(): ?string
