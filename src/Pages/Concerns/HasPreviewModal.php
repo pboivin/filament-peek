@@ -29,6 +29,16 @@ trait HasPreviewModal
         return 'record';
     }
 
+    protected function mutatePreviewModalData($data): array
+    {
+        return $data;
+    }
+
+    protected function renderPreviewModalView($view, $data): string
+    {
+        return view($view, $data)->render();
+    }
+
     protected function preparePreviewModalData(): array
     {
         $data = $this->form->getState();
@@ -52,11 +62,6 @@ trait HasPreviewModal
         ];
     }
 
-    protected function mutatePreviewModalData($data): array
-    {
-        return $data;
-    }
-
     public function openPreviewModal(): void
     {
         $previewModalUrl = null;
@@ -68,7 +73,7 @@ trait HasPreviewModal
             if ($previewModalUrl = $this->getPreviewModalUrl()) {
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
-                $previewModalHtmlContent = view($view, $this->previewModalData)->render();
+                $previewModalHtmlContent = $this->renderPreviewModalView($view, $this->previewModalData);
             } else {
                 throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
             }

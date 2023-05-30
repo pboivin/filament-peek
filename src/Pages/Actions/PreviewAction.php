@@ -3,13 +3,10 @@
 namespace Pboivin\FilamentPeek\Pages\Actions;
 
 use Filament\Pages\Actions\Action;
-use Filament\Support\Actions\Concerns\CanCustomizeProcess;
 use Illuminate\Support\Facades\View;
 
 class PreviewAction extends Action
 {
-    use CanCustomizeProcess;
-
     const PREVIEW_ACTION_SETUP_HOOK = '__is_filament_peek_preview_action_setup';
 
     public static function getDefaultName(): ?string
