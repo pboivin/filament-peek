@@ -224,12 +224,11 @@ class PageResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                // ...
+        return $form->schema([
+            // ...
 
-                PreviewLink::make(),
-            ]);
+            PreviewLink::make(),
+        ]);
     }
 }
 ```
