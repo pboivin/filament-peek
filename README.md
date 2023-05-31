@@ -44,7 +44,7 @@ This will add a `config/filament-peek.php` file to your project. Here are the ma
 
 ## How it Works
 
-You start by adding a preview action button to the top of your page. Alternatively, you can add a preview link component somewhere in your form (e.g. in a sidebar). When the user clicks the button, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
+You start by adding a preview action button to the top of your page. Alternatively, you can add a preview link component somewhere in your form (e.g. in a sidebar). When the button is clicked, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
 
 ## Basic Usage with Blade Views
 
@@ -137,7 +137,7 @@ Inside of `mutatePreviewModalData()` you can access:
 - the original record: `$this->record`
 - any other data from the form: `$this->data['my_custom_field']`
 
-## Dynamically Setting the Blade View
+## Dynamically Setting the View
 
 If needed, you can use the `previewModalData` property to dynamically set the modal view:
 
@@ -148,18 +148,27 @@ class EditPage extends EditRecord
     
     protected function getPreviewModalView(): ?string
     {
-        if ($this->previewModalData['record']->is_featured) {
-            return 'posts.featured';
-        }
-
-        return 'posts.show';
+        return $this->previewModalData['record']->is_featured ? 
+            'posts.featured' :
+            'posts.show';
     }
 }
 ```
 
+## Alternate Templating Engines
+
+If you're not using Blade views on the front-end, override the `renderPreviewModalView()` method and render the preview with your templating engine of choice:
+
+```php
+    protected function renderPreviewModalView($view, $data): string
+    {
+        return MyTemplateEngine::render($view, $data);
+    }
+```
+
 ## Using a Preview URL
 
-If you're not using Blade views to render your front-end, you may still be able to implement page previews using a custom URL and the PHP session (or cache). Instead of `getPreviewModalView()`, override the `getPreviewModalUrl()` method to return the preview URL:
+Instead of rendering a view, you may implement page previews using a custom URL and the PHP session (or cache). Instead of `getPreviewModalView()`, override the `getPreviewModalUrl()` method to return the preview URL:
 
 ```php
 class EditPage extends EditRecord
