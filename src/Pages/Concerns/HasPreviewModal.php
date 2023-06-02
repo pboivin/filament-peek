@@ -39,6 +39,17 @@ trait HasPreviewModal
         return view($view, $data)->render();
     }
 
+    protected function injectPreviewModalStyle($htmlContent): string
+    {
+        if (config('filament-peek.allowIframePointerEvents', false)) {
+            return $htmlContent;
+        }
+
+        $style = '<style>body * { pointer-events: none !important; }</style>';
+
+        return preg_replace('#\</[ ]*body\>#', "$style</body>", $htmlContent);
+    }
+
     protected function preparePreviewModalData(): array
     {
         $data = $this->form->getState();
@@ -73,7 +84,9 @@ trait HasPreviewModal
             if ($previewModalUrl = $this->getPreviewModalUrl()) {
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
-                $previewModalHtmlContent = $this->renderPreviewModalView($view, $this->previewModalData);
+                $previewModalHtmlContent = $this->injectPreviewModalStyle(
+                    $this->renderPreviewModalView($view, $this->previewModalData)
+                );
             } else {
                 throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
             }
