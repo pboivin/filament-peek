@@ -123,7 +123,6 @@
         <div class="{{ Arr::toCssClasses([
             'filament-peek-preview-modal-body' => true,
             'allow-iframe-overflow' => config('filament-peek.allowIframeOverflow', false),
-            'allow-iframe-pointer-events' => config('filament-peek.allowIframePointerEvents', false),
         ]) }}">
             <template x-if="iframeUrl">
                 <iframe

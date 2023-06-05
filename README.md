@@ -41,7 +41,7 @@ This will add a `config/filament-peek.php` file to your project. Here are the ma
 | `devicePresets` | `array\|false` | Device presets allow users to quickly resize the preview iframe to specific dimensions. Set this to `false` to deactivate device presets. |
 | `initialDevicePreset` | `string` | The default device preset to be activated when the preview modal is open. |
 | `allowIframeOverflow` | `bool` | Set this to `true` if you want to allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
-| `allowIframePointerEvents` | `bool` | Set this to `true` if you want to allow all pointer events (clicks, etc.) within the iframe. By default, only scrolling is allowed. |
+| `allowIframePointerEvents` | `bool` | Set this to `true` if you want to allow all pointer events (clicks, etc.) within the iframe. By default, only scrolling is allowed. (See [Pointer Events](#pointer-events)) |
 
 ## How it Works
 
@@ -236,7 +236,7 @@ class PageResource extends Resource
 
 ## Pointer Events
 
-By default, only scrolling is allowed in the preview iframe. If this doesn't work for your use-case, you can enable all pointer events with the [`allowIframePointerEvents` configuration](#configuration).
+By default, only scrolling is allowed in the preview iframe. This is done by inserting a very small `<style>` tag at the end of your preview's `<body>`. If this doesn't work for your use-case, you can enable all pointer events with the [`allowIframePointerEvents` configuration](#configuration).
 
 If you need finer control over pointer events in your previews, first set this option to `true`. Then, in your page template, add the required CSS or JS. Here's an exemple disabling preview pointer events only for `<a>` tags:
 
