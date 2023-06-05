@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 0.2.3 - 2023-06-05
+
+* fix: Replace iframe pointer-events CSS with preview modal content style block
+
+
 ## 0.2.2 - 2023-05-30
 
 - enh: Extract renderPreviewModalView method
