@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 0.2.4 - 2023-06-10
+
+* enh: Update preview modal pointer-events CSS selector
+* fix: Handle escape key within preview modal iframe
+
+
 ## 0.2.3 - 2023-06-05
 
 * fix: Replace iframe pointer-events CSS with preview modal content style block
