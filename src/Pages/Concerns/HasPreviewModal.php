@@ -45,9 +45,9 @@ trait HasPreviewModal
             return $htmlContent;
         }
 
-        $style = '<style>body * { pointer-events: none !important; }</style>';
+        $style = '<style>body { pointer-events: none !important; }</style>';
 
-        return preg_replace('#\</[ ]*body\>#', "$style</body>", $htmlContent);
+        return preg_replace('#\</[ ]*body\>#', "{$style}</body>", $htmlContent);
     }
 
     protected function preparePreviewModalData(): array
