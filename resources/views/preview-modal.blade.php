@@ -141,7 +141,6 @@
                 <iframe
                     x-bind:src="iframeUrl"
                     x-bind:style="iframeStyle"
-                    x-on:keyup.escape.window="handleEscapeKey()"
                     frameborder="0"
                 ></iframe>
             </template>
@@ -150,7 +149,6 @@
                 <iframe
                     x-bind:srcdoc="iframeContent"
                     x-bind:style="iframeStyle"
-                    x-on:keyup.escape.window="handleEscapeKey()"
                     frameborder="0"
                 ></iframe>
             </template>
