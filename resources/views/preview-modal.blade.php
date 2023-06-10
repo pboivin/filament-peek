@@ -70,15 +70,15 @@
                 this.modalStyle.display = 'flex';
                 this.isOpen = true;
 
-                this.$nextTick(() => { 
+                setTimeout(() => { 
                     const iframe = this.$refs.previewModalBody.querySelector('iframe');
 
                     if (! (iframe && iframe.contentWindow)) return;
 
                     iframe.contentWindow.addEventListener('keyup', (e) => {
-                        if (e.key === 'Escape') this.handleEscapeKey()
+                        if (e.key === 'Escape') this.handleEscapeKey();
                     });
-                });
+                }, 500);
             },
 
             onClosePreviewModal() {
