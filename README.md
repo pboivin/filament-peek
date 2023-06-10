@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/pboivin/filament-peek"><img src="https://img.shields.io/packagist/l/pboivin/filament-peek" alt="License"></a>
 </p>
 
-A Filament plugin that adds a full-screen preview modal to your Edit pages. The modal can be used before save to preview a modified record.
+A Filament plugin that adds a full-screen preview modal to your Edit pages. The modal can be used before saving to preview a modified record.
 
 ![Screenshots of the edit page and preview modal](./art/00_collage.jpg)
 
