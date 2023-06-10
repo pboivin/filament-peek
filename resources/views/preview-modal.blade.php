@@ -69,6 +69,16 @@
                 this.iframeContent = $event.detail.iframeContent;
                 this.modalStyle.display = 'flex';
                 this.isOpen = true;
+
+                setTimeout(() => { 
+                    const iframe = this.$refs.previewModalBody.querySelector('iframe');
+
+                    if (! (iframe && iframe.contentWindow)) return;
+
+                    iframe.contentWindow.addEventListener('keyup', (e) => {
+                        if (e.key === 'Escape') this.handleEscapeKey();
+                    });
+                }, 500);
             },
 
             onClosePreviewModal() {
@@ -90,7 +100,7 @@
         x-init="setDevicePreset()"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:close-preview-modal.window="onClosePreviewModal()"
-        x-on:keyup.escape="handleEscapeKey()"
+        x-on:keyup.escape.window="handleEscapeKey()"
         x-bind:style="modalStyle"
         x-cloak
         x-trap="isOpen"
@@ -120,10 +130,13 @@
             </x-filament::button>
         </div>
 
-        <div class="{{ Arr::toCssClasses([
-            'filament-peek-preview-modal-body' => true,
-            'allow-iframe-overflow' => config('filament-peek.allowIframeOverflow', false),
-        ]) }}">
+        <div
+            x-ref="previewModalBody"
+            class="{{ Arr::toCssClasses([
+                'filament-peek-preview-modal-body' => true,
+                'allow-iframe-overflow' => config('filament-peek.allowIframeOverflow', false),
+            ]) }}"
+        >
             <template x-if="iframeUrl">
                 <iframe
                     x-bind:src="iframeUrl"
