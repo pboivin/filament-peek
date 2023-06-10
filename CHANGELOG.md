@@ -5,8 +5,8 @@ All notable changes to `filament-peek` will be documented in this file.
 
 ## 0.2.4 - 2023-06-10
 
-* enh: Update preview modal pointer-events CSS selector
 * fix: Handle escape key within preview modal iframe
+* enh: Update preview modal pointer-events CSS selector
 
 
 ## 0.2.3 - 2023-06-05
@@ -31,8 +31,8 @@ All notable changes to `filament-peek` will be documented in this file.
 
 - feat: Add pointer events config
 - feat: Add focus trap and handle escape key
-- enh: Change PreviewLink into form component
 - fix: Handle preset rotation when using allowIframeOverflow config
+- enh: Change PreviewLink into form component
 
 
 ## 0.1.2 - 2023-05-22
