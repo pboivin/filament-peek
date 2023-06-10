@@ -111,7 +111,11 @@
             @if (config('filament-peek.devicePresets', false))
                 <div class="filament-peek-device-presets">
                     @foreach (config('filament-peek.devicePresets') as $presetName => $presetConfig)
-                        <button type="button" x-on:click="setDevicePreset('{{ $presetName }}')">
+                        <button 
+                            type="button" 
+                            x-on:click="setDevicePreset('{{ $presetName }}')"
+                            data-preset-name="{{ $presetName }}"
+                        >
                             <x-dynamic-component
                                 :component="$presetConfig['icon'] ?? 'heroicon-o-desktop-computer'"
                                 :class="Arr::toCssClasses(['rotate-90' => $presetConfig['rotateIcon'] ?? false])"
