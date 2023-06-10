@@ -11,6 +11,8 @@
 
             allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
 
+            shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
+
             isOpen: false,
 
             canRotatePreset: false,
@@ -56,6 +58,14 @@
                 this.canRotatePreset = this.devicePresets[name].canRotatePreset || false;
 
                 this.activeDevicePreset = name;
+            },
+
+            isActiveDevicePreset(name) {
+                if (!this.shouldShowActiveDevicePreset) {
+                    return false;
+                }
+
+                return this.activeDevicePreset === name;
             },
 
             rotateDevicePreset() {
@@ -119,7 +129,7 @@
                             type="button" 
                             data-preset-name="{{ $presetName }}"
                             x-on:click="setDevicePreset('{{ $presetName }}')"
-                            x-bind:class="{'is-active-device-preset': activeDevicePreset === '{{ $presetName }}'}"
+                            x-bind:class="{'is-active-device-preset': isActiveDevicePreset('{{ $presetName }}')}"
                         >
                             <x-dynamic-component
                                 :component="$presetConfig['icon'] ?? 'heroicon-o-desktop-computer'"
