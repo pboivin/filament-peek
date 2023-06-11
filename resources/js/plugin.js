@@ -1,7 +1,7 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('PeekPreviewModal', (config) => ({
         config,
-        
+
         isOpen: false,
 
         canRotatePreset: false,
@@ -41,9 +41,13 @@ document.addEventListener('alpine:init', () => {
 
         setDevicePreset(name) {
             name = name || this.config.initialDevicePreset;
+
             if (!this.config.devicePresets) return;
+
             if (!this.config.devicePresets[name]) return;
+
             if (!this.config.devicePresets[name].width) return;
+
             if (!this.config.devicePresets[name].height) return;
 
             this.setIframeDimensions(this.config.devicePresets[name].width, this.config.devicePresets[name].height);
@@ -100,9 +104,10 @@ document.addEventListener('alpine:init', () => {
 
         handleEscapeKey() {
             if (!this.isOpen) return;
+
             if (!this.config.shouldCloseModalWithEscapeKey) return;
 
             this.onClosePreviewModal();
         },
-    }))
+    }));
 });
