@@ -15,6 +15,10 @@ class FilamentPeekServiceProvider extends PluginServiceProvider
         'plugin-filament-peek' => __DIR__.'/../resources/dist/filament-peek.css',
     ];
 
+    protected array $scripts = [
+        'plugin-filament-peek' => __DIR__.'/../resources/dist/filament-peek.js',
+    ];
+
     public function configurePackage(Package $package): void
     {
         $package->name(static::$name)
