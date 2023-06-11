@@ -4,7 +4,7 @@
         role="alertdialog"
         aria-modal="true"
         aria-labelledby="filament-peek-preview-modal-title"
-        x-data="{
+        x-data="PeekPreviewModal({
             devicePresets: @js(config('filament-peek.devicePresets', false)),
 
             initialDevicePreset: @js(config('filament-peek.initialDevicePreset', 'fullscreen')),
@@ -14,113 +14,13 @@
             shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
 
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
-
-            isOpen: false,
-
-            canRotatePreset: false,
-
-            activeDevicePreset: null,
-
-            modalTitle: null,
-
-            modalStyle: {
-                display: 'none',
-            },
-
-            iframeUrl: null,
-
-            iframeContent: null,
-
-            iframeStyle: {
-                width: '100%',
-                height: '100%',
-                maxWidth: '100%',
-                maxHeight: '100%',
-            },
-
-            setIframeDimensions(width, height) {
-                this.iframeStyle.maxWidth = width;
-                this.iframeStyle.maxHeight = height;
-
-                if (this.allowIframeOverflow) {
-                    this.iframeStyle.width = width;
-                    this.iframeStyle.height = height;
-                }
-            },
-
-            setDevicePreset(name) {
-                name = name || this.initialDevicePreset;
-                if (!this.devicePresets) return;
-                if (!this.devicePresets[name]) return;
-                if (!this.devicePresets[name].width) return;
-                if (!this.devicePresets[name].height) return;
-
-                this.setIframeDimensions(this.devicePresets[name].width, this.devicePresets[name].height);
-
-                this.canRotatePreset = this.devicePresets[name].canRotatePreset || false;
-
-                this.activeDevicePreset = name;
-            },
-
-            isActiveDevicePreset(name) {
-                if (!this.shouldShowActiveDevicePreset) {
-                    return false;
-                }
-
-                return this.activeDevicePreset === name;
-            },
-
-            rotateDevicePreset() {
-                const newMaxWidth = this.iframeStyle.maxHeight;
-                const newMaxHeight = this.iframeStyle.maxWidth;
-
-                this.setIframeDimensions(newMaxWidth, newMaxHeight);
-            },
-
-            onOpenPreviewModal($event) {
-                document.body.classList.add('is-filament-peek-preview-modal-open');
-
-                this.modalTitle = $event.detail.modalTitle;
-                this.iframeUrl = $event.detail.iframeUrl;
-                this.iframeContent = $event.detail.iframeContent;
-                this.modalStyle.display = 'flex';
-                this.isOpen = true;
-
-                setTimeout(() => { 
-                    const iframe = this.$refs.previewModalBody.querySelector('iframe');
-
-                    if (! (iframe && iframe.contentWindow)) return;
-
-                    iframe.contentWindow.addEventListener('keyup', (e) => {
-                        if (e.key === 'Escape') this.handleEscapeKey();
-                    });
-                }, 500);
-            },
-
-            onClosePreviewModal() {
-                document.body.classList.remove('is-filament-peek-preview-modal-open');
-
-                this.modalStyle.display = 'none';
-                this.modalTitle = null;
-                this.iframeUrl = null;
-                this.iframeContent = null;
-                this.isOpen = false;
-            },
-
-            handleEscapeKey() {
-                if (!this.isOpen) return;
-                if (!this.shouldCloseModalWithEscapeKey) return;
-
-                this.onClosePreviewModal();
-            },
-        }"
-        x-init="setDevicePreset()"
+        })"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:close-preview-modal.window="onClosePreviewModal()"
         x-on:keyup.escape.window="handleEscapeKey()"
         x-bind:style="modalStyle"
-        x-cloak
         x-trap="isOpen"
+        x-cloak
     >
         <div class="filament-peek-preview-modal-header">
             <div id="filament-peek-preview-modal-title" x-text="modalTitle"></div>

@@ -9,11 +9,9 @@ use Spatie\LaravelPackageTools\Package;
 
 class FilamentPeekServiceProvider extends PluginServiceProvider
 {
-    public static string $name = 'filament-peek';
+    const VERSION = '0.3.0';
 
-    protected array $styles = [
-        'plugin-filament-peek' => __DIR__.'/../resources/dist/filament-peek.css',
-    ];
+    public static string $name = 'filament-peek';
 
     public function configurePackage(Package $package): void
     {
@@ -35,5 +33,27 @@ class FilamentPeekServiceProvider extends PluginServiceProvider
                 );
             });
         });
+    }
+
+    protected function getBeforeCoreScripts(): array
+    {
+        if (config('filament-peek.disablePluginScripts', false)) {
+            return [];
+        }
+
+        return [
+            'plugin-filament-peek-'.self::VERSION => __DIR__.'/../resources/dist/filament-peek.js',
+        ];
+    }
+
+    protected function getStyles(): array
+    {
+        if (config('filament-peek.disablePluginStyles', false)) {
+            return [];
+        }
+
+        return [
+            'plugin-filament-peek-'.self::VERSION => __DIR__.'/../resources/dist/filament-peek.css',
+        ];
     }
 }
