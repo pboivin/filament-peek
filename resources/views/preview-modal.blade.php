@@ -8,11 +8,11 @@
             devicePresets: @js(config('filament-peek.devicePresets', false)),
 
             initialDevicePreset: @js(config('filament-peek.initialDevicePreset', 'fullscreen')),
-    
+
             allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
-    
+
             shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
-    
+
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
         })"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
