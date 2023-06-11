@@ -43,6 +43,7 @@ This will add a `config/filament-peek.php` file to your project. Here are the ma
 | `showActiveDevicePreset` | `bool` | Highlight the active device preset with a small circle under the icon. |
 | `allowIframeOverflow` | `bool` | Set this to `true` if you want to allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
 | `allowIframePointerEvents` | `bool` | Set this to `true` if you want to allow all pointer events (clicks, etc.) within the iframe. By default, only scrolling is allowed. (See [Pointer Events](#pointer-events)) |
+| `closeModalWithEscapeKey` | `bool` | Set this to `false` to reserve the Escape key for the purposes of your page preview. |
 
 ## How it Works
 
