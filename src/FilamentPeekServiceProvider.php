@@ -14,11 +14,11 @@ class FilamentPeekServiceProvider extends PluginServiceProvider
     public static string $name = 'filament-peek';
 
     protected array $styles = [
-        'plugin-filament-peek-' . self::VERSION => __DIR__ . '/../resources/dist/filament-peek.css',
+        'plugin-filament-peek-'.self::VERSION => __DIR__.'/../resources/dist/filament-peek.css',
     ];
 
     protected array $beforeCoreScripts = [
-        'plugin-filament-peek-' . self::VERSION => __DIR__ . '/../resources/dist/filament-peek.js',
+        'plugin-filament-peek-'.self::VERSION => __DIR__.'/../resources/dist/filament-peek.js',
     ];
 
     public function configurePackage(Package $package): void
