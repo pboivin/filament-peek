@@ -38,8 +38,9 @@ This will add a `config/filament-peek.php` file to your project. Here are the ma
 
 | Name | Type | Description |
 |---|---|---|
-| `devicePresets` | `array\|false` | Device presets allow users to quickly resize the preview iframe to specific dimensions. Set this to `false` to deactivate device presets. |
+| `devicePresets` | `array\|false` | Device presets allow users to quickly resize the preview iframe to specific dimensions. Set this to `false` to disable device presets. |
 | `initialDevicePreset` | `string` | The default device preset to be activated when the preview modal is open. |
+| `showActiveDevicePreset` | `bool` | Highlight the active device preset with a small circle under the icon. |
 | `allowIframeOverflow` | `bool` | Set this to `true` if you want to allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
 | `allowIframePointerEvents` | `bool` | Set this to `true` if you want to allow all pointer events (clicks, etc.) within the iframe. By default, only scrolling is allowed. (See [Pointer Events](#pointer-events)) |
 

@@ -17,7 +17,16 @@
 }
 
 .filament-peek-device-presets button {
-    @apply mx-2 disabled:opacity-25;
+    @apply inline-flex flex-col items-center mx-2 disabled:opacity-25;
+}
+
+.filament-peek-device-presets button:after {
+    @apply block w-1 h-1 mt-1 bg-transparent rounded-full;
+    content: "";
+}
+
+.filament-peek-device-presets button.is-active-device-preset:after {
+    @apply bg-current opacity-25;
 }
 
 .filament-peek-device-presets button svg {

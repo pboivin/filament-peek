@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Device presets allow users to quickly resize the preview iframe to
-    | specific dimensions. Set this to `false` to deactivate device presets.
+    | specific dimensions. Set this to `false` to disable device presets.
     |
     */
 
@@ -44,6 +44,17 @@ return [
     */
 
     'initialDevicePreset' => 'fullscreen',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Show Active Device Preset
+    |--------------------------------------------------------------------------
+    |
+    | Highlight the active device preset with a small circle under the icon.
+    |
+    */
+
+    'showActiveDevicePreset' => true,
 
     /*
     |--------------------------------------------------------------------------

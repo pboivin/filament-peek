@@ -5,15 +5,19 @@
         aria-modal="true"
         aria-labelledby="filament-peek-preview-modal-title"
         x-data="{
-            isOpen: false,
-
             devicePresets: @js(config('filament-peek.devicePresets', false)),
 
             initialDevicePreset: @js(config('filament-peek.initialDevicePreset', 'fullscreen')),
 
             allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
 
+            shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
+
+            isOpen: false,
+
             canRotatePreset: false,
+
+            activeDevicePreset: null,
 
             modalTitle: null,
 
@@ -52,6 +56,16 @@
                 this.setIframeDimensions(this.devicePresets[name].width, this.devicePresets[name].height);
 
                 this.canRotatePreset = this.devicePresets[name].canRotatePreset || false;
+
+                this.activeDevicePreset = name;
+            },
+
+            isActiveDevicePreset(name) {
+                if (!this.shouldShowActiveDevicePreset) {
+                    return false;
+                }
+
+                return this.activeDevicePreset === name;
             },
 
             rotateDevicePreset() {
@@ -111,7 +125,12 @@
             @if (config('filament-peek.devicePresets', false))
                 <div class="filament-peek-device-presets">
                     @foreach (config('filament-peek.devicePresets') as $presetName => $presetConfig)
-                        <button type="button" x-on:click="setDevicePreset('{{ $presetName }}')">
+                        <button 
+                            type="button" 
+                            data-preset-name="{{ $presetName }}"
+                            x-on:click="setDevicePreset('{{ $presetName }}')"
+                            x-bind:class="{'is-active-device-preset': isActiveDevicePreset('{{ $presetName }}')}"
+                        >
                             <x-dynamic-component
                                 :component="$presetConfig['icon'] ?? 'heroicon-o-desktop-computer'"
                                 :class="Arr::toCssClasses(['rotate-90' => $presetConfig['rotateIcon'] ?? false])"
