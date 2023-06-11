@@ -1,15 +1,15 @@
 @tailwind utilities;
 
 .filament-peek-preview-modal {
-    @apply fixed top-0 left-0 w-screen h-screen z-[9999];
-    @apply flex flex-col bg-white text-gray-900 text-sm font-medium;
+    @apply fixed left-0 top-0 z-[9999] h-screen w-screen;
+    @apply flex flex-col bg-white text-sm font-medium text-gray-900;
     @apply m-0 p-0 !important;
     @apply dark:bg-gray-800 dark:text-gray-300;
 }
 
 .filament-peek-preview-modal-header {
-    @apply flex items-center justify-between p-4 bg-white border-b;
-    @apply dark:bg-gray-800 dark:border-gray-700;
+    @apply flex items-center justify-between border-b bg-white p-4;
+    @apply dark:border-gray-700 dark:bg-gray-800;
 }
 
 .filament-peek-device-presets {
@@ -17,12 +17,12 @@
 }
 
 .filament-peek-device-presets button {
-    @apply inline-flex flex-col items-center mx-2 disabled:opacity-25;
+    @apply mx-2 inline-flex flex-col items-center disabled:opacity-25;
 }
 
 .filament-peek-device-presets button:after {
-    @apply block w-1 h-1 mt-1 bg-transparent rounded-full;
-    content: "";
+    @apply mt-1 block h-1 w-1 rounded-full bg-transparent;
+    content: '';
 }
 
 .filament-peek-device-presets button.is-active-device-preset:after {
@@ -30,16 +30,16 @@
 }
 
 .filament-peek-device-presets button svg {
-    @apply w-6 h-6;
+    @apply h-6 w-6;
 }
 
 .filament-peek-preview-modal-body {
-    @apply flex-grow p-4 bg-gray-100;
+    @apply flex-grow bg-gray-100 p-4;
     @apply dark:bg-gray-900;
 }
 
 .filament-peek-preview-modal-body iframe {
-    @apply shadow-2xl mx-auto;
+    @apply mx-auto shadow-2xl;
     transition: all 200ms;
 }
 
@@ -48,5 +48,5 @@
 }
 
 body.is-filament-peek-preview-modal-open {
-    @apply overflow-hidden
+    @apply overflow-hidden;
 }
