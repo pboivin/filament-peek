@@ -80,4 +80,16 @@ return [
 
     'allowIframePointerEvents' => false,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Close Modal With Escape Key
+    |--------------------------------------------------------------------------
+    |
+    | Set this to `false` if you need to reserve the Escape key for the
+    | purposes of your page preview.
+    |
+    */
+
+    'closeModalWithEscapeKey' => true,
+
 ];
