@@ -61,8 +61,8 @@ return [
     | Allow Iframe Overflow
     |--------------------------------------------------------------------------
     |
-    | Set this to `true` if you want to allow the iframe dimensions to go
-    | beyond the capacity of the available preview modal area.
+    | Set this to `true` to allow the iframe dimensions to go beyond the
+    | capacity of the available preview modal area.
     |
     */
 
@@ -73,11 +73,23 @@ return [
     | Allow Iframe Pointer Events
     |--------------------------------------------------------------------------
     |
-    | Set this to `true` if you want to allow all pointer events (clicks, etc.)
-    | within the iframe. By default, only scrolling is allowed.
+    | Set this to `true` to allow all pointer events (clicks, etc.) within the
+    | iframe. By default, only scrolling is allowed.
     |
     */
 
     'allowIframePointerEvents' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Close Modal With Escape Key
+    |--------------------------------------------------------------------------
+    |
+    | Set this to `false` to reserve the Escape key for the purposes of your
+    | page preview.
+    |
+    */
+
+    'closeModalWithEscapeKey' => true,
 
 ];

@@ -13,6 +13,8 @@
 
             shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
 
+            shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
+
             isOpen: false,
 
             canRotatePreset: false,
@@ -107,6 +109,7 @@
 
             handleEscapeKey() {
                 if (!this.isOpen) return;
+                if (!this.shouldCloseModalWithEscapeKey) return;
 
                 this.onClosePreviewModal();
             },
