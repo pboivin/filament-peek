@@ -16,7 +16,7 @@ A Filament plugin that adds a full-screen preview modal to your Edit pages. The 
 You can install the package via composer:
 
 ```bash
-composer require pboivin/filament-peek
+composer require pboivin/filament-peek:"^0.3"
 ```
 
 The requirements are **PHP 8.0** and **Filament 2.0**
@@ -38,25 +38,28 @@ This will add a `config/filament-peek.php` file to your project. Here are the ma
 
 | Name | Type | Description |
 |---|---|---|
-| `devicePresets` | `array\|false` | Device presets allow users to quickly resize the preview iframe to specific dimensions. Set this to `false` to disable device presets. |
-| `initialDevicePreset` | `string` | The default device preset to be activated when the preview modal is open. |
+| `devicePresets` | `array\|false` | Quickly resize the preview iframe to specific dimensions. |
+| `initialDevicePreset` | `string` | Default device preset to be activated when the preview modal is open. |
 | `showActiveDevicePreset` | `bool` | Highlight the active device preset with a small circle under the icon. |
-| `allowIframeOverflow` | `bool` | Set this to `true` to allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
-| `allowIframePointerEvents` | `bool` | Set this to `true` to allow all pointer events (clicks, etc.) within the iframe. By default, only scrolling is allowed. (See [Pointer Events](#pointer-events)) |
-| `closeModalWithEscapeKey` | `bool` | Set this to `false` to reserve the Escape key for the purposes of your page preview. |
+| `allowIframeOverflow` | `bool` | Allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
+| `allowIframePointerEvents` | `bool` | Allow all pointer events within the iframe. By default, only scrolling is allowed. (See [Pointer Events](#pointer-events)) |
+| `closeModalWithEscapeKey` | `bool` | Close the preview modal by pressing the Escape key. |
 
 ## How it Works
 
-You start by adding a preview action button to the top of your page. Alternatively, you can add a preview link component somewhere in your form (e.g. in a sidebar). When the button is clicked, a full-screen modal opens. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
+- Start by adding a preview action button to the top of your page. Alternatively, you can add a preview link component somewhere in your form (e.g. in a sidebar).
+- When the button is clicked, a full-screen modal opens.
+- The modal contains an iframe that can be resized according to some configured presets.
+- The iframe can either render a full Blade view or a custom URL.
 
 ## Basic Usage with Blade Views
 
 In your `EditRecord` pages:
 
-1. Add the `HasPreviewModal` trait.
-2. Add the `PreviewAction` class to the returned array in `getActions()`.
-3. Override the `getPreviewModalView()` method to define your Blade view.
-4. If your view expects a `$page` variable, override the `getPreviewModalDataRecordKey()` method to define it. By default, this variable will be `$record`.
+- Add the `HasPreviewModal` trait.
+- Add the `PreviewAction` class to the returned array in `getActions()`.
+- Override the `getPreviewModalView()` method to define your Blade view.
+- If your view expects a `$page` variable, override the `getPreviewModalDataRecordKey()` method to define it. By default, this variable will be `$record`.
 
 The modal can also be used on `CreateRecord` pages and, if needed, `ListRecords` pages.
 
