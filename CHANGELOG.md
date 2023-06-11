@@ -3,6 +3,13 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 0.3.0 - 2023-06-11
+
+* feat: Show active device preset
+* feat: Add closeModalWithEscapeKey config
+* refactor: Extract alpine component and version dist assets
+
+
 ## 0.2.4 - 2023-06-10
 
 * fix: Handle escape key within preview modal iframe
