@@ -13,6 +13,8 @@ class PreviewLink extends Component
 
     protected ?string $alignment = null;
 
+    protected bool $isButton = false;
+
     public static function make(): static
     {
         View::setupPreviewModal();
@@ -26,11 +28,11 @@ class PreviewLink extends Component
         return $static;
     }
 
-    public function builderPreview(string $builderField = 'blocks'): static
+    public function builderPreview(string $value = 'blocks'): static
     {
         View::setupBuilderPreview();
 
-        $this->builderField = $builderField;
+        $this->builderField = $value;
 
         return $this;
     }
@@ -83,5 +85,17 @@ class PreviewLink extends Component
         }
 
         return 'openPreviewModal';
+    }
+
+    public function button(bool $value = true): static 
+    {
+        $this->isButton = $value;
+
+        return $this;
+    }
+
+    public function isButton(): bool 
+    {
+        return $this->isButton;
     }
 }

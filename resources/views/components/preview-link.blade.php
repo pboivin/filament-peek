@@ -2,15 +2,27 @@
     <div class="{{ $alignmentClass }}">
 @endif
 
-    <x-filament::button
-        color="secondary"
-        tag="a"
-        href="#"
-        :wire:click.prevent="$getPreviewAction()"
-        {{ $attributes->merge($getExtraAttributes()) }}
-    >
-        {{ $getLabel() }}
-    </x-filament::button>
+    @if ($isButton())
+        <x-filament::button
+            color="secondary"
+            tag="a"
+            href="#"
+            wire:click.prevent="{{ $getPreviewAction() }}"
+            {{ $attributes->merge($getExtraAttributes()) }}
+        >
+            {{ $getLabel() }}
+        </x-filament::button>
+    @else
+        <a
+            href="#"
+            wire:click.prevent="{{ $getPreviewAction() }}"
+            {{ $attributes->class('text-primary-600 dark:text-primary-500 underline')
+                          ->merge($getExtraAttributes()) 
+            }}
+        >
+            {{ $getLabel() }}
+        </a>
+    @endif
 
 @if ($getAlignmentClass())
     </div>
