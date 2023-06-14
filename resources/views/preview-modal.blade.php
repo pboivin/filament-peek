@@ -22,22 +22,30 @@
         x-trap="isOpen"
         x-cloak
     >
-        <div 
-            class="filament-peek-panel filament-peek-editor"
-            x-bind:style="editorStyle"
-        >
-            <div class="filament-peek-panel-header">
-                <div id="filament-peek-panel-title">
+        @if (\Pboivin\FilamentPeek\Support\View::needsBuilderPreview())
+            <div 
+                class="filament-peek-panel filament-peek-editor"
+                x-bind:style="editorStyle"
+            >
+                <div class="filament-peek-panel-header">
                     <div id="filament-peek-panel-title" x-text="editorTitle"></div>
+
+                    <x-filament::button 
+                        color="secondary" 
+                        icon="heroicon-o-refresh"
+                        :label-sr-only="true"
+                        x-on:click="$dispatch('refresh-builder-preview')"
+                        class="filament-peek-editor-refresh"
+                    >
+                        {{ __('filament-peek::ui.refresh-action-label') }}
+                    </x-filament::button>
+                </div>
+    
+                <div class="filament-peek-panel-body">
+                    @livewire('filament-peek::builder-editor')
                 </div>
             </div>
-    
-            <div class="filament-peek-panel-body">
-                @if (\Pboivin\FilamentPeek\Support\View::needsBuilderPreview())
-                    LOAD EDITOR
-                @endif
-            </div>
-        </div>
+        @endif
 
         <div class="filament-peek-panel filament-peek-preview">
             <div class="filament-peek-panel-header">
