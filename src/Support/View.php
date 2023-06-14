@@ -15,18 +15,18 @@ class View
         BladeView::share(self::PREVIEW_ACTION_SETUP_HOOK, true);
     }
 
-    public static function isPreviewModalSetup(): bool
+    public static function needsPreviewModal(): bool
     {
-        return BladeView::shared(self::PREVIEW_ACTION_SETUP_HOOK);
+        return (bool) BladeView::shared(self::PREVIEW_ACTION_SETUP_HOOK);
     }
 
     public static function setupBuilderPreview()
     {
-        BladeView::share(self::PREVIEW_ACTION_SETUP_HOOK, true);
+        BladeView::share(self::BUILDER_PREVIEW_SETUP_HOOK, true);
     }
 
-    public static function isBuilderPreviewSetup(): bool
+    public static function needsBuilderPreview(): bool
     {
-        return BladeView::shared(self::PREVIEW_ACTION_SETUP_HOOK);
+        return (bool) BladeView::shared(self::BUILDER_PREVIEW_SETUP_HOOK);
     }
 }

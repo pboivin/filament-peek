@@ -1,4 +1,4 @@
-@if (\Pboivin\FilamentPeek\Support\View::isPreviewModalSetup())
+@if (\Pboivin\FilamentPeek\Support\View::needsPreviewModal())
     <div
         class="filament-peek-modal"
         role="alertdialog"
@@ -33,7 +33,7 @@
             </div>
     
             <div class="filament-peek-panel-body">
-                @if (\Pboivin\FilamentPeek\Support\View::isBuilderPreviewSetup())
+                @if (\Pboivin\FilamentPeek\Support\View::needsBuilderPreview())
                     LOAD EDITOR
                 @endif
             </div>
