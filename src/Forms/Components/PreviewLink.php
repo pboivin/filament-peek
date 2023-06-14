@@ -87,14 +87,14 @@ class PreviewLink extends Component
         return 'openPreviewModal';
     }
 
-    public function button(bool $value = true): static 
+    public function button(bool $value = true): static
     {
         $this->isButton = $value;
 
         return $this;
     }
 
-    public function isButton(): bool 
+    public function isButton(): bool
     {
         return $this->isButton;
     }
