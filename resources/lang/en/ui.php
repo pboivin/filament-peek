@@ -7,5 +7,5 @@ return [
 
     'close-modal-action-label' => 'Close',
 
-    'editor-panel-title' => 'Editor',
+    'builder-editor-title' => 'Editor',
 ];

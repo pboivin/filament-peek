@@ -22,7 +22,10 @@
         x-trap="isOpen"
         x-cloak
     >
-        <div class="filament-peek-panel filament-peek-editor">
+        <div 
+            class="filament-peek-panel filament-peek-editor"
+            x-bind:style="editorStyle"
+        >
             <div class="filament-peek-panel-header">
                 <div id="filament-peek-panel-title">
                     <div id="filament-peek-panel-title" x-text="editorTitle"></div>

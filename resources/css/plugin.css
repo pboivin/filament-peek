@@ -9,19 +9,16 @@
 
 .filament-peek-panel {
     @apply flex flex-grow flex-col;
-
-    /* border: 1px solid blue; */
 }
 
 .filament-peek-editor {
-    @apply hidden max-w-[30rem];
+    @apply hidden max-w-[30rem] border-r;
+    @apply dark:border-gray-700;
 }
 
 .filament-peek-panel-header {
     @apply flex min-h-[4.8rem] items-center justify-between border-b bg-white p-4;
     @apply dark:border-gray-700 dark:bg-gray-800;
-
-    /* border: 1px solid red; */
 }
 
 .filament-peek-device-presets {
@@ -38,7 +35,7 @@
             @apply mt-1 block h-1 w-1 rounded-full bg-transparent;
             content: '';
         }
-    
+
         &.is-active-device-preset:after {
             @apply bg-current opacity-25;
         }

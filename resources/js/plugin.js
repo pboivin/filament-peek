@@ -1,28 +1,25 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('PeekPreviewModal', (config) => ({
         config,
-
         isOpen: false,
-
+        withEditor: false,
         canRotatePreset: false,
-
         activeDevicePreset: null,
-
+        editorTitle: null,
         modalTitle: null,
-
+        iframeUrl: null,
+        iframeContent: null,
         modalStyle: {
             display: 'none',
         },
-
-        iframeUrl: null,
-
-        iframeContent: null,
-
         iframeStyle: {
             width: '100%',
             height: '100%',
             maxWidth: '100%',
             maxHeight: '100%',
+        },
+        editorStyle: {
+            display: 'none',
         },
 
         init() {
@@ -75,6 +72,9 @@ document.addEventListener('alpine:init', () => {
         onOpenPreviewModal($event) {
             document.body.classList.add('is-filament-peek-preview-modal-open');
 
+            this.withEditor = !!$event.detail.withEditor;
+            this.editorTitle = $event.detail.editorTitle;
+            this.editorStyle.display = this.withEditor ? 'flex' : 'none';
             this.modalTitle = $event.detail.modalTitle;
             this.iframeUrl = $event.detail.iframeUrl;
             this.iframeContent = $event.detail.iframeContent;
@@ -95,6 +95,9 @@ document.addEventListener('alpine:init', () => {
         onClosePreviewModal() {
             document.body.classList.remove('is-filament-peek-preview-modal-open');
 
+            this.withEditor = false;
+            this.editorStyle.display = 'none';
+            this.editorTitle = null;
             this.modalStyle.display = 'none';
             this.modalTitle = null;
             this.iframeUrl = null;
