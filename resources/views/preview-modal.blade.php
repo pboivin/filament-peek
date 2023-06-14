@@ -1,4 +1,4 @@
-@if (View::shared(\Pboivin\FilamentPeek\Pages\Actions\PreviewAction::PREVIEW_ACTION_SETUP_HOOK))
+@if (\Pboivin\FilamentPeek\Support\View::isPreviewModalSetup())
     <div
         class="filament-peek-modal"
         role="alertdialog"
@@ -30,7 +30,9 @@
             </div>
     
             <div class="filament-peek-panel-body">
-                BODY
+                @if (\Pboivin\FilamentPeek\Support\View::isBuilderPreviewSetup())
+                    LOAD EDITOR
+                @endif
             </div>
         </div>
 
