@@ -6,4 +6,6 @@ return [
     'preview-modal-title' => 'Preview',
 
     'close-modal-action-label' => 'Close',
+
+    'editor-panel-title' => 'Editor',
 ];
