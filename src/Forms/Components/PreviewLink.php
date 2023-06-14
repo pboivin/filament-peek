@@ -3,16 +3,19 @@
 namespace Pboivin\FilamentPeek\Forms\Components;
 
 use Filament\Forms\Components\Component;
-use Illuminate\Support\Facades\View;
-use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
+use Pboivin\FilamentPeek\Support\View;
 
 class PreviewLink extends Component
 {
     protected string $view = 'filament-peek::components.preview-link';
 
+    protected ?string $builderField = null;
+
+    protected ?string $alignment = null;
+
     public static function make(): static
     {
-        View::share(PreviewAction::PREVIEW_ACTION_SETUP_HOOK, true);
+        View::setupPreviewModal();
 
         $static = app(static::class);
 
@@ -21,5 +24,64 @@ class PreviewLink extends Component
         $static->label(__('filament-peek::ui.preview-action-label'));
 
         return $static;
+    }
+
+    public function builderPreview(string $builderField = 'blocks'): static
+    {
+        View::setupBuilderPreview();
+
+        $this->builderField = $builderField;
+
+        return $this;
+    }
+
+    public function getBuilderField(): ?string
+    {
+        return $this->builderField;
+    }
+
+    public function alignLeft(): static
+    {
+        $this->alignment = 'left';
+
+        return $this;
+    }
+
+    public function alignCenter(): static
+    {
+        $this->alignment = 'center';
+
+        return $this;
+    }
+
+    public function alignRight(): static
+    {
+        $this->alignment = 'right';
+
+        return $this;
+    }
+
+    public function getAlignment(): ?string
+    {
+        return $this->alignment;
+    }
+
+    public function getAlignmentClass(): ?string
+    {
+        return match ($this->alignment) {
+            'left' => 'flex justify-start',
+            'center' => 'flex justify-center',
+            'right' => 'flex justify-end',
+            default => null,
+        };
+    }
+
+    public function getPreviewAction(): ?string
+    {
+        if ($this->builderField) {
+            return "openPreviewModalForBuidler('{$this->builderField}')";
+        }
+
+        return 'openPreviewModal';
     }
 }
