@@ -12,9 +12,13 @@ class BuilderEditor extends Component implements HasForms
     use InteractsWithForms;
 
     public ?string $previewUrl = null;
+
     public ?string $previewView = null;
+
     public ?string $builderName = null;
+
     public ?string $pageClass = null;
+
     public array $editorData = [];
 
     protected $listeners = [
@@ -31,7 +35,7 @@ class BuilderEditor extends Component implements HasForms
     {
         $this->refreshBuilderPreview();
     }
-    
+
     public function openBuilderEditor(array $event): void
     {
         $this->previewUrl = $event['previewUrl'];
@@ -64,7 +68,7 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getFormSchema(): array
     {
-        if (!$this->pageClass || !$this->builderName) {
+        if (! $this->pageClass || ! $this->builderName) {
             return [];
         }
 

@@ -60,7 +60,7 @@ trait HasBuilderPreview
     protected function getBuilderEditorData(string $builderName): array
     {
         return [
-            $builderName => $this->data[$builderName]
+            $builderName => $this->data[$builderName],
         ];
     }
 }
