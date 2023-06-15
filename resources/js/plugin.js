@@ -92,6 +92,11 @@ document.addEventListener('alpine:init', () => {
             }, 500);
         },
 
+        onRefreshPreviewModal($event) {
+            this.iframeUrl = $event.detail.iframeUrl;
+            this.iframeContent = $event.detail.iframeContent;
+        },
+
         onClosePreviewModal() {
             document.body.classList.remove('is-filament-peek-preview-modal-open');
 

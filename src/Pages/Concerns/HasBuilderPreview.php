@@ -2,8 +2,7 @@
 
 namespace Pboivin\FilamentPeek\Pages\Concerns;
 
-use Filament\Support\Exceptions\Halt;
-use InvalidArgumentException;
+use Pboivin\FilamentPeek\Support\HTML;
 
 trait HasBuilderPreview
 {
@@ -12,135 +11,56 @@ trait HasBuilderPreview
         return __('filament-peek::ui.builder-editor-title');
     }
 
-    public function openPreviewModalForBuidler(string $builderField): void
-    {
-        $previewModalUrl = null;
-        $previewModalHtmlContent = null;
-
-        // try {
-        //     $this->previewModalData = $this->mutatePreviewModalData($this->preparePreviewModalData());
-
-        //     if ($previewModalUrl = $this->getPreviewModalUrl()) {
-        //         // pass
-        //     } elseif ($view = $this->getPreviewModalView()) {
-        //         $previewModalHtmlContent = $this->injectPreviewModalStyle(
-        //             $this->renderPreviewModalView($view, $this->previewModalData)
-        //         );
-        //     } else {
-        //         throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
-        //     }
-        // } catch (Halt $exception) {
-        //     $this->closePreviewModal();
-
-        //     return;
-        // }
-
-        $this->dispatchBrowserEvent('open-preview-modal', [
-            'modalTitle' => $this->getPreviewModalTitle(),
-            'editorTitle' => $this->getBuilderEditorTitle(),
-            'iframeUrl' => $previewModalUrl,
-            'iframeContent' => $previewModalHtmlContent,
-            'withEditor' => true,
-        ]);
-    }
-
-    /*
-    protected array $previewModalData = [];
-
-    protected function getPreviewModalUrl(): ?string
-    {
-        return null;
-    }
-
-    protected function getPreviewModalView(): ?string
-    {
-        return null;
-    }
-
-
-
-    protected function getPreviewModalDataRecordKey(): string
-    {
-        return 'record';
-    }
-
-    protected function mutatePreviewModalData($data): array
+    protected function mutateInitialBuilderEditorData(array $data): array
     {
         return $data;
     }
 
-    protected function renderPreviewModalView($view, $data): string
+    protected function getBuilderEditorPreviewUrl(string $builderName): ?string
     {
-        return view($view, $data)->render();
+        return null;
     }
 
-    protected function injectPreviewModalStyle($htmlContent): string
+    protected function getBuilderEditorPreviewView(string $builderName): ?string
     {
-        if (config('filament-peek.allowIframePointerEvents', false)) {
-            return $htmlContent;
-        }
-
-        $style = '<style>body { pointer-events: none !important; }</style>';
-
-        return preg_replace('#\</[ ]*body\>#', "{$style}</body>", $htmlContent);
+        return null;
     }
 
-    protected function preparePreviewModalData(): array
+    public static function getBuilderEditorSchema(string $builderName): array
     {
-        $data = $this->form->getState();
-        $record = null;
-
-        if (method_exists($this, 'mutateFormDataBeforeCreate')) {
-            $data = $this->mutateFormDataBeforeCreate($data);
-
-            $record = $this->getModel()::make($data);
-        } elseif (method_exists($this, 'mutateFormDataBeforeSave')) {
-            $data = $this->mutateFormDataBeforeSave($data);
-
-            $record = $this->getRecord();
-
-            $record->fill($data);
-        }
-
-        return [
-            $this->getPreviewModalDataRecordKey() => $record,
-            'isPeekPreviewModal' => true,
-        ];
+        return [];
     }
 
-    public function openPreviewModal(): void
+    public static function renderBuilderEditorPreviewView(string $builderName, string $view, array $data): string
     {
-        $previewModalUrl = null;
-        $previewModalHtmlContent = null;
+        return HTML::injectPreviewModalStyle(
+            view($view, $data)->render()
+        );
+    }
 
-        try {
-            $this->previewModalData = $this->mutatePreviewModalData($this->preparePreviewModalData());
+    /** @internal */
+    public function openPreviewModalForBuidler(string $builderName): void
+    {
+        $editorData = $this->mutateInitialBuilderEditorData(
+            $this->getBuilderEditorData($builderName)
+        );
 
-            if ($previewModalUrl = $this->getPreviewModalUrl()) {
-                // pass
-            } elseif ($view = $this->getPreviewModalView()) {
-                $previewModalHtmlContent = $this->injectPreviewModalStyle(
-                    $this->renderPreviewModalView($view, $this->previewModalData)
-                );
-            } else {
-                throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
-            }
-        } catch (Halt $exception) {
-            $this->closePreviewModal();
-
-            return;
-        }
-
-        $this->dispatchBrowserEvent('open-preview-modal', [
+        $this->emit('openBuilderEditor', [
+            'previewView' => $this->getBuilderEditorPreviewView($builderName),
+            'previewUrl' => $this->getBuilderEditorPreviewUrl($builderName),
             'modalTitle' => $this->getPreviewModalTitle(),
-            'iframeUrl' => $previewModalUrl,
-            'iframeContent' => $previewModalHtmlContent,
+            'editorTitle' => $this->getBuilderEditorTitle(),
+            'editorData' => $editorData,
+            'builderName' => $builderName,
+            'pageClass' => static::class,
         ]);
     }
 
-    public function closePreviewModal(): void
+    /** @internal */
+    protected function getBuilderEditorData(string $builderName): array
     {
-        $this->dispatchBrowserEvent('close-preview-modal');
+        return [
+            $builderName => $this->data[$builderName]
+        ];
     }
-    */
 }

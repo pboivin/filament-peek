@@ -16,6 +16,7 @@
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
         })"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
+        x-on:refresh-preview-modal.window="onRefreshPreviewModal($event)"
         x-on:close-preview-modal.window="onClosePreviewModal()"
         x-on:keyup.escape.window="handleEscapeKey()"
         x-bind:style="modalStyle"
@@ -34,7 +35,7 @@
                         color="secondary" 
                         icon="heroicon-o-refresh"
                         :label-sr-only="true"
-                        x-on:click="$dispatch('refresh-builder-preview')"
+                        x-on:click="Livewire.emit('refreshBuilderPreview')"
                         class="filament-peek-editor-refresh"
                     >
                         {{ __('filament-peek::ui.refresh-action-label') }}

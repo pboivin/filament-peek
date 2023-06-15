@@ -5,6 +5,9 @@
     @apply flex bg-white text-sm font-medium text-gray-900;
     @apply m-0 p-0 !important;
     @apply dark:bg-gray-800 dark:text-gray-300;
+
+    --filament-peek-panel-header-height: 4.8rem;
+    --filament-peek-builder-actions-height: 4.25rem;
 }
 
 .filament-peek-panel {
@@ -12,8 +15,9 @@
 }
 
 .filament-peek-panel-header {
-    @apply flex min-h-[4.8rem] items-center justify-between border-b bg-white p-4;
+    @apply flex items-center justify-between border-b bg-white p-4;
     @apply dark:border-gray-700 dark:bg-gray-800;
+    min-height: var(--filament-peek-panel-header-height);
 }
 
 .filament-peek-panel-body {
@@ -65,17 +69,22 @@
 }
 
 .filament-peek-builder-editor {
-    @apply h-full w-full;
-    --filament-peek-builder-actions-height: 10rem;
+    @apply flex flex-col relative h-full w-full;
+
+    .filament-forms-builder-component
+        > .filament-forms-builder-component-block-picker {
+        @apply absolute bottom-0 left-0 w-full p-4;
+    }
 }
 
 .filament-peek-builder-content {
-    @apply w-full overflow-y-auto border p-4;
-    height: calc(100% - var(--filament-peek-builder-actions-height));
+    @apply w-full overflow-y-auto p-4;
+    height: calc(100vh - var(--filament-peek-panel-header-height) - var(--filament-peek-builder-actions-height));
+    max-height: calc(100vh - var(--filament-peek-panel-header-height) - var(--filament-peek-builder-actions-height));
 }
 
 .filament-peek-builder-actions {
-    @apply w-full border p-4;
+    @apply w-full border-t;
     height: var(--filament-peek-builder-actions-height);
 }
 
