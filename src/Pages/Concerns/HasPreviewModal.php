@@ -4,6 +4,7 @@ namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Support\Exceptions\Halt;
 use InvalidArgumentException;
+use Pboivin\FilamentPeek\Support\HTML;
 
 trait HasPreviewModal
 {
@@ -36,18 +37,9 @@ trait HasPreviewModal
 
     protected function renderPreviewModalView($view, $data): string
     {
-        return view($view, $data)->render();
-    }
-
-    protected function injectPreviewModalStyle($htmlContent): string
-    {
-        if (config('filament-peek.allowIframePointerEvents', false)) {
-            return $htmlContent;
-        }
-
-        $style = '<style>body { pointer-events: none !important; }</style>';
-
-        return preg_replace('#\</[ ]*body\>#', "{$style}</body>", $htmlContent);
+        return HTML::injectPreviewModalStyle(
+            view($view, $data)->render()
+        );
     }
 
     protected function preparePreviewModalData(): array
@@ -84,9 +76,7 @@ trait HasPreviewModal
             if ($previewModalUrl = $this->getPreviewModalUrl()) {
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
-                $previewModalHtmlContent = $this->injectPreviewModalStyle(
-                    $this->renderPreviewModalView($view, $this->previewModalData)
-                );
+                $previewModalHtmlContent = $this->renderPreviewModalView($view, $this->previewModalData);
             } else {
                 throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
             }
