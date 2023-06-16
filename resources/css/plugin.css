@@ -68,6 +68,10 @@
     @apply gap-0 border-0 p-2 !important;
 }
 
+.filament-peek-editor-auto-refresh-label {
+    @apply inline-flex items-center gap-2 p-2;
+}
+
 .filament-peek-builder-editor {
     @apply relative flex h-full w-full flex-col;
 

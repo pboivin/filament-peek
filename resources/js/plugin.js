@@ -3,6 +3,7 @@ document.addEventListener('alpine:init', () => {
         config,
         isOpen: false,
         withEditor: false,
+        editorShouldAutoRefresh: false,
         canRotatePreset: false,
         activeDevicePreset: null,
         editorTitle: null,
@@ -82,6 +83,11 @@ document.addEventListener('alpine:init', () => {
             this.isOpen = true;
 
             setTimeout(() => {
+                const firstInput = this.$el.querySelector('.filament-peek-builder-editor input');
+                firstInput && firstInput.focus();
+            }, 1);
+
+            setTimeout(() => {
                 const iframe = this.$refs.previewModalBody.querySelector('iframe');
 
                 if (!(iframe && iframe.contentWindow)) return;
@@ -108,6 +114,17 @@ document.addEventListener('alpine:init', () => {
             this.iframeUrl = null;
             this.iframeContent = null;
             this.isOpen = false;
+        },
+
+        // TESTING
+        onEditorFocusOut($event) {
+            if (!this.editorShouldAutoRefresh) return;
+
+            const autorefreshTags = ['input', 'trix-editor'];
+
+            if (autorefreshTags.includes($event.target.tagName.toLowerCase())) {
+                Livewire.emit('refreshBuilderPreview');
+            }
         },
 
         handleEscapeKey() {

@@ -21,6 +21,8 @@ class BuilderEditor extends Component implements HasForms
 
     public array $editorData = [];
 
+    public bool $autoRefresh = false;
+
     protected $listeners = [
         'refreshBuilderPreview',
         'closeBuilderEditor',
@@ -34,7 +36,9 @@ class BuilderEditor extends Component implements HasForms
 
     public function updatedEditorData()
     {
-        $this->refreshBuilderPreview();
+        if ($this->autoRefresh) {
+            $this->refreshBuilderPreview();
+        }
     }
 
     public function openBuilderEditor(array $event): void
