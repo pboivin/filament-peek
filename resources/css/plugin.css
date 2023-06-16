@@ -64,12 +64,12 @@
     }
 }
 
-.filament-peek-editor-refresh {
-    @apply border-0 p-2 !important;
+.filament-peek-editor-icon {
+    @apply gap-0 border-0 p-2 !important;
 }
 
 .filament-peek-builder-editor {
-    @apply flex flex-col relative h-full w-full;
+    @apply relative flex h-full w-full flex-col;
 
     .filament-forms-builder-component
         > .filament-forms-builder-component-block-picker {
@@ -79,8 +79,14 @@
 
 .filament-peek-builder-content {
     @apply w-full overflow-y-auto p-4;
-    height: calc(100vh - var(--filament-peek-panel-header-height) - var(--filament-peek-builder-actions-height));
-    max-height: calc(100vh - var(--filament-peek-panel-header-height) - var(--filament-peek-builder-actions-height));
+    height: calc(
+        100vh - var(--filament-peek-panel-header-height) -
+            var(--filament-peek-builder-actions-height)
+    );
+    max-height: calc(
+        100vh - var(--filament-peek-panel-header-height) -
+            var(--filament-peek-builder-actions-height)
+    );
 }
 
 .filament-peek-builder-actions {

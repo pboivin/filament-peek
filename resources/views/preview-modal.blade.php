@@ -31,15 +31,46 @@
                 <div class="filament-peek-panel-header">
                     <div id="filament-peek-panel-title" x-text="editorTitle"></div>
 
-                    <x-filament::button
-                        color="secondary"
-                        icon="heroicon-o-refresh"
-                        :label-sr-only="true"
-                        x-on:click="Livewire.emit('refreshBuilderPreview')"
-                        class="filament-peek-editor-refresh"
-                    >
-                        {{ __('filament-peek::ui.refresh-action-label') }}
-                    </x-filament::button>
+                    <div class="inline-flex items-center">
+                        <x-filament::button
+                            color="secondary"
+                            icon="heroicon-o-refresh"
+                            :label-sr-only="true"
+                            x-on:click="Livewire.emit('refreshBuilderPreview')"
+                            class="filament-peek-editor-refresh filament-peek-editor-icon"
+                        >
+                            {{ __('filament-peek::ui.refresh-action-label') }}
+                        </x-filament::button>
+
+                        <x-filament-support::dropdown placement="bottom-end">
+                            <x-slot name="trigger">
+                                <x-filament::button
+                                    color="secondary"
+                                    icon="heroicon-s-cog"
+                                    :label-sr-only="true"
+                                    class="filament-peek-editor-settings filament-peek-editor-icon"
+                                >
+                                    {{ __('filament-peek::ui.editor-settings-label') }}
+                                </x-filament::button>
+                            </x-slot>
+    
+                            <x-filament-support::dropdown.list>
+                                <x-filament-support::dropdown.list.item>
+                                    <label 
+                                        for="filament-peek-editor-autorefresh" 
+                                        class="inline-flex items-center gap-2"
+                                    >
+                                        <input 
+                                            type="checkbox"
+                                            id="filament-peek-editor-autorefresh"
+                                            class="block rounded border-gray-300 text-primary-600 shadow-sm outline-none focus:ring focus:ring-primary-200 focus:ring-opacity-50 dark:border-gray-600 dark:bg-gray-700 dark:checked:border-primary-600 dark:checked:bg-primary-600"
+                                        >
+                                        <span>Refresh automatically</span>
+                                    </label>
+                                </x-filament-support::dropdown.list.item>
+                            </x-filament-support::dropdown.list>
+                        </x-filament-support::dropdown>
+                    </div>
                 </div>
 
                 <div class="filament-peek-panel-body">
