@@ -2,7 +2,7 @@
 
 namespace Pboivin\FilamentPeek\Support;
 
-class HTML
+class Html
 {
     public static function injectPreviewModalStyle($htmlContent): string
     {

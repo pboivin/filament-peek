@@ -2,7 +2,7 @@
 
 namespace Pboivin\FilamentPeek\Pages\Concerns;
 
-use Pboivin\FilamentPeek\Support\HTML;
+use Pboivin\FilamentPeek\Support\Html;
 
 trait HasBuilderPreview
 {
@@ -33,7 +33,7 @@ trait HasBuilderPreview
 
     public static function renderBuilderEditorPreviewView(string $builderName, string $view, array $data): string
     {
-        return HTML::injectPreviewModalStyle(
+        return Html::injectPreviewModalStyle(
             view($view, $data)->render()
         );
     }
