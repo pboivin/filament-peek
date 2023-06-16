@@ -75,7 +75,7 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getFormSchema(): array
     {
-        if (!$this->pageClass || !$this->builderName) {
+        if (! $this->pageClass || ! $this->builderName) {
             return [];
         }
 
