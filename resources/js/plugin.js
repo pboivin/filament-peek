@@ -3,7 +3,6 @@ document.addEventListener('alpine:init', () => {
         config,
         isOpen: false,
         withEditor: false,
-        editorShouldAutoRefresh: false,
         canRotatePreset: false,
         activeDevicePreset: null,
         editorTitle: null,
@@ -116,15 +115,24 @@ document.addEventListener('alpine:init', () => {
             this.isOpen = false;
         },
 
+        //
         // TESTING
+        //
         onEditorFocusOut($event) {
-            if (!this.editorShouldAutoRefresh) return;
+            if (!this.editorShouldAutoRefresh()) return;
 
             const autorefreshTags = ['input', 'trix-editor'];
 
             if (autorefreshTags.includes($event.target.tagName.toLowerCase())) {
                 Livewire.emit('refreshBuilderPreview');
             }
+        },
+
+        editorShouldAutoRefresh() {
+            if (!this.withEditor) return;
+            if (!this.$refs.builderEditor) return;
+
+            return !!this.$refs.builderEditor.dataset.autoRefresh;
         },
 
         handleEscapeKey() {

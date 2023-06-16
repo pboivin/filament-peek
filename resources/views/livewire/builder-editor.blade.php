@@ -1,6 +1,8 @@
 <div
     class="filament-peek-panel filament-peek-editor"
     x-bind:style="editorStyle"
+    x-ref="builderEditor"
+    @if ($autoRefresh) data-auto-refresh="1" @endif
 >
     <div class="filament-peek-panel-header">
         <div id="filament-peek-panel-title" x-text="editorTitle"></div>
@@ -52,7 +54,6 @@
 
     <div
         class="filament-peek-panel-body"
-        x-ref="builderEditorBody"
         x-on:focusout="onEditorFocusOut($event)"
     >
         <div class="filament-peek-builder-editor">
