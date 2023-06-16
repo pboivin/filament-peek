@@ -6,14 +6,14 @@ use Pboivin\FilamentPeek\Support\Html;
 
 trait HasBuilderPreview
 {
+    protected function getListeners(): array
+    {
+        return ['updateBuilderEditorField'];
+    }
+
     protected function getBuilderEditorTitle(): string
     {
         return __('filament-peek::ui.builder-editor-title');
-    }
-
-    protected function mutateInitialBuilderEditorData(array $data): array
-    {
-        return $data;
     }
 
     protected function getBuilderEditorPreviewUrl(string $builderName): ?string
@@ -31,6 +31,27 @@ trait HasBuilderPreview
         return [];
     }
 
+    protected function mutateInitialBuilderEditorData(array $data): array
+    {
+        return $data;
+    }
+
+    protected function prepareBuilderEditorData(string $builderName): array
+    {
+        return [
+            $builderName => $this->data[$builderName],
+        ];
+    }
+
+    public function updateBuilderEditorField(array $editorData): void
+    {
+        foreach ($editorData as $key => $value) {
+            if ($this->data[$key] ?? false) {
+                $this->data[$key] = $value;
+            }
+        }
+    }
+
     public static function renderBuilderEditorPreviewView(string $builderName, string $view, array $data): string
     {
         return Html::injectPreviewModalStyle(
@@ -42,7 +63,7 @@ trait HasBuilderPreview
     public function openPreviewModalForBuidler(string $builderName): void
     {
         $editorData = $this->mutateInitialBuilderEditorData(
-            $this->getBuilderEditorData($builderName)
+            $this->prepareBuilderEditorData($builderName)
         );
 
         $this->emit('openBuilderEditor', [
@@ -54,13 +75,5 @@ trait HasBuilderPreview
             'builderName' => $builderName,
             'pageClass' => static::class,
         ]);
-    }
-
-    /** @internal */
-    protected function getBuilderEditorData(string $builderName): array
-    {
-        return [
-            $builderName => $this->data[$builderName],
-        ];
     }
 }

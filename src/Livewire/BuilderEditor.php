@@ -22,8 +22,9 @@ class BuilderEditor extends Component implements HasForms
     public array $editorData = [];
 
     protected $listeners = [
-        'openBuilderEditor' => 'openBuilderEditor',
-        'refreshBuilderPreview' => 'refreshBuilderPreview',
+        'refreshBuilderPreview',
+        'closeBuilderEditor',
+        'openBuilderEditor',
     ];
 
     public function render()
@@ -61,14 +62,16 @@ class BuilderEditor extends Component implements HasForms
         ]);
     }
 
-    public function closePreviewModal(): void
+    public function closeBuilderEditor(): void
     {
+        $this->emit('updateBuilderEditorField', $this->editorData);
+
         $this->dispatchBrowserEvent('close-preview-modal');
     }
 
     protected function getFormSchema(): array
     {
-        if (! $this->pageClass || ! $this->builderName) {
+        if (!$this->pageClass || !$this->builderName) {
             return [];
         }
 

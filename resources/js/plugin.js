@@ -117,5 +117,13 @@ document.addEventListener('alpine:init', () => {
 
             this.onClosePreviewModal();
         },
+
+        dispatchCloseModalEvent() {
+            if (this.withEditor) {
+                Livewire.emit('closeBuilderEditor');
+            } else {
+                this.$dispatch('close-preview-modal');
+            }
+        },
     }));
 });

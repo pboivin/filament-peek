@@ -24,15 +24,15 @@
         x-cloak
     >
         @if (\Pboivin\FilamentPeek\Support\View::needsBuilderPreview())
-            <div 
+            <div
                 class="filament-peek-panel filament-peek-editor"
                 x-bind:style="editorStyle"
             >
                 <div class="filament-peek-panel-header">
                     <div id="filament-peek-panel-title" x-text="editorTitle"></div>
 
-                    <x-filament::button 
-                        color="secondary" 
+                    <x-filament::button
+                        color="secondary"
                         icon="heroicon-o-refresh"
                         :label-sr-only="true"
                         x-on:click="Livewire.emit('refreshBuilderPreview')"
@@ -41,7 +41,7 @@
                         {{ __('filament-peek::ui.refresh-action-label') }}
                     </x-filament::button>
                 </div>
-    
+
                 <div class="filament-peek-panel-body">
                     @livewire('filament-peek::builder-editor')
                 </div>
@@ -51,12 +51,12 @@
         <div class="filament-peek-panel filament-peek-preview">
             <div class="filament-peek-panel-header">
                 <div id="filament-peek-panel-title" x-text="modalTitle"></div>
-    
+
                 @if (config('filament-peek.devicePresets', false))
                     <div class="filament-peek-device-presets">
                         @foreach (config('filament-peek.devicePresets') as $presetName => $presetConfig)
-                            <button 
-                                type="button" 
+                            <button
+                                type="button"
                                 data-preset-name="{{ $presetName }}"
                                 x-on:click="setDevicePreset('{{ $presetName }}')"
                                 x-bind:class="{'is-active-device-preset': isActiveDevicePreset('{{ $presetName }}')}"
@@ -67,18 +67,21 @@
                                 />
                             </button>
                         @endforeach
-    
+
                         <button type="button" x-on:click="rotateDevicePreset()" x-bind:disabled="!canRotatePreset">
                             <x-heroicon-o-refresh />
                         </button>
                     </div>
                 @endif
-    
-                <x-filament::button color="secondary" x-on:click="$dispatch('close-preview-modal')">
+
+                <x-filament::button
+                    color="secondary"
+                    x-on:click="dispatchCloseModalEvent()"
+                >
                     {{ __('filament-peek::ui.close-modal-action-label') }}
                 </x-filament::button>
             </div>
-    
+
             <div
                 x-ref="previewModalBody"
                 class="{{ Arr::toCssClasses([
@@ -93,7 +96,7 @@
                         frameborder="0"
                     ></iframe>
                 </template>
-    
+
                 <template x-if="!iframeUrl && iframeContent">
                     <iframe
                         x-bind:srcdoc="iframeContent"
