@@ -70,7 +70,7 @@ class BuilderEditor extends Component implements HasForms
     {
         $this->emit('updateBuilderEditorField', $this->editorData);
 
-        $this->dispatchBrowserEvent('close-preview-modal');
+        $this->dispatchBrowserEvent('close-preview-modal', ['delay' => true]);
     }
 
     protected function getFormSchema(): array

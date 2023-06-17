@@ -84,7 +84,7 @@ document.addEventListener('alpine:init', () => {
             setTimeout(() => {
                 const firstInput = this.$el.querySelector('.filament-peek-builder-editor input');
                 firstInput && firstInput.focus();
-            }, 1);
+            }, 0);
 
             setTimeout(() => {
                 const iframe = this.$refs.previewModalBody.querySelector('iframe');
@@ -102,7 +102,11 @@ document.addEventListener('alpine:init', () => {
             this.iframeContent = $event.detail.iframeContent;
         },
 
-        onClosePreviewModal() {
+        onClosePreviewModal($event) {
+            setTimeout(() => this._onClosePreviewModalInner(), $event.detail.delay ? 250 : 0);
+        },
+
+        _onClosePreviewModalInner() {
             document.body.classList.remove('is-filament-peek-preview-modal-open');
 
             this.withEditor = false;

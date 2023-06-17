@@ -17,7 +17,7 @@
         })"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:refresh-preview-modal.window="onRefreshPreviewModal($event)"
-        x-on:close-preview-modal.window="onClosePreviewModal()"
+        x-on:close-preview-modal.window="onClosePreviewModal($event)"
         x-on:keyup.escape.window="handleEscapeKey()"
         x-bind:style="modalStyle"
         x-trap="isOpen"
