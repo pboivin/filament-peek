@@ -36,6 +36,7 @@ trait HasBuilderPreview
         return $data;
     }
 
+    /** @internal */
     protected function prepareBuilderEditorData(string $builderName): array
     {
         return [
@@ -43,6 +44,7 @@ trait HasBuilderPreview
         ];
     }
 
+    /** @internal */
     public function updateBuilderEditorField(array $editorData): void
     {
         foreach ($editorData as $key => $value) {
@@ -52,8 +54,11 @@ trait HasBuilderPreview
         }
     }
 
+    /** @internal */
     public static function renderBuilderEditorPreviewView(string $builderName, string $view, array $data): string
     {
+        $data['isPeekPreviewModal'] = true;
+
         return Html::injectPreviewModalStyle(
             view($view, $data)->render()
         );
