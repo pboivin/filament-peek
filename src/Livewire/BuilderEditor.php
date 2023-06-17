@@ -41,6 +41,17 @@ class BuilderEditor extends Component implements HasForms
         }
     }
 
+    public function dispatchFormEvent(...$args): void
+    {
+        foreach ($this->getCachedForms() as $form) {
+            $form->dispatchEvent(...$args);
+        }
+
+        if ($this->autoRefresh) {
+            $this->refreshBuilderPreview();
+        }
+    }
+
     public function openBuilderEditor(array $event): void
     {
         $this->previewUrl = $event['previewUrl'];

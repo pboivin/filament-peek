@@ -119,9 +119,6 @@ document.addEventListener('alpine:init', () => {
             this.isOpen = false;
         },
 
-        //
-        // TESTING
-        //
         onEditorFocusOut($event) {
             if (!this.editorShouldAutoRefresh()) return;
 
