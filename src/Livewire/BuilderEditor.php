@@ -29,14 +29,38 @@ class BuilderEditor extends Component implements HasForms
         'openBuilderEditor',
     ];
 
+    public function mount()
+    {
+        if ($this->canAutoRefresh()) {
+            // check for auto-update in session
+        }
+    }
+
     public function render()
     {
         return view('filament-peek::livewire.builder-editor');
     }
 
-    public function updatedEditorData()
+    public function canAutoRefresh(): bool
     {
-        if ($this->autoRefresh) {
+        return (bool) config('filament-peek.builderEditor.showAutoRefreshToggle', false);
+    }
+
+    public function shouldAutoRefresh(): bool
+    {
+        return $this->canAutoRefresh() && $this->autoRefresh;
+    }
+
+    public function updatedAutoRefresh(): void
+    {
+        if ($this->shouldAutoRefresh()) {
+            $this->refreshBuilderPreview();
+        }
+    }
+
+    public function updatedEditorData(): void
+    {
+        if ($this->shouldAutoRefresh()) {
             $this->refreshBuilderPreview();
         }
     }
@@ -47,7 +71,7 @@ class BuilderEditor extends Component implements HasForms
             $form->dispatchEvent(...$args);
         }
 
-        if ($this->autoRefresh) {
+        if ($this->shouldAutoRefresh()) {
             $this->refreshBuilderPreview();
         }
     }

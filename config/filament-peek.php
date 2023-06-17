@@ -92,4 +92,20 @@ return [
 
     'closeModalWithEscapeKey' => true,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Builder Editor
+    |--------------------------------------------------------------------------
+    |
+    | Options related to the Editor sidebar in Builder field previews.
+    |
+    */
+
+    'builderEditor' => [
+
+        // Experimental
+        'showAutoRefreshToggle' => false,
+
+    ],
+
 ];

@@ -133,7 +133,7 @@ document.addEventListener('alpine:init', () => {
             if (!this.withEditor) return;
             if (!this.$refs.builderEditor) return;
 
-            return !!this.$refs.builderEditor.dataset.autoRefresh;
+            return !!this.$refs.builderEditor.dataset.shouldAutoRefresh;
         },
 
         handleEscapeKey() {
