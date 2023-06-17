@@ -31,7 +31,12 @@ trait HasBuilderPreview
         return [];
     }
 
-    protected function mutateInitialBuilderEditorData(array $data): array
+    protected function mutateInitialBuilderEditorData(string $builderName, array $data): array
+    {
+        return $data;
+    }
+
+    public static function mutateBuilderPreviewData(string $builderName, array $data): array
     {
         return $data;
     }
@@ -45,6 +50,22 @@ trait HasBuilderPreview
     }
 
     /** @internal */
+    public static function prepareBuilderPreviewData(array $data): array
+    {
+        $data['isPeekPreviewModal'] = true;
+
+        return $data;
+    }
+
+    /** @internal */
+    public static function renderBuilderEditorPreviewView(string $view, array $data): string
+    {
+        return Html::injectPreviewModalStyle(
+            view($view, $data)->render()
+        );
+    }
+
+    /** @internal */
     public function updateBuilderEditorField(array $editorData): void
     {
         foreach ($editorData as $key => $value) {
@@ -55,19 +76,10 @@ trait HasBuilderPreview
     }
 
     /** @internal */
-    public static function renderBuilderEditorPreviewView(string $builderName, string $view, array $data): string
-    {
-        $data['isPeekPreviewModal'] = true;
-
-        return Html::injectPreviewModalStyle(
-            view($view, $data)->render()
-        );
-    }
-
-    /** @internal */
     public function openPreviewModalForBuidler(string $builderName): void
     {
         $editorData = $this->mutateInitialBuilderEditorData(
+            $builderName,
             $this->prepareBuilderEditorData($builderName)
         );
 

@@ -126,15 +126,19 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getPreviewModalHtmlContent(): ?string
     {
+        $previewData = $this->pageClass::mutateBuilderPreviewData(
+            $this->builderName,
+            $this->pageClass::prepareBuilderPreviewData($this->editorData)
+        );
+
         if ($this->previewUrl) {
             return null;
         }
 
         if ($this->previewView) {
             return $this->pageClass::renderBuilderEditorPreviewView(
-                $this->builderName,
                 $this->previewView,
-                $this->editorData
+                $previewData
             );
         }
 
