@@ -32,7 +32,7 @@ class BuilderEditor extends Component implements HasForms
     public function mount()
     {
         if ($this->canAutoRefresh()) {
-            // check for auto-update in session
+            $this->autoRefresh = (bool) session('peek_builder_editor_auto_refresh');
         }
     }
 
@@ -51,11 +51,9 @@ class BuilderEditor extends Component implements HasForms
         return $this->canAutoRefresh() && $this->autoRefresh;
     }
 
-    public function updatedAutoRefresh(): void
+    public function updatedAutoRefresh($value): void
     {
-        if ($this->shouldAutoRefresh()) {
-            $this->refreshBuilderPreview();
-        }
+        session()->put('peek_builder_editor_auto_refresh', (bool) $value);
     }
 
     public function updatedEditorData(): void
@@ -110,7 +108,7 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getFormSchema(): array
     {
-        if (! $this->pageClass || ! $this->builderName) {
+        if (!$this->pageClass || !$this->builderName) {
             return [];
         }
 
