@@ -103,6 +103,8 @@ return [
 
     'builderEditor' => [
 
+        'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
+
         // Experimental
         'showAutoRefreshToggle' => false,
 

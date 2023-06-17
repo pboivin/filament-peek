@@ -34,7 +34,10 @@ class FilamentPeekServiceProvider extends PluginServiceProvider
                     fn (): View => view('filament-peek::preview-modal'),
                 );
 
-                Livewire::component('filament-peek::builder-editor', BuilderEditor::class);
+                Livewire::component(
+                    'filament-peek::builder-editor', 
+                    config('filament-peek.builderEditor.livewireComponentClass', BuilderEditor::class)
+                );
             });
         });
     }
