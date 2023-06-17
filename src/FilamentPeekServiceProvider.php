@@ -35,7 +35,7 @@ class FilamentPeekServiceProvider extends PluginServiceProvider
                 );
 
                 Livewire::component(
-                    'filament-peek::builder-editor', 
+                    'filament-peek::builder-editor',
                     config('filament-peek.builderEditor.livewireComponentClass', BuilderEditor::class)
                 );
             });
