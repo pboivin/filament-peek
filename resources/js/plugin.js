@@ -103,7 +103,7 @@ document.addEventListener('alpine:init', () => {
         },
 
         onClosePreviewModal($event) {
-            setTimeout(() => this._onClosePreviewModalInner(), $event.detail.delay ? 250 : 0);
+            setTimeout(() => this._onClosePreviewModalInner(), $event?.detail?.delay ? 250 : 0);
         },
 
         _onClosePreviewModalInner() {
@@ -138,8 +138,8 @@ document.addEventListener('alpine:init', () => {
 
         handleEscapeKey() {
             if (!this.isOpen) return;
-
             if (!this.config.shouldCloseModalWithEscapeKey) return;
+            if (this.withEditor) return;
 
             this.onClosePreviewModal();
         },
