@@ -9,6 +9,8 @@ return [
 
     'builder-editor-title' => 'Editor',
 
+    'refresh-action-label' => 'Refresh preview',
+
     'editor-settings-label' => 'Settings',
 
     'editor-auto-refresh-label' => 'Refresh automatically',

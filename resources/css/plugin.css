@@ -55,6 +55,12 @@
     }
 }
 
+.filament-peek-rotate-preset {
+    svg {
+        @apply relative -top-1;
+    }
+}
+
 .filament-peek-editor {
     @apply hidden max-w-[30rem] border-r;
     @apply dark:border-gray-700;
