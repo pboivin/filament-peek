@@ -122,7 +122,12 @@ document.addEventListener('alpine:init', () => {
         onEditorFocusOut($event) {
             if (!this.editorShouldAutoRefresh()) return;
 
-            const autorefreshTags = ['input', 'trix-editor'];
+            const autorefreshTags = [
+                'input',
+                'select',
+                'textarea',
+                'trix-editor',
+            ];
 
             if (autorefreshTags.includes($event.target.tagName.toLowerCase())) {
                 Livewire.emit('refreshBuilderPreview');
