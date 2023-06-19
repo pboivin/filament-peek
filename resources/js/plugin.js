@@ -103,10 +103,10 @@ document.addEventListener('alpine:init', () => {
         },
 
         onClosePreviewModal($event) {
-            setTimeout(() => this._onClosePreviewModalInner(), $event?.detail?.delay ? 250 : 0);
+            setTimeout(() => this._closeModal(), $event?.detail?.delay ? 250 : 0);
         },
 
-        _onClosePreviewModalInner() {
+        _closeModal() {
             document.body.classList.remove('is-filament-peek-preview-modal-open');
 
             this.withEditor = false;
@@ -129,10 +129,11 @@ document.addEventListener('alpine:init', () => {
                 'select',
                 'textarea',
                 'trix-editor',
+                'hex-color-picker',
             ];
 
             if (autorefreshTags.includes($event.target.tagName.toLowerCase())) {
-                Livewire.emit('refreshBuilderPreview');
+                setTimeout(() => Livewire.emit('refreshBuilderPreview'), 0);
                 return;
             }
 
@@ -140,7 +141,7 @@ document.addEventListener('alpine:init', () => {
                 $event.target.tagName.toLowerCase() === 'button' &&
                 $event.target.getAttribute('role') === 'switch'
             ) {
-                Livewire.emit('refreshBuilderPreview');
+                setTimeout(() => Livewire.emit('refreshBuilderPreview'), 0);
                 return;
             }
         },
