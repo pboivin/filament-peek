@@ -85,6 +85,15 @@
         > .filament-forms-builder-component-block-picker {
         @apply absolute bottom-0 left-0 w-full p-4;
     }
+
+    /* Nested buidlers */
+    .filament-forms-builder-component {
+        .filament-forms-builder-component
+            > .filament-forms-builder-component-block-picker {
+            position: initial;
+            padding: initial;
+        }
+    }
 }
 
 .filament-peek-builder-content {
