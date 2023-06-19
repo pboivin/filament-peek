@@ -119,6 +119,8 @@ document.addEventListener('alpine:init', () => {
             this.isOpen = false;
         },
 
+        // @todo: Select should be on 'change'
+        // @todo: Toggle should be on 'click'
         onEditorFocusOut($event) {
             if (!this.editorShouldAutoRefresh()) return;
 
@@ -131,6 +133,15 @@ document.addEventListener('alpine:init', () => {
 
             if (autorefreshTags.includes($event.target.tagName.toLowerCase())) {
                 Livewire.emit('refreshBuilderPreview');
+                return;
+            }
+
+            if (
+                $event.target.tagName.toLowerCase() === 'button' &&
+                $event.target.getAttribute('role') === 'switch'
+            ) {
+                Livewire.emit('refreshBuilderPreview');
+                return;
             }
         },
 
