@@ -14,4 +14,8 @@ return [
     'editor-settings-label' => 'Settings',
 
     'editor-auto-refresh-label' => 'Refresh automatically',
+
+    'accept-action-label' => 'Accept',
+
+    'discard-action-label' => 'Discard',
 ];
