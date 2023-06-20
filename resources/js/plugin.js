@@ -161,12 +161,16 @@ document.addEventListener('alpine:init', () => {
             this.onClosePreviewModal();
         },
 
-        dispatchCloseModalEvent() {
-            if (this.withEditor) {
-                Livewire.emit('closeBuilderEditor');
-            } else {
-                this.$dispatch('close-preview-modal');
-            }
+        acceptEditorChanges() {
+            Livewire.emit('closeBuilderEditor');
+        },
+
+        discardEditorChanges() {
+            this.$dispatch('close-preview-modal');
+        },
+
+        closePreviewModal() {
+            this.$dispatch('close-preview-modal');
         },
     }));
 });

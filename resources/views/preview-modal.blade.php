@@ -29,7 +29,11 @@
 
         <div class="filament-peek-panel filament-peek-preview">
             <div class="filament-peek-panel-header">
-                <div id="filament-peek-modal-title" x-text="modalTitle"></div>
+                <div
+                    id="filament-peek-modal-title"
+                    class="filament-peek-modal-title"
+                    x-text="modalTitle"
+                ></div>
 
                 @if (config('filament-peek.devicePresets', false))
                     <div class="filament-peek-device-presets">
@@ -58,12 +62,9 @@
                     </div>
                 @endif
 
-                {{-- <x-filament::button
-                    color="secondary"
-                    x-on:click="dispatchCloseModalEvent()"
-                >
-                    {{ __('filament-peek::ui.close-modal-action-label') }}
-                </x-filament::button> --}}
+                <div class="filament-peek-modal-actions">
+                    @include('filament-peek::partials.modal-actions')
+                </div>
             </div>
 
             <div
