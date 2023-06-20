@@ -103,6 +103,8 @@ return [
 
     'builderEditor' => [
 
+        'canDiscardChanges' => false,
+
         'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
 
         // Experimental
