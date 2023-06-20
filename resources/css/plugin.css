@@ -1,5 +1,7 @@
 @tailwind utilities;
 
+/*** Modal structure ***/
+
 .filament-peek-modal {
     @apply fixed left-0 top-0 z-[9999] h-screen w-screen;
     @apply flex bg-white text-sm font-medium text-gray-900;
@@ -34,8 +36,20 @@
     }
 }
 
+body.is-filament-peek-preview-modal-open {
+    @apply overflow-hidden;
+}
+
+/*** Preview ***/
+
+.filament-peek-preview {
+    .filament-peek-panel-header > * {
+        @apply min-w-[14rem];
+    }
+}
+
 .filament-peek-device-presets {
-    @apply hidden xl:flex;
+    @apply hidden xl:flex justify-center;
 
     button {
         @apply mx-2 inline-flex flex-col items-center disabled:opacity-25;
@@ -60,6 +74,12 @@
         @apply relative -top-1;
     }
 }
+
+.filament-peek-modal-actions {
+    @apply flex justify-end;
+}
+
+/*** Editor ***/
 
 .filament-peek-editor {
     @apply hidden max-w-[30rem] border-r;
@@ -111,8 +131,4 @@
 .filament-peek-builder-actions {
     @apply w-full border-t;
     height: var(--filament-peek-builder-actions-height);
-}
-
-body.is-filament-peek-preview-modal-open {
-    @apply overflow-hidden;
 }
