@@ -5,7 +5,7 @@
     @if ($this->shouldAutoRefresh()) data-should-auto-refresh="1" @endif
 >
     <div class="filament-peek-panel-header">
-        <div id="filament-peek-panel-title" x-text="editorTitle"></div>
+        <div x-text="editorTitle"></div>
 
         <div class="inline-flex items-center">
             <x-filament::button
