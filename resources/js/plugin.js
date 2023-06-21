@@ -27,9 +27,7 @@ document.addEventListener('alpine:init', () => {
         init() {
             const debounceTime = this.config.editorAutoRefreshDebounceTime || 500;
 
-            this._refreshBuilderPreview = debounce(function () {
-                Livewire.emit('refreshBuilderPreview');
-            }, debounceTime);
+            this._refreshBuilderPreview = debounce(() => Livewire.emit('refreshBuilderPreview'), debounceTime);
 
             this.setDevicePreset();
         },
@@ -48,11 +46,8 @@ document.addEventListener('alpine:init', () => {
             name = name || this.config.initialDevicePreset;
 
             if (!this.config.devicePresets) return;
-
             if (!this.config.devicePresets[name]) return;
-
             if (!this.config.devicePresets[name].width) return;
-
             if (!this.config.devicePresets[name].height) return;
 
             this.setIframeDimensions(this.config.devicePresets[name].width, this.config.devicePresets[name].height);
@@ -89,20 +84,27 @@ document.addEventListener('alpine:init', () => {
             this.modalStyle.display = 'flex';
             this.isOpen = true;
 
-            setTimeout(() => {
-                const firstInput = this.$el.querySelector('.filament-peek-builder-editor input');
-                firstInput && firstInput.focus();
-            }, 0);
+            setTimeout(() => this._focusEditorFirstInput(), 0);
 
-            setTimeout(() => {
-                const iframe = this.$refs.previewModalBody.querySelector('iframe');
+            setTimeout(() => this._attachIframeEscapeKeyListener(), 500);
+        },
 
-                if (!(iframe && iframe.contentWindow)) return;
+        _focusEditorFirstInput() {
+            if (!this.withEditor) return;
 
-                iframe.contentWindow.addEventListener('keyup', (e) => {
-                    if (e.key === 'Escape') this.handleEscapeKey();
-                });
-            }, 500);
+            const firstInput = this.$el.querySelector('.filament-peek-builder-editor input');
+
+            firstInput && firstInput.focus();
+        },
+
+        _attachIframeEscapeKeyListener() {
+            const iframe = this.$refs.previewModalBody.querySelector('iframe');
+
+            if (!(iframe && iframe.contentWindow)) return;
+
+            iframe.contentWindow.addEventListener('keyup', (e) => {
+                if (e.key === 'Escape') this.handleEscapeKey();
+            });
         },
 
         onRefreshPreviewModal($event) {
