@@ -69,7 +69,6 @@ it('prepares builder preview data on edit pages', function () {
     expect($data['isPeekPreviewModal'])->toBeTrue();
 });
 
-
 it('dispatches openBuilderEditor event', function () {
     $page = invade(new class extends BuilderEditRecordDummy
     {
@@ -77,9 +76,11 @@ it('dispatches openBuilderEditor event', function () {
         {
             return 'test';
         }
+
         protected function mutateInitialBuilderEditorData(string $builderName, array $data): array
         {
             $data['mutated'] = true;
+
             return $data;
         }
     });
