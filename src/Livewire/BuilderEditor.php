@@ -43,7 +43,7 @@ class BuilderEditor extends Component implements HasForms
 
     public function canAutoRefresh(): bool
     {
-        return (bool) config('filament-peek.builderEditor.showAutoRefreshToggle', false);
+        return (bool) config('filament-peek.builderEditor.experimental.showAutoRefreshToggle', false);
     }
 
     public function shouldAutoRefresh(): bool

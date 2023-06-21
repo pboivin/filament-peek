@@ -103,13 +103,17 @@ return [
 
     'builderEditor' => [
 
+        // Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button
         'canDiscardChanges' => false,
 
+        // Livewire component class for the Builder Editor sidebar
         'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
 
-        // Experimental
-        'showAutoRefreshToggle' => false,
-
+        // Experimental options (may break in a future release)
+        'experimental' => [
+            'showAutoRefreshToggle' => false,
+            'autoRefreshDebounceMilliseconds' => 500,
+        ],
     ],
 
 ];

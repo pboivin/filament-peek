@@ -1,3 +1,5 @@
+const debounce = require('lodash.debounce');
+
 document.addEventListener('alpine:init', () => {
     Alpine.data('PeekPreviewModal', (config) => ({
         config,
@@ -23,6 +25,12 @@ document.addEventListener('alpine:init', () => {
         },
 
         init() {
+            const debounceTime = this.config.editorAutoRefreshDebounceTime || 500;
+
+            this._refreshBuilderPreview = debounce(function () {
+                Livewire.emit('refreshBuilderPreview');
+            }, debounceTime);
+
             this.setDevicePreset();
         },
 
@@ -133,7 +141,7 @@ document.addEventListener('alpine:init', () => {
             ];
 
             if (autorefreshTags.includes($event.target.tagName.toLowerCase())) {
-                setTimeout(() => Livewire.emit('refreshBuilderPreview'), 0);
+                this._refreshBuilderPreview();
                 return;
             }
 
@@ -141,7 +149,7 @@ document.addEventListener('alpine:init', () => {
                 $event.target.tagName.toLowerCase() === 'button' &&
                 $event.target.getAttribute('role') === 'switch'
             ) {
-                setTimeout(() => Livewire.emit('refreshBuilderPreview'), 0);
+                this._refreshBuilderPreview();
                 return;
             }
         },
