@@ -129,6 +129,6 @@ body.is-filament-peek-preview-modal-open {
 }
 
 .filament-peek-builder-actions {
-    @apply w-full border-t;
+    @apply w-full border-t dark:border-gray-700;
     height: var(--filament-peek-builder-actions-height);
 }
