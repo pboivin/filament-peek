@@ -129,7 +129,7 @@ document.addEventListener('alpine:init', () => {
             this.isOpen = false;
         },
 
-        // @todo: Select should be on 'change'
+        // @todo: Select/Radio/Checkbox should be on 'change'
         // @todo: Toggle should be on 'click'
         onEditorFocusOut($event) {
             if (!this.editorShouldAutoRefresh()) return;
