@@ -3,6 +3,13 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.0.0-alpha1 - 2023-06-23
+
+* feat: Builder Previews
+* docs: Builder Previews Documentation
+* enh: Add type annotations and tag internal methods
+
+
 ## 0.3.0 - 2023-06-11
 
 * feat: Show active device preset
