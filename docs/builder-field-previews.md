@@ -78,69 +78,66 @@ class PageResource extends Resource
 
     public static function mainBuilderField($context = null): Field
     {
-        return Builder::make('blocks')
-            ->blocks([
-                Block::make('heading')->schema([
-                    Grid::make($context === 'preview' ? 1 : 2)->schema([
-                        TextInput::make('title'),
+        return Builder::make('blocks')->blocks([
+            Block::make('heading')->schema([
+                Grid::make($context === 'preview' ? 1 : 2)->schema([
+                    TextInput::make('title'),
 
-                        Select::make('level')->options([
-                            'h2' => 'H2',
-                            'h3' => 'H3',
-                            'h4' => 'H4',
-                        ])->default('h2'),
+                    Select::make('level')->options([
+                        'h2' => 'H2',
+                        'h3' => 'H3',
+                        'h4' => 'H4',
+                    ])->default('h2'),
 
-                        Checkbox::make('uppercase')
-                            ->columnSpanFull(),
-                    ]),
+                    Checkbox::make('uppercase')
+                        ->columnSpanFull(),
                 ]),
+            ]),
 
-                Block::make('paragraph')->schema([
-                    RichEditor::make('content')
-                        ->toolbarButtons(['bold', 'italic']),
-                ]),
-            ])
+            Block::make('paragraph')->schema([
+                RichEditor::make('content')
+                    ->toolbarButtons(['bold', 'italic']),
+            ]),
+        ])
             ->columnSpanFull()
             ->collapsible();
     }
 
     public static function footerBuilderField($context = null): Field
     {
-        return Builder::make('footer_blocks')
-            ->blocks([
-                Block::make('paragraph')->schema([
-                    RichEditor::make('content')
-                        ->toolbarButtons(['bold', 'italic']),
-                ]),
-            ])
+        return Builder::make('footer_blocks')->blocks([
+            Block::make('paragraph')->schema([
+                RichEditor::make('content')
+                    ->toolbarButtons(['bold', 'italic']),
+            ]),
+        ])
             ->columnSpanFull()
             ->collapsible();
     }
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->columnSpanFull()
-                    ->required(),
+        return $form->schema([
+            Forms\Components\TextInput::make('title')
+                ->columnSpanFull()
+                ->required(),
 
-                PreviewLink::make()
-                    ->label('Preview Main Blocks')
-                    ->builderPreview('main_blocks')
-                    ->columnSpanFull()
-                    ->alignRight(),
+            PreviewLink::make()
+                ->label('Preview Main Blocks')
+                ->builderPreview('main_blocks')
+                ->columnSpanFull()
+                ->alignRight(),
 
-                self::mainBuilderField(),
+            self::mainBuilderField(),
 
-                PreviewLink::make()
-                    ->label('Preview Footer')
-                    ->builderPreview('footer_blocks')
-                    ->columnSpanFull()
-                    ->alignRight(),
+            PreviewLink::make()
+                ->label('Preview Footer')
+                ->builderPreview('footer_blocks')
+                ->columnSpanFull()
+                ->alignRight(),
 
-                self::footerBuilderField(),
-            ]);
+            self::footerBuilderField(),
+        ]);
     }
 
     // ...
