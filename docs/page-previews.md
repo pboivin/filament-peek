@@ -1,7 +1,6 @@
 # Page Previews
 
-@todo: **Add screenshot**
-
+![Screenshots of the full page preview modal](../art/02_preview.png)
 
 ## Overview
 
