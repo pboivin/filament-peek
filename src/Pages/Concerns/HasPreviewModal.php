@@ -30,18 +30,20 @@ trait HasPreviewModal
         return 'record';
     }
 
-    protected function mutatePreviewModalData($data): array
+    protected function mutatePreviewModalData(array $data): array
     {
         return $data;
     }
 
-    protected function renderPreviewModalView($view, $data): string
+    /** @internal */
+    protected function renderPreviewModalView(?string $view, array $data): string
     {
         return Html::injectPreviewModalStyle(
             view($view, $data)->render()
         );
     }
 
+    /** @internal */
     protected function preparePreviewModalData(): array
     {
         $data = $this->form->getState();
@@ -65,6 +67,7 @@ trait HasPreviewModal
         ];
     }
 
+    /** @internal */
     public function openPreviewModal(): void
     {
         $previewModalUrl = null;
@@ -93,6 +96,7 @@ trait HasPreviewModal
         ]);
     }
 
+    /** @internal */
     public function closePreviewModal(): void
     {
         $this->dispatchBrowserEvent('close-preview-modal');
