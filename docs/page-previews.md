@@ -93,7 +93,7 @@ class EditPage extends EditRecord
 }
 ```
 
-This would make a `$message` variable available to the view when rendered in the preview modal.
+This would make a `$message` variable available to the Blade view when rendered in the iframe.
 
 Inside of `mutatePreviewModalData()` you can access:
 - the modified record with unsaved changes: `$data['record']`
@@ -196,11 +196,15 @@ class PageResource extends Resource
 }
 ```
 
-By default, the preview link is styled as an underlined link. Use the `button()` method to style it as a Filament button. Use one of the following methods to adjust the horizontal alignment:
+By default, the preview link is styled as an underlined link. Use the `button()` method to style it as a Filament button.
+
+Use one of the following methods to adjust the horizontal alignment:
 
 - `alignLeft()`
 - `alignCenter()`
 - `alignRight()`
+
+Use the `extraAttributes()` method to add any extra HTML attributes.
 
 ## Preview Pointer Events
 

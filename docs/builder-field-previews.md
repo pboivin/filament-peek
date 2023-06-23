@@ -144,6 +144,76 @@ class PageResource extends Resource
 }
 ```
 
+**Note**: If you're using custom event listeners on your page component, make sure to include the `updateBuilderEditorField` listener:
+
+```php
+    protected function getListeners(): array
+    {
+        return [
+            // ...
+            'updateBuilderEditorField',
+        ];
+    }
+```
+
+## Adding Extra Data to the Builder Editor State
+
+Override the `mutateInitialBuilderEditorData()` method to interact with the initial Builder editor data once, before opening the preview modal:
+
+```php
+class EditPage extends EditRecord
+{
+    // ...
+    
+    public static function mutateInitialBuilderEditorData(string $builderName, array $data): array
+    {
+        $data['preview_started_at'] = now();
+
+        return $data;
+    }
+}
+```
+
+## Adding Extra Data to Builder Previews
+
+Similarly, override the `mutateBuilderPreviewData()` method to interact with the Builder preview data, before the iframe is refreshed:
+
+```php
+class EditPage extends EditRecord
+{
+    // ...
+    
+    public static function mutateBuilderPreviewData(string $builderName, array $data): array
+    {
+        $data['message'] = "This is a preview. It started at {$data['preview_started_at']}.";
+
+        return $data;
+    }
+}
+```
+
+This would make a `$message` variable available to the Blade view when rendered in the iframe.
+
+## Alternate Templating Engines
+
+@todo
+
+## Using a Preview URL
+
+@todo
+
+## Customizing the Preview Link
+
+By default, the preview link is styled as an underlined link. Use the `button()` method to style it as a Filament button.
+
+Use one of the following methods to adjust the horizontal alignment:
+
+- `alignLeft()`
+- `alignCenter()`
+- `alignRight()`
+
+Use the `extraAttributes()` method to add any extra HTML attributes.
+
 ---
 
 **Contents**
