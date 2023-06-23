@@ -196,8 +196,11 @@ class PageResource extends Resource
 }
 ```
 
-@todo: The preview link is displayed as a link by default, use ->button() to display a button
+By default, the preview link is styled as an underlined link. Use the `button()` method to style it as a Filament button. Use one of the following methods to adjust the horizontal alignment:
 
+- `alignLeft()`
+- `alignCenter()`
+- `alignRight()`
 
 ## Preview Pointer Events
 
