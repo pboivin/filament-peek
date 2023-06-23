@@ -1,6 +1,6 @@
 # Builder Field Previews
 
-![Screenshot of the Builder preview modal and editor](../art/02-page-preview.jpg)
+![Screenshot of the Builder preview modal and editor](../art/03-builder-preview.jpg)
 
 @todo ...
 
