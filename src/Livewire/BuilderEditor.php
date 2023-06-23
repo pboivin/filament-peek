@@ -102,7 +102,7 @@ class BuilderEditor extends Component implements HasForms
 
     public function closeBuilderEditor(): void
     {
-        $this->emit('updateBuilderEditorField', $this->editorData);
+        $this->emit('updateBuilderEditorField', $this->builderName, $this->editorData);
 
         $this->dispatchBrowserEvent('close-preview-modal', ['delay' => true]);
     }
