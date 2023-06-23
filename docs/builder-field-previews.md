@@ -23,7 +23,7 @@ In your `Resource` class:
 
 - Add the `PreviewLink` component to your form, above or below the Builder field.
 
-Note: Builder previews can also be used on `CreateRecord` pages.
+**Note**: Builder previews can also be used on `CreateRecord` pages.
 
 #### Complete Example
 

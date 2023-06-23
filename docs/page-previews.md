@@ -18,7 +18,7 @@ In your `EditRecord` page:
 - Override the `getPreviewModalView()` method to define your Blade view.
 - If your view expects a `$page` variable, override the `getPreviewModalDataRecordKey()` method to define it. By default, this variable will be `$record`.
 
-Note: Page previews can also be used on `CreateRecord` and `ListRecords` pages.
+**Note**: Page previews can also be used on `CreateRecord` and `ListRecords` pages.
 
 #### Complete Example
 
