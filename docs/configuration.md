@@ -30,8 +30,8 @@ Builder editor options:
 |---|---|---|
 | `canDiscardChanges` | `bool` | Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button. |
 | `livewireComponentClass` | `string` | Livewire component class for the Builder Editor sidebar. |
-| `experimental.showAutoRefreshToggle` | `bool` | Experimental - enable the auto-refresh option for the Builder editor. |
-| `experimental.autoRefreshDebounceMilliseconds` | `int` | Experimental - debounce time before triggering the auto-refresh when a field loses focus. |
+| `experimental.showAutoRefreshToggle` | `bool` | Experimental - Enable the auto-refresh option for the Builder editor. |
+| `experimental.autoRefreshDebounceMilliseconds` | `int` | Experimental - Debounce time before triggering the auto-refresh when a field loses focus. |
 
 **Note**: Options marked as experimental may break in future releases.
 

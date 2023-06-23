@@ -214,6 +214,12 @@ Use one of the following methods to adjust the horizontal alignment:
 
 Use the `extraAttributes()` method to add any extra HTML attributes.
 
+## Automatically Updating the Builder Preview (Experimental)
+
+By default, the Builder Editor is not reactive. Updating the fields won't automatically refresh the preview iframe. You can enable the `showAutoRefreshToggle` in the [configuration](./configuration.md). This will add a checkbox in the header of the Editor panel in the preview modal. Activating this checkbox will make all fields in the Editor behave as `lazy()`. The preview modal will be refreshed automatically each time the focus is taken out of a field (clicking away).
+
+**Note**: Options marked as experimental may break in future releases.
+
 ---
 
 **Contents**
