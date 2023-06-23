@@ -35,6 +35,7 @@ trait HasPreviewModal
         return $data;
     }
 
+    /** @internal */
     protected function renderPreviewModalView(?string $view, array $data): string
     {
         return Html::injectPreviewModalStyle(

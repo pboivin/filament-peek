@@ -42,22 +42,6 @@ trait HasBuilderPreview
     }
 
     /** @internal */
-    protected function prepareBuilderEditorData(string $builderName): array
-    {
-        return [
-            $builderName => $this->data[$builderName],
-        ];
-    }
-
-    /** @internal */
-    public static function prepareBuilderPreviewData(array $data): array
-    {
-        $data['isPeekPreviewModal'] = true;
-
-        return $data;
-    }
-
-    /** @internal */
     public static function renderBuilderEditorPreviewView(string $view, array $data): string
     {
         return Html::injectPreviewModalStyle(
@@ -73,6 +57,22 @@ trait HasBuilderPreview
                 $this->data[$key] = $value;
             }
         }
+    }
+
+    /** @internal */
+    protected function prepareBuilderEditorData(string $builderName): array
+    {
+        return [
+            $builderName => $this->data[$builderName],
+        ];
+    }
+
+    /** @internal */
+    public static function prepareBuilderPreviewData(array $data): array
+    {
+        $data['isPeekPreviewModal'] = true;
+
+        return $data;
     }
 
     /** @internal */
