@@ -42,6 +42,7 @@ trait HasPreviewModal
         );
     }
 
+    /** @internal */
     protected function preparePreviewModalData(): array
     {
         $data = $this->form->getState();
@@ -65,6 +66,7 @@ trait HasPreviewModal
         ];
     }
 
+    /** @internal */
     public function openPreviewModal(): void
     {
         $previewModalUrl = null;
@@ -93,6 +95,7 @@ trait HasPreviewModal
         ]);
     }
 
+    /** @internal */
     public function closePreviewModal(): void
     {
         $this->dispatchBrowserEvent('close-preview-modal');
