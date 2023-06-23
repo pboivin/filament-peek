@@ -92,4 +92,28 @@ return [
 
     'closeModalWithEscapeKey' => true,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Builder Editor
+    |--------------------------------------------------------------------------
+    |
+    | Options related to the Editor sidebar in Builder field previews.
+    |
+    */
+
+    'builderEditor' => [
+
+        // Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button
+        'canDiscardChanges' => false,
+
+        // Livewire component class for the Builder Editor sidebar
+        'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
+
+        // Experimental options (may break in a future release)
+        'experimental' => [
+            'showAutoRefreshToggle' => false,
+            'autoRefreshDebounceMilliseconds' => 500,
+        ],
+    ],
+
 ];

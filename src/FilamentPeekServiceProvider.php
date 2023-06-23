@@ -5,6 +5,8 @@ namespace Pboivin\FilamentPeek;
 use Filament\Facades\Filament;
 use Filament\PluginServiceProvider;
 use Illuminate\View\View;
+use Livewire\Livewire;
+use Pboivin\FilamentPeek\Livewire\BuilderEditor;
 use Spatie\LaravelPackageTools\Package;
 
 class FilamentPeekServiceProvider extends PluginServiceProvider
@@ -30,6 +32,11 @@ class FilamentPeekServiceProvider extends PluginServiceProvider
                 Filament::registerRenderHook(
                     'body.end',
                     fn (): View => view('filament-peek::preview-modal'),
+                );
+
+                Livewire::component(
+                    'filament-peek::builder-editor',
+                    config('filament-peek.builderEditor.livewireComponentClass', BuilderEditor::class)
                 );
             });
         });

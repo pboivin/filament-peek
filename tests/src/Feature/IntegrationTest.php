@@ -35,7 +35,7 @@ it('sees preview modal', function () {
 
     $response->assertSuccessful();
 
-    $response->assertSee('filament-peek-preview-modal');
+    $response->assertSee('filament-peek-modal');
 });
 
 it('sees device presets', function () {
