@@ -25,6 +25,8 @@ The requirements are **PHP 8.0** and **Filament 2.0**
 
 For an easy way to try out the plugin on a simple Filament project, have a look at the [filament-peek-demo](https://github.com/pboivin/filament-peek-demo) repository.
 
+@todo: **Add builder previews to demo project**
+
 ## Documentation
 
 The documentation is available in the `docs/` directory:

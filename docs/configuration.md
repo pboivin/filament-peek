@@ -22,6 +22,18 @@ Here are the main options you can configure:
 | `allowIframeOverflow` | `bool` | Allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
 | `allowIframePointerEvents` | `bool` | Allow all pointer events within the iframe. By default, only scrolling is allowed. (See [Pointer Events](#pointer-events)) |
 | `closeModalWithEscapeKey` | `bool` | Close the preview modal by pressing the Escape key. |
+| `builderEditor` | `array` | Options related to the Editor sidebar in Builder field previews. |
+
+Builder editor options:
+
+| Name | Type | Description |
+|---|---|---|
+| `canDiscardChanges` | `bool` | Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button. |
+| `livewireComponentClass` | `string` | Livewire component class for the Builder Editor sidebar. |
+| `experimental.showAutoRefreshToggle` | `bool` | Experimental - enable the auto-refresh option for the Builder editor. |
+| `experimental.autoRefreshDebounceMilliseconds` | `int` | Experimental - debounce time before triggering the auto-refresh when a field loses focus. |
+
+**Note**: Options marked as experimental may break in future releases.
 
 ---
 
