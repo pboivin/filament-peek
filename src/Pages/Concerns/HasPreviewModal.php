@@ -30,12 +30,12 @@ trait HasPreviewModal
         return 'record';
     }
 
-    protected function mutatePreviewModalData($data): array
+    protected function mutatePreviewModalData(array $data): array
     {
         return $data;
     }
 
-    protected function renderPreviewModalView($view, $data): string
+    protected function renderPreviewModalView(?string $view, array $data): string
     {
         return Html::injectPreviewModalStyle(
             view($view, $data)->render()

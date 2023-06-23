@@ -4,6 +4,7 @@ namespace Pboivin\FilamentPeek\Livewire;
 
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Illuminate\Contracts\View\View as ViewContract;
 use InvalidArgumentException;
 use Livewire\Component;
 
@@ -29,14 +30,14 @@ class BuilderEditor extends Component implements HasForms
         'openBuilderEditor',
     ];
 
-    public function mount()
+    public function mount(): void
     {
         if ($this->canAutoRefresh()) {
             $this->autoRefresh = (bool) session('peek_builder_editor_auto_refresh');
         }
     }
 
-    public function render()
+    public function render(): ViewContract
     {
         return view('filament-peek::livewire.builder-editor');
     }
