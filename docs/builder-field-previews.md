@@ -1,6 +1,6 @@
 # Builder Field Previews
 
-@todo: **Add screenshot**
+![Screenshot of the Builder preview modal and editor](../art/02-page-preview.jpg)
 
 @todo ...
 
