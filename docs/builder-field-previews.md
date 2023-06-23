@@ -4,7 +4,7 @@
 
 ## Overview
 
-- A preview link in your form opens a full-screen modal.
+- A preview link in your form opens a full-screen modal for a specific Builder field.
 - The modal contains an editor on the left with a copy of your Builder field, and an iframe on the right that will render the preview.
 - The iframe can either render a full Blade view or a custom URL.
 - As you edit the fields, the preview can be refreshed manually or automatically (auto-refresh is considered experimental for now).
