@@ -50,12 +50,10 @@ trait HasBuilderPreview
     }
 
     /** @internal */
-    public function updateBuilderEditorField(array $editorData): void
+    public function updateBuilderEditorField(string $builderName, array $editorData): void
     {
-        foreach ($editorData as $key => $value) {
-            if ($this->data[$key] ?? false) {
-                $this->data[$key] = $value;
-            }
+        if ($editorData[$builderName] ?? false) {
+            $this->data[$builderName] = $editorData[$builderName];
         }
     }
 
