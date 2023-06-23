@@ -78,7 +78,7 @@ class PageResource extends Resource
 
     public static function mainBuilderField($context = null): Field
     {
-        return Builder::make('blocks')->blocks([
+        return Builder::make('main_blocks')->blocks([
             Block::make('heading')->schema([
                 Grid::make($context === 'preview' ? 1 : 2)->schema([
                     TextInput::make('title'),
