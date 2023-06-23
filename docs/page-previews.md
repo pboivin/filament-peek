@@ -4,10 +4,10 @@
 
 ## Overview
 
-- Start by adding a preview action button to the top of your page. Alternatively, you can add a preview link component somewhere in your form (e.g. in a sidebar).
-- When the button is clicked, a full-screen modal opens.
+- A preview action button at the top of the page opens a full-screen modal.
 - The modal contains an iframe that can be resized according to some configured presets.
 - The iframe can either render a full Blade view or a custom URL.
+- The preview action does not update the record in the database, the form state is unchanged.
 
 ## Using the Preview Modal with Blade Views
 
@@ -18,7 +18,7 @@ In your `EditRecord` page:
 - Override the `getPreviewModalView()` method to define your Blade view.
 - If your view expects a `$page` variable, override the `getPreviewModalDataRecordKey()` method to define it. By default, this variable will be `$record`.
 
-The modal can also be used on `CreateRecord` pages and on `ListRecords` pages, if needed.
+Note: Page previews can also be used on `CreateRecord` and `ListRecords` pages.
 
 #### Complete Example
 
