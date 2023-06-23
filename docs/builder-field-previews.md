@@ -165,7 +165,7 @@ class EditPage extends EditRecord
 {
     // ...
     
-    public static function mutateInitialBuilderEditorData(string $builderName, array $data): array
+    public function mutateInitialBuilderEditorData(string $builderName, array $data): array
     {
         $data['preview_started_at'] = now();
 
