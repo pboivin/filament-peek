@@ -222,6 +222,6 @@ If you need finer control over pointer events in your previews, first set this o
 
 **Contents**
 
-- [Configuration]()
-- [Page Previews]()
-- [Builder Field Previews]()
+- [Configuration](./configuration.md)
+- [Page Previews](./page-previews.md)
+- [Builder Field Previews](./builder-field-previews.md)

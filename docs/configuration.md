@@ -27,6 +27,6 @@ Here are the main options you can configure:
 
 **Contents**
 
-- [Configuration]()
-- [Page Previews]()
-- [Builder Field Previews]()
+- [Configuration](./configuration.md)
+- [Page Previews](./page-previews.md)
+- [Builder Field Previews](./builder-field-previews.md)
