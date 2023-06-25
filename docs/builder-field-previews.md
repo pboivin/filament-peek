@@ -118,7 +118,7 @@ class PageResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\TextInput::make('title')
+            TextInput::make('title')
                 ->columnSpanFull()
                 ->required(),
 
