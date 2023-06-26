@@ -65,6 +65,8 @@ trait HasPreviewModal
             $record = $this->getRecord();
 
             $record->fill($data);
+        } elseif (method_exists($this, 'getRecord')) {
+            $record = $this->getRecord();
         }
 
         return [
