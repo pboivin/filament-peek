@@ -3,6 +3,7 @@
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\ViewRecord;
 use Filament\Resources\Resource;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
@@ -36,6 +37,15 @@ it('has initial preview modal data record key', function () {
 
 it('prepares preview modal data on create pages', function () {
     $page = invade(new CreateRecordDummy());
+
+    $data = $page->preparePreviewModalData();
+
+    expect($data['record'] instanceof ModelDummy)->toBeTrue();
+    expect($data['isPeekPreviewModal'])->toBeTrue();
+});
+
+it('prepares preview modal data on view pages', function () {
+    $page = invade(new ViewRecordDummy());
 
     $data = $page->preparePreviewModalData();
 
@@ -163,6 +173,18 @@ class CreateRecordDummy extends CreateRecord
     use HasPreviewModal;
 
     protected static string $resource = ResourceDummy::class;
+}
+
+class ViewRecordDummy extends ViewRecord
+{
+    use HasPreviewModal;
+
+    protected static string $resource = ResourceDummy::class;
+
+    public function getRecord(): Model
+    {
+        return new ModelDummy();
+    }
 }
 
 class EditRecordDummy extends EditRecord

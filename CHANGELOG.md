@@ -10,6 +10,11 @@ All notable changes to `filament-peek` will be documented in this file.
 * enh: Add type annotations and tag internal methods
 
 
+## 0.3.1 - 2023-06-26
+
+* fix: Support preview modal on View pages
+
+
 ## 0.3.0 - 2023-06-11
 
 * feat: Show active device preset
