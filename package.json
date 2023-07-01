@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "@awcodes/filament-plugin-purge": "^1.0.2",
+        "alpinejs": "^3.12.2",
         "autoprefixer": "^10.4.7",
         "esbuild": "^0.8.57",
         "lodash.debounce": "^4.0.8",
