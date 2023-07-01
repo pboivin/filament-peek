@@ -1,6 +1,12 @@
 const debounce = require('lodash.debounce');
 
+import { dispatch } from 'alpinejs/src/utils/dispatch';
+
+const Peek = {};
+
 document.addEventListener('alpine:init', () => {
+    dispatch(document, 'peek:initializing');
+
     Alpine.data('PeekPreviewModal', (config) => ({
         config,
         isOpen: false,
@@ -183,4 +189,16 @@ document.addEventListener('alpine:init', () => {
             this.$dispatch('close-preview-modal');
         },
     }));
+
+    dispatch(document, 'peek:initialized');
 });
+
+document.addEventListener('peek:initializing', () => {
+    console.log('peek:initializing');
+});
+
+document.addEventListener('peek:initialized', () => {
+    console.log('peek:initialized');
+});
+
+window.FilamentPeek = Peek;
