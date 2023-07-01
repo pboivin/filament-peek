@@ -150,7 +150,7 @@ class PageResource extends Resource
     protected function getListeners(): array
     {
         return [
-            // ...
+            'myCustomEventListener',
             'updateBuilderEditorField',
         ];
     }
