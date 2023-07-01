@@ -2,7 +2,13 @@ const debounce = require('lodash.debounce');
 
 import { dispatch } from 'alpinejs/src/utils/dispatch';
 
-const Peek = {};
+const editorFocusOutHandlers = [];
+
+const Peek = {
+    onEditorFocusOut(callback) {
+        editorFocusOutHandlers.push(callback);
+    },
+};
 
 document.addEventListener('alpine:init', () => {
     dispatch(document, 'peek:initializing');
@@ -33,7 +39,7 @@ document.addEventListener('alpine:init', () => {
         init() {
             const debounceTime = this.config.editorAutoRefreshDebounceTime || 500;
 
-            this._refreshBuilderPreview = debounce(() => Livewire.emit('refreshBuilderPreview'), debounceTime);
+            this.refreshBuilderPreview = debounce(() => Livewire.emit('refreshBuilderPreview'), debounceTime);
 
             this.setDevicePreset();
         },
@@ -135,30 +141,13 @@ document.addEventListener('alpine:init', () => {
             this.isOpen = false;
         },
 
-        // @todo: Select/Radio/Checkbox should be on 'change'
-        // @todo: Toggle should be on 'click'
         onEditorFocusOut($event) {
             if (!this.editorShouldAutoRefresh()) return;
 
-            const autorefreshTags = [
-                'input',
-                'select',
-                'textarea',
-                'trix-editor',
-                'hex-color-picker',
-            ];
-
-            if (autorefreshTags.includes($event.target.tagName.toLowerCase())) {
-                this._refreshBuilderPreview();
-                return;
-            }
-
-            if (
-                $event.target.tagName.toLowerCase() === 'button' &&
-                $event.target.getAttribute('role') === 'switch'
-            ) {
-                this._refreshBuilderPreview();
-                return;
+            for (let handler of editorFocusOutHandlers) {
+                if (typeof handler === 'function') {
+                    handler($event, this);
+                }
             }
         },
 
@@ -194,11 +183,39 @@ document.addEventListener('alpine:init', () => {
 });
 
 document.addEventListener('peek:initializing', () => {
-    console.log('peek:initializing');
-});
+    // @todo: Select/Radio/Checkbox should be on 'change'
+    // @todo: Toggle should be on 'click'
 
-document.addEventListener('peek:initialized', () => {
-    console.log('peek:initialized');
+    Peek.onEditorFocusOut(($event, $modal) => {
+        // built-in field tags
+        const autorefreshTags = [
+            'input',
+            'select',
+            'textarea',
+            'trix-editor',
+            'hex-color-picker',
+        ];
+
+        if (autorefreshTags.includes($event.target.tagName.toLowerCase())) {
+            $modal.refreshBuilderPreview();
+            return;
+        }
+
+        // built-in toggle field
+        if (
+            $event.target.tagName.toLowerCase() === 'button' &&
+            $event.target.getAttribute('role') === 'switch'
+        ) {
+            $modal.refreshBuilderPreview();
+            return;
+        }
+
+        // filament-tiptap-editor
+        if ($event.target.classList.contains('ProseMirror')) {
+            $modal.refreshBuilderPreview();
+            return;
+        }
+    });
 });
 
 window.FilamentPeek = Peek;
