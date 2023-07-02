@@ -16,7 +16,7 @@ Closing the preview modal does not update the record in the database, only the f
 
 #### Update the Edit Page Class
 
-In your `Edit` page, add both both `HasPreviewModal` and `HasBuilderPreview` traits:
+In your `Edit` page, add both `HasPreviewModal` and `HasBuilderPreview` traits:
 
 ```php
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
