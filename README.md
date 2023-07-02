@@ -31,6 +31,8 @@ For an easy way to try out the plugin on a simple Filament project, have a look 
 
 The documentation is available in the `docs/` directory:
 
+<!-- BEGIN_TOC -->
+
 - [Configuration](./docs/configuration.md)
     - [Publishing the Config File](./docs/configuration.md#publishing-the-config-file)
     - [Available Options](./docs/configuration.md#available-options)
@@ -54,6 +56,8 @@ The documentation is available in the `docs/` directory:
     - [Using a Preview URL](./docs/builder-field-previews.md#using-a-preview-url)
     - [Customizing the Preview Link](./docs/builder-field-previews.md#customizing-the-preview-link)
     - [Automatically Updating the Builder Preview (Experimental)](./docs/builder-field-previews.md#automatically-updating-the-builder-preview-experimental)
+
+<!-- END_TOC -->
 
 ## Testing
 
