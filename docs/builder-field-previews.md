@@ -4,13 +4,13 @@
 
 ## Overview
 
-Clicking the preview link in the form opens a full-screen modal for a specific Builder field. The modal contains an editor on the left with a copy of the Builder field, and an iframe on the right that will render the preview. The iframe can either render a full Blade view or a custom URL.
+Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the Builder field, and an iframe on the right to render the preview. The iframe can either render a full Blade view or a custom URL.
 
-As you edit the fields, the preview can be refreshed manually or automatically (auto-refresh is considered experimental for the moment). When the modal is closed, the Builder field in the main form is updated with the changes from the preview modal.
+As you edit the Builder blocks, the preview can be refreshed manually or automatically (auto-refresh is considered experimental for the moment). When the modal is closed, the Builder field in the main form is synchronized with the changes from the preview modal.
 
 Closing the preview modal does not update the record in the database, only the form state is updated.
 
-**Note**: This feature was initially designed for the Builder field but can be used with any other field type. Make sure to check out the [Using Custom Fields](#using-custom-fields) section below.
+**Note**: This feature was initially designed with a focus on the Builder field but can be used with any other field type. Make sure to check out the [Using Custom Fields](#using-custom-fields) section below.
 
 ## Using the Builder Preview with Blade Views
 
