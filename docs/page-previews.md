@@ -52,8 +52,6 @@ protected function getPreviewModalDataRecordKey(): ?string
 
 By default, the variable will be `$record`.
 
-**Note**: Page previews can also be used on `Create`, `List` and custom pages.
-
 #### Complete Example
 
 **`app/Filament/Resources/PageResource/Pages/EditPage.php`**
@@ -90,6 +88,8 @@ class EditPage extends EditRecord
     }
 }
 ```
+
+**Note**: Page previews can also be used on `Create`, `List` and custom pages.
 
 ## Detecting the Preview Modal
 
