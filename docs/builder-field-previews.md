@@ -32,10 +32,9 @@ Add the `getBuilderEditorPreviewView()` method to define your Blade view:
 ```php
 protected function getBuilderEditorPreviewView(string $builderName): ?string
 {
-    // This corresponds to resources/views/previews/page-blocks.blade.php
-    return 'previews.page-blocks';
+    // This corresponds to resources/views/pages/preview-blocks.blade.php
+    return 'pages.preview-blocks';
 }
-
 ```
 
 Then, add the `getBuilderEditorSchema()` method to define your Builder field schema:
