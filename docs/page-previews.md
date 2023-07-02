@@ -4,11 +4,13 @@
 
 ## Overview
 
-Clicking the preview action button at the top of the page opens a full-screen modal. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL. Opening and closing the preview modal does not update the record in the database, the form state is unchanged.
+Clicking the preview action button at the top of the page opens a full-screen modal. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL.
+
+Opening and closing the preview modal does not update the record in the database, the form state is unchanged.
 
 ## Using the Preview Modal with Blade Views
 
-In your `EditRecord` page, start by adding the `HasPreviewModal` trait:
+In your `Edit` page, start by adding the `HasPreviewModal` trait:
 
 ```php
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;

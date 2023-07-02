@@ -4,30 +4,70 @@
 
 ## Overview
 
-- A preview link in your form opens a full-screen modal for a specific Builder field.
-- The modal contains an editor on the left with a copy of your Builder field, and an iframe on the right that will render the preview.
-- The iframe can either render a full Blade view or a custom URL.
-- As you edit the fields, the preview can be refreshed manually or automatically (auto-refresh is considered experimental for now).
-- When the modal is closed, the Builder field in the main form is updated with the changes from the Builder field preview.
-- Closing the preview modal does not update the record in the database, only the form state is updated.
+Clicking the preview link in the form opens a full-screen modal for a specific Builder field. The modal contains an editor on the left with a copy of the Builder field, and an iframe on the right that will render the preview. The iframe can either render a full Blade view or a custom URL.
+
+As you edit the fields, the preview can be refreshed manually or automatically (auto-refresh is considered experimental for the moment). When the modal is closed, the Builder field in the main form is updated with the changes from the preview modal.
+
+Closing the preview modal does not update the record in the database, only the form state is updated.
 
 ## Using the Builder Preview with Blade Views
 
-In your `EditRecord` page:
+#### Update the Edit Page Class
 
-- Add both `HasPreviewModal` and `HasBuilderPreview` traits.
-- Override the `getBuilderEditorPreviewView()` method to define your Blade view.
-- Override the `getBuilderEditorSchema()` method to define your Builder field schema. This can be extracted to a static method on your resource class for reuse.
+In your `Edit` page, add both both `HasPreviewModal` and `HasBuilderPreview` traits:
 
-In your `Resource` class:
+```php
+use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 
-- Add the `PreviewLink` component to your form, above or below the Builder field.
+class EditPage extends EditRecord
+{
+    use HasPreviewModal;
+    use HasBuilderPreview;
 
-**Note**: Builder previews can also be used on `CreateRecord` pages.
+    // ...
+```
+
+Add the `getBuilderEditorPreviewView()` method to define your Blade view:
+
+```php
+protected function getBuilderEditorPreviewView(string $builderName): ?string
+{
+    // This corresponds to resources/views/previews/page-blocks.blade.php
+    return 'previews.page-blocks';
+}
+
+```
+
+Then, add the `getBuilderEditorSchema()` method to define your Builder field schema:
+
+```php
+public static function getBuilderEditorSchema(string $builderName): array
+{
+    return [
+        Builder::make('page_blocks')->blocks([
+            // ...
+        ]),
+    ];
+}
+```
+
+To reduce duplication, the Builder field schema can also be extracted to a static method on the resource class (complete example below).
+
+#### Update the Resource Class
+
+Add the `PreviewLink` component to your form, above or below the Builder field:
+
+```php
+use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
+
+PreviewLink::make()
+    ->label('Preview Page Blocks')
+    ->builderPreview('page_blocks'),
+```
 
 #### Complete Example
 
-`app/Filament/Resources/PageResource/Pages/EditPage.php`
+**`app/Filament/Resources/PageResource/Pages/EditPage.php`**
 
 ```php
 namespace App\Filament\Resources\PageResource\Pages;
@@ -46,25 +86,31 @@ class EditPage extends EditRecord
 
     protected function getBuilderEditorPreviewView(string $builderName): ?string
     {
-        return match ($builderName) {
-            'main_blocks' => 'pages.main-preview',
-            'footer_blocks' => 'pages.footer-preview',
-        };
+        return 'previews.page-blocks';
     }
 
     public static function getBuilderEditorSchema(string $builderName): array
     {
         return [
-            match ($builderName) {
-                'main_blocks' => PageResource::mainBuilderField('preview'),
-                'footer_blocks' => PageResource::footerBuilderField('preview'),
-            }
+            PageResource::builderField(context: 'preview'),
         ];
     }
 }
 ```
 
-`app/Filament/Resources/PageResource.php`
+**Note**: If you're using custom event listeners on your page component, make sure to also include the `updateBuilderEditorField` listener:
+
+```php
+    protected function getListeners(): array
+    {
+        return [
+            'myCustomEventListener',
+            'updateBuilderEditorField',
+        ];
+    }
+```
+
+**`app/Filament/Resources/PageResource.php`**
 
 ```php
 namespace App\Filament\Resources;
@@ -76,9 +122,9 @@ class PageResource extends Resource
 {
     // ...
 
-    public static function mainBuilderField($context = null): Field
+    public static function builderField(string $context = 'form'): Field
     {
-        return Builder::make('main_blocks')->blocks([
+        return Builder::make('page_blocks')->blocks([
             Block::make('heading')->schema([
                 Grid::make($context === 'preview' ? 1 : 2)->schema([
                     TextInput::make('title'),
@@ -103,18 +149,6 @@ class PageResource extends Resource
             ->collapsible();
     }
 
-    public static function footerBuilderField($context = null): Field
-    {
-        return Builder::make('footer_blocks')->blocks([
-            Block::make('paragraph')->schema([
-                RichEditor::make('content')
-                    ->toolbarButtons(['bold', 'italic']),
-            ]),
-        ])
-            ->columnSpanFull()
-            ->collapsible();
-    }
-
     public static function form(Form $form): Form
     {
         return $form->schema([
@@ -123,20 +157,12 @@ class PageResource extends Resource
                 ->required(),
 
             PreviewLink::make()
-                ->label('Preview Main Blocks')
-                ->builderPreview('main_blocks')
+                ->label('Preview Page Blocks')
+                ->builderPreview('page_blocks')
                 ->columnSpanFull()
                 ->alignRight(),
 
             self::mainBuilderField(),
-
-            PreviewLink::make()
-                ->label('Preview Footer')
-                ->builderPreview('footer_blocks')
-                ->columnSpanFull()
-                ->alignRight(),
-
-            self::footerBuilderField(),
         ]);
     }
 
@@ -144,17 +170,15 @@ class PageResource extends Resource
 }
 ```
 
-**Note**: If you're using custom event listeners on your page component, make sure to include the `updateBuilderEditorField` listener:
+**Note**: Builder previews can also be used on `CreateRecord` pages.
 
-```php
-    protected function getListeners(): array
-    {
-        return [
-            'myCustomEventListener',
-            'updateBuilderEditorField',
-        ];
-    }
-```
+## Using Multiple Builder Fields
+
+@todo
+
+## Using Custom Fields
+
+@todo
 
 ## Adding Extra Data to the Builder Editor State
 
