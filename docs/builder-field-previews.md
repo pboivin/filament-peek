@@ -210,7 +210,7 @@ public static function getBuilderEditorSchema(string $builderName): array
 }
 ```
 
-Using a single field should work out of the box. To use multiple fields in the Editor sidebar, you will need to modify the `updateBuilderEditorField()` accordingly. When the modal is closed, this method takes the data from the Builder and updates the main form:
+Using a single field should work out of the box. To use multiple fields in the Editor sidebar, you will need to modify the `updateBuilderEditorField()` accordingly. When the modal is closed, this method takes the data from the Editor sidebar and updates the main form:
 
 ```php
 public function updateBuilderEditorField(string $builderName, array $editorData): void
@@ -227,9 +227,11 @@ public function updateBuilderEditorField(string $builderName, array $editorData)
 }
 ```
 
+Of course, you can do anything with the content of `$editorData`, you are not restricted to updating the main form.
+
 ## Adding Extra Data to the Builder Editor State
 
-Override the `mutateInitialBuilderEditorData()` method to interact with the initial Builder editor data once, before opening the preview modal:
+Use the `mutateInitialBuilderEditorData()` method to interact with the initial Builder editor data once, before opening the preview modal:
 
 ```php
 class EditPage extends EditRecord
@@ -247,7 +249,7 @@ class EditPage extends EditRecord
 
 ## Adding Extra Data to Builder Previews
 
-Similarly, override the `mutateBuilderPreviewData()` method to interact with the Builder preview data, before the iframe is refreshed:
+Similarly, use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the iframe is refreshed:
 
 ```php
 class EditPage extends EditRecord
@@ -267,11 +269,40 @@ This would make a `$message` variable available to the Blade view when rendered 
 
 ## Alternate Templating Engines
 
-@todo
+If you're not using Blade views on the front-end, override the `renderBuilderEditorPreviewView()` method and render the preview with your solution of choice:
+
+```php
+public static function renderBuilderEditorPreviewView(string $view, array $data): string
+{
+    return MyTemplateEngine::render($view, $data);
+}
+```
 
 ## Using a Preview URL
 
-@todo
+As with full page previews, you may implement Builder previews using a custom URL and a storage driver, such as Laravel's Cache or the PHP session. Instead of `getBuilderEditorPreviewView()`, use the `getBuilderEditorPreviewUrl()` method to define the preview URL and the `mutateBuilderPreviewData()` to temporarily store the preview data:
+
+```php
+protected function getBuilderEditorPreviewUrl(string $builderName): ?string
+{
+    $token = 'page-blocks';
+
+    return route('pages.blocksPreview', ['token' => $token]);
+}
+
+public static function mutateBuilderPreviewData(string $builderName, array $data): array
+{
+    $token = 'page-blocks';
+
+    $sessionKey = "preview-$token";
+
+    session()->put($sessionKey, $data);
+
+    return $data;
+}
+```
+
+See also: [Using a Preview URL for Pages](./page-previews.md#using-a-preview-url)
 
 ## Customizing the Preview Link
 
@@ -287,7 +318,7 @@ Use the `extraAttributes()` method to add any extra HTML attributes.
 
 ## Automatically Updating the Builder Preview (Experimental)
 
-By default, the Builder Editor is not reactive. Updating the fields won't automatically refresh the preview iframe. You can enable the `showAutoRefreshToggle` in the [configuration](./configuration.md). This will add a checkbox in the header of the Editor panel in the preview modal. Activating this checkbox will make all fields in the Editor behave as `lazy()`. The preview modal will be refreshed automatically each time the focus is taken out of a field (clicking away).
+By default, the Builder Editor is not reactive. Updating the fields won't automatically refresh the preview iframe. You can enable the `showAutoRefreshToggle` in the [configuration](./configuration.md). This will add a checkbox in the header of the Editor panel in the preview modal. Activating this checkbox will make all fields in the Editor behave as `lazy()`. The preview modal will be refreshed automatically each time the focus is taken out of a field (e.g. pressing the `Tab` key or clicking away).
 
 **Note**: Options marked as experimental may break in future releases.
 
