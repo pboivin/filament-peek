@@ -22,7 +22,7 @@ class EditPage extends EditRecord
     // ...
 ```
 
-Add the `PreviewAction` class to the page's actions:
+Add the `PreviewAction` class to the page actions:
 
 ```php
 protected function getActions(): array
@@ -185,7 +185,7 @@ class PageController extends Controller
 This technique can also be used to implement page previews with a decoupled front-end (e.g. Next.js):
 
 - From `getPreviewModalUrl()`, generate the preview token and return a front-end preview URL. This would usually render a full page component.
-- From the front-end page component, fetch the preview data from the back-end preview URL, as shown in the previous example.
+- From the front-end page component, fetch the preview data from the back-end preview URL, as shown above.
 
 ## Embedding a Preview Link into the Form
 
@@ -217,7 +217,7 @@ Use one of the following methods to adjust the horizontal alignment:
 - `alignCenter()`
 - `alignRight()`
 
-Use the `extraAttributes()` method to add any extra HTML attributes.
+Use the `extraAttributes()` method to add any other HTML attributes.
 
 ## Preview Pointer Events
 

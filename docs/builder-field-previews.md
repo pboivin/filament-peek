@@ -298,7 +298,7 @@ See also: [Using a Preview URL for Pages](./page-previews.md#using-a-preview-url
 
 ## Customizing the Preview Link
 
-By default, the preview link is styled as an underlined link. Use the `button()` method to style it as a Filament button.
+By default, the preview link is styled as a primary link. Use the `button()` method to style it as a Filament button.
 
 Use one of the following methods to adjust the horizontal alignment:
 
@@ -306,7 +306,7 @@ Use one of the following methods to adjust the horizontal alignment:
 - `alignCenter()`
 - `alignRight()`
 
-Use the `extraAttributes()` method to add any extra HTML attributes.
+Use the `extraAttributes()` method to add any other HTML attributes.
 
 ## Automatically Updating the Builder Preview (Experimental)
 
