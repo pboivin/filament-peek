@@ -10,6 +10,8 @@ As you edit the fields, the preview can be refreshed manually or automatically (
 
 Closing the preview modal does not update the record in the database, only the form state is updated.
 
+**Note**: This feature was initially designed for the Builder field but can be used with any other field type. Make sure to check out the [Using Custom Fields](#using-custom-fields) section below.
+
 ## Using the Builder Preview with Blade Views
 
 #### Update the Edit Page Class
