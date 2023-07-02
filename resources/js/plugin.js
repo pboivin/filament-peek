@@ -17,6 +17,7 @@ document.addEventListener('alpine:init', () => {
         config,
         isOpen: false,
         withEditor: false,
+        editorHasSidebarActions: false,
         canRotatePreset: false,
         activeDevicePreset: null,
         editorTitle: null,
@@ -88,6 +89,7 @@ document.addEventListener('alpine:init', () => {
             document.body.classList.add('is-filament-peek-preview-modal-open');
 
             this.withEditor = !!$event.detail.withEditor;
+            this.editorHasSidebarActions = !!$event.detail.editorHasSidebarActions;
             this.editorTitle = $event.detail.editorTitle;
             this.editorStyle.display = this.withEditor ? 'flex' : 'none';
             this.modalTitle = $event.detail.modalTitle;
@@ -132,6 +134,7 @@ document.addEventListener('alpine:init', () => {
             document.body.classList.remove('is-filament-peek-preview-modal-open');
 
             this.withEditor = false;
+            this.editorHasSidebarActions = false;
             this.editorStyle.display = 'none';
             this.editorTitle = null;
             this.modalStyle.display = 'none';

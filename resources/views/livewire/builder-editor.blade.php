@@ -59,7 +59,12 @@
         class="filament-peek-panel-body"
         x-on:focusout="onEditorFocusOut($event)"
     >
-        <div class="filament-peek-builder-editor">
+        <div
+            x-bind:class="{
+                'filament-peek-builder-editor': true,
+                'has-sidebar-actions': editorHasSidebarActions,
+            }"
+        >
             <div class="filament-peek-builder-content">
                 {{ $this->form }}
             </div>

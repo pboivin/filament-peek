@@ -89,6 +89,7 @@ class BuilderEditor extends Component implements HasForms
             'iframeUrl' => $this->previewUrl,
             'iframeContent' => $this->getPreviewModalHtmlContent(),
             'withEditor' => true,
+            'editorHasSidebarActions' => $this->pageClass::editorHasSidebarActions($this->builderName),
         ]);
     }
 

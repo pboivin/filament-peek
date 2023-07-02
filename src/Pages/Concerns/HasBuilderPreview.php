@@ -2,6 +2,7 @@
 
 namespace Pboivin\FilamentPeek\Pages\Concerns;
 
+use Filament\Forms\Components\Builder;
 use Pboivin\FilamentPeek\Support\Html;
 
 trait HasBuilderPreview
@@ -71,6 +72,14 @@ trait HasBuilderPreview
         $data['isPeekPreviewModal'] = true;
 
         return $data;
+    }
+
+    /** @internal */
+    public static function editorHasSidebarActions(string $builderName): bool
+    {
+        $fields = static::getBuilderEditorSchema($builderName);
+
+        return count($fields) === 1 && $fields[0] instanceof Builder;
     }
 
     /** @internal */
