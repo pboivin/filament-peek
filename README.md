@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/pboivin/filament-peek"><img src="https://img.shields.io/packagist/l/pboivin/filament-peek" alt="License"></a>
 </p>
 
-A Filament plugin to add a full-screen preview modal to your Edit pages. The modal can be used before saving to preview a modified record. It has special support for Filament's Builder field, to arrange the editor and the preview side-by-side.
+A Filament plugin to add a full-screen preview modal to your Edit pages. The modal can be used before saving to preview a modified record. It can also be used for live previews by arranging form fields and the preview area side by side.
 
 ![Screenshots of the edit page and preview modal](./art/01-demo.jpg)
 
