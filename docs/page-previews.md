@@ -41,7 +41,7 @@ protected function getPreviewModalView(): ?string
 }
 ```
 
-Optionnaly, if your Blade view expects a `$page` variable, add the `getPreviewModalDataRecordKey()` method to define the variable name:
+Optionally, if your Blade view expects a `$page` variable, add the `getPreviewModalDataRecordKey()` method to define the variable name:
 
 ```php
 protected function getPreviewModalDataRecordKey(): ?string
