@@ -85,7 +85,7 @@ class EditPage extends EditRecord
 
     protected function getBuilderEditorPreviewView(string $builderName): ?string
     {
-        return 'previews.page-blocks';
+        return 'pages.preview-blocks';
     }
 
     public static function getBuilderEditorSchema(string $builderName): array
@@ -161,7 +161,7 @@ class PageResource extends Resource
                 ->columnSpanFull()
                 ->alignRight(),
 
-            self::mainBuilderField(),
+            self::builderField(),
         ]);
     }
 
@@ -173,11 +173,59 @@ class PageResource extends Resource
 
 ## Using Multiple Builder Fields
 
-@todo
+Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview link's `builderPreview()` method. Therefore, it's possible to use Builder previews for multiple Builder fields in the same page:
+
+```php
+protected function getBuilderEditorPreviewView(string $builderName): ?string
+{
+    return match ($builderName) {
+        'page_blocks' => 'pages.preview-blocks',
+        'footer_blocks' => 'pages.preview-footer-blocks',
+    };
+}
+
+public static function getBuilderEditorSchema(string $builderName): array
+{
+    return [
+        match ($builderName) {
+            'page_blocks' => PageResource::builderField(context: 'preview'),
+            'footer_blocks' => PageResource::footerBuilderField(context: 'preview'),
+        }
+    ];
+}
+```
 
 ## Using Custom Fields
 
-@todo
+You may have noticed that `getBuilderEditorSchema()` returns an array instead of a single field.
+Behind the scenes, the Editor sidebar of the preview modal is actually a full Filament form. Therefore, you are not restricted to using a Builder field, you may use any other field type:
+
+```php
+public static function getBuilderEditorSchema(string $builderName): array
+{
+    return [
+        RichEditor::make('page_content')
+            ->columnSpanFull(),
+    ];
+}
+```
+
+Using a single field should work out of the box. To use multiple fields in the Editor sidebar, you will need to modify the `updateBuilderEditorField()` accordingly. When the modal is closed, this method takes the data from the Builder and updates the main form:
+
+```php
+public function updateBuilderEditorField(string $builderName, array $editorData): void
+{
+    if ($editorData['my_custom_field'] ?? false) {
+        $this->data['my_custom_field'] = $editorData['my_custom_field'];
+    }
+
+    if ($editorData['my_other_field'] ?? false) {
+        $this->data['my_other_field'] = $editorData['my_other_field'];
+    }
+
+    // ...
+}
+```
 
 ## Adding Extra Data to the Builder Editor State
 
