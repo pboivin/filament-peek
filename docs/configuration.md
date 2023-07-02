@@ -1,8 +1,8 @@
 # Configuration
 
-## Config File
+## Publishing the Config File
 
-You can publish the config file with:
+You can publish the full configuration with the following command:
 
 ```bash
 php artisan vendor:publish --tag="filament-peek-config"
@@ -10,7 +10,7 @@ php artisan vendor:publish --tag="filament-peek-config"
 
 This will add a `config/filament-peek.php` file to your project.
 
-## Options
+## Available Options
 
 Here are the main options you can configure:
 
@@ -37,7 +37,7 @@ Builder editor options:
 
 ---
 
-**Contents**
+**Documentation**
 
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)

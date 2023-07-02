@@ -222,7 +222,7 @@ By default, the Builder Editor is not reactive. Updating the fields won't automa
 
 ---
 
-**Contents**
+**Documentation**
 
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)

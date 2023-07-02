@@ -4,25 +4,59 @@
 
 ## Overview
 
-- A preview action button at the top of the page opens a full-screen modal.
-- The modal contains an iframe that can be resized according to some configured presets.
-- The iframe can either render a full Blade view or a custom URL.
-- The preview action does not update the record in the database, the form state is unchanged.
+Clicking the preview action button at the top of the page opens a full-screen modal. The modal contains an iframe that can be resized according to some configured presets. The iframe can either render a full Blade view or a custom URL. Opening and closing the preview modal does not update the record in the database, the form state is unchanged.
 
 ## Using the Preview Modal with Blade Views
 
-In your `EditRecord` page:
+In your `EditRecord` page, start by adding the `HasPreviewModal` trait:
 
-- Add the `HasPreviewModal` trait.
-- Add the `PreviewAction` class to the returned array in `getActions()`.
-- Override the `getPreviewModalView()` method to define your Blade view.
-- If your view expects a `$page` variable, override the `getPreviewModalDataRecordKey()` method to define it. By default, this variable will be `$record`.
+```php
+use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 
-**Note**: Page previews can also be used on `CreateRecord` and `ListRecords` pages.
+class EditPage extends EditRecord
+{
+    use HasPreviewModal;
+
+    // ...
+```
+
+Then, add the `PreviewAction` class to the page's actions:
+
+```php
+protected function getActions(): array
+{
+    return [
+        PreviewAction::make(),
+    ];
+}
+```
+
+Add the `getPreviewModalView()` method to define your Blade view:
+
+```php
+protected function getPreviewModalView(): ?string
+{
+    // This corresponds to resources/views/pages/preview.blade.php
+    return 'pages.preview';
+}
+```
+
+Optionnaly, if your Blade view expects a `$page` variable, add the `getPreviewModalDataRecordKey()` method to define the variable name:
+
+```php
+protected function getPreviewModalDataRecordKey(): ?string
+{
+    return 'page';
+}
+```
+
+By default, the variable will be `$record`.
+
+**Note**: Page previews can also be used on `Create`, `List` and custom pages.
 
 #### Complete Example
 
-`app/Filament/Resources/PageResource/Pages/EditPage.php`
+**`app/Filament/Resources/PageResource/Pages/EditPage.php`**
 
 ```php
 namespace App\Filament\Resources\PageResource\Pages;
@@ -59,9 +93,9 @@ class EditPage extends EditRecord
 
 ## Detecting the Preview Modal
 
-If you're using the same Blade view for the site page and the preview modal, you can detect if the view is currently rendered in a preview modal by checking for the `$isPeekPreviewModal` variable:
+The example above uses a dedicated Blade view to be rendered in the preview modal. It's also possible to use the same view for the site page and the preview modal. In this case, you can detect if the view is being used for a preview by checking for the `$isPeekPreviewModal` variable:
 
-`resources/views/pages/show.blade.php`
+**`resources/views/pages/show.blade.php`**
 
 ```blade
 <x-layout>
@@ -77,81 +111,56 @@ If you're using the same Blade view for the site page and the preview modal, you
 
 ## Adding Extra Data to Previews
 
-By default, the `$record` and `$isPeekPreviewModal` variables are made available to the rendered Blade view. If your form is relatively simple and all fields belong directly to the record, this may be all you need. However, if you have complex relationships or heavily customized form fields, you may need to include some additional data in order to render your page preview. You can add other variables by overriding the `mutatePreviewModalData()` method:
+By default, the `$record` and `$isPeekPreviewModal` variables are made available to the rendered Blade view. If your form is relatively simple and all fields belong directly to the record, this may be all you need. However, if you have complex relationships or heavily customized form fields, you may need to include some additional data in order to render your page preview. You can do so with the `mutatePreviewModalData()` method:
 
 ```php
-class EditPage extends EditRecord
+protected function mutatePreviewModalData(array $data): array
 {
-    // ...
-    
-    protected function mutatePreviewModalData(array $data): array
-    {
-        $data['message'] = 'This is a preview';
+    $data['message'] = 'This is a preview';
 
-        return $data;
-    }
+    return $data;
 }
 ```
 
 This would make a `$message` variable available to the Blade view when rendered in the iframe.
 
 Inside of `mutatePreviewModalData()` you can access:
-- the modified record with unsaved changes: `$data['record']`
-- the original record: `$this->record`
-- any other data from the form: `$this->data['my_custom_field']`
 
-## Dynamically Setting the View
-
-If needed, you can use the `previewModalData` property to dynamically set the modal view:
-
-```php
-class EditPage extends EditRecord
-{
-    // ...
-    
-    protected function getPreviewModalView(): ?string
-    {
-        return $this->previewModalData['record']->is_featured ? 
-            'posts.featured' :
-            'posts.show';
-    }
-}
-```
+| What | Where |
+|---|---|
+| The modified record with unsaved changes | `$data['record']` |
+| The original record | `$this->record` |
+| Any other field from the form | `$this->data['my_custom_field']` |
 
 ## Alternate Templating Engines
 
 If you're not using Blade views on the front-end, override the `renderPreviewModalView()` method and render the preview with your solution of choice:
 
 ```php
-    protected function renderPreviewModalView($view, $data): string
-    {
-        return MyTemplateEngine::render($view, $data);
-    }
+protected function renderPreviewModalView(string $view, array $data): string
+{
+    return MyTemplateEngine::render($view, $data);
+}
 ```
 
 ## Using a Preview URL
 
-Instead of rendering a view, you may implement page previews using a custom URL and the PHP session (or cache). Instead of `getPreviewModalView()`, override the `getPreviewModalUrl()` method to return the preview URL:
+Instead of rendering a view, you may implement page previews using a custom URL and a storage driver such as Laravel's Cache or the PHP session. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
 
 ```php
-class EditPage extends EditRecord
+protected function getPreviewModalUrl(): ?string
 {
-    // ...
-    
-    protected function getPreviewModalUrl(): ?string
-    {
-        $token = uniqid();
+    $token = uniqid();
 
-        $sessionKey = "preview-$token";
+    $sessionKey = "preview-$token";
 
-        session()->put($sessionKey, $this->previewModalData);
+    session()->put($sessionKey, $this->previewModalData);
 
-        return route('pages.preview', ['token' => $token]);
-    }
+    return route('pages.preview', ['token' => $token]);
 }
 ```
 
-Then, you can fetch the preview data from the controller through the session (or cache):
+Then, you can fetch the preview data from the controller:
 
 ```php
 class PageController extends Controller
@@ -169,14 +178,16 @@ class PageController extends Controller
 }
 ```
 
+#### Filament as Headless CMS
+
 This technique can also be used to implement page previews with a decoupled front-end (e.g. Next.js):
 
-- From `getPreviewModalUrl()`, generate the preview token and return a front-end preview URL.
-- Then from the front-end page component, fetch the preview data from the back-end preview URL.
+- From `getPreviewModalUrl()`, generate the preview token and return a front-end preview URL. This would usually render a full page component.
+- From the front-end page component, fetch the preview data from the back-end preview URL, as shown in the previous example.
 
 ## Embedding a Preview Link into the Form
 
-Instead of `PreviewAction`, you can use the `PreviewLink` component to integrate the Preview button directly in your form (e.g. in a sidebar):
+Instead of a `PreviewAction`, you can use the `PreviewLink` component to integrate a button directly into your form (e.g. in a sidebar):
 
 ```php 
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
@@ -188,15 +199,15 @@ class PageResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            // ...
-
             PreviewLink::make(),
+
+            // ...
         ]);
     }
 }
 ```
 
-By default, the preview link is styled as an underlined link. Use the `button()` method to style it as a Filament button.
+By default, the preview link is styled as a primary link. Use the `button()` method to style it as a Filament button.
 
 Use one of the following methods to adjust the horizontal alignment:
 
@@ -226,7 +237,7 @@ If you need finer control over pointer events in your previews, first set this o
 
 ---
 
-**Contents**
+**Documentation**
 
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
