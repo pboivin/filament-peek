@@ -22,7 +22,7 @@ class EditPage extends EditRecord
     // ...
 ```
 
-Then, add the `PreviewAction` class to the page's actions:
+Add the `PreviewAction` class to the page's actions:
 
 ```php
 protected function getActions(): array
@@ -33,7 +33,7 @@ protected function getActions(): array
 }
 ```
 
-Add the `getPreviewModalView()` method to define your Blade view:
+Then, add the `getPreviewModalView()` method to define your Blade view:
 
 ```php
 protected function getPreviewModalView(): ?string
