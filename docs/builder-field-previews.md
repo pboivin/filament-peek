@@ -97,16 +97,16 @@ class EditPage extends EditRecord
 }
 ```
 
-**Note**: If you're using custom event listeners on your page component, make sure to also include the `updateBuilderEditorField` listener:
+**Note**: If you're using custom event listeners on your page, make sure to also include the `updateBuilderEditorField` listener:
 
 ```php
-    protected function getListeners(): array
-    {
-        return [
-            'myCustomEventListener',
-            'updateBuilderEditorField',
-        ];
-    }
+protected function getListeners(): array
+{
+    return [
+        'myCustomEventListener',
+        'updateBuilderEditorField',
+    ];
+}
 ```
 
 **`app/Filament/Resources/PageResource.php`**

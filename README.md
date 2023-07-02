@@ -32,8 +32,28 @@ For an easy way to try out the plugin on a simple Filament project, have a look 
 The documentation is available in the `docs/` directory:
 
 - [Configuration](./docs/configuration.md)
+    - [Publishing the Config File](./docs/configuration.md#publishing-the-config-file)
+    - [Available Options](./docs/configuration.md#available-options)
 - [Page Previews](./docs/page-previews.md)
+    - [Overview](./docs/page-previews.md#overview)
+    - [Using the Preview Modal with Blade Views](./docs/page-previews.md#using-the-preview-modal-with-blade-views)
+    - [Detecting the Preview Modal](./docs/page-previews.md#detecting-the-preview-modal)
+    - [Adding Extra Data to Previews](./docs/page-previews.md#adding-extra-data-to-previews)
+    - [Alternate Templating Engines](./docs/page-previews.md#alternate-templating-engines)
+    - [Using a Preview URL](./docs/page-previews.md#using-a-preview-url)
+    - [Embedding a Preview Link into the Form](./docs/page-previews.md#embedding-a-preview-link-into-the-form)
+    - [Preview Pointer Events](./docs/page-previews.md#preview-pointer-events)
 - [Builder Field Previews](./docs/builder-field-previews.md)
+    - [Overview](./docs/builder-field-previews.md#overview)
+    - [Using the Builder Preview with Blade Views](./docs/builder-field-previews.md#using-the-builder-preview-with-blade-views)
+    - [Using Multiple Builder Fields](./docs/builder-field-previews.md#using-multiple-builder-fields)
+    - [Using Custom Fields](./docs/builder-field-previews.md#using-custom-fields)
+    - [Adding Extra Data to the Builder Editor State](./docs/builder-field-previews.md#adding-extra-data-to-the-builder-editor-state)
+    - [Adding Extra Data to Builder Previews](./docs/builder-field-previews.md#adding-extra-data-to-builder-previews)
+    - [Alternate Templating Engines](./docs/builder-field-previews.md#alternate-templating-engines)
+    - [Using a Preview URL](./docs/builder-field-previews.md#using-a-preview-url)
+    - [Customizing the Preview Link](./docs/builder-field-previews.md#customizing-the-preview-link)
+    - [Automatically Updating the Builder Preview (Experimental)](./docs/builder-field-previews.md#automatically-updating-the-builder-preview-experimental)
 
 ## Testing
 
