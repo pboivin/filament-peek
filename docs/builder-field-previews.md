@@ -169,7 +169,7 @@ class PageResource extends Resource
 }
 ```
 
-**Note**: Builder previews can also be used on `CreateRecord` pages.
+**Note**: Builder previews can also be used on `Create` pages.
 
 ## Using Multiple Builder Fields
 
@@ -234,16 +234,11 @@ Of course, you can do anything with the content of `$editorData`, you are not re
 Use the `mutateInitialBuilderEditorData()` method to interact with the initial Builder editor data once, before opening the preview modal:
 
 ```php
-class EditPage extends EditRecord
+public function mutateInitialBuilderEditorData(string $builderName, array $data): array
 {
-    // ...
-    
-    public function mutateInitialBuilderEditorData(string $builderName, array $data): array
-    {
-        $data['preview_started_at'] = now();
+    $data['preview_started_at'] = now();
 
-        return $data;
-    }
+    return $data;
 }
 ```
 
@@ -252,16 +247,11 @@ class EditPage extends EditRecord
 Similarly, use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the iframe is refreshed:
 
 ```php
-class EditPage extends EditRecord
+public static function mutateBuilderPreviewData(string $builderName, array $data): array
 {
-    // ...
-    
-    public static function mutateBuilderPreviewData(string $builderName, array $data): array
-    {
-        $data['message'] = "This is a preview. It started at {$data['preview_started_at']}.";
+    $data['message'] = "This is a preview. It started at {$data['preview_started_at']}.";
 
-        return $data;
-    }
+    return $data;
 }
 ```
 
