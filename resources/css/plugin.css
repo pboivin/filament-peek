@@ -49,7 +49,7 @@ body.is-filament-peek-preview-modal-open {
 }
 
 .filament-peek-device-presets {
-    @apply hidden xl:flex justify-center;
+    @apply hidden justify-center xl:flex;
 
     button {
         @apply mx-2 inline-flex flex-col items-center disabled:opacity-25;
@@ -100,7 +100,37 @@ body.is-filament-peek-preview-modal-open {
 
 .filament-peek-builder-editor {
     @apply relative flex h-full w-full flex-col;
+}
 
+.filament-peek-builder-content {
+    @apply w-full overflow-y-auto p-4;
+    height: calc(100vh - var(--filament-peek-panel-header-height));
+    max-height: calc(100vh - var(--filament-peek-panel-header-height));
+}
+
+.filament-peek-builder-actions {
+    @apply hidden;
+}
+
+.filament-peek-builder-editor.has-sidebar-actions {
+    .filament-peek-builder-content {
+        @apply w-full overflow-y-auto p-4;
+        height: calc(
+            100vh - var(--filament-peek-panel-header-height) -
+                var(--filament-peek-builder-actions-height)
+        );
+        max-height: calc(
+            100vh - var(--filament-peek-panel-header-height) -
+                var(--filament-peek-builder-actions-height)
+        );
+    }
+
+    .filament-peek-builder-actions {
+        @apply block w-full border-t dark:border-gray-700;
+        height: var(--filament-peek-builder-actions-height);
+    }
+
+    /* Main builder */
     .filament-forms-builder-component
         > .filament-forms-builder-component-block-picker {
         @apply absolute bottom-0 left-0 w-full p-4;
@@ -114,21 +144,4 @@ body.is-filament-peek-preview-modal-open {
             padding: initial;
         }
     }
-}
-
-.filament-peek-builder-content {
-    @apply w-full overflow-y-auto p-4;
-    height: calc(
-        100vh - var(--filament-peek-panel-header-height) -
-            var(--filament-peek-builder-actions-height)
-    );
-    max-height: calc(
-        100vh - var(--filament-peek-panel-header-height) -
-            var(--filament-peek-builder-actions-height)
-    );
-}
-
-.filament-peek-builder-actions {
-    @apply w-full border-t dark:border-gray-700;
-    height: var(--filament-peek-builder-actions-height);
 }
