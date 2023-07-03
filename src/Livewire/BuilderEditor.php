@@ -89,7 +89,7 @@ class BuilderEditor extends Component implements HasForms
             'iframeUrl' => $this->previewUrl,
             'iframeContent' => $this->getPreviewModalHtmlContent(),
             'withEditor' => true,
-            'editorHasSidebarActions' => $this->pageClass::editorHasSidebarActions($this->builderName),
+            'editorHasSidebarActions' => $this->pageClass::builderEditorHasSidebarActions($this->builderName),
         ]);
     }
 
@@ -103,7 +103,7 @@ class BuilderEditor extends Component implements HasForms
 
     public function closeBuilderEditor(): void
     {
-        $this->emit('updateBuilderEditorField', $this->builderName, $this->editorData);
+        $this->emit('updateBuilderFieldWithEditorData', $this->builderName, $this->editorData);
 
         $this->dispatchBrowserEvent('close-preview-modal', ['delay' => true]);
     }
@@ -138,7 +138,7 @@ class BuilderEditor extends Component implements HasForms
         }
 
         if ($this->previewView) {
-            return $this->pageClass::renderBuilderEditorPreviewView(
+            return $this->pageClass::renderBuilderPreview(
                 $this->previewView,
                 $previewData
             );
