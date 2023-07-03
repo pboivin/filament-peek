@@ -147,7 +147,7 @@ protected function renderPreviewModalView(string $view, array $data): string
 
 ## Using a Preview URL
 
-Instead of rendering a view, you may implement page previews using a custom URL and a storage driver such as Laravel's Cache or the PHP session. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
+Instead of rendering a view, you may implement page previews using a custom URL and a storage driver such as the Laravel Cache or the PHP session. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
 
 ```php
 protected function getPreviewModalUrl(): ?string

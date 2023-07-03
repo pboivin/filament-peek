@@ -6,7 +6,7 @@
 
 Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the Builder field, and an iframe on the right to render the preview. The iframe can either render a full Blade view or a custom URL.
 
-As you edit the Builder blocks, the preview can be refreshed manually or automatically (auto-refresh is considered experimental for the moment). When the modal is closed, the Builder field in the main form is synchronized with the changes from the preview modal.
+As you edit the Builder blocks, the preview can be refreshed manually or automatically (auto-refresh is considered experimental for the moment). When the modal is closed, the Builder field in the main form is synchronized with the changes from the preview editor.
 
 Closing the preview modal does not update the record in the database, only the form state is updated.
 
@@ -246,7 +246,7 @@ public function mutateInitialBuilderEditorData(string $builderName, array $data)
 
 ## Adding Extra Data to Builder Previews
 
-Similarly, use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the iframe is refreshed:
+Similarly, use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the preview is refreshed:
 
 ```php
 public static function mutateBuilderPreviewData(string $builderName, array $data): array
@@ -272,7 +272,7 @@ public static function renderBuilderEditorPreviewView(string $view, array $data)
 
 ## Using a Preview URL
 
-As with full page previews, you may implement Builder previews using a custom URL and a storage driver, such as Laravel's Cache or the PHP session. Instead of `getBuilderEditorPreviewView()`, use the `getBuilderEditorPreviewUrl()` method to define the preview URL and the `mutateBuilderPreviewData()` to temporarily store the preview data:
+As with full page previews, you may implement Builder previews using a custom URL and a storage driver, such as the Laravel Cache or the PHP session. Instead of `getBuilderEditorPreviewView()`, use the `getBuilderEditorPreviewUrl()` method to define the preview URL and the `mutateBuilderPreviewData()` to temporarily store the preview data:
 
 ```php
 protected function getBuilderEditorPreviewUrl(string $builderName): ?string
