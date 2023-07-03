@@ -18,6 +18,7 @@ document.addEventListener('alpine:init', () => {
         isOpen: false,
         withEditor: false,
         editorHasSidebarActions: false,
+        editorIsResizable: false,
         canRotatePreset: false,
         activeDevicePreset: null,
         editorTitle: null,
@@ -40,22 +41,19 @@ document.addEventListener('alpine:init', () => {
         init() {
             const debounceTime = this.config.editorAutoRefreshDebounceTime || 500;
             const editorSidebarMinWidth = this.config.editorSidebarMinWidth || '30rem';
+            const editorSidebarInitialWidth = this.config.editorSidebarInitialWidth || '30rem';
 
             this.refreshBuilderPreview = debounce(() => Livewire.emit('refreshBuilderPreview'), debounceTime);
 
-            this.editorStyle['width'] = editorSidebarMinWidth;
-            this.editorStyle['minWidth'] = editorSidebarMinWidth;
+            this.editorStyle['width'] = editorSidebarInitialWidth;
+
+            if (this.config.canResizeEditorSidebar) {
+                this.editorStyle['minWidth'] = editorSidebarMinWidth;
+                this.editorIsResizable = true;
+            }
 
             this.setDevicePreset();
-
-            this.initEditorResizer();
         },
-
-        // initEditorResizer() {
-        //     if (!this.$refs.builderEditorResizer) return;
-
-        //     console.log('Init Sidebar');
-        // },
 
         setIframeDimensions(width, height) {
             this.iframeStyle.maxWidth = width;
@@ -191,6 +189,10 @@ document.addEventListener('alpine:init', () => {
 
         closePreviewModal() {
             this.$dispatch('close-preview-modal');
+        },
+
+        onEditorResizerMouseDown($event) {
+            console.log("onEditorResizerMouseDown");
         },
     }));
 

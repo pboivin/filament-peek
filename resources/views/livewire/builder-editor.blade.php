@@ -73,7 +73,8 @@
 
             <div
                 class="filament-peek-editor-resizer"
-                x-ref="builderEditorResizer"
+                x-on:mousedown="onEditorResizerMouseDown($event)"
+                x-bind:style="{display: editorIsResizable ? 'initial' : 'none'}"
             ></div>
         </div>
     </div>

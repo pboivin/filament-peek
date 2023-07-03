@@ -6,18 +6,14 @@
         aria-labelledby="filament-peek-modal-title"
         x-data="PeekPreviewModal({
             devicePresets: @js(config('filament-peek.devicePresets', false)),
-
             initialDevicePreset: @js(config('filament-peek.initialDevicePreset', 'fullscreen')),
-
             allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
-
             shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
-
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
-
             editorAutoRefreshDebounceTime: @js(config('filament-peek.builderEditor.experimental.autoRefreshDebounceMilliseconds', 500)),
-
+            canResizeEditorSidebar: @js(config('filament-peek.builderEditor.canResizeSidebar', true)),
             editorSidebarMinWidth: @js(config('filament-peek.builderEditor.sidebarMinWidth', '30rem')),
+            editorSidebarInitialWidth: @js(config('filament-peek.builderEditor.sidebarInitialWidth', '30rem')),
         })"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:refresh-preview-modal.window="onRefreshPreviewModal($event)"

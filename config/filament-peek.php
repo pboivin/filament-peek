@@ -106,16 +106,24 @@ return [
         // Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button
         'canDiscardChanges' => false,
 
+        // Allow users to resize the sidebar by clicking and dragging on the right edge
+        'canResizeSidebar' => true,
+
+        // Minimum width for the sidebar (if resizable)
+        'sidebarMinWidth' => '30rem',
+
+        // Initial width for the sidebar
+        'sidebarInitialWidth' => '30rem',
+
         // Livewire component class for the Builder Editor sidebar
         'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
-
-        'sidebarMinWidth' => '30rem',
 
         // Experimental options (may break in a future release)
         'experimental' => [
             'showAutoRefreshToggle' => false,
             'autoRefreshDebounceMilliseconds' => 500,
         ],
+
     ],
 
 ];
