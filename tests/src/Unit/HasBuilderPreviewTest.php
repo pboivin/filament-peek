@@ -10,13 +10,13 @@ use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 it('has no initial builder preview url', function () {
     $page = invade(new BuilderEditRecordDummy());
 
-    expect($page->getBuilderEditorPreviewUrl('blocks'))->toBeNull();
+    expect($page->getBuilderPreviewUrl('blocks'))->toBeNull();
 });
 
 it('has no initial builder preview view', function () {
     $page = invade(new BuilderEditRecordDummy());
 
-    expect($page->getBuilderEditorPreviewView('blocks'))->toBeNull();
+    expect($page->getBuilderPreviewView('blocks'))->toBeNull();
 });
 
 it('has no initial builder editor schema', function () {
@@ -34,7 +34,7 @@ it('has initial builder editor title', function () {
 it('has required event listener', function () {
     $page = invade(new BuilderEditRecordDummy());
 
-    expect($page->getListeners())->toEqual(['updateBuilderEditorField']);
+    expect($page->getListeners())->toEqual(['updateBuilderFieldWithEditorData']);
 });
 
 it('prepares builder editor data on create pages', function () {
@@ -72,7 +72,7 @@ it('prepares builder preview data on edit pages', function () {
 it('dispatches openBuilderEditor event', function () {
     $page = invade(new class extends BuilderEditRecordDummy
     {
-        protected function getBuilderEditorPreviewView(string $builderName): ?string
+        protected function getBuilderPreviewView(string $builderName): ?string
         {
             return 'test';
         }
@@ -139,4 +139,4 @@ class BuilderModelDummy extends Model
 // @todo: Builder editor tests
 //  - mutateBuilderPreviewData
 //  - prepareBuilderPreviewData
-//  - renderBuilderEditorPreviewView
+//  - renderBuilderPreview

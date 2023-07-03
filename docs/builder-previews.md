@@ -29,10 +29,10 @@ class EditPage extends EditRecord
     // ...
 ```
 
-Add the `getBuilderEditorPreviewView()` method to define your Blade view:
+Add the `getBuilderPreviewView()` method to define your Blade view:
 
 ```php
-protected function getBuilderEditorPreviewView(string $builderName): ?string
+protected function getBuilderPreviewView(string $builderName): ?string
 {
     // This corresponds to resources/views/pages/preview-blocks.blade.php
     return 'pages.preview-blocks';
@@ -85,7 +85,7 @@ class EditPage extends EditRecord
 
     protected static string $resource = PageResource::class;
 
-    protected function getBuilderEditorPreviewView(string $builderName): ?string
+    protected function getBuilderPreviewView(string $builderName): ?string
     {
         return 'pages.preview-blocks';
     }
@@ -99,14 +99,14 @@ class EditPage extends EditRecord
 }
 ```
 
-**Note**: If you're using custom event listeners on your page, make sure to also include the `updateBuilderEditorField` listener:
+**Note**: If you're using custom event listeners on your page, make sure to also include the `updateBuilderFieldWithEditorData` listener:
 
 ```php
 protected function getListeners(): array
 {
     return [
         'myCustomEventListener',
-        'updateBuilderEditorField',
+        'updateBuilderFieldWithEditorData',
     ];
 }
 ```
@@ -178,7 +178,7 @@ class PageResource extends Resource
 Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview link's `builderPreview()` method. Therefore, it's possible to use Builder previews independently, for multiple Builder fields in the same page:
 
 ```php
-protected function getBuilderEditorPreviewView(string $builderName): ?string
+protected function getBuilderPreviewView(string $builderName): ?string
 {
     return match ($builderName) {
         'page_blocks' => 'pages.preview-blocks',
@@ -212,10 +212,10 @@ public static function getBuilderEditorSchema(string $builderName): array
 }
 ```
 
-Using a single field should work out of the box. To use multiple fields in the Editor sidebar, you will need to modify the `updateBuilderEditorField()` accordingly. When the modal is closed, this method takes the data from the Editor sidebar and updates the main form:
+Using a single field should work out of the box. To use multiple fields in the Editor sidebar, you will need to modify the `updateBuilderFieldWithEditorData()` accordingly. When the modal is closed, this method takes the data from the Editor sidebar and updates the main form:
 
 ```php
-public function updateBuilderEditorField(string $builderName, array $editorData): void
+public function updateBuilderFieldWithEditorData(string $builderName, array $editorData): void
 {
     if ($editorData['my_custom_field'] ?? false) {
         $this->data['my_custom_field'] = $editorData['my_custom_field'];
@@ -261,10 +261,10 @@ This would make a `$message` variable available to the Blade view when rendered 
 
 ## Alternate Templating Engines
 
-If you're not using Blade views on the front-end, override the `renderBuilderEditorPreviewView()` method and render the preview with your solution of choice:
+If you're not using Blade views on the front-end, override the `renderBuilderPreview()` method and render the preview with your solution of choice:
 
 ```php
-public static function renderBuilderEditorPreviewView(string $view, array $data): string
+public static function renderBuilderPreview(string $view, array $data): string
 {
     return MyTemplateEngine::render($view, $data);
 }
@@ -272,10 +272,10 @@ public static function renderBuilderEditorPreviewView(string $view, array $data)
 
 ## Using a Preview URL
 
-As with full page previews, you may implement Builder previews using a custom URL and a storage driver, such as the Laravel Cache or the PHP session. Instead of `getBuilderEditorPreviewView()`, use the `getBuilderEditorPreviewUrl()` method to define the preview URL and the `mutateBuilderPreviewData()` to temporarily store the preview data:
+As with full page previews, you may implement Builder previews using a custom URL and a storage driver, such as the Laravel Cache or the PHP session. Instead of `getBuilderPreviewView()`, use the `getBuilderPreviewUrl()` method to define the preview URL and the `mutateBuilderPreviewData()` to temporarily store the preview data:
 
 ```php
-protected function getBuilderEditorPreviewUrl(string $builderName): ?string
+protected function getBuilderPreviewUrl(string $builderName): ?string
 {
     $token = 'page-blocks';
 

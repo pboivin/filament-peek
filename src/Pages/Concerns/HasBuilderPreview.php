@@ -9,7 +9,7 @@ trait HasBuilderPreview
 {
     protected function getListeners(): array
     {
-        return ['updateBuilderEditorField'];
+        return ['updateBuilderFieldWithEditorData'];
     }
 
     protected function getBuilderEditorTitle(): string
@@ -17,12 +17,12 @@ trait HasBuilderPreview
         return __('filament-peek::ui.builder-editor-title');
     }
 
-    protected function getBuilderEditorPreviewUrl(string $builderName): ?string
+    protected function getBuilderPreviewUrl(string $builderName): ?string
     {
         return null;
     }
 
-    protected function getBuilderEditorPreviewView(string $builderName): ?string
+    protected function getBuilderPreviewView(string $builderName): ?string
     {
         return null;
     }
@@ -43,7 +43,7 @@ trait HasBuilderPreview
     }
 
     /** @internal */
-    public static function renderBuilderEditorPreviewView(string $view, array $data): string
+    public static function renderBuilderPreview(string $view, array $data): string
     {
         return Html::injectPreviewModalStyle(
             view($view, $data)->render()
@@ -51,7 +51,7 @@ trait HasBuilderPreview
     }
 
     /** @internal */
-    public function updateBuilderEditorField(string $builderName, array $editorData): void
+    public function updateBuilderFieldWithEditorData(string $builderName, array $editorData): void
     {
         if ($editorData[$builderName] ?? false) {
             $this->data[$builderName] = $editorData[$builderName];
@@ -75,7 +75,7 @@ trait HasBuilderPreview
     }
 
     /** @internal */
-    public static function editorHasSidebarActions(string $builderName): bool
+    public static function builderEditorHasSidebarActions(string $builderName): bool
     {
         $fields = static::getBuilderEditorSchema($builderName);
 
@@ -91,8 +91,8 @@ trait HasBuilderPreview
         );
 
         $this->emit('openBuilderEditor', [
-            'previewView' => $this->getBuilderEditorPreviewView($builderName),
-            'previewUrl' => $this->getBuilderEditorPreviewUrl($builderName),
+            'previewView' => $this->getBuilderPreviewView($builderName),
+            'previewUrl' => $this->getBuilderPreviewUrl($builderName),
             'modalTitle' => $this->getPreviewModalTitle(),
             'editorTitle' => $this->getBuilderEditorTitle(),
             'editorData' => $editorData,
