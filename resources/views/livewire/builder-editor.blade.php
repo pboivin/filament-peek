@@ -70,6 +70,11 @@
             </div>
 
             <div class="filament-peek-builder-actions"></div>
+
+            <div
+                class="filament-peek-editor-resizer"
+                x-ref="builderEditorResizer"
+            ></div>
         </div>
     </div>
 </div>

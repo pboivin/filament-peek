@@ -16,6 +16,8 @@
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
 
             editorAutoRefreshDebounceTime: @js(config('filament-peek.builderEditor.experimental.autoRefreshDebounceMilliseconds', 500)),
+
+            editorSidebarMinWidth: @js(config('filament-peek.builderEditor.sidebarMinWidth', '30rem')),
         })"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:refresh-preview-modal.window="onRefreshPreviewModal($event)"

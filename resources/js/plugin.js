@@ -39,11 +39,23 @@ document.addEventListener('alpine:init', () => {
 
         init() {
             const debounceTime = this.config.editorAutoRefreshDebounceTime || 500;
+            const editorSidebarMinWidth = this.config.editorSidebarMinWidth || '30rem';
 
             this.refreshBuilderPreview = debounce(() => Livewire.emit('refreshBuilderPreview'), debounceTime);
 
+            this.editorStyle['width'] = editorSidebarMinWidth;
+            this.editorStyle['minWidth'] = editorSidebarMinWidth;
+
             this.setDevicePreset();
+
+            this.initEditorResizer();
         },
+
+        // initEditorResizer() {
+        //     if (!this.$refs.builderEditorResizer) return;
+
+        //     console.log('Init Sidebar');
+        // },
 
         setIframeDimensions(width, height) {
             this.iframeStyle.maxWidth = width;
