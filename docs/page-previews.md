@@ -225,7 +225,7 @@ By default, only scrolling is allowed in the preview iframe. This is done by ins
 
 If you need finer control over pointer events in your previews, first set this option to `true` in the configuration. Then, in your page template, add the required CSS or JS. Here's an example disabling preview pointer events only for `<a>` tags:
 
-`resources/views/pages/show.blade.php`
+**`resources/views/pages/show.blade.php`**
 
 ```blade
 ...
