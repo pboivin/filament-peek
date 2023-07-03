@@ -109,6 +109,8 @@ return [
         // Livewire component class for the Builder Editor sidebar
         'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
 
+        'sidebarMinWidth' => '30rem',
+
         // Experimental options (may break in a future release)
         'experimental' => [
             'showAutoRefreshToggle' => false,
