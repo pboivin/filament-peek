@@ -97,7 +97,7 @@ return [
     | Builder Editor
     |--------------------------------------------------------------------------
     |
-    | Options related to the Editor sidebar in Builder field previews.
+    | Options related to the Editor sidebar in Builder Previews.
     |
     */
 

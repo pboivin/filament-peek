@@ -243,4 +243,4 @@ If you need finer control over pointer events in your previews, first set this o
 
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
-- [Builder Field Previews](./builder-field-previews.md)
+- [Builder Previews](./builder-previews.md)

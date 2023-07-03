@@ -11,7 +11,7 @@ function generateToc(): string
     $files = [
         './docs/configuration.md',
         './docs/page-previews.md',
-        './docs/builder-field-previews.md',
+        './docs/builder-previews.md',
     ];
 
     foreach ($files as $file) {

@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/pboivin/filament-peek"><img src="https://img.shields.io/packagist/l/pboivin/filament-peek" alt="License"></a>
 </p>
 
-A Filament plugin to add a full-screen preview modal to your Edit pages. The modal can be used before saving to preview a modified record. It can also be used for live previews by arranging form fields and the preview area side by side.
+A Filament plugin to add a full-screen preview modal to your Edit pages. The modal can be used before saving to preview a modified record. It can also be used for live previews with the Builder field or any other field, by arranging the form and the preview area side by side.
 
 ![Screenshots of the edit page and preview modal](./art/01-demo.jpg)
 
@@ -45,17 +45,17 @@ The documentation is available in the `docs/` directory:
     - [Using a Preview URL](./docs/page-previews.md#using-a-preview-url)
     - [Embedding a Preview Link into the Form](./docs/page-previews.md#embedding-a-preview-link-into-the-form)
     - [Preview Pointer Events](./docs/page-previews.md#preview-pointer-events)
-- [Builder Field Previews](./docs/builder-field-previews.md)
-    - [Overview](./docs/builder-field-previews.md#overview)
-    - [Using the Builder Preview with Blade Views](./docs/builder-field-previews.md#using-the-builder-preview-with-blade-views)
-    - [Using Multiple Builder Fields](./docs/builder-field-previews.md#using-multiple-builder-fields)
-    - [Using Custom Fields](./docs/builder-field-previews.md#using-custom-fields)
-    - [Adding Extra Data to the Builder Editor State](./docs/builder-field-previews.md#adding-extra-data-to-the-builder-editor-state)
-    - [Adding Extra Data to Builder Previews](./docs/builder-field-previews.md#adding-extra-data-to-builder-previews)
-    - [Alternate Templating Engines](./docs/builder-field-previews.md#alternate-templating-engines)
-    - [Using a Preview URL](./docs/builder-field-previews.md#using-a-preview-url)
-    - [Customizing the Preview Link](./docs/builder-field-previews.md#customizing-the-preview-link)
-    - [Automatically Updating the Builder Preview (Experimental)](./docs/builder-field-previews.md#automatically-updating-the-builder-preview-experimental)
+- [Builder Previews](./docs/builder-previews.md)
+    - [Overview](./docs/builder-previews.md#overview)
+    - [Using the Builder Preview with Blade Views](./docs/builder-previews.md#using-the-builder-preview-with-blade-views)
+    - [Using Multiple Builder Fields](./docs/builder-previews.md#using-multiple-builder-fields)
+    - [Using Custom Fields](./docs/builder-previews.md#using-custom-fields)
+    - [Adding Extra Data to the Initial Builder Editor State](./docs/builder-previews.md#adding-extra-data-to-the-initial-builder-editor-state)
+    - [Adding Extra Data to Builder Previews](./docs/builder-previews.md#adding-extra-data-to-builder-previews)
+    - [Alternate Templating Engines](./docs/builder-previews.md#alternate-templating-engines)
+    - [Using a Preview URL](./docs/builder-previews.md#using-a-preview-url)
+    - [Customizing the Preview Link](./docs/builder-previews.md#customizing-the-preview-link)
+    - [Automatically Updating the Builder Preview (Experimental)](./docs/builder-previews.md#automatically-updating-the-builder-preview-experimental)
 
 <!-- END_TOC -->
 

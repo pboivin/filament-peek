@@ -1,4 +1,4 @@
-# Builder Field Previews
+# Builder Previews
 
 ![Screenshot of the Builder preview modal and editor](../art/03-builder-preview.jpg)
 
@@ -10,7 +10,7 @@ As you edit the Builder blocks, the preview can be refreshed manually or automat
 
 Closing the preview modal does not update the record in the database, only the form state is updated.
 
-**Note**: This feature was initially designed with a focus on the Builder field but can be used with any other field type. Make sure to check out the [Using Custom Fields](#using-custom-fields) section below.
+**Note**: This feature was initially designed with a focus on the Builder field but can be used with any other field type. Make sure to check out the [`Using Custom Fields`](#using-custom-fields) section below.
 
 ## Using the Builder Preview with Blade Views
 
@@ -52,7 +52,7 @@ public static function getBuilderEditorSchema(string $builderName): array
 }
 ```
 
-To reduce duplication, the Builder field schema can also be extracted to a static method on the resource class (complete example below).
+To reduce duplication, the Builder field definition can also be extracted to a static method on the resource class (see Complete Example below).
 
 #### Update the Resource Class
 
@@ -175,7 +175,7 @@ class PageResource extends Resource
 
 ## Using Multiple Builder Fields
 
-Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview link's `builderPreview()` method. Therefore, it's possible to use Builder previews for multiple Builder fields in the same page:
+Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview link's `builderPreview()` method. Therefore, it's possible to use Builder previews independently, for multiple Builder fields in the same page:
 
 ```php
 protected function getBuilderEditorPreviewView(string $builderName): ?string
@@ -231,9 +231,9 @@ public function updateBuilderEditorField(string $builderName, array $editorData)
 
 Of course, you can do anything with the content of `$editorData`, you are not restricted to updating the main form.
 
-## Adding Extra Data to the Builder Editor State
+## Adding Extra Data to the Initial Builder Editor State
 
-Use the `mutateInitialBuilderEditorData()` method to interact with the initial Builder editor data once, before opening the preview modal:
+Use the `mutateInitialBuilderEditorData()` method to interact with the initial Builder Editor data once, before opening the preview modal:
 
 ```php
 public function mutateInitialBuilderEditorData(string $builderName, array $data): array
@@ -320,4 +320,4 @@ By default, the Builder Editor is not reactive. Updating the fields won't automa
 
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
-- [Builder Field Previews](./builder-field-previews.md)
+- [Builder Previews](./builder-previews.md)
