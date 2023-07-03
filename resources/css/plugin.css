@@ -3,7 +3,7 @@
 /*** Modal structure ***/
 
 .filament-peek-modal {
-    @apply fixed left-0 top-0 z-[9999] h-screen w-screen;
+    @apply fixed left-0 top-0 z-[9000] h-screen w-screen;
     @apply flex bg-white text-sm font-medium text-gray-900;
     @apply m-0 p-0 !important;
     @apply dark:bg-gray-800 dark:text-gray-300;
@@ -161,6 +161,19 @@ body.is-filament-peek-preview-modal-open {
     }
 }
 
+.filament-peek-iframe-cover {
+    @apply hidden;
+}
+
 .is-filament-peek-editor-resizing {
-    border: 10px solid red;
+    user-select: none;
+    cursor: ew-resize;
+
+    .filament-peek-editor-resizer {
+        @apply border-gray-500;
+    }
+
+    .filament-peek-iframe-cover {
+        @apply block fixed inset-0 z-[9010];
+    }
 }

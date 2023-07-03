@@ -10,6 +10,11 @@ const Peek = {
     },
 };
 
+const resizerState = {
+    initialWidth: 0,
+    initialX: 0,
+};
+
 document.addEventListener('alpine:init', () => {
     dispatch(document, 'peek:initializing');
 
@@ -19,6 +24,7 @@ document.addEventListener('alpine:init', () => {
         withEditor: false,
         editorHasSidebarActions: false,
         editorIsResizable: false,
+        editorIsResizing: false,
         canRotatePreset: false,
         activeDevicePreset: null,
         editorTitle: null,
@@ -45,10 +51,10 @@ document.addEventListener('alpine:init', () => {
 
             this.refreshBuilderPreview = debounce(() => Livewire.emit('refreshBuilderPreview'), debounceTime);
 
-            this.editorStyle['width'] = editorSidebarInitialWidth;
+            this.editorStyle.width = editorSidebarInitialWidth;
 
             if (this.config.canResizeEditorSidebar) {
-                this.editorStyle['minWidth'] = editorSidebarMinWidth;
+                this.editorStyle.minWidth = editorSidebarMinWidth;
                 this.editorIsResizable = true;
             }
 
@@ -100,6 +106,7 @@ document.addEventListener('alpine:init', () => {
 
             this.withEditor = !!$event.detail.withEditor;
             this.editorHasSidebarActions = !!$event.detail.editorHasSidebarActions;
+            this.editorIsResizing = false;
             this.editorTitle = $event.detail.editorTitle;
             this.editorStyle.display = this.withEditor ? 'flex' : 'none';
             this.modalTitle = $event.detail.modalTitle;
@@ -145,6 +152,7 @@ document.addEventListener('alpine:init', () => {
 
             this.withEditor = false;
             this.editorHasSidebarActions = false;
+            this.editorIsResizing = false;
             this.editorStyle.display = 'none';
             this.editorTitle = null;
             this.modalStyle.display = 'none';
@@ -192,7 +200,24 @@ document.addEventListener('alpine:init', () => {
         },
 
         onEditorResizerMouseDown($event) {
-            console.log("onEditorResizerMouseDown");
+            if (!this.$refs.builderEditor) return;
+
+            this.editorIsResizing = true;
+
+            resizerState.initialWidth = parseFloat(getComputedStyle(this.$refs.builderEditor).width);
+            resizerState.initialX = $event.clientX;
+        },
+
+        onMouseUp($event) {
+            if (!this.editorIsResizing) return;
+
+            this.editorIsResizing = false;
+        },
+
+        onMouseMove($event) {
+            if (!this.editorIsResizing) return;
+
+            this.editorStyle.width = (resizerState.initialWidth + ($event.clientX - resizerState.initialX)) + 'px';
         },
     }));
 

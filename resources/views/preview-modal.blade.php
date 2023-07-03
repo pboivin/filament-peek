@@ -1,6 +1,5 @@
 @if (\Pboivin\FilamentPeek\Support\View::needsPreviewModal())
     <div
-        class="filament-peek-modal"
         role="alertdialog"
         aria-modal="true"
         aria-labelledby="filament-peek-modal-title"
@@ -15,11 +14,17 @@
             editorSidebarMinWidth: @js(config('filament-peek.builderEditor.sidebarMinWidth', '30rem')),
             editorSidebarInitialWidth: @js(config('filament-peek.builderEditor.sidebarInitialWidth', '30rem')),
         })"
+        x-bind:class="{
+            'filament-peek-modal': true,
+            'is-filament-peek-editor-resizing': editorIsResizing,
+        }"
+        x-bind:style="modalStyle"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:refresh-preview-modal.window="onRefreshPreviewModal($event)"
         x-on:close-preview-modal.window="onClosePreviewModal($event)"
         x-on:keyup.escape.window="handleEscapeKey()"
-        x-bind:style="modalStyle"
+        x-on:mouseup.window="onMouseUp($event)"
+        x-on:mousemove.debounce.1ms.window="onMouseMove($event)"
         x-trap="isOpen"
         x-cloak
     >
@@ -89,6 +94,8 @@
                         frameborder="0"
                     ></iframe>
                 </template>
+
+                <div class="filament-peek-iframe-cover"></div>
             </div>
         </div>
     </div>
