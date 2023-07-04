@@ -15,6 +15,8 @@ class PreviewLink extends Component
 
     protected bool $isButton = false;
 
+    protected bool $isUnderlined = false;
+
     public static function make(): static
     {
         View::setupPreviewModal();
@@ -76,6 +78,18 @@ class PreviewLink extends Component
             'right' => 'flex justify-end',
             default => null,
         };
+    }
+
+    public function underline(bool $value = true): static
+    {
+        $this->isUnderlined = $value;
+
+        return $this;
+    }
+
+    public function getUnderlineClass(): string
+    {
+        return $this->isUnderlined ? 'underline' : '';
     }
 
     public function getPreviewAction(): ?string

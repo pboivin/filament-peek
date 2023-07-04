@@ -16,7 +16,27 @@ it('can render', function () {
     $content = (string) $previewLink->render();
 
     expect($content)->toContain('wire:click.prevent="openPreviewModal"');
-    expect($content)->toContain(__('filament-peek::ui.preview-action-label'));
+    expect($content)->toContain('Preview');
+
+    // Default styles
+    expect($content)->not->toContain('flex justify');
+    expect($content)->not->toContain('underline');
+});
+
+it('can be aligned', function () {
+    $previewLink = PreviewLink::make()->alignRight();
+
+    $content = (string) $previewLink->render();
+
+    expect($content)->toContain('flex justify');
+});
+
+it('can be underlined', function () {
+    $previewLink = PreviewLink::make()->underline();
+
+    $content = (string) $previewLink->render();
+
+    expect($content)->toContain('underline');
 });
 
 it('sets the view hook to render the modal', function () {

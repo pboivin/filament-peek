@@ -16,8 +16,8 @@
         <a
             href="#"
             wire:click.prevent="{{ $getPreviewAction() }}"
-            {{ $attributes->class('text-primary-600 dark:text-primary-500 underline')
-                          ->merge($getExtraAttributes()) 
+            {{ $attributes->class(['text-primary-600', 'dark:text-primary-500', $getUnderlineClass()])
+                          ->merge($getExtraAttributes())
             }}
         >
             {{ $getLabel() }}
