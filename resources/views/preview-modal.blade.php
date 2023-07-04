@@ -24,7 +24,7 @@
         x-on:close-preview-modal.window="onClosePreviewModal($event)"
         x-on:keyup.escape.window="handleEscapeKey()"
         x-on:mouseup.window="onMouseUp($event)"
-        x-on:mousemove.debounce.1ms.window="onMouseMove($event)"
+        x-on:mousemove.debounce.5ms.window="onMouseMove($event)"
         x-trap="isOpen"
         x-cloak
     >
