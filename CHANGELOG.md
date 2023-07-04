@@ -2,6 +2,15 @@
 
 All notable changes to `filament-peek` will be documented in this file.
 
+## 1.0.0-alpha2 - 2023-07-04
+
+* refactor!: Update various method names
+* feat: Implement sidebar resize
+* feat: Support custom focus out handlers
+* enh: Detect if editor has sidebar actions
+* enh: Update PreviewLink default styles
+* fix: Support preview modal on View pages
+
 
 ## 1.0.0-alpha1 - 2023-06-23
 
