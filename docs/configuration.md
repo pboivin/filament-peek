@@ -29,6 +29,9 @@ Builder Editor options:
 | Name | Type | Description |
 |---|---|---|
 | `canDiscardChanges` | `bool` | Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button. |
+| `canResizeSidebar` | `bool` | Allow users to resize the sidebar by clicking and dragging on the right edge. |
+| `sidebarMinWidth` | `string` | Minimum width for the sidebar (if resizable). Must be a valid CSS `width` value. |
+| `sidebarInitialWidth` | `string` | Initial width for the sidebar. Must be a valid CSS `width` value. |
 | `livewireComponentClass` | `string` | Livewire component class for the Builder Editor sidebar. |
 | `experimental.showAutoRefreshToggle` | `bool` | Experimental - Enable the auto-refresh option for the Builder Editor. |
 | `experimental.autoRefreshDebounceMilliseconds` | `int` | Experimental - Debounce time before triggering the auto-refresh when a field loses focus. |
