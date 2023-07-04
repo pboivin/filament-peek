@@ -3,7 +3,7 @@
 /*** Modal structure ***/
 
 .filament-peek-modal {
-    @apply fixed left-0 top-0 z-[9999] h-screen w-screen;
+    @apply fixed left-0 top-0 z-[9000] h-screen w-screen;
     @apply flex bg-white text-sm font-medium text-gray-900;
     @apply m-0 p-0 !important;
     @apply dark:bg-gray-800 dark:text-gray-300;
@@ -13,13 +13,14 @@
 }
 
 .filament-peek-panel {
-    @apply flex flex-grow flex-col;
+    @apply flex flex-col;
 }
 
 .filament-peek-panel-header {
     @apply flex items-center justify-between border-b bg-white p-4;
     @apply dark:border-gray-700 dark:bg-gray-800;
     min-height: var(--filament-peek-panel-header-height);
+    user-select: none;
 }
 
 .filament-peek-panel-body {
@@ -43,6 +44,8 @@ body.is-filament-peek-preview-modal-open {
 /*** Preview ***/
 
 .filament-peek-preview {
+    @apply flex-grow;
+
     .filament-peek-panel-header > * {
         @apply min-w-[14rem];
     }
@@ -82,7 +85,7 @@ body.is-filament-peek-preview-modal-open {
 /*** Editor ***/
 
 .filament-peek-editor {
-    @apply hidden max-w-[30rem] border-r;
+    @apply hidden border-r;
     @apply dark:border-gray-700;
 
     .filament-peek-panel-body {
@@ -143,5 +146,34 @@ body.is-filament-peek-preview-modal-open {
             position: initial;
             padding: initial;
         }
+    }
+}
+
+/*** Resizer ***/
+
+.filament-peek-editor-resizer {
+    @apply absolute left-[100%] top-0 h-full w-[9px] bg-transparent;
+    @apply border-l-[3px] border-transparent;
+
+    &:hover {
+        @apply border-gray-500;
+        cursor: ew-resize;
+    }
+}
+
+.filament-peek-iframe-cover {
+    @apply hidden;
+}
+
+.is-filament-peek-editor-resizing {
+    user-select: none;
+    cursor: ew-resize;
+
+    .filament-peek-editor-resizer {
+        @apply border-gray-500;
+    }
+
+    .filament-peek-iframe-cover {
+        @apply block fixed inset-0 z-[9010];
     }
 }

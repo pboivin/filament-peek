@@ -1,27 +1,30 @@
 @if (\Pboivin\FilamentPeek\Support\View::needsPreviewModal())
     <div
-        class="filament-peek-modal"
         role="alertdialog"
         aria-modal="true"
         aria-labelledby="filament-peek-modal-title"
         x-data="PeekPreviewModal({
             devicePresets: @js(config('filament-peek.devicePresets', false)),
-
             initialDevicePreset: @js(config('filament-peek.initialDevicePreset', 'fullscreen')),
-
             allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
-
             shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
-
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
-
             editorAutoRefreshDebounceTime: @js(config('filament-peek.builderEditor.experimental.autoRefreshDebounceMilliseconds', 500)),
+            canResizeEditorSidebar: @js(config('filament-peek.builderEditor.canResizeSidebar', true)),
+            editorSidebarMinWidth: @js(config('filament-peek.builderEditor.sidebarMinWidth', '30rem')),
+            editorSidebarInitialWidth: @js(config('filament-peek.builderEditor.sidebarInitialWidth', '30rem')),
         })"
+        x-bind:class="{
+            'filament-peek-modal': true,
+            'is-filament-peek-editor-resizing': editorIsResizing,
+        }"
+        x-bind:style="modalStyle"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:refresh-preview-modal.window="onRefreshPreviewModal($event)"
         x-on:close-preview-modal.window="onClosePreviewModal($event)"
         x-on:keyup.escape.window="handleEscapeKey()"
-        x-bind:style="modalStyle"
+        x-on:mouseup.window="onMouseUp($event)"
+        x-on:mousemove.debounce.5ms.window="onMouseMove($event)"
         x-trap="isOpen"
         x-cloak
     >
@@ -91,6 +94,8 @@
                         frameborder="0"
                     ></iframe>
                 </template>
+
+                <div class="filament-peek-iframe-cover"></div>
             </div>
         </div>
     </div>
