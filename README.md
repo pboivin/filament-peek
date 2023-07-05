@@ -23,7 +23,7 @@ The requirements are **PHP 8.0** and **Filament 2.0**
 
 #### Demo Project
 
-For an easy way to try out the plugin on a simple Filament project, have a look at the [filament-peek-demo](https://github.com/pboivin/filament-peek-demo) repository.
+For an easy way to try out the plugin on a simple Filament project, have a look at the [filament-peek-demo](https://github.com/pboivin/filament-peek-demo/tree/0.x) repository.
 
 ## Configuration
 
@@ -45,7 +45,7 @@ This will add a `config/filament-peek.php` file to your project. Here are the ma
 | `allowIframePointerEvents` | `bool` | Allow all pointer events within the iframe. By default, only scrolling is allowed. (See [Pointer Events](#pointer-events)) |
 | `closeModalWithEscapeKey` | `bool` | Close the preview modal by pressing the Escape key. |
 
-## How it Works
+## Overview
 
 - Start by adding a preview action button to the top of your page. Alternatively, you can add a preview link component somewhere in your form (e.g. in a sidebar).
 - When the button is clicked, a full-screen modal opens.
