@@ -90,11 +90,11 @@ class BuilderEditor extends Component implements HasForms
         $this->dispatchBrowserEvent('open-preview-modal', [
             'modalTitle' => $event['modalTitle'] ?? '',
             'editorTitle' => $event['editorTitle'] ?? '',
-            'iframeUrl' => $this->previewUrl,
-            'iframeContent' => $this->getPreviewModalHtmlContent(),
             'withEditor' => true,
             'editorHasSidebarActions' => $this->pageClass::builderEditorHasSidebarActions($this->builderName),
         ]);
+
+        $this->refreshBuilderPreview();
     }
 
     public function refreshBuilderPreview(): void
