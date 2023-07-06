@@ -2,12 +2,16 @@
 
 namespace Pboivin\FilamentPeek\Livewire;
 
+use Filament\Forms\ComponentContainer;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View as ViewContract;
 use InvalidArgumentException;
 use Livewire\Component;
 
+/**
+ * @property ComponentContainer $form
+ */
 class BuilderEditor extends Component implements HasForms
 {
     use InteractsWithForms;
@@ -128,9 +132,11 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getPreviewModalHtmlContent(): ?string
     {
+        $formState = $this->form->getState();
+
         $previewData = $this->pageClass::mutateBuilderPreviewData(
             $this->builderName,
-            $this->pageClass::prepareBuilderPreviewData($this->editorData)
+            $this->pageClass::prepareBuilderPreviewData($formState)
         );
 
         if ($this->previewUrl) {
