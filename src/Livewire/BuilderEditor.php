@@ -2,12 +2,16 @@
 
 namespace Pboivin\FilamentPeek\Livewire;
 
+use Filament\Forms\ComponentContainer;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View as ViewContract;
 use InvalidArgumentException;
 use Livewire\Component;
 
+/**
+ * @property ComponentContainer $form
+ */
 class BuilderEditor extends Component implements HasForms
 {
     use InteractsWithForms;
@@ -70,9 +74,19 @@ class BuilderEditor extends Component implements HasForms
             $form->dispatchEvent(...$args);
         }
 
-        if ($this->shouldAutoRefresh()) {
+        if ($this->shouldAutoRefresh() && ! $this->shouldIgnoreFormEvent(...$args)) {
             $this->refreshBuilderPreview();
         }
+    }
+
+    protected function shouldIgnoreFormEvent(...$args): bool
+    {
+        $eventName = $args[0] ?? false;
+
+        return in_array($eventName, [
+            'builder::createItem',
+            'repeater::createItem',
+        ]);
     }
 
     public function openBuilderEditor(array $event): void
@@ -86,11 +100,11 @@ class BuilderEditor extends Component implements HasForms
         $this->dispatchBrowserEvent('open-preview-modal', [
             'modalTitle' => $event['modalTitle'] ?? '',
             'editorTitle' => $event['editorTitle'] ?? '',
-            'iframeUrl' => $this->previewUrl,
-            'iframeContent' => $this->getPreviewModalHtmlContent(),
             'withEditor' => true,
             'editorHasSidebarActions' => $this->pageClass::builderEditorHasSidebarActions($this->builderName),
         ]);
+
+        $this->refreshBuilderPreview();
     }
 
     public function refreshBuilderPreview(): void
@@ -128,9 +142,11 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getPreviewModalHtmlContent(): ?string
     {
+        $formState = $this->form->getState();
+
         $previewData = $this->pageClass::mutateBuilderPreviewData(
             $this->builderName,
-            $this->pageClass::prepareBuilderPreviewData($this->editorData)
+            $this->pageClass::prepareBuilderPreviewData($formState)
         );
 
         if ($this->previewUrl) {
