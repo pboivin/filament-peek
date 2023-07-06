@@ -74,9 +74,19 @@ class BuilderEditor extends Component implements HasForms
             $form->dispatchEvent(...$args);
         }
 
-        if ($this->shouldAutoRefresh()) {
+        if ($this->shouldAutoRefresh() && ! $this->shouldIgnoreFormEvent(...$args)) {
             $this->refreshBuilderPreview();
         }
+    }
+
+    protected function shouldIgnoreFormEvent(...$args): bool
+    {
+        $eventName = $args[0] ?? false;
+
+        return in_array($eventName, [
+            'builder::createItem',
+            'repeater::createItem',
+        ]);
     }
 
     public function openBuilderEditor(array $event): void
