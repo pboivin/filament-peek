@@ -3,6 +3,8 @@
 namespace Pboivin\FilamentPeek\Forms\Components;
 
 use Filament\Forms\Components\Component;
+use Filament\Forms\Contracts\HasForms;
+use Pboivin\FilamentPeek\Support\Page;
 use Pboivin\FilamentPeek\Support\View;
 
 class PreviewLink extends Component
@@ -21,13 +23,20 @@ class PreviewLink extends Component
     {
         View::setupPreviewModal();
 
-        $static = app(static::class);
+        return app(static::class)
+            ->configure()
+            ->label(__('filament-peek::ui.preview-action-label'));
+    }
 
-        $static->configure();
+    public function getLivewire(): HasForms
+    {
+        $livewire = parent::getLivewire();
 
-        $static->label(__('filament-peek::ui.preview-action-label'));
+        if ($this->builderField) {
+            Page::checkBuilderPreviewSupport($livewire);
+        }
 
-        return $static;
+        return $livewire;
     }
 
     public function builderPreview(string $value = 'blocks'): static
