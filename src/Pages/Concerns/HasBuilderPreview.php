@@ -55,7 +55,7 @@ trait HasBuilderPreview
     /** @internal */
     public function updateBuilderFieldWithEditorData(string $builderName, array $editorData): void
     {
-        if ($editorData[$builderName] ?? false) {
+        if (array_key_exists($builderName, $editorData)) {
             $this->data[$builderName] = $editorData[$builderName];
         }
     }
