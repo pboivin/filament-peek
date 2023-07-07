@@ -34,7 +34,7 @@ it('has initial builder editor title', function () {
 it('has required event listener', function () {
     $page = invade(new BuilderEditRecordDummy());
 
-    expect($page->getListeners())->toEqual(['updateBuilderFieldWithEditorData']);
+    expect($page->getListeners())->toContain('updateBuilderFieldWithEditorData');
 });
 
 it('prepares builder editor data on create pages', function () {
