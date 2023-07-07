@@ -196,7 +196,7 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
 }
 ```
 
-Using a single field should work without any other modifications. To use multiple fields in the sidebar, consider using a `Group` component with a custom state path:
+Using a single field should work without any other modifications. To support multiple fields in the sidebar, consider using a `Group` component with a custom state path:
 
 ```php
 public static function getBuilderEditorSchema(string $builderName): Component|array
