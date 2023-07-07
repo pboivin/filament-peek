@@ -118,6 +118,22 @@ it('mutates initial builder editor data', function () {
     expect($event['params'][0]['editorData'])->toEqual(['blocks' => ['key' => 'value'], 'mutated' => true]);
 });
 
+it('throws an exception for missing event listener', function () {
+    /** @var TestCase $this */
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage("Missing 'updateBuilderFieldWithEditorData' Livewire event listener");
+
+    $page = invade(new class extends BuilderEditRecordDummy
+    {
+        protected function getListeners(): array
+        {
+            return ['test'];
+        }
+    });
+
+    $page->openPreviewModalForBuidler('blocks');
+});
+
 class BuilderCreateRecordDummy extends CreateRecord
 {
     use HasPreviewModal;
