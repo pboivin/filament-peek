@@ -139,8 +139,22 @@ document.addEventListener('alpine:init', () => {
         },
 
         onRefreshPreviewModal($event) {
+            this._restoreIframeScrollPosition();
+
             this.iframeUrl = $event.detail.iframeUrl;
             this.iframeContent = $event.detail.iframeContent;
+        },
+
+        _restoreIframeScrollPosition() {
+            const iframe = this.$refs.previewModalBody.querySelector('iframe');
+
+            if (iframe && iframe.contentWindow) {
+                this._iframeScrollPosition = iframe.contentWindow.scrollY;
+
+                setTimeout(() => {
+                    iframe.contentWindow.scrollTo(0, this._iframeScrollPosition || 0);
+                }, 50);
+            }
         },
 
         onClosePreviewModal($event) {
