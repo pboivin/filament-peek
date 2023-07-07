@@ -3,6 +3,7 @@
 namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Forms\Components\Builder;
+use InvalidArgumentException;
 use Pboivin\FilamentPeek\Support\Html;
 
 trait HasBuilderPreview
@@ -87,6 +88,8 @@ trait HasBuilderPreview
     /** @internal */
     public function openPreviewModalForBuidler(string $builderName): void
     {
+        $this->checkCustomListener();
+
         $editorData = $this->mutateInitialBuilderEditorData(
             $builderName,
             $this->prepareBuilderEditorData($builderName)
@@ -101,5 +104,16 @@ trait HasBuilderPreview
             'builderName' => $builderName,
             'pageClass' => static::class,
         ]);
+    }
+
+    private function checkCustomListener(): void
+    {
+        $hasCustomListener = collect($this->getListeners())
+            ->values()
+            ->contains('updateBuilderFieldWithEditorData');
+
+        if (! $hasCustomListener) {
+            throw new InvalidArgumentException("Missing 'updateBuilderFieldWithEditorData' Livewire event listener. Add it to your Page's `\$listeners` array.");
+        }
     }
 }
