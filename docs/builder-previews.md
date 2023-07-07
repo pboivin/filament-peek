@@ -40,16 +40,14 @@ protected function getBuilderPreviewView(string $builderName): ?string
 }
 ```
 
-Then, add the `getBuilderEditorSchema()` method to define your Builder field schema:
+Then, add the `getBuilderEditorSchema()` method to define your Builder field:
 
 ```php
-public static function getBuilderEditorSchema(string $builderName): array
+public static function getBuilderEditorSchema(string $builderName): Component|array
 {
-    return [
-        Builder::make('page_blocks')->blocks([
+    return Builder::make('page_blocks')->blocks([
             // ...
-        ]),
-    ];
+    ]);
 }
 ```
 
@@ -75,6 +73,7 @@ PreviewLink::make()
 namespace App\Filament\Resources\PageResource\Pages;
 
 use App\Filament\Resources\PageResource;
+use Filament\Forms\Components\Component;
 use Filament\Resources\Pages\EditRecord;
 use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
@@ -91,15 +90,12 @@ class EditPage extends EditRecord
         return 'pages.preview-blocks';
     }
 
-    public static function getBuilderEditorSchema(string $builderName): array
+    public static function getBuilderEditorSchema(string $builderName): Component|array
     {
-        return [
-            PageResource::builderField(context: 'preview'),
-        ];
+        return PageResource::builderField(context: 'preview');
     }
 }
 ```
-
 
 **`app/Filament/Resources/PageResource.php`**
 
@@ -169,7 +165,7 @@ class PageResource extends Resource
 
 ## Using Multiple Builder Fields
 
-Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview link's `builderPreview()` method. Therefore, it's possible to use Builder previews independently, for multiple Builder fields in the same page:
+Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview link's `builderPreview()` method. Therefore, it's possible to support independent previews for multiple Builder fields in the same page:
 
 ```php
 protected function getBuilderPreviewView(string $builderName): ?string
@@ -180,50 +176,42 @@ protected function getBuilderPreviewView(string $builderName): ?string
     };
 }
 
-public static function getBuilderEditorSchema(string $builderName): array
+public static function getBuilderEditorSchema(string $builderName): Component|array
 {
-    return [
-        match ($builderName) {
-            'page_blocks' => PageResource::builderField(context: 'preview'),
-            'footer_blocks' => PageResource::footerBuilderField(context: 'preview'),
-        }
-    ];
+    return match ($builderName) {
+        'page_blocks' => PageResource::builderField(context: 'preview'),
+        'footer_blocks' => PageResource::footerBuilderField(context: 'preview'),
+    };
 }
 ```
 
 ## Using Custom Fields
 
-You may have noticed that `getBuilderEditorSchema()` returns an array instead of a single field.
-Behind the scenes, the Editor sidebar of the preview modal is actually a full Filament form. Therefore, you are not restricted to using a Builder field, you may use any other field type:
+You may have noticed that `getBuilderEditorSchema()` supports any type of form Component. Behind the scenes, the Editor sidebar of the preview modal is a full Filament form. Therefore, you are not restricted to using a Builder field, you may use any other field type:
 
 ```php
-public static function getBuilderEditorSchema(string $builderName): array
+public static function getBuilderEditorSchema(string $builderName): Component|array
 {
-    return [
-        RichEditor::make('page_content')
-            ->columnSpanFull(),
-    ];
+    return RichEditor::make('page_content');
 }
 ```
 
-Using a single field should work out of the box. To use multiple fields in the Editor sidebar, you will need to modify the `updateBuilderFieldWithEditorData()` accordingly. When the modal is closed, this method takes the data from the Editor sidebar and updates the main form:
+Using a single field should work without any other modifications. To support multiple fields in the sidebar, consider using a `Group` component with a custom state path:
 
 ```php
-public function updateBuilderFieldWithEditorData(string $builderName, array $editorData): void
+public static function getBuilderEditorSchema(string $builderName): Component|array
 {
-    if (array_key_exists('my_custom_field', $editorData)) {
-        $this->data['my_custom_field'] = $editorData['my_custom_field'];
-    }
+    return Group::make([
+        TextInput::make('title'),
 
-    if (array_key_exists('my_other_field', $editorData)) {
-        $this->data['my_other_field'] = $editorData['my_other_field'];
-    }
+        TextInput::make('tagline'),
 
-    // ...
+        RichEditor::make('paragraph'),
+
+        // ...
+    ])->statePath('page_content');
 }
 ```
-
-Of course, you can do anything with the content of `$editorData`, you are not restricted to updating the main form.
 
 ## Adding Extra Data to the Builder Editor State
 
@@ -238,9 +226,9 @@ public function mutateInitialBuilderEditorData(string $builderName, array $edito
 }
 ```
 
-## Adding Extra Data to Builder Previews
+## Adding Extra Data to the Builder Preview
 
-Suppose that your Builder field is named 'content'. By default, a `$content` variable is made available to the rendered Blade view. Use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the preview is refreshed:
+Let's say that your Builder field is named `content`. By default, a `$content` variable is made available to the rendered Blade view. Use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the preview is refreshed:
 
 ```php
 public static function mutateBuilderPreviewData(string $builderName, array $editorData, array $previewData): array
