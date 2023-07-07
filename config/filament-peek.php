@@ -122,6 +122,7 @@ return [
         'experimental' => [
             'showAutoRefreshToggle' => false,
             'autoRefreshDebounceMilliseconds' => 500,
+            'restoreIframePositionOnRefresh' => false,
         ],
 
     ],

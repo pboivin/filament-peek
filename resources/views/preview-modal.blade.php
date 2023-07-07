@@ -10,6 +10,7 @@
             shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
             editorAutoRefreshDebounceTime: @js(config('filament-peek.builderEditor.experimental.autoRefreshDebounceMilliseconds', 500)),
+            shouldRestoreIframePositionOnRefresh: @js(config('filament-peek.builderEditor.experimental.restoreIframePositionOnRefresh', false)),
             canResizeEditorSidebar: @js(config('filament-peek.builderEditor.canResizeSidebar', true)),
             editorSidebarMinWidth: @js(config('filament-peek.builderEditor.sidebarMinWidth', '30rem')),
             editorSidebarInitialWidth: @js(config('filament-peek.builderEditor.sidebarInitialWidth', '30rem')),
