@@ -228,7 +228,7 @@ public function mutateInitialBuilderEditorData(string $builderName, array $edito
 
 ## Adding Extra Data to the Builder Preview
 
-Suppose that your Builder field is named `content`. By default, a `$content` variable is made available to the rendered Blade view. Use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the preview is refreshed:
+Let's say that your Builder field is named `content`. By default, a `$content` variable is made available to the rendered Blade view. Use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the preview is refreshed:
 
 ```php
 public static function mutateBuilderPreviewData(string $builderName, array $editorData, array $previewData): array
