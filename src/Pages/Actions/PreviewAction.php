@@ -3,6 +3,7 @@
 namespace Pboivin\FilamentPeek\Pages\Actions;
 
 use Filament\Pages\Actions\Action;
+use Pboivin\FilamentPeek\Support\Page;
 use Pboivin\FilamentPeek\Support\View;
 
 class PreviewAction extends Action
@@ -16,11 +17,10 @@ class PreviewAction extends Action
     {
         parent::setUp();
 
-        $this->label(__('filament-peek::ui.preview-action-label'));
-
-        $this->color('secondary');
-
-        $this->action('openPreviewModal');
+        $this->label(__('filament-peek::ui.preview-action-label'))
+            ->color('secondary')
+            ->before(fn ($livewire) => Page::checkPreviewModalSupport($livewire))
+            ->action('openPreviewModal');
 
         View::setupPreviewModal();
     }
