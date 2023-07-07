@@ -218,11 +218,11 @@ Using a single field should work out of the box. To use multiple fields in the E
 ```php
 public function updateBuilderFieldWithEditorData(string $builderName, array $editorData): void
 {
-    if ($editorData['my_custom_field'] ?? false) {
+    if (array_key_exists('my_custom_field', $editorData)) {
         $this->data['my_custom_field'] = $editorData['my_custom_field'];
     }
 
-    if ($editorData['my_other_field'] ?? false) {
+    if (array_key_exists('my_other_field', $editorData)) {
         $this->data['my_other_field'] = $editorData['my_other_field'];
     }
 
