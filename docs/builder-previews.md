@@ -100,17 +100,6 @@ class EditPage extends EditRecord
 }
 ```
 
-**Note**: If you're using custom event listeners on your page, make sure to also include the `updateBuilderFieldWithEditorData` listener:
-
-```php
-protected function getListeners(): array
-{
-    return [
-        'myCustomEventListener',
-        'updateBuilderFieldWithEditorData',
-    ];
-}
-```
 
 **`app/Filament/Resources/PageResource.php`**
 
@@ -172,7 +161,11 @@ class PageResource extends Resource
 }
 ```
 
-**Note**: Builder previews can also be used on `Create` pages.
+**Notes**
+
+ - Builder previews can also be used on `Create` pages.
+ - If you're using custom event listeners on your Page class, make sure to also include the `updateBuilderFieldWithEditorData` listener.
+
 
 ## Using Multiple Builder Fields
 
