@@ -9,7 +9,9 @@ trait HasBuilderPreview
 {
     protected function getListeners(): array
     {
-        return ['updateBuilderFieldWithEditorData'];
+        return array_merge($this->listeners, [
+            'updateBuilderFieldWithEditorData' => 'updateBuilderFieldWithEditorData',
+        ]);
     }
 
     protected function getBuilderEditorTitle(): string
