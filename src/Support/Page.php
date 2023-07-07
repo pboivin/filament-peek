@@ -14,7 +14,7 @@ class Page
 
     public static function checkPreviewModalSupport(FilamentPage $page): void
     {
-        if (!static::supportsPreviewModal($page)) {
+        if (! static::supportsPreviewModal($page)) {
             throw new PreviewModalException('Page class is missing the `HasPreviewModal` trait.');
         }
     }
@@ -28,7 +28,7 @@ class Page
     {
         static::checkPreviewModalSupport($page);
 
-        if (!static::supportsBuilderPreview($page)) {
+        if (! static::supportsBuilderPreview($page)) {
             throw new PreviewModalException('Page class is missing the `HasBuilderPreview` trait.');
         }
     }
