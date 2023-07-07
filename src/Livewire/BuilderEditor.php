@@ -6,6 +6,7 @@ use Filament\Forms\ComponentContainer;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View as ViewContract;
+use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use Livewire\Component;
 
@@ -129,7 +130,7 @@ class BuilderEditor extends Component implements HasForms
         }
 
         if ($schema = $this->pageClass::getBuilderEditorSchema($this->builderName)) {
-            return $schema;
+            return Arr::wrap($schema);
         }
 
         throw new InvalidArgumentException('Missing Builder editor schema.');

@@ -3,6 +3,7 @@
 namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Forms\Components\Builder;
+use Filament\Forms\Components\Component;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\Support\Html;
 
@@ -30,7 +31,7 @@ trait HasBuilderPreview
         return null;
     }
 
-    public static function getBuilderEditorSchema(string $builderName): array
+    public static function getBuilderEditorSchema(string $builderName): Component|array
     {
         return [];
     }
@@ -80,9 +81,9 @@ trait HasBuilderPreview
     /** @internal */
     public static function builderEditorHasSidebarActions(string $builderName): bool
     {
-        $fields = static::getBuilderEditorSchema($builderName);
+        $schema = static::getBuilderEditorSchema($builderName);
 
-        return count($fields) === 1 && $fields[0] instanceof Builder;
+        return $schema instanceof Builder;
     }
 
     /** @internal */
