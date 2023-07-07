@@ -32,7 +32,9 @@ class PreviewLink extends Component
     {
         $livewire = parent::getLivewire();
 
-        Page::checkBuilderPreviewSupport($livewire);
+        if ($this->builderField) {
+            Page::checkBuilderPreviewSupport($livewire);
+        }
 
         return $livewire;
     }
