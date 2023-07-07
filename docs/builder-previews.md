@@ -254,7 +254,7 @@ public static function renderBuilderPreview(string $view, array $data): string
 
 ## Using a Preview URL
 
-As with full page previews, you may implement Builder previews using a custom URL and a storage driver, such as the Laravel Cache or the PHP session. Instead of `getBuilderPreviewView()`, use the `getBuilderPreviewUrl()` method to define the preview URL and the `mutateBuilderPreviewData()` to temporarily store the preview data:
+As with full page previews, you may implement Builder previews using a custom URL and a storage driver, such as the Laravel Cache or the PHP session. Instead of `getBuilderPreviewView()`, use the `getBuilderPreviewUrl()` method to define the preview URL and `mutateBuilderPreviewData()` to temporarily store the preview data:
 
 ```php
 protected function getBuilderPreviewUrl(string $builderName): ?string
