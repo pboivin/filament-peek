@@ -146,7 +146,8 @@ class BuilderEditor extends Component implements HasForms
 
         $previewData = $this->pageClass::mutateBuilderPreviewData(
             $this->builderName,
-            $this->pageClass::prepareBuilderPreviewData($formState)
+            $this->editorData,
+            $this->pageClass::prepareBuilderPreviewData($formState),
         );
 
         if ($this->previewUrl) {

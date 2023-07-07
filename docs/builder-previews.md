@@ -232,29 +232,29 @@ public function updateBuilderFieldWithEditorData(string $builderName, array $edi
 
 Of course, you can do anything with the content of `$editorData`, you are not restricted to updating the main form.
 
-## Adding Extra Data to the Initial Builder Editor State
+## Adding Extra Data to the Builder Editor State
 
-Use the `mutateInitialBuilderEditorData()` method to interact with the initial Builder Editor data once, before opening the preview modal:
+When the Builder preview modal opens, the Editor sidebar is initialized with the Builder data from the main form. Use the `mutateInitialBuilderEditorData()` method to interact with the data once, before opening the preview modal:
 
 ```php
-public function mutateInitialBuilderEditorData(string $builderName, array $data): array
+public function mutateInitialBuilderEditorData(string $builderName, array $editorData): array
 {
-    $data['preview_started_at'] = now();
+    $editorData['preview_started_at'] = now();
 
-    return $data;
+    return $editorData;
 }
 ```
 
 ## Adding Extra Data to Builder Previews
 
-Similarly, use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the preview is refreshed:
+Suppose that your Builder field is named 'content'. By default, a `$content` variable is made available to the rendered Blade view. Use the `mutateBuilderPreviewData()` method to interact with the Builder preview data each time, before the preview is refreshed:
 
 ```php
-public static function mutateBuilderPreviewData(string $builderName, array $data): array
+public static function mutateBuilderPreviewData(string $builderName, array $editorData, array $previewData): array
 {
-    $data['message'] = "This is a preview. It started at {$data['preview_started_at']}.";
+    $previewData['message'] = "This is a preview. It started at {$editorData['preview_started_at']}.";
 
-    return $data;
+    return $previewData;
 }
 ```
 
@@ -283,13 +283,13 @@ protected function getBuilderPreviewUrl(string $builderName): ?string
     return route('pages.blocksPreview', ['token' => $token]);
 }
 
-public static function mutateBuilderPreviewData(string $builderName, array $data): array
+public static function mutateBuilderPreviewData(string $builderName, array $editorData, array $previewData): array
 {
     $token = 'page-blocks';
 
     $sessionKey = "preview-$token";
 
-    session()->put($sessionKey, $data);
+    session()->put($sessionKey, $previewData);
 
     return $data;
 }

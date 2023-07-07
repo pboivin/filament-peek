@@ -76,13 +76,6 @@ it('dispatches openBuilderEditor event', function () {
         {
             return 'test';
         }
-
-        protected function mutateInitialBuilderEditorData(string $builderName, array $data): array
-        {
-            $data['mutated'] = true;
-
-            return $data;
-        }
     });
 
     expect(count($page->eventQueue))->toEqual(0);
@@ -97,9 +90,32 @@ it('dispatches openBuilderEditor event', function () {
     expect($event['params'][0]['previewView'])->toEqual('test');
     expect($event['params'][0]['modalTitle'])->toEqual('Preview');
     expect($event['params'][0]['editorTitle'])->toEqual('Editor');
-    expect($event['params'][0]['editorData'])->toEqual(['blocks' => ['key' => 'value'], 'mutated' => true]);
+    expect($event['params'][0]['editorData'])->toEqual(['blocks' => ['key' => 'value']]);
     expect($event['params'][0]['builderName'])->toEqual('blocks');
     expect($event['params'][0]['pageClass'])->not()->toBeEmpty();
+});
+
+it('mutates initial builder editor data', function () {
+    $page = invade(new class extends BuilderEditRecordDummy
+    {
+        protected function getBuilderPreviewView(string $builderName): ?string
+        {
+            return 'test';
+        }
+
+        protected function mutateInitialBuilderEditorData(string $builderName, array $data): array
+        {
+            $data['mutated'] = true;
+
+            return $data;
+        }
+    });
+
+    $page->openPreviewModalForBuidler('blocks');
+
+    $event = $page->eventQueue[0]->serialize();
+
+    expect($event['params'][0]['editorData'])->toEqual(['blocks' => ['key' => 'value'], 'mutated' => true]);
 });
 
 class BuilderCreateRecordDummy extends CreateRecord
