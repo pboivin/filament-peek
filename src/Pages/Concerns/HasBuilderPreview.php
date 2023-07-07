@@ -32,14 +32,14 @@ trait HasBuilderPreview
         return [];
     }
 
-    protected function mutateInitialBuilderEditorData(string $builderName, array $data): array
+    protected function mutateInitialBuilderEditorData(string $builderName, array $editorData): array
     {
-        return $data;
+        return $editorData;
     }
 
-    public static function mutateBuilderPreviewData(string $builderName, array $data): array
+    public static function mutateBuilderPreviewData(string $builderName, array $editorData, array $previewData): array
     {
-        return $data;
+        return $previewData;
     }
 
     /** @internal */
