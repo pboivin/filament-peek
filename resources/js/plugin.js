@@ -139,7 +139,9 @@ document.addEventListener('alpine:init', () => {
         },
 
         onRefreshPreviewModal($event) {
-            this._restoreIframeScrollPosition();
+            if (this.config.shouldRestoreIframePositionOnRefresh) {
+                this._restoreIframeScrollPosition();
+            }
 
             this.iframeUrl = $event.detail.iframeUrl;
             this.iframeContent = $event.detail.iframeContent;
