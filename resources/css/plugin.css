@@ -110,6 +110,10 @@ body.is-filament-peek-preview-modal-open {
     @apply w-full overflow-y-auto p-4;
     height: calc(100vh - var(--filament-peek-panel-header-height));
     max-height: calc(100vh - var(--filament-peek-panel-header-height));
+
+    .tippy-content [x-ref="panel"] {
+        @apply text-gray-900 dark:text-gray-300;
+    }
 }
 
 .filament-peek-builder-actions {

@@ -7,6 +7,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View as ViewContract;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Livewire\Component;
 
@@ -84,10 +85,15 @@ class BuilderEditor extends Component implements HasForms
     {
         $eventName = $args[0] ?? false;
 
-        return in_array($eventName, [
-            'builder::createItem',
-            'repeater::createItem',
-        ]);
+        if (in_array($eventName, ['builder::createItem', 'repeater::createItem'])) {
+            return true;
+        }
+
+        if (Str::of($eventName)->startsWith('tiptap::')) {
+            return true;
+        }
+
+        return false;
     }
 
     public function openBuilderEditor(array $event): void

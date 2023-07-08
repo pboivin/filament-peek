@@ -67,6 +67,8 @@
         >
             <div class="filament-peek-builder-content">
                 {{ $this->form }}
+
+                {{ $this->modal }}
             </div>
 
             <div class="filament-peek-builder-actions"></div>
