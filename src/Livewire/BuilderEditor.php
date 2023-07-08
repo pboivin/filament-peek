@@ -141,6 +141,11 @@ class BuilderEditor extends Component implements HasForms
         $this->editorData = [];
     }
 
+    public function submit(): void
+    {
+        $this->refreshBuilderPreview();
+    }
+
     protected function getFormSchema(): array
     {
         if (! $this->pageClass || ! $this->builderName) {
