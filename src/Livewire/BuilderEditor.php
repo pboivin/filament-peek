@@ -32,6 +32,7 @@ class BuilderEditor extends Component implements HasForms
 
     protected $listeners = [
         'refreshBuilderPreview',
+        'resetBuilderEditor',
         'closeBuilderEditor',
         'openBuilderEditor',
     ];
@@ -127,6 +128,17 @@ class BuilderEditor extends Component implements HasForms
         $this->emit('updateBuilderFieldWithEditorData', $this->builderName, $this->editorData);
 
         $this->dispatchBrowserEvent('close-preview-modal', ['delay' => true]);
+
+        $this->emitSelf('resetBuilderEditor');
+    }
+
+    public function resetBuilderEditor(): void
+    {
+        $this->previewUrl = null;
+        $this->previewView = null;
+        $this->builderName = null;
+        $this->pageClass = null;
+        $this->editorData = [];
     }
 
     protected function getFormSchema(): array
