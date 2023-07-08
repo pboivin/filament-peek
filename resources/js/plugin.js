@@ -154,7 +154,8 @@ document.addEventListener('alpine:init', () => {
                 this._iframeScrollPosition = iframe.contentWindow.scrollY;
 
                 setTimeout(() => {
-                    iframe.contentWindow.scrollTo(0, this._iframeScrollPosition || 0);
+                    const iframe = this.$refs.previewModalBody.querySelector('iframe');
+                    iframe?.contentWindow?.scrollTo(0, this._iframeScrollPosition || 0);
                 }, 50);
             }
         },
