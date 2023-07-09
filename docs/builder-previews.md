@@ -301,7 +301,7 @@ Additionally, you may choose between two auto-refresh strategies with the `autoR
 - `simple`: The default strategy, which makes all fields in the sidebar behave as `lazy()`, without any other configuration. The preview modal is refreshed automatically each time the focus is taken out of a field (e.g. pressing the `Tab` key or clicking away). Because the preview iframe renders a full Blade view, this is a good compromise between user experience and performance.
 - `reactive`: The alternative strategy, which lets you make fields `lazy()` or `reactive()` as needed. Any field not explicitly configured as lazy or reactive will not trigger a refresh.
 
-**Important**: Making all fields reactive will have a significant performance penalty and add unnecessary strain on your Web server.
+**Important**: Making all fields reactive will have a significant performance penalty and add unnecessary strain on your Web server. Consider using `debounce()` in addition to `reactive()` on your form fields.
 
 **Note**: Options marked as experimental may break in future releases.
 
