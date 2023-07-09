@@ -125,7 +125,7 @@ return [
 
             'autoRefreshDebounceMilliseconds' => 500,
 
-            'autoRefreshstrategy' => 'simple', // 'simple' or 'reactive'
+            'autoRefreshStrategy' => 'simple', // 'simple' or 'reactive'
 
             'restoreIframePositionOnRefresh' => false,
 
