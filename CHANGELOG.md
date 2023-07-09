@@ -2,6 +2,23 @@
 
 All notable changes to `filament-peek` will be documented in this file.
 
+
+## 1.0.0-beta1 - 2023-07-09
+* feat: Add 'reactive' auto refresh strategy
+* feat: Add option to restore iframe scroll position on refresh
+* enh: Update getListeners method
+* enh: Add check for missing custom event listener
+* enh: Accept single Component as builder schema
+* enh: Throw custom exception if page is not properly configured
+* enh: Refresh on submit
+* enh: Improve Tiptap support
+* fix: Builder editor improvements
+* fix: Pass raw editor data to mutateBuilderPreviewData
+* fix: Update builder field if empty
+* fix: Improve close modal handling
+* chore: Bump dependabot/fetch-metadata from 1.5.1 to 1.6.0
+
+
 ## 1.0.0-alpha2 - 2023-07-04
 
 * refactor!: Update various method names
