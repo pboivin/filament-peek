@@ -60,6 +60,10 @@ trait HasBuilderPreview
         if (array_key_exists($builderName, $editorData)) {
             $this->data[$builderName] = $editorData[$builderName];
         }
+
+        if (class_exists('\FilamentTiptapEditor\TiptapEditor')) {
+            $this->dispatchBrowserEvent('refresh-tiptap-editors');
+        }
     }
 
     /** @internal */
