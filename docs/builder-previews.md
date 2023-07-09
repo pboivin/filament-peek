@@ -296,7 +296,7 @@ Use the `extraAttributes()` method to add any other HTML attributes.
 
 By default, the Editor sidebar is not reactive: updating the fields won't automatically refresh the preview iframe. You may enable the `showAutoRefreshToggle` option in the [configuration](./configuration.md) to add a checkbox in the header of the sidebar. The checkbox lets users opt into the auto-refresh behavior.
 
-Additionally, you may choose between two auto-refresh strategies with the `autoRefreshStrategy`:
+Additionally, you may choose between two auto-refresh strategies with the `autoRefreshStrategy` option:
 
 - `simple`: The default strategy, which makes all fields in the sidebar behave as `lazy()`, without any other configuration. The preview modal is refreshed automatically each time the focus is taken out of a field (e.g. pressing the `Tab` key or clicking away). Because the preview iframe renders a full Blade view, this is a good compromise between user experience and performance.
 - `reactive`: The alternative strategy, which lets you make fields `lazy()` or `reactive()` as needed. Any field not explicitly configured as lazy or reactive will not trigger a refresh.
