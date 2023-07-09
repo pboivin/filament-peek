@@ -35,6 +35,7 @@ Builder Editor options:
 | `livewireComponentClass` | `string` | Livewire component class for the Builder Editor sidebar. |
 | `experimental.showAutoRefreshToggle` | `bool` | Experimental - Enable the auto-refresh option for the Builder Editor. |
 | `experimental.autoRefreshDebounceMilliseconds` | `int` | Experimental - Debounce time before triggering the auto-refresh when a field loses focus. |
+| `experimental.autoRefreshStrategy` | `string` | Experimental - Possible values: `simple` or `reactive`. (See [Automatically Updating the Builder Preview](./builder-previews.md#preview-auto-refresh)) |
 | `experimental.restoreIframePositionOnRefresh` | `bool` | Experimental - Restore iframe scroll position after refreshing the preview modal. |
 
 **Note**: Options marked as experimental may break in future releases.

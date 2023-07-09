@@ -290,9 +290,18 @@ Use one of the following methods to adjust the horizontal alignment:
 
 Use the `extraAttributes()` method to add any other HTML attributes.
 
+<a name="preview-auto-refresh"></a>
+
 ## Automatically Updating the Builder Preview (Experimental)
 
-By default, the Builder Editor is not reactive. Updating the fields won't automatically refresh the preview iframe. You can enable the `showAutoRefreshToggle` in the [configuration](./configuration.md). This will add a checkbox in the header of the Editor panel in the preview modal. Activating this checkbox will make all fields in the Editor behave as `lazy()`. The preview modal will be refreshed automatically each time the focus is taken out of a field (e.g. pressing the `Tab` key or clicking away).
+By default, the Editor sidebar is not reactive: updating the fields won't automatically refresh the preview iframe. You may enable the `showAutoRefreshToggle` option in the [configuration](./configuration.md) to add a checkbox in the header of the sidebar. The checkbox lets users opt into the auto-refresh behavior.
+
+Additionally, you may choose between two auto-refresh strategies with the `autoRefreshStrategy`:
+
+- `simple`: The default strategy, which makes all fields in the sidebar behave as `lazy()`, without any other configuration. The preview modal is refreshed automatically each time the focus is taken out of a field (e.g. pressing the `Tab` key or clicking away). Because the preview iframe renders a full Blade view, this is a good compromise between user experience and performance.
+- `reactive`: The alternative strategy, which lets you make fields `lazy()` or `reactive()` as needed. Any field not explicitly configured as lazy or reactive will not trigger a refresh.
+
+**Important**: Making all fields reactive will have a significant performance penalty and add unnecessary strain on your Web server.
 
 **Note**: Options marked as experimental may break in future releases.
 
