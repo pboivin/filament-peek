@@ -103,26 +103,32 @@ return [
 
     'builderEditor' => [
 
-        // Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button
+        // Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button.
         'canDiscardChanges' => false,
 
-        // Allow users to resize the sidebar by clicking and dragging on the right edge
+        // Allow users to resize the sidebar by clicking and dragging on the right edge.
         'canResizeSidebar' => true,
 
-        // Minimum width for the sidebar (if resizable)
+        // Minimum width for the sidebar (if resizable). Must be a valid CSS `width` value.
         'sidebarMinWidth' => '30rem',
 
-        // Initial width for the sidebar
+        // Initial width for the sidebar. Must be a valid CSS `width` value.
         'sidebarInitialWidth' => '30rem',
 
-        // Livewire component class for the Builder Editor sidebar
+        // Livewire component class for the Builder Editor sidebar.
         'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
 
-        // Experimental options (may break in a future release)
+        // Experimental options (may break in a future release).
         'experimental' => [
+
             'showAutoRefreshToggle' => false,
+
             'autoRefreshDebounceMilliseconds' => 500,
+
+            'autoRefreshstrategy' => 'simple', // 'simple' or 'reactive'
+
             'restoreIframePositionOnRefresh' => false,
+
         ],
 
     ],

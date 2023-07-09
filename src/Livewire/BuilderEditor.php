@@ -30,6 +30,8 @@ class BuilderEditor extends Component implements HasForms
 
     public bool $autoRefresh = false;
 
+    public string $autoRefreshStrategy = 'simple';
+
     protected $listeners = [
         'refreshBuilderPreview',
         'resetBuilderEditor',
@@ -39,6 +41,8 @@ class BuilderEditor extends Component implements HasForms
 
     public function mount(): void
     {
+        $this->autoRefreshStrategy = config('filament-peek.builderEditor.experimental.autoRefreshStrategy', 'simple');
+
         if ($this->canAutoRefresh()) {
             $this->autoRefresh = (bool) session('peek_builder_editor_auto_refresh');
         }
@@ -166,6 +170,10 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getPreviewModalHtmlContent(): ?string
     {
+        if (! $this->pageClass || ! $this->builderName) {
+            return '';
+        }
+
         $formState = $this->form->getState();
 
         $previewData = $this->pageClass::mutateBuilderPreviewData(
