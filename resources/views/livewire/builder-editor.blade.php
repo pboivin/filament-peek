@@ -66,7 +66,13 @@
             }"
         >
             <div class="filament-peek-builder-content">
-                {{ $this->form }}
+                <form wire:submit.prevent="submit">
+                    {{ $this->form }}
+
+                    <button type="submit" style="display: none">
+                        {{ __('filament-peek::ui.refresh-action-label') }}
+                    </button>
+                </form>
 
                 {{ $this->modal }}
             </div>
