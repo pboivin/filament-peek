@@ -2,6 +2,7 @@
     class="filament-peek-panel filament-peek-editor"
     x-bind:style="editorStyle"
     x-ref="builderEditor"
+    @if ($this->canAutoRefresh()) data-auto-refresh-strategy="{{ $this->autoRefreshStrategy }}" @endif
     @if ($this->shouldAutoRefresh()) data-should-auto-refresh="1" @endif
 >
     <div class="filament-peek-panel-header">

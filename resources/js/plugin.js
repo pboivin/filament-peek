@@ -181,6 +181,7 @@ document.addEventListener('alpine:init', () => {
 
         onEditorFocusOut($event) {
             if (!this.editorShouldAutoRefresh()) return;
+            if (this.getAutoRefreshStrategy() === 'reactive') return;
 
             for (let handler of editorFocusOutHandlers) {
                 if (typeof handler === 'function') {
@@ -194,6 +195,13 @@ document.addEventListener('alpine:init', () => {
             if (!this.$refs.builderEditor) return;
 
             return !!this.$refs.builderEditor.dataset.shouldAutoRefresh;
+        },
+
+        getAutoRefreshStrategy() {
+            if (!this.withEditor) return;
+            if (!this.$refs.builderEditor) return;
+
+            return this.$refs.builderEditor.dataset.autoRefreshStrategy || 'simple';
         },
 
         handleEscapeKey() {
@@ -242,9 +250,6 @@ document.addEventListener('alpine:init', () => {
 });
 
 document.addEventListener('peek:initializing', () => {
-    // @todo: Select/Radio/Checkbox should be on 'change'
-    // @todo: Toggle should be on 'click'
-
     Peek.onEditorFocusOut(($event, $modal) => {
         // built-in field tags
         const autorefreshTags = [
