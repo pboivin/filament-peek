@@ -23,8 +23,8 @@ composer require pboivin/filament-peek:"1.0.0-beta1"
 
 | Peek | Filament | PHP | Status |
 |------|----------|-----|--------|
-| [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | 2.x | >= 8.0 | Current |
-| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | 2.x | >= 8.0 | Beta |
+| [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | ^2.0 | ^8.0 | Current |
+| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | ^2.0 | ^8.0 | Beta |
 
 #### Demo Project
 
