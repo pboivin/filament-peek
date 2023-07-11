@@ -19,7 +19,12 @@ You can install the package via composer:
 composer require pboivin/filament-peek:"^0.3"
 ```
 
-The requirements are **PHP 8.0** and **Filament 2.0**
+#### Compatibility
+
+| Peek | Filament | PHP | Status |
+|------|----------|-----|--------|
+| [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | ^2.0 | ^8.0 | Current |
+| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | ^2.0 | ^8.0 | Beta |
 
 #### Demo Project
 
