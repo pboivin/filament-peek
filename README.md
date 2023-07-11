@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/pboivin/filament-peek"><img src="https://img.shields.io/packagist/l/pboivin/filament-peek" alt="License"></a>
 </p>
 
-A Filament plugin to add a full-screen preview modal to your Edit pages. The modal can be used before saving to preview a modified record. It can also be used for live previews with the Builder field or any other field, by arranging the form and the preview area side by side.
+A Filament plugin to add a full-screen preview modal to your Edit pages. The modal can be used before saving to preview a modified record. It supports live previews with the Builder field or any other field, by arranging the form and the preview area side by side.
 
 ![Screenshots of the edit page and preview modal](./art/01-demo.jpg)
 
@@ -19,7 +19,12 @@ You can install the package via composer:
 composer require pboivin/filament-peek:"1.0.0-beta1"
 ```
 
-The requirements are **PHP 8.0** and **Filament 2.0**
+#### Compatibility
+
+| Peek | Filament | PHP | Status |
+|------|----------|-----|--------|
+| [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | 2.x | >= 8.0 | Current |
+| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | 2.x | >= 8.0 | Beta |
 
 #### Demo Project
 
