@@ -2,46 +2,40 @@
 
 namespace Pboivin\FilamentPeek\Tests\Unit;
 
-use Filament\Resources\Pages\CreateRecord;
-use Filament\Resources\Pages\EditRecord;
-use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
-use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;
-use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 
 it('has no initial builder preview url', function () {
-    $page = invade(new BuilderEditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getBuilderPreviewUrl('blocks'))->toBeNull();
 });
 
 it('has no initial builder preview view', function () {
-    $page = invade(new BuilderEditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getBuilderPreviewView('blocks'))->toBeNull();
 });
 
 it('has no initial builder editor schema', function () {
-    $page = invade(new BuilderEditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getBuilderEditorSchema('blocks'))->toBeEmpty();
 });
 
 it('has initial builder editor title', function () {
-    $page = invade(new BuilderEditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getBuilderEditorTitle())->not()->toBeEmpty();
 });
 
 it('has required event listener', function () {
-    $page = invade(new BuilderEditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getListeners())->toContain('updateBuilderFieldWithEditorData');
 });
 
 it('prepares builder editor data on create pages', function () {
-    $page = invade(new BuilderCreateRecordDummy());
+    $page = invade(new Fixtures\CreateRecordDummy());
 
     $data = $page->prepareBuilderEditorData('blocks');
 
@@ -49,7 +43,7 @@ it('prepares builder editor data on create pages', function () {
 });
 
 it('prepares builder editor data on edit pages', function () {
-    $page = invade(new BuilderEditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     $data = $page->prepareBuilderEditorData('blocks');
 
@@ -57,7 +51,7 @@ it('prepares builder editor data on edit pages', function () {
 });
 
 it('prepares builder preview data on create pages', function () {
-    $page = invade(new BuilderCreateRecordDummy());
+    $page = invade(new Fixtures\CreateRecordDummy());
 
     $data = $page->prepareBuilderPreviewData([]);
 
@@ -65,7 +59,7 @@ it('prepares builder preview data on create pages', function () {
 });
 
 it('prepares builder preview data on edit pages', function () {
-    $page = invade(new BuilderEditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     $data = $page->prepareBuilderPreviewData([]);
 
@@ -73,7 +67,7 @@ it('prepares builder preview data on edit pages', function () {
 });
 
 it('dispatches openBuilderEditor event', function () {
-    $page = invade(new class extends BuilderEditRecordDummy
+    $page = invade(new class extends Fixtures\EditRecordDummy
     {
         protected function getBuilderPreviewView(string $builderName): ?string
         {
@@ -99,7 +93,7 @@ it('dispatches openBuilderEditor event', function () {
 });
 
 it('mutates initial builder editor data', function () {
-    $page = invade(new class extends BuilderEditRecordDummy
+    $page = invade(new class extends Fixtures\EditRecordDummy
     {
         protected function getBuilderPreviewView(string $builderName): ?string
         {
@@ -126,7 +120,7 @@ it('throws an exception for missing event listener', function () {
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage("Missing 'updateBuilderFieldWithEditorData' Livewire event listener");
 
-    $page = invade(new class extends BuilderEditRecordDummy
+    $page = invade(new class extends Fixtures\EditRecordDummy
     {
         protected function getListeners(): array
         {
@@ -136,42 +130,3 @@ it('throws an exception for missing event listener', function () {
 
     $page->openPreviewModalForBuidler('blocks');
 });
-
-class BuilderCreateRecordDummy extends CreateRecord
-{
-    use HasPreviewModal;
-    use HasBuilderPreview;
-
-    public $data = ['blocks' => ['key' => 'value']];
-
-    protected static string $resource = BuilderResourceDummy::class;
-}
-
-class BuilderEditRecordDummy extends EditRecord
-{
-    use HasPreviewModal;
-    use HasBuilderPreview;
-
-    public $data = ['blocks' => ['key' => 'value']];
-
-    protected static string $resource = BuilderResourceDummy::class;
-
-    public function getRecord(): Model
-    {
-        return new BuilderModelDummy();
-    }
-}
-
-class BuilderResourceDummy extends Resource
-{
-    protected static ?string $model = BuilderModelDummy::class;
-}
-
-class BuilderModelDummy extends Model
-{
-}
-
-// @todo: Builder editor tests
-//  - mutateBuilderPreviewData
-//  - prepareBuilderPreviewData
-//  - renderBuilderPreview
