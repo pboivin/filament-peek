@@ -1,5 +1,7 @@
 <?php
 
+namespace Pboivin\FilamentPeek\Tests\Unit;
+
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\View;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;

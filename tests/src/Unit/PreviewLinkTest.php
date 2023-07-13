@@ -1,5 +1,7 @@
 <?php
 
+namespace Pboivin\FilamentPeek\Tests\Unit;
+
 use Illuminate\Support\Facades\View;
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
 use Pboivin\FilamentPeek\Support\View as SupportView;

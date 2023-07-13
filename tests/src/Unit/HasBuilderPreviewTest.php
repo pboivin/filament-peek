@@ -1,9 +1,12 @@
 <?php
 
+namespace Pboivin\FilamentPeek\Tests\Unit;
+
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Model;
+use InvalidArgumentException;
 use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 

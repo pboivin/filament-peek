@@ -1,10 +1,13 @@
 <?php
 
+namespace Pboivin\FilamentPeek\Tests\Unit;
+
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Model;
+use InvalidArgumentException;
 use Livewire\Livewire;
 use Pboivin\FilamentPeek\Livewire\BuilderEditor;
 use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;

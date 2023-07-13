@@ -1,5 +1,7 @@
 <?php
 
+namespace Pboivin\FilamentPeek\Tests\Unit;
+
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Pages\EditRecord;
 use Filament\Resources\Pages\ListRecords;
@@ -8,6 +10,8 @@ use Filament\Resources\Resource;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
+use InvalidArgumentException;
+use Mockery;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 use Tests\TestCase;
 
