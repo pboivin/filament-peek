@@ -21,10 +21,10 @@ composer require pboivin/filament-peek:"1.0.0-beta1"
 
 #### Compatibility
 
-| Peek | Filament | PHP | Status |
+| Peek | Status | Filament | PHP |
 |------|----------|-----|--------|
-| [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | ^2.0 | ^8.0 | Current |
-| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | ^2.0 | ^8.0 | Beta |
+| [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | Current | ^2.0 | ^8.0 |
+| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Beta | ^2.0 | ^8.0 |
 
 #### Demo Project
 
