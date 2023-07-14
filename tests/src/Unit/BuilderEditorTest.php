@@ -7,11 +7,7 @@ use Filament\Forms\Components\TextInput;
 use InvalidArgumentException;
 use Livewire\Livewire;
 use Pboivin\FilamentPeek\Livewire\BuilderEditor;
-
-// @todo: Builder editor tests
-//  - mutateBuilderPreviewData
-//  - prepareBuilderPreviewData
-//  - renderBuilderPreview
+use Pboivin\FilamentPeek\Tests\TestCase;
 
 it('can render', function () {
     Livewire::test(BuilderEditor::class)
@@ -80,4 +76,42 @@ it('renders the preview url', function () {
         ->set('previewUrl', 'https://example.com')
         ->call('refreshBuilderPreview')
         ->assertDispatchedBrowserEvent('refresh-preview-modal');
+});
+
+it('mutates the builder preview data', function () {
+    $page = new class extends Fixtures\EditRecordDummy
+    {
+        public static function getBuilderEditorSchema(string $builderName): Component|array
+        {
+            return [TextInput::make('test')];
+        }
+
+        public static function mutateBuilderPreviewData(string $builderName, array $editorData, array $previewData): array
+        {
+            $previewData['KEY'] = 'VALUE';
+
+            return $previewData;
+        }
+    };
+
+    $editor = new class extends BuilderEditor
+    {
+        public $html = '';
+
+        protected function getPreviewModalHtmlContent(): ?string
+        {
+            return $this->html = parent::getPreviewModalHtmlContent();
+        }
+    };
+
+    $livewire = Livewire::test($editor::class)
+        ->set('pageClass', $page::class)
+        ->set('builderName', 'test')
+        ->set('previewView', 'preview-data')
+        ->call('refreshBuilderPreview')
+        ->assertDispatchedBrowserEvent('refresh-preview-modal');
+
+    /** @var TestCase $this */
+    $this->assertStringContainsString('isPeekPreviewModal:1', $livewire->get('html'));
+    $this->assertStringContainsString('KEY:VALUE', $livewire->get('html'));
 });
