@@ -214,6 +214,8 @@ document.addEventListener('alpine:init', () => {
 
         discardEditorChanges() {
             this.$dispatch('close-preview-modal');
+
+            Livewire.emit('resetBuilderEditor');
         },
 
         closePreviewModal() {
