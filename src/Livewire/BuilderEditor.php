@@ -142,7 +142,6 @@ class BuilderEditor extends Component implements HasForms
         $this->previewView = null;
         $this->builderName = null;
         $this->pageClass = null;
-        $this->editorData = [];
     }
 
     public function submit(): void
