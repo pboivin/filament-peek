@@ -3,6 +3,16 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.0.0-beta2 - 2023-07-15
+
+* refactor: Always show active preset
+* refactor: Updade config options
+* fix: Prevent crash in resetBuilderEditor
+* fix: Validate form before preview
+* fix: Validate builder editor before closing preview
+* test: Add BuilderEditorTest
+
+
 ## 1.0.0-beta1 - 2023-07-09
 * feat: Add 'reactive' auto refresh strategy
 * feat: Add option to restore iframe scroll position on refresh
