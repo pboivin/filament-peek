@@ -129,6 +129,9 @@ class BuilderEditor extends Component implements HasForms
 
     public function closeBuilderEditor(): void
     {
+        // Trigger validation
+        $this->form?->getState();
+
         $this->emit('updateBuilderFieldWithEditorData', $this->builderName, $this->editorData);
 
         $this->dispatchBrowserEvent('close-preview-modal', ['delay' => true]);
