@@ -294,7 +294,7 @@ Use the `extraAttributes()` method to add any other HTML attributes.
 
 ## Automatically Updating the Builder Preview (Experimental)
 
-By default, the Editor sidebar is not reactive: updating the fields won't automatically refresh the preview iframe. You may enable the `showAutoRefreshToggle` option in the [configuration](./configuration.md) to add a checkbox in the header of the sidebar. The checkbox lets users opt into the auto-refresh behavior.
+By default, the Editor sidebar is not reactive: updating the fields won't automatically refresh the preview iframe. You may enable the `canEnableAutoRefresh` option in the [configuration](./configuration.md) to add a checkbox in the header of the sidebar. The checkbox lets users opt into the auto-refresh behavior.
 
 Additionally, you may choose between two auto-refresh strategies with the `autoRefreshStrategy` option:
 
