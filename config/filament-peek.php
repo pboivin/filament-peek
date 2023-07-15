@@ -75,7 +75,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Set this to `false` to reserve the Escape key for the purposes of your
-    | page preview.
+    | page preview. This option does not apply to Builder previews.
     |
     */
 
