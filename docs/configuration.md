@@ -20,7 +20,7 @@ Here are the main options you can configure:
 | `initialDevicePreset` | `string` | Default device preset to be activated when the preview modal is open. |
 | `allowIframeOverflow` | `bool` | Allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
 | `allowIframePointerEvents` | `bool` | Allow all pointer events within the iframe. By default, only scrolling is allowed. (See [Pointer Events](./page-previews.md#preview-pointer-events)) |
-| `closeModalWithEscapeKey` | `bool` | Close the preview modal by pressing the Escape key. |
+| `closeModalWithEscapeKey` | `bool` | Close the preview modal by pressing the Escape key. Does not apply to Builder previews. |
 | `builderEditor` | `array` | Options related to the Editor sidebar in Builder Previews. |
 
 Builder Editor options:
@@ -29,15 +29,13 @@ Builder Editor options:
 |---|---|---|
 | `canDiscardChanges` | `bool` | Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button. |
 | `canResizeSidebar` | `bool` | Allow users to resize the sidebar by clicking and dragging on the right edge. |
-| `sidebarMinWidth` | `string` | Minimum width for the sidebar (if resizable). Must be a valid CSS `width` value. |
+| `sidebarMinWidth` | `string` | Minimum width for the sidebar, if resizable. Must be a valid CSS `width` value. |
 | `sidebarInitialWidth` | `string` | Initial width for the sidebar. Must be a valid CSS `width` value. |
+| `preservePreviewScrollPosition` | `bool` | Restore the preview iframe scroll position when the preview is refreshed. |
+| `canEnableAutoRefresh` | `bool` | Enable the auto-refresh option for the Builder Editor. |
+| `autoRefreshDebounceMilliseconds` | `int` | Debounce time before refreshing the preview. |
+| `autoRefreshStrategy` | `string` | Possible values: `simple` or `reactive`. (See [Automatically Updating the Builder Preview](./builder-previews.md#preview-auto-refresh)) |
 | `livewireComponentClass` | `string` | Livewire component class for the Builder Editor sidebar. |
-| `experimental.showAutoRefreshToggle` | `bool` | Experimental - Enable the auto-refresh option for the Builder Editor. |
-| `experimental.autoRefreshDebounceMilliseconds` | `int` | Experimental - Debounce time before triggering the auto-refresh when a field loses focus. |
-| `experimental.autoRefreshStrategy` | `string` | Experimental - Possible values: `simple` or `reactive`. (See [Automatically Updating the Builder Preview](./builder-previews.md#preview-auto-refresh)) |
-| `experimental.restoreIframePositionOnRefresh` | `bool` | Experimental - Restore iframe scroll position after refreshing the preview modal. |
-
-**Note**: Options marked as experimental may break in future releases.
 
 ---
 

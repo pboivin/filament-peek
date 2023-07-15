@@ -41,7 +41,7 @@ class BuilderEditor extends Component implements HasForms
 
     public function mount(): void
     {
-        $this->autoRefreshStrategy = config('filament-peek.builderEditor.experimental.autoRefreshStrategy', 'simple');
+        $this->autoRefreshStrategy = config('filament-peek.builderEditor.autoRefreshStrategy', 'simple');
 
         if ($this->canAutoRefresh()) {
             $this->autoRefresh = (bool) session('peek_builder_editor_auto_refresh');
@@ -55,7 +55,7 @@ class BuilderEditor extends Component implements HasForms
 
     public function canAutoRefresh(): bool
     {
-        return (bool) config('filament-peek.builderEditor.experimental.showAutoRefreshToggle', false);
+        return (bool) config('filament-peek.builderEditor.canEnableAutoRefresh', false);
     }
 
     public function shouldAutoRefresh(): bool

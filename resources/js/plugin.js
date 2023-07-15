@@ -152,7 +152,7 @@ document.addEventListener('alpine:init', () => {
                 setTimeout(() => {
                     const iframe = this.$refs.previewModalBody.querySelector('iframe');
                     iframe?.contentWindow?.scrollTo(0, this._iframeScrollPosition || 0);
-                }, 50);
+                }, 60);
             }
         },
 
