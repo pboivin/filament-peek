@@ -93,6 +93,9 @@ trait HasBuilderPreview
     /** @internal */
     public function openPreviewModalForBuidler(string $builderName): void
     {
+        // Trigger validation
+        $this->form?->getState();
+
         $this->checkCustomListener();
 
         $editorData = $this->mutateInitialBuilderEditorData(
