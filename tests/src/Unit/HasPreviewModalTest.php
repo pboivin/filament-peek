@@ -1,69 +1,66 @@
 <?php
 
-use Filament\Resources\Pages\CreateRecord;
-use Filament\Resources\Pages\EditRecord;
-use Filament\Resources\Pages\ListRecords;
-use Filament\Resources\Pages\ViewRecord;
-use Filament\Resources\Resource;
+namespace Pboivin\FilamentPeek\Tests\Unit;
+
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Model;
-use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
+use InvalidArgumentException;
+use Mockery;
 use Tests\TestCase;
 
 it('has no initial preview modal url', function () {
-    $page = invade(new EditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getPreviewModalUrl())->toBeNull();
 });
 
 it('has no initial preview modal view', function () {
-    $page = invade(new EditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getPreviewModalView())->toBeNull();
 });
 
 it('has initial preview modal title', function () {
-    $page = invade(new EditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getPreviewModalTitle())->not()->toBeEmpty();
 });
 
 it('has initial preview modal data record key', function () {
-    $page = invade(new EditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     expect($page->getPreviewModalDataRecordKey())->toEqual('record');
 });
 
 it('prepares preview modal data on create pages', function () {
-    $page = invade(new CreateRecordDummy());
+    $page = invade(new Fixtures\CreateRecordDummy());
 
     $data = $page->preparePreviewModalData();
 
-    expect($data['record'] instanceof ModelDummy)->toBeTrue();
+    expect($data['record'] instanceof Fixtures\ModelDummy)->toBeTrue();
     expect($data['isPeekPreviewModal'])->toBeTrue();
 });
 
 it('prepares preview modal data on view pages', function () {
-    $page = invade(new ViewRecordDummy());
+    $page = invade(new Fixtures\ViewRecordDummy());
 
     $data = $page->preparePreviewModalData();
 
-    expect($data['record'] instanceof ModelDummy)->toBeTrue();
+    expect($data['record'] instanceof Fixtures\ModelDummy)->toBeTrue();
     expect($data['isPeekPreviewModal'])->toBeTrue();
 });
 
 it('prepares preview modal data on edit pages', function () {
-    $page = invade(new EditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     $data = $page->preparePreviewModalData();
 
-    expect($data['record'] instanceof ModelDummy)->toBeTrue();
+    expect($data['record'] instanceof Fixtures\ModelDummy)->toBeTrue();
     expect($data['isPeekPreviewModal'])->toBeTrue();
 });
 
 it('prepares preview modal data on list pages', function () {
-    $page = invade(new ListRecordsDummy());
+    $page = invade(new Fixtures\ListRecordsDummy());
 
     $data = $page->preparePreviewModalData();
 
@@ -76,13 +73,13 @@ it('requires url or blade view', function () {
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('Missing preview modal URL or Blade view');
 
-    $page = invade(new EditRecordDummy());
+    $page = invade(new Fixtures\EditRecordDummy());
 
     $page->openPreviewModal();
 });
 
 it('mutates preview modal data before opening the modal', function () {
-    $page = invade(new class extends EditRecordDummy
+    $page = invade(new class extends Fixtures\EditRecordDummy
     {
         protected function getPreviewModalUrl(): ?string
         {
@@ -101,7 +98,7 @@ it('mutates preview modal data before opening the modal', function () {
 });
 
 it('dispatches open preview modal browser event', function () {
-    $page = invade(new class extends EditRecordDummy
+    $page = invade(new class extends Fixtures\EditRecordDummy
     {
         protected function getPreviewModalUrl(): ?string
         {
@@ -122,7 +119,7 @@ it('dispatches open preview modal browser event', function () {
 });
 
 it('dispatches close preview modal browser event', function () {
-    $page = invade(new class extends EditRecordDummy
+    $page = invade(new class extends Fixtures\EditRecordDummy
     {
         protected function getPreviewModalUrl(): ?string
         {
@@ -148,7 +145,7 @@ it('renders the preview modal view', function () {
         $mock->shouldReceive('make')->andReturn($view);
     });
 
-    $page = invade(new class extends EditRecordDummy
+    $page = invade(new class extends Fixtures\EditRecordDummy
     {
         protected function getPreviewModalView(): ?string
         {
@@ -167,50 +164,3 @@ it('renders the preview modal view', function () {
     expect($page->dispatchQueue[0]['data']['iframeUrl'])->toBeNull();
     expect($page->dispatchQueue[0]['data']['iframeContent'])->toEqual('TEST');
 });
-
-class CreateRecordDummy extends CreateRecord
-{
-    use HasPreviewModal;
-
-    protected static string $resource = ResourceDummy::class;
-}
-
-class ViewRecordDummy extends ViewRecord
-{
-    use HasPreviewModal;
-
-    protected static string $resource = ResourceDummy::class;
-
-    public function getRecord(): Model
-    {
-        return new ModelDummy();
-    }
-}
-
-class EditRecordDummy extends EditRecord
-{
-    use HasPreviewModal;
-
-    protected static string $resource = ResourceDummy::class;
-
-    public function getRecord(): Model
-    {
-        return new ModelDummy();
-    }
-}
-
-class ListRecordsDummy extends ListRecords
-{
-    use HasPreviewModal;
-
-    protected static string $resource = ResourceDummy::class;
-}
-
-class ResourceDummy extends Resource
-{
-    protected static ?string $model = ModelDummy::class;
-}
-
-class ModelDummy extends Model
-{
-}
