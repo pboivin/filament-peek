@@ -37,8 +37,6 @@ Builder Editor options:
 | `autoRefreshStrategy` | `string` | Possible values: `simple` or `reactive`. (See [Automatically Updating the Builder Preview](./builder-previews.md#preview-auto-refresh)) |
 | `livewireComponentClass` | `string` | Livewire component class for the Builder Editor sidebar. |
 
-**Note**: Options marked as experimental may break in future releases.
-
 ---
 
 **Documentation**

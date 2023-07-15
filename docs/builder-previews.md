@@ -6,7 +6,7 @@
 
 Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the Builder field, and an iframe on the right to render the preview. The iframe can either render a full Blade view or a custom URL.
 
-As you edit the Builder blocks, the preview can be refreshed manually or automatically (auto-refresh is considered experimental for the moment). When the modal is closed, the Builder field in the main form is synchronized with the changes from the preview editor.
+As you edit the Builder blocks, the preview can be refreshed manually or automatically. When the modal is closed, the Builder field in the main form is synchronized with the changes from the preview editor.
 
 Closing the preview modal does not update the record in the database, only the form state is updated.
 
@@ -292,7 +292,7 @@ Use the `extraAttributes()` method to add any other HTML attributes.
 
 <a name="preview-auto-refresh"></a>
 
-## Automatically Updating the Builder Preview (Experimental)
+## Automatically Updating the Builder Preview
 
 By default, the Editor sidebar is not reactive: updating the fields won't automatically refresh the preview iframe. You may enable the `canEnableAutoRefresh` option in the [configuration](./configuration.md) to add a checkbox in the header of the sidebar. The checkbox lets users opt into the auto-refresh behavior.
 
@@ -302,8 +302,6 @@ Additionally, you may choose between two auto-refresh strategies with the `autoR
 - `reactive`: The alternative strategy, which lets you make fields `lazy()` or `reactive()` as needed. Any field not explicitly configured as lazy or reactive will not trigger a refresh.
 
 **Important**: Making all fields reactive will have a significant performance penalty and add unnecessary strain on your Web server. Consider using `debounce()` in addition to `reactive()` on your form fields.
-
-**Note**: Options marked as experimental may break in future releases.
 
 ---
 
