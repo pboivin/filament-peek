@@ -87,10 +87,6 @@ document.addEventListener('alpine:init', () => {
         },
 
         isActiveDevicePreset(name) {
-            if (!this.config.shouldShowActiveDevicePreset) {
-                return false;
-            }
-
             return this.activeDevicePreset === name;
         },
 
