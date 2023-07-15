@@ -98,27 +98,26 @@ return [
         // Allow users to resize the sidebar by clicking and dragging on the right edge.
         'canResizeSidebar' => true,
 
-        // Minimum width for the sidebar (if resizable). Must be a valid CSS `width` value.
+        // Minimum width for the sidebar, if resizable. Must be a valid CSS value.
         'sidebarMinWidth' => '30rem',
 
-        // Initial width for the sidebar. Must be a valid CSS `width` value.
+        // Initial width for the sidebar. Must be a valid CSS value.
         'sidebarInitialWidth' => '30rem',
 
-        // Livewire component class for the Builder Editor sidebar.
+        // Restore the preview scroll position when the preview is refreshed.
+        'preservePreviewScrollPosition' => true,
+
+        // Enable the auto-refresh option for the Builder preview.
+        'canEnableAutoRefresh' => true,
+
+        // Debounce time before refreshing the preview.
+        'autoRefreshDebounceMilliseconds' => 500,
+
+        // Possible values: 'simple' or 'reactive'.
+        'autoRefreshStrategy' => 'simple',
+
+        // Livewire component for the sidebar.
         'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
-
-        // Experimental options (may break in a future release).
-        'experimental' => [
-
-            'showAutoRefreshToggle' => false,
-
-            'autoRefreshDebounceMilliseconds' => 500,
-
-            'autoRefreshStrategy' => 'simple', // 'simple' or 'reactive'
-
-            'restoreIframePositionOnRefresh' => false,
-
-        ],
 
     ],
 
