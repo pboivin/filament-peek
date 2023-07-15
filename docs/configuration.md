@@ -18,7 +18,6 @@ Here are the main options you can configure:
 |---|---|---|
 | `devicePresets` | `array\|false` | Quickly resize the preview iframe to specific dimensions. |
 | `initialDevicePreset` | `string` | Default device preset to be activated when the preview modal is open. |
-| `showActiveDevicePreset` | `bool` | Highlight the active device preset with a small circle under the icon. |
 | `allowIframeOverflow` | `bool` | Allow the iframe dimensions to go beyond the capacity of the available preview modal area. |
 | `allowIframePointerEvents` | `bool` | Allow all pointer events within the iframe. By default, only scrolling is allowed. (See [Pointer Events](./page-previews.md#preview-pointer-events)) |
 | `closeModalWithEscapeKey` | `bool` | Close the preview modal by pressing the Escape key. |

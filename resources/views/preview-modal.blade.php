@@ -7,7 +7,6 @@
             devicePresets: @js(config('filament-peek.devicePresets', false)),
             initialDevicePreset: @js(config('filament-peek.initialDevicePreset', 'fullscreen')),
             allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
-            shouldShowActiveDevicePreset: @js(config('filament-peek.showActiveDevicePreset', true)),
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
             editorAutoRefreshDebounceTime: @js(config('filament-peek.builderEditor.experimental.autoRefreshDebounceMilliseconds', 500)),
             shouldRestoreIframePositionOnRefresh: @js(config('filament-peek.builderEditor.experimental.restoreIframePositionOnRefresh', false)),
