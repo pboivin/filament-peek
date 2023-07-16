@@ -1,6 +1,6 @@
 # Builder Previews
 
-![Screenshot of the Builder preview modal and editor](../art/03-builder-preview.jpg)
+![Screenshot of the Builder preview modal and editor](../art/02-builder-preview.jpg)
 
 ## Overview
 
@@ -183,6 +183,10 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
 ```
 
 ## Using Custom Fields
+
+![Screenshot of the Builder preview with the Tiptap editor](../art/03-tiptap.jpg)
+
+> [Filament Tiptap Editor](https://github.com/awcodes/filament-tiptap-editor) by Adam Weston
 
 You may have noticed that `getBuilderEditorSchema()` supports any type of form Component. Behind the scenes, the Editor sidebar of the preview modal is a full Filament form. Therefore, you are not restricted to using a Builder field, you may use any other field type:
 

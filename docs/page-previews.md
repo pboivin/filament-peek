@@ -1,6 +1,6 @@
 # Page Previews
 
-![Screenshot of the full page preview modal](../art/02-page-preview.jpg)
+![Screenshots of the edit page and preview modal](../art/01-page-preview.jpg)
 
 ## Overview
 
