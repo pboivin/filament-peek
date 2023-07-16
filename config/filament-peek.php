@@ -93,7 +93,7 @@ return [
     'builderEditor' => [
 
         // Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button.
-        'canDiscardChanges' => false,
+        'canDiscardChanges' => true,
 
         // Allow users to resize the sidebar by clicking and dragging on the right edge.
         'canResizeSidebar' => true,
