@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.0.0 - 2023-07-16
+
+* enh: Default canDiscardChanges to true
+* fix: Fill builder editor data
+
+
 ## 1.0.0-beta2 - 2023-07-15
 
 * refactor: Always show active preset
