@@ -69,9 +69,11 @@ trait HasBuilderPreview
     /** @internal */
     protected function prepareBuilderEditorData(string $builderName): array
     {
-        return [
-            $builderName => $this->data[$builderName],
-        ];
+        if (array_key_exists($builderName, $this->data)) {
+            return $this->form->getStateOnly([$builderName]);
+        }
+
+        return [];
     }
 
     /** @internal */
@@ -93,9 +95,6 @@ trait HasBuilderPreview
     /** @internal */
     public function openPreviewModalForBuidler(string $builderName): void
     {
-        // Trigger validation
-        $this->form?->getState();
-
         $this->checkCustomListener();
 
         $editorData = $this->mutateInitialBuilderEditorData(

@@ -107,7 +107,8 @@ class BuilderEditor extends Component implements HasForms
         $this->previewView = $event['previewView'];
         $this->pageClass = $event['pageClass'];
         $this->builderName = $event['builderName'];
-        $this->editorData = $event['editorData'];
+
+        $this->form->fill($event['editorData']);
 
         $this->dispatchBrowserEvent('open-preview-modal', [
             'modalTitle' => $event['modalTitle'] ?? '',

@@ -13,5 +13,5 @@ class CreateRecordDummy extends CreateRecord
 
     protected static string $resource = ResourceDummy::class;
 
-    public $data = ['blocks' => ['key' => 'value']];
+    public $data = [];
 }
