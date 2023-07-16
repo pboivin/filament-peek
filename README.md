@@ -56,7 +56,6 @@ The documentation is available in the `docs/` directory:
     - [Adding Extra Data to the Builder Editor State](./docs/builder-previews.md#adding-extra-data-to-the-builder-editor-state)
     - [Adding Extra Data to the Builder Preview](./docs/builder-previews.md#adding-extra-data-to-the-builder-preview)
     - [Alternate Templating Engines](./docs/builder-previews.md#alternate-templating-engines)
-    - [Using a Preview URL](./docs/builder-previews.md#using-a-preview-url)
     - [Customizing the Preview Link](./docs/builder-previews.md#customizing-the-preview-link)
     - [Automatically Updating the Builder Preview](./docs/builder-previews.md#automatically-updating-the-builder-preview)
 
