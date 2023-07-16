@@ -249,32 +249,6 @@ public static function renderBuilderPreview(string $view, array $data): string
 }
 ```
 
-## Using a Preview URL
-
-As with full page previews, you may implement Builder previews using a custom URL and a storage driver, such as the Laravel Cache or the PHP session. Instead of `getBuilderPreviewView()`, use the `getBuilderPreviewUrl()` method to define the preview URL and `mutateBuilderPreviewData()` to temporarily store the preview data:
-
-```php
-protected function getBuilderPreviewUrl(string $builderName): ?string
-{
-    $token = 'post-blocks';
-
-    return route('posts.blocksPreview', ['token' => $token]);
-}
-
-public static function mutateBuilderPreviewData(string $builderName, array $editorData, array $previewData): array
-{
-    $token = 'post-blocks';
-
-    $sessionKey = "preview-$token";
-
-    session()->put($sessionKey, $previewData);
-
-    return $previewData;
-}
-```
-
-See also: [Using a Preview URL for Pages](./page-previews.md#using-a-preview-url)
-
 ## Customizing the Preview Link
 
 By default, the preview link is styled as a primary link. Use the `button()` method to style it as a Filament button.
