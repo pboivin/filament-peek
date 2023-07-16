@@ -19,10 +19,10 @@ Closing the preview modal does not update the record in the database, only the f
 In your `Edit` page, add both `HasPreviewModal` and `HasBuilderPreview` traits:
 
 ```php
-use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
+use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;
 
-class EditPage extends EditRecord
+class EditPost extends EditRecord
 {
     use HasPreviewModal;
     use HasBuilderPreview;
@@ -35,8 +35,8 @@ Add the `getBuilderPreviewView()` method to define your Blade view:
 ```php
 protected function getBuilderPreviewView(string $builderName): ?string
 {
-    // This corresponds to resources/views/pages/preview-blocks.blade.php
-    return 'pages.preview-blocks';
+    // This corresponds to resources/views/posts/preview-blocks.blade.php
+    return 'posts.preview-blocks';
 }
 ```
 
@@ -45,13 +45,13 @@ Then, add the `getBuilderEditorSchema()` method to define your Builder field:
 ```php
 public static function getBuilderEditorSchema(string $builderName): Component|array
 {
-    return Builder::make('page_blocks')->blocks([
+    return Builder::make('content_blocks')->blocks([
             // ...
     ]);
 }
 ```
 
-To reduce duplication, the Builder field definition can also be extracted to a static method on the resource class (see Complete Example below).
+To reduce duplication, the Builder field definition can also be extracted to a static method on the resource class (see **Complete Example** below).
 
 #### Update the Resource Class
 
@@ -61,43 +61,43 @@ Add the `PreviewLink` component to your form, above or below the Builder field:
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
 
 PreviewLink::make()
-    ->label('Preview Page Blocks')
-    ->builderPreview('page_blocks'),
+    ->label('Preview Content Blocks')
+    ->builderPreview('content_blocks'),
 ```
 
 #### Complete Example
 
-**`app/Filament/Resources/PageResource/Pages/EditPage.php`**
+**`app/Filament/Resources/PostResource/Pages/EditPost.php`**
 
 ```php
-namespace App\Filament\Resources\PageResource\Pages;
+namespace App\Filament\Resources\PostResource\Pages;
 
-use App\Filament\Resources\PageResource;
+use App\Filament\Resources\PostResource;
 use Filament\Forms\Components\Component;
 use Filament\Resources\Pages\EditRecord;
 use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 
-class EditPage extends EditRecord
+class EditPost extends EditRecord
 {
     use HasPreviewModal;
     use HasBuilderPreview;
 
-    protected static string $resource = PageResource::class;
+    protected static string $resource = PostResource::class;
 
     protected function getBuilderPreviewView(string $builderName): ?string
     {
-        return 'pages.preview-blocks';
+        return 'posts.preview-blocks';
     }
 
     public static function getBuilderEditorSchema(string $builderName): Component|array
     {
-        return PageResource::builderField(context: 'preview');
+        return PostResource::builderField(context: 'preview');
     }
 }
 ```
 
-**`app/Filament/Resources/PageResource.php`**
+**`app/Filament/Resources/PostResource.php`**
 
 ```php
 namespace App\Filament\Resources;
@@ -105,13 +105,13 @@ namespace App\Filament\Resources;
 // ...
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
 
-class PageResource extends Resource
+class PostResource extends Resource
 {
     // ...
 
     public static function builderField(string $context = 'form'): Field
     {
-        return Builder::make('page_blocks')->blocks([
+        return Builder::make('content_blocks')->blocks([
             Block::make('heading')->schema([
                 Grid::make($context === 'preview' ? 1 : 2)->schema([
                     TextInput::make('title'),
@@ -144,8 +144,8 @@ class PageResource extends Resource
                 ->required(),
 
             PreviewLink::make()
-                ->label('Preview Page Blocks')
-                ->builderPreview('page_blocks')
+                ->label('Preview Content Blocks')
+                ->builderPreview('content_blocks')
                 ->columnSpanFull()
                 ->alignRight(),
 
@@ -157,10 +157,7 @@ class PageResource extends Resource
 }
 ```
 
-**Notes**
-
- - Builder previews can also be used on `Create` pages.
- - If you're using custom event listeners on your Page class, make sure to also include the `updateBuilderFieldWithEditorData` listener.
+**Note**: Builder previews can also be used on `Create` pages.
 
 
 ## Using Multiple Builder Fields
@@ -171,16 +168,16 @@ Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument.
 protected function getBuilderPreviewView(string $builderName): ?string
 {
     return match ($builderName) {
-        'page_blocks' => 'pages.preview-blocks',
-        'footer_blocks' => 'pages.preview-footer-blocks',
+        'content_blocks' => 'posts.preview-blocks',
+        'footer_blocks' => 'posts.preview-footer-blocks',
     };
 }
 
 public static function getBuilderEditorSchema(string $builderName): Component|array
 {
     return match ($builderName) {
-        'page_blocks' => PageResource::builderField(context: 'preview'),
-        'footer_blocks' => PageResource::footerBuilderField(context: 'preview'),
+        'content_blocks' => PostResource::builderField(context: 'preview'),
+        'footer_blocks' => PostResource::footerBuilderField(context: 'preview'),
     };
 }
 ```
@@ -192,7 +189,7 @@ You may have noticed that `getBuilderEditorSchema()` supports any type of form C
 ```php
 public static function getBuilderEditorSchema(string $builderName): Component|array
 {
-    return RichEditor::make('page_content');
+    return RichEditor::make('post_content');
 }
 ```
 
@@ -209,7 +206,7 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
         RichEditor::make('paragraph'),
 
         // ...
-    ])->statePath('page_content');
+    ])->statePath('post_content');
 }
 ```
 
@@ -259,20 +256,20 @@ As with full page previews, you may implement Builder previews using a custom UR
 ```php
 protected function getBuilderPreviewUrl(string $builderName): ?string
 {
-    $token = 'page-blocks';
+    $token = 'post-blocks';
 
-    return route('pages.blocksPreview', ['token' => $token]);
+    return route('posts.blocksPreview', ['token' => $token]);
 }
 
 public static function mutateBuilderPreviewData(string $builderName, array $editorData, array $previewData): array
 {
-    $token = 'page-blocks';
+    $token = 'post-blocks';
 
     $sessionKey = "preview-$token";
 
     session()->put($sessionKey, $previewData);
 
-    return $data;
+    return $previewData;
 }
 ```
 

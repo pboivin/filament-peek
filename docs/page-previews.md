@@ -15,7 +15,7 @@ In your `Edit` page, start by adding the `HasPreviewModal` trait:
 ```php
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 
-class EditPage extends EditRecord
+class EditPost extends EditRecord
 {
     use HasPreviewModal;
 
@@ -25,6 +25,8 @@ class EditPage extends EditRecord
 Add the `PreviewAction` class to the page actions:
 
 ```php
+use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
+
 protected function getActions(): array
 {
     return [
@@ -38,17 +40,17 @@ Then, add the `getPreviewModalView()` method to define your Blade view:
 ```php
 protected function getPreviewModalView(): ?string
 {
-    // This corresponds to resources/views/pages/preview.blade.php
-    return 'pages.preview';
+    // This corresponds to resources/views/posts/preview.blade.php
+    return 'posts.preview';
 }
 ```
 
-Optionally, if your Blade view expects a `$page` variable, add the `getPreviewModalDataRecordKey()` method to define the variable name:
+Optionally, if your Blade view expects a `$post` variable, add the `getPreviewModalDataRecordKey()` method to define the variable name:
 
 ```php
 protected function getPreviewModalDataRecordKey(): ?string
 {
-    return 'page';
+    return 'post';
 }
 ```
 
@@ -56,21 +58,21 @@ By default, the variable will be `$record`.
 
 #### Complete Example
 
-**`app/Filament/Resources/PageResource/Pages/EditPage.php`**
+**`app/Filament/Resources/PostResource/Pages/EditPost.php`**
 
 ```php
-namespace App\Filament\Resources\PageResource\Pages;
+namespace App\Filament\Resources\PostResource\Pages;
 
-use App\Filament\Resources\PageResource;
+use App\Filament\Resources\PostResource;
 use Filament\Resources\Pages\EditRecord;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 
-class EditPage extends EditRecord
+class EditPost extends EditRecord
 {
     use HasPreviewModal;
 
-    protected static string $resource = PageResource::class;
+    protected static string $resource = PostResource::class;
 
     protected function getActions(): array
     {
@@ -81,23 +83,23 @@ class EditPage extends EditRecord
 
     protected function getPreviewModalView(): ?string
     {
-        return 'pages.preview';
+        return 'posts.preview';
     }
 
     protected function getPreviewModalDataRecordKey(): ?string
     {
-        return 'page';
+        return 'post';
     }
 }
 ```
 
-**Note**: Page previews can also be used on `Create`, `List` and custom pages.
+**Note**: Previews can be added on all types of pages: `View`, `Create`, `List` and custom pages.
 
 ## Detecting the Preview Modal
 
 The example above uses a dedicated Blade view to be rendered in the preview modal. It's also possible to use the same view for the site page and the preview modal. In this case, you can detect if the view is being used for a preview by checking for the `$isPeekPreviewModal` variable:
 
-**`resources/views/pages/show.blade.php`**
+**`resources/views/posts/show.blade.php`**
 
 ```blade
 <x-layout>
@@ -158,14 +160,14 @@ protected function getPreviewModalUrl(): ?string
 
     session()->put($sessionKey, $this->previewModalData);
 
-    return route('pages.preview', ['token' => $token]);
+    return route('posts.preview', ['token' => $token]);
 }
 ```
 
 Then, you can fetch the preview data from the controller:
 
 ```php
-class PageController extends Controller
+class PostController extends Controller
 {
     // ...
 
@@ -194,7 +196,7 @@ Instead of a `PreviewAction`, you can use the `PreviewLink` component to integra
 ```php 
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
 
-class PageResource extends Resource
+class PostResource extends Resource
 {
     // ...
 
@@ -225,7 +227,7 @@ By default, only scrolling is allowed in the preview iframe. This is done by ins
 
 If you need finer control over pointer events in your previews, first set this option to `true` in the configuration. Then, in your page template, add the required CSS or JS. Here's an example disabling preview pointer events only for `<a>` tags:
 
-**`resources/views/pages/show.blade.php`**
+**`resources/views/posts/show.blade.php`**
 
 ```blade
 ...
