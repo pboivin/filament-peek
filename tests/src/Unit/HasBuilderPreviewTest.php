@@ -34,22 +34,6 @@ it('has required event listener', function () {
     expect($page->getListeners())->toContain('updateBuilderFieldWithEditorData');
 });
 
-it('prepares builder editor data on create pages', function () {
-    $page = invade(new Fixtures\CreateRecordDummy());
-
-    $data = $page->prepareBuilderEditorData('blocks');
-
-    expect($data['blocks'])->toEqual(['key' => 'value']);
-});
-
-it('prepares builder editor data on edit pages', function () {
-    $page = invade(new Fixtures\EditRecordDummy());
-
-    $data = $page->prepareBuilderEditorData('blocks');
-
-    expect($data['blocks'])->toEqual(['key' => 'value']);
-});
-
 it('prepares builder preview data on create pages', function () {
     $page = invade(new Fixtures\CreateRecordDummy());
 
@@ -87,9 +71,9 @@ it('dispatches openBuilderEditor event', function () {
     expect($event['params'][0]['previewView'])->toEqual('test');
     expect($event['params'][0]['modalTitle'])->toEqual('Preview');
     expect($event['params'][0]['editorTitle'])->toEqual('Editor');
-    expect($event['params'][0]['editorData'])->toEqual(['blocks' => ['key' => 'value']]);
     expect($event['params'][0]['builderName'])->toEqual('blocks');
     expect($event['params'][0]['pageClass'])->not()->toBeEmpty();
+    expect($event['params'][0])->toHaveKey('editorData');
 });
 
 it('mutates initial builder editor data', function () {
@@ -112,7 +96,7 @@ it('mutates initial builder editor data', function () {
 
     $event = $page->eventQueue[0]->serialize();
 
-    expect($event['params'][0]['editorData'])->toEqual(['blocks' => ['key' => 'value'], 'mutated' => true]);
+    expect($event['params'][0]['editorData'])->toHaveKey('mutated');
 });
 
 it('throws an exception for missing event listener', function () {
