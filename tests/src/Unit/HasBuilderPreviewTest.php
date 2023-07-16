@@ -73,7 +73,7 @@ it('dispatches openBuilderEditor event', function () {
     expect($event['params'][0]['editorTitle'])->toEqual('Editor');
     expect($event['params'][0]['builderName'])->toEqual('blocks');
     expect($event['params'][0]['pageClass'])->not()->toBeEmpty();
-    expect($event['params'][0])->toHaveKey('editorData');
+    expect($event['params'][0]['editorData'])->toBeArray();
 });
 
 it('mutates initial builder editor data', function () {
@@ -96,7 +96,7 @@ it('mutates initial builder editor data', function () {
 
     $event = $page->eventQueue[0]->serialize();
 
-    expect($event['params'][0]['editorData'])->toHaveKey('mutated');
+    expect($event['params'][0]['editorData']['mutated'])->toBeTrue();
 });
 
 it('throws an exception for missing event listener', function () {
