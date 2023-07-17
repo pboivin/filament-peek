@@ -191,9 +191,11 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
 You may have noticed that `getBuilderEditorSchema()` supports any type of form Component. Behind the scenes, the Editor sidebar of the preview modal is a full Filament form. Therefore, you are not restricted to using a Builder field, you may use any other field type:
 
 ```php
+use FilamentTiptapEditor\TiptapEditor;
+
 public static function getBuilderEditorSchema(string $builderName): Component|array
 {
-    return RichEditor::make('post_content');
+    return TiptapEditor::make('post_content');
 }
 ```
 
@@ -207,7 +209,7 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
 
         TextInput::make('tagline'),
 
-        RichEditor::make('paragraph'),
+        TiptapEditor::make('body'),
 
         // ...
     ])->statePath('post_content');
