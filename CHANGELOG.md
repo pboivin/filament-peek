@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.0.1 - 2023-07-18
+
+* enh: Add Arabic translation by @atmonshi
+
+
 ## 1.0.0 - 2023-07-16
 
 * enh: Default canDiscardChanges to true
