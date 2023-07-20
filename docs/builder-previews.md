@@ -56,6 +56,8 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
 
 To reduce duplication, the Builder field definition can also be extracted to a static method on the resource class (see [Complete Example](#complete-example) below).
 
+**Note**: Builder previews can also be used on `Create` pages.
+
 #### Update the Resource Class
 
 Add the `PreviewLink` component to your form, above or below the Builder field:
@@ -160,8 +162,9 @@ class PostResource extends Resource
 }
 ```
 
-**Note**: Builder previews can also be used on `Create` pages.
+#### Demo Project
 
+For an easy way to try out the plugin on a simple Filament project, have a look at the [filament-peek-demo](https://github.com/pboivin/filament-peek-demo/tree/1.x) repository.
 
 ## Using Multiple Builder Fields
 
