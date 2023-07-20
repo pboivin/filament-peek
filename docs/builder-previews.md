@@ -4,7 +4,7 @@
 
 ## Overview
 
-Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the Builder field, and an iframe on the right to render the preview.
+Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the [Builder field](https://filamentphp.com/docs/2.x/forms/fields#builder), and an iframe on the right to render the preview.
 
 As you edit the Builder blocks, the preview can be refreshed manually or automatically. When the modal is closed, the Builder field in the main form is synchronized with the changes from the preview editor.
 
@@ -43,15 +43,18 @@ protected function getBuilderPreviewView(string $builderName): ?string
 Then, add the `getBuilderEditorSchema()` method to define your Builder field:
 
 ```php
+use Filament\Forms\Components\Component;
+use Filament\Forms\Components\Builder;
+
 public static function getBuilderEditorSchema(string $builderName): Component|array
 {
     return Builder::make('content_blocks')->blocks([
-            // ...
+        // ...
     ]);
 }
 ```
 
-To reduce duplication, the Builder field definition can also be extracted to a static method on the resource class (see **Complete Example** below).
+To reduce duplication, the Builder field definition can also be extracted to a static method on the resource class (see [Complete Example](#complete-example) below).
 
 #### Update the Resource Class
 
@@ -92,7 +95,7 @@ class EditPost extends EditRecord
 
     public static function getBuilderEditorSchema(string $builderName): Component|array
     {
-        return PostResource::builderField(context: 'preview');
+        return PostResource::contentBuilderField(context: 'preview');
     }
 }
 ```
@@ -109,10 +112,10 @@ class PostResource extends Resource
 {
     // ...
 
-    public static function builderField(string $context = 'form'): Field
+    public static function contentBuilderField(string $context = 'form'): Builder
     {
         return Builder::make('content_blocks')->blocks([
-            Block::make('heading')->schema([
+            Builder\Block::make('heading')->schema([
                 Grid::make($context === 'preview' ? 1 : 2)->schema([
                     TextInput::make('title'),
 
@@ -127,7 +130,7 @@ class PostResource extends Resource
                 ]),
             ]),
 
-            Block::make('paragraph')->schema([
+            Builder\Block::make('paragraph')->schema([
                 RichEditor::make('content')
                     ->toolbarButtons(['bold', 'italic']),
             ]),
@@ -149,7 +152,7 @@ class PostResource extends Resource
                 ->columnSpanFull()
                 ->alignRight(),
 
-            self::builderField(),
+            self::contentBuilderField(),
         ]);
     }
 
@@ -176,7 +179,7 @@ protected function getBuilderPreviewView(string $builderName): ?string
 public static function getBuilderEditorSchema(string $builderName): Component|array
 {
     return match ($builderName) {
-        'content_blocks' => PostResource::builderField(context: 'preview'),
+        'content_blocks' => PostResource::contentBuilderField(context: 'preview'),
         'footer_blocks' => PostResource::footerBuilderField(context: 'preview'),
     };
 }
