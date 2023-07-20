@@ -107,8 +107,14 @@ class EditPost extends EditRecord
 ```php
 namespace App\Filament\Resources;
 
-// ...
+use Filament\Forms\Components\Builder;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
+// ...
 
 class PostResource extends Resource
 {
