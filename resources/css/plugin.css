@@ -86,7 +86,7 @@ body.is-filament-peek-preview-modal-open {
 /*** Editor ***/
 
 .filament-peek-editor {
-    @apply hidden border-r;
+    @apply hidden border-r rtl:border-l;
     @apply dark:border-gray-700;
 
     .filament-peek-panel-body {
@@ -159,6 +159,7 @@ body.is-filament-peek-preview-modal-open {
 .filament-peek-editor-resizer {
     @apply absolute left-[100%] top-0 h-full w-[9px] bg-transparent;
     @apply border-l-[3px] border-transparent;
+    @apply rtl:right-[100%] rtl:border-l-0 rtl:border-r-[3px];
 
     &:hover {
         @apply border-gray-500;
