@@ -59,6 +59,10 @@ document.addEventListener('alpine:init', () => {
             }
 
             this.setDevicePreset();
+
+            if (document.documentElement.getAttribute('dir') === 'rtl') {
+                this.documentIsRtl = true;
+            }
         },
 
         setIframeDimensions(width, height) {
@@ -240,7 +244,11 @@ document.addEventListener('alpine:init', () => {
         onMouseMove($event) {
             if (!this.editorIsResizing) return;
 
-            this.editorStyle.width = (resizerState.initialWidth + ($event.clientX - resizerState.initialX)) + 'px';
+            if (this.documentIsRtl) {
+                this.editorStyle.width = (resizerState.initialWidth - ($event.clientX - resizerState.initialX)) + 'px';
+            } else {
+                this.editorStyle.width = (resizerState.initialWidth + ($event.clientX - resizerState.initialX)) + 'px';
+            }
         },
     }));
 
