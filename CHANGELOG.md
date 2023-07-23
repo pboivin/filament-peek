@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.0.2 - 2023-07-23
+
+* fix: Editor sidebar resize in RTL UI
+
+
 ## 1.0.1 - 2023-07-18
 
 * enh: Add Arabic translation by @atmonshi
