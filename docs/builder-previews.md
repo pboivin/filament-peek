@@ -180,7 +180,7 @@ Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument.
 protected function getBuilderPreviewView(string $builderName): ?string
 {
     return match ($builderName) {
-        'content_blocks' => 'posts.preview-blocks',
+        'content_blocks' => 'posts.preview-content-blocks',
         'footer_blocks' => 'posts.preview-footer-blocks',
     };
 }
