@@ -19,14 +19,14 @@ Example:
 document.addEventListener('peek:modal-closing', (e) => {
     console.log('The modal is closing...');
 
-    // You can access the full Alpine instance in `e.details.modal`
+    // You can access the full modal instance in `e.details.modal`
     if (e.details.modal.withEditor) {
         console.log('I hope you enjoyed using the new Builder Preview!');
     }
 });
 ```
 
-Have a look at the [Including frontend assets](https://filamentphp.com/docs/2.x/admin/appearance#including-frontend-assets) section of the Filament documentation to learn how to load custom JavaScript files into you admin pages.
+Have a look at the [Including Frontend Assets](https://filamentphp.com/docs/2.x/admin/appearance#including-frontend-assets) section of the Filament documentation to learn how to load custom JavaScript files into your admin pages.
 
 ---
 

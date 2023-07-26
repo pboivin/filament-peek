@@ -189,6 +189,8 @@ This technique can also be used to implement page previews with a decoupled fron
 - From `getPreviewModalUrl()`, generate the preview token and return a front-end preview URL. This would usually render a full page component.
 - From the front-end page component, fetch the preview data from the back-end preview URL, as shown above.
 
+See also: [JavaScript Hooks](./javascript-hooks.md)
+
 ## Embedding a Preview Link into the Form
 
 Instead of a `PreviewAction`, you can use the `PreviewLink` component to integrate a button directly into your form (e.g. in a sidebar):
