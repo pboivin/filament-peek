@@ -44,3 +44,4 @@ Builder Editor options:
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
 - [Builder Previews](./builder-previews.md)
+- [JavaScript Hooks](./javascript-hooks.md)

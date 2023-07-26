@@ -301,3 +301,4 @@ Additionally, you may choose between two auto-refresh strategies with the `autoR
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
 - [Builder Previews](./builder-previews.md)
+- [JavaScript Hooks](./javascript-hooks.md)

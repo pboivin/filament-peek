@@ -59,6 +59,7 @@ The documentation is available in the `docs/` directory:
     - [Alternate Templating Engines](./docs/builder-previews.md#alternate-templating-engines)
     - [Customizing the Preview Link](./docs/builder-previews.md#customizing-the-preview-link)
     - [Automatically Updating the Builder Preview](./docs/builder-previews.md#automatically-updating-the-builder-preview)
+- [JavaScript Hooks](./docs/javascript-hooks.md)
 
 <!-- END_TOC -->
 
