@@ -12,6 +12,7 @@ function generateToc(): string
         './docs/configuration.md',
         './docs/page-previews.md',
         './docs/builder-previews.md',
+        './docs/javascript-hooks.md',
     ];
 
     foreach ($files as $file) {
