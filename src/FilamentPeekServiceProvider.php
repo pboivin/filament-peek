@@ -9,7 +9,7 @@ class FilamentPeekServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        $package->name(FilamentPeekPlugin::NAME)
+        $package->name(FilamentPeekPlugin::ID)
             ->hasTranslations()
             ->hasConfigFile()
             ->hasViews();

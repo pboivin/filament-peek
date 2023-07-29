@@ -12,7 +12,7 @@ class FilamentPeekPlugin implements Plugin
 {
     const PACKAGE = 'pboivin/filament-peek';
 
-    const NAME = 'filament-peek';
+    const ID = 'filament-peek';
 
     const VERSION = '2.0-dev';
 
@@ -23,7 +23,7 @@ class FilamentPeekPlugin implements Plugin
 
     public function getId(): string
     {
-        return static::NAME;
+        return static::ID;
     }
 
     public function register(Panel $panel): void
@@ -35,13 +35,13 @@ class FilamentPeekPlugin implements Plugin
 
         if (!config('filament-peek.disablePluginScripts', false)) {
             FilamentAsset::register([
-                Js::make(static::NAME, __DIR__ . '/../resources/dist/filament-peek.js'),
+                Js::make(static::ID, __DIR__ . '/../resources/dist/filament-peek.js'),
             ], package: static::PACKAGE);
         }
 
         if (!config('filament-peek.disablePluginStyles', false)) {
             FilamentAsset::register([
-                Css::make(static::NAME, __DIR__ . '/../resources/dist/filament-peek.css'),
+                Css::make(static::ID, __DIR__ . '/../resources/dist/filament-peek.css'),
             ], package: static::PACKAGE);
         }
     }

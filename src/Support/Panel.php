@@ -14,7 +14,7 @@ class Panel
         /** @var FilamentPanel $panel */
         $panel = Filament::getCurrentPanel();
 
-        return $panel->hasPlugin(FilamentPeekPlugin::NAME);
+        return $panel->hasPlugin(FilamentPeekPlugin::ID);
     }
 
     public static function ensurePluginIsLoaded(): void
