@@ -32,6 +32,8 @@ class PreviewLink extends Component
         $livewire = parent::getLivewire();
 
         if ($this->builderField) {
+            Support\Panel::ensurePluginIsLoaded();
+
             Support\Page::ensureBuilderPreviewSupport($livewire);
         }
 
