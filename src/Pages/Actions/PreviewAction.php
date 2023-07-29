@@ -21,7 +21,7 @@ class PreviewAction extends Action
             ->action(function ($livewire) {
                 Support\Panel::ensurePluginIsLoaded();
 
-                Support\Page::checkPreviewModalSupport($livewire);
+                Support\Page::ensurePreviewModalSupport($livewire);
 
                 $livewire->openPreviewModal();
             });
