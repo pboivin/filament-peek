@@ -45,6 +45,8 @@ document.addEventListener('alpine:init', () => {
         },
 
         init() {
+            dispatch(document, 'peek:modal-initializing', { modal: this });
+
             const debounceTime = this.config.editorAutoRefreshDebounceTime || 500;
             const editorSidebarMinWidth = this.config.editorSidebarMinWidth || '30rem';
             const editorSidebarInitialWidth = this.config.editorSidebarInitialWidth || '30rem';
@@ -63,6 +65,8 @@ document.addEventListener('alpine:init', () => {
             if (document.documentElement.getAttribute('dir') === 'rtl') {
                 this.documentIsRtl = true;
             }
+
+            setTimeout(() => dispatch(document, 'peek:modal-initialized', { modal: this }), 0);
         },
 
         setIframeDimensions(width, height) {
@@ -102,6 +106,8 @@ document.addEventListener('alpine:init', () => {
         },
 
         onOpenPreviewModal($event) {
+            dispatch(document, 'peek:modal-opening', { modal: this });
+
             document.body.classList.add('is-filament-peek-preview-modal-open');
 
             this.withEditor = !!$event.detail.withEditor;
@@ -114,6 +120,8 @@ document.addEventListener('alpine:init', () => {
             this.iframeContent = $event.detail.iframeContent;
             this.modalStyle.display = 'flex';
             this.isOpen = true;
+
+            setTimeout(() => dispatch(document, 'peek:modal-opened', { modal: this }), 0);
 
             setTimeout(() => this._focusEditorFirstInput(), 0);
 
@@ -165,6 +173,8 @@ document.addEventListener('alpine:init', () => {
         },
 
         _closeModal() {
+            dispatch(document, 'peek:modal-closing', { modal: this });
+
             document.body.classList.remove('is-filament-peek-preview-modal-open');
 
             this.withEditor = false;
@@ -177,6 +187,8 @@ document.addEventListener('alpine:init', () => {
             this.iframeUrl = null;
             this.iframeContent = null;
             this.isOpen = false;
+
+            setTimeout(() => dispatch(document, 'peek:modal-closed', { modal: this }), 0);
         },
 
         onEditorFocusOut($event) {
