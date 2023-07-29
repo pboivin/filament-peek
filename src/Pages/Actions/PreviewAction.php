@@ -19,6 +19,8 @@ class PreviewAction extends Action
         $this->label(__('filament-peek::ui.preview-action-label'))
             ->color('gray')
             ->action(function ($livewire) {
+                Support\Panel::ensurePluginIsLoaded();
+
                 Support\Page::checkPreviewModalSupport($livewire);
 
                 $livewire->openPreviewModal();
