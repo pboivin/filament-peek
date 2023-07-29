@@ -2,22 +2,14 @@
 
 namespace Pboivin\FilamentPeek;
 
-use Filament\Facades\Filament;
-use Illuminate\View\View;
-use Livewire\Livewire;
-use Pboivin\FilamentPeek\Livewire\BuilderEditor;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FilamentPeekServiceProvider extends PackageServiceProvider
 {
-    const VERSION = '2.0-dev';
-
-    public static string $name = 'filament-peek';
-
     public function configurePackage(Package $package): void
     {
-        $package->name(static::$name)
+        $package->name(FilamentPeekPlugin::NAME)
             ->hasTranslations()
             ->hasConfigFile()
             ->hasViews();
@@ -26,14 +18,8 @@ class FilamentPeekServiceProvider extends PackageServiceProvider
     // public function packageRegistered(): void
     // {
     //     parent::packageRegistered();
-
     //     // $this->app->resolving('filament', function () {
     //     //     Filament::serving(function () {
-    //     //         Filament::registerRenderHook(
-    //     //             'body.end',
-    //     //             fn (): View => view('filament-peek::preview-modal'),
-    //     //         );
-
     //     //         Livewire::component(
     //     //             'filament-peek::builder-editor',
     //     //             config('filament-peek.builderEditor.livewireComponentClass', BuilderEditor::class)
@@ -42,25 +28,4 @@ class FilamentPeekServiceProvider extends PackageServiceProvider
     //     // });
     // }
 
-    // protected function getBeforeCoreScripts(): array
-    // {
-    //     if (config('filament-peek.disablePluginScripts', false)) {
-    //         return [];
-    //     }
-
-    //     return [
-    //         'plugin-filament-peek-'.self::VERSION => __DIR__.'/../resources/dist/filament-peek.js',
-    //     ];
-    // }
-
-    // protected function getStyles(): array
-    // {
-    //     if (config('filament-peek.disablePluginStyles', false)) {
-    //         return [];
-    //     }
-
-    //     return [
-    //         'plugin-filament-peek-'.self::VERSION => __DIR__.'/../resources/dist/filament-peek.css',
-    //     ];
-    // }
 }
