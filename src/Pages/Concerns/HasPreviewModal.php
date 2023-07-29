@@ -91,16 +91,17 @@ trait HasPreviewModal
             return;
         }
 
-        $this->dispatchBrowserEvent('open-preview-modal', [
-            'modalTitle' => $this->getPreviewModalTitle(),
-            'iframeUrl' => $previewModalUrl,
-            'iframeContent' => $previewModalHtmlContent,
-        ]);
+        $this->dispatch(
+            'open-preview-modal',
+            modalTitle: $this->getPreviewModalTitle(),
+            iframeUrl: $previewModalUrl,
+            iframeContent: $previewModalHtmlContent,
+        );
     }
 
     /** @internal */
     public function closePreviewModal(): void
     {
-        $this->dispatchBrowserEvent('close-preview-modal');
+        $this->dispatch('close-preview-modal');
     }
 }
