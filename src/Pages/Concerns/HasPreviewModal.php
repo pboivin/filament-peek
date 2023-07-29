@@ -4,7 +4,7 @@ namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Support\Exceptions\Halt;
 use InvalidArgumentException;
-use Pboivin\FilamentPeek\Support\Html;
+use Pboivin\FilamentPeek\Support;
 
 trait HasPreviewModal
 {
@@ -38,7 +38,7 @@ trait HasPreviewModal
     /** @internal */
     protected function renderPreviewModalView(?string $view, array $data): string
     {
-        return Html::injectPreviewModalStyle(
+        return Support\Html::injectPreviewModalStyle(
             view($view, $data)->render()
         );
     }

@@ -5,7 +5,7 @@ namespace Pboivin\FilamentPeek\Tests\Unit;
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\View;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
-use Pboivin\FilamentPeek\Support\View as SupportView;
+use Pboivin\FilamentPeek\Support;
 
 it('has a default name', function () {
     $previewAction = PreviewAction::make();
@@ -31,5 +31,5 @@ it('sets the view hook to render the modal', function () {
 
     $shared = View::getShared();
 
-    expect($shared[SupportView::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
+    expect($shared[Support\View::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
 });
