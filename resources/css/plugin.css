@@ -4,9 +4,9 @@
 
 .filament-peek-modal {
     @apply fixed left-0 top-0 z-[9000] h-screen w-screen;
-    @apply flex bg-white;
+    @apply flex bg-gray-50 text-gray-950;
     @apply m-0 p-0 !important;
-    @apply dark:bg-gray-800;
+    @apply dark:bg-gray-950 dark:text-white;
 
     --filament-peek-panel-header-height: 4.8rem;
     --filament-peek-builder-actions-height: 4.25rem;
@@ -19,14 +19,14 @@
 .filament-peek-panel-header {
     @apply flex items-center justify-between border-b bg-white p-4;
     @apply text-sm font-medium text-gray-900;
-    @apply dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300;
+    @apply dark:border-gray-800 dark:bg-gray-900 dark:text-white;
     min-height: var(--filament-peek-panel-header-height);
     user-select: none;
 }
 
 .filament-peek-panel-body {
     @apply flex-grow bg-gray-100 p-4;
-    @apply dark:bg-gray-900;
+    @apply dark:bg-gray-950;
 
     iframe {
         @apply mx-auto shadow-2xl;
