@@ -62,7 +62,7 @@ trait HasBuilderPreview
         }
 
         if (class_exists('\FilamentTiptapEditor\TiptapEditor')) {
-            $this->dispatchBrowserEvent('refresh-tiptap-editors');
+            $this->dispatch('refresh-tiptap-editors');
         }
     }
 
@@ -102,15 +102,16 @@ trait HasBuilderPreview
             $this->prepareBuilderEditorData($builderName)
         );
 
-        $this->emit('openBuilderEditor', [
-            'previewView' => $this->getBuilderPreviewView($builderName),
-            'previewUrl' => $this->getBuilderPreviewUrl($builderName),
-            'modalTitle' => $this->getPreviewModalTitle(),
-            'editorTitle' => $this->getBuilderEditorTitle(),
-            'editorData' => $editorData,
-            'builderName' => $builderName,
-            'pageClass' => static::class,
-        ]);
+        $this->dispatch(
+            'openBuilderEditor',
+            previewView: $this->getBuilderPreviewView($builderName),
+            previewUrl: $this->getBuilderPreviewUrl($builderName),
+            modalTitle: $this->getPreviewModalTitle(),
+            editorTitle: $this->getBuilderEditorTitle(),
+            editorData: $editorData,
+            builderName: $builderName,
+            pageClass: static::class,
+        );
     }
 
     private function checkCustomListener(): void
@@ -119,7 +120,7 @@ trait HasBuilderPreview
             ->values()
             ->contains('updateBuilderFieldWithEditorData');
 
-        if (! $hasCustomListener) {
+        if (!$hasCustomListener) {
             throw new InvalidArgumentException("Missing 'updateBuilderFieldWithEditorData' Livewire event listener. Add it to your Page's `\$listeners` array.");
         }
     }
