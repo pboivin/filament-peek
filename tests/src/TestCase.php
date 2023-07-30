@@ -31,7 +31,7 @@ class TestCase extends Orchestra
             NotificationsServiceProvider::class,
             FilamentServiceProvider::class,
             FilamentPeekServiceProvider::class,
-            TestServiceProvider::class,
+            // TestServiceProvider::class,
         ];
     }
 
