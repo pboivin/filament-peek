@@ -20,12 +20,12 @@ class View
         return (bool) BladeView::shared(self::PREVIEW_ACTION_SETUP_HOOK);
     }
 
-    public static function setupBuilderPreview()
+    public static function setupBuilderEditor()
     {
         BladeView::share(self::BUILDER_PREVIEW_SETUP_HOOK, true);
     }
 
-    public static function needsBuilderPreview(): bool
+    public static function needsBuilderEditor(): bool
     {
         return (bool) BladeView::shared(self::BUILDER_PREVIEW_SETUP_HOOK);
     }

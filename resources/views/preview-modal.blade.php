@@ -28,7 +28,7 @@
         x-trap="isOpen"
         x-cloak
     >
-        @if (\Pboivin\FilamentPeek\Support\View::needsBuilderPreview())
+        @if (\Pboivin\FilamentPeek\Support\View::needsBuilderEditor())
             @livewire('filament-peek::builder-editor')
         @endif
 

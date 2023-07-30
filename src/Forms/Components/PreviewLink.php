@@ -42,7 +42,7 @@ class PreviewLink extends Component
 
     public function builderPreview(string $value = 'blocks'): static
     {
-        Support\View::setupBuilderPreview();
+        Support\View::setupBuilderEditor();
 
         $this->builderField = $value;
 
