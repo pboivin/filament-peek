@@ -31,6 +31,9 @@ class TestCase extends Orchestra
             NotificationsServiceProvider::class,
             FilamentServiceProvider::class,
             FilamentPeekServiceProvider::class,
+
+            // @todo: Redo full integration tests with Laravel Dusk
+            // AdminPanelProvider::class,
             // TestServiceProvider::class,
         ];
     }
