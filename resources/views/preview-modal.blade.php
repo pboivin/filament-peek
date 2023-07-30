@@ -28,7 +28,7 @@
         x-trap="isOpen"
         x-cloak
     >
-        @if (\Pboivin\FilamentPeek\Support\View::needsBuilderPreview())
+        @if (\Pboivin\FilamentPeek\Support\View::needsBuilderEditor())
             @livewire('filament-peek::builder-editor')
         @endif
 
@@ -49,8 +49,8 @@
                                 x-on:click="setDevicePreset('{{ $presetName }}')"
                                 x-bind:class="{'is-active-device-preset': isActiveDevicePreset('{{ $presetName }}')}"
                             >
-                                <x-dynamic-component
-                                    :component="$presetConfig['icon'] ?? 'heroicon-o-desktop-computer'"
+                                <x-filament::icon
+                                    :icon="$presetConfig['icon'] ?? 'heroicon-o-computer-desktop'"
                                     :class="Arr::toCssClasses(['rotate-90' => $presetConfig['rotateIcon'] ?? false])"
                                 />
                             </button>

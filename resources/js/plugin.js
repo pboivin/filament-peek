@@ -51,7 +51,7 @@ document.addEventListener('alpine:init', () => {
             const editorSidebarMinWidth = this.config.editorSidebarMinWidth || '30rem';
             const editorSidebarInitialWidth = this.config.editorSidebarInitialWidth || '30rem';
 
-            this.refreshBuilderPreview = debounce(() => Livewire.emit('refreshBuilderPreview'), debounceTime);
+            this.refreshBuilderPreview = debounce(() => Livewire.dispatch('refreshBuilderPreview'), debounceTime);
 
             this.editorStyle.width = editorSidebarInitialWidth;
 
@@ -225,13 +225,13 @@ document.addEventListener('alpine:init', () => {
         },
 
         acceptEditorChanges() {
-            Livewire.emit('closeBuilderEditor');
+            Livewire.dispatch('closeBuilderEditor');
         },
 
         discardEditorChanges() {
             this.$dispatch('close-preview-modal');
 
-            Livewire.emit('resetBuilderEditor');
+            Livewire.dispatch('resetBuilderEditor');
         },
 
         closePreviewModal() {

@@ -12,7 +12,7 @@ class Page
         return method_exists($page, 'openPreviewModal');
     }
 
-    public static function checkPreviewModalSupport(FilamentPage $page): void
+    public static function ensurePreviewModalSupport(FilamentPage $page): void
     {
         if (! static::supportsPreviewModal($page)) {
             throw new PreviewModalException('Page class is missing the `HasPreviewModal` trait.');
@@ -24,9 +24,9 @@ class Page
         return static::supportsPreviewModal($page) && method_exists($page, 'openPreviewModalForBuidler');
     }
 
-    public static function checkBuilderPreviewSupport(FilamentPage $page): void
+    public static function ensureBuilderPreviewSupport(FilamentPage $page): void
     {
-        static::checkPreviewModalSupport($page);
+        static::ensurePreviewModalSupport($page);
 
         if (! static::supportsBuilderPreview($page)) {
             throw new PreviewModalException('Page class is missing the `HasBuilderPreview` trait.');

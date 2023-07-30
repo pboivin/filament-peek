@@ -50,6 +50,7 @@ it('prepares builder preview data on edit pages', function () {
     expect($data['isPeekPreviewModal'])->toBeTrue();
 });
 
+// @todo: Rewrite test
 it('dispatches openBuilderEditor event', function () {
     $page = invade(new class extends Fixtures\EditRecordDummy
     {
@@ -59,23 +60,27 @@ it('dispatches openBuilderEditor event', function () {
         }
     });
 
-    expect(count($page->eventQueue))->toEqual(0);
+    $store = invade(app(\Livewire\Mechanisms\DataStore::class));
+
+    expect($store->lookup)->toBeEmpty();
 
     $page->openPreviewModalForBuidler('blocks');
 
-    expect(count($page->eventQueue))->toEqual(1);
+    expect($store->lookup)->not->toBeEmpty();
 
-    $event = $page->eventQueue[0]->serialize();
-
-    expect($event['event'])->toEqual('openBuilderEditor');
-    expect($event['params'][0]['previewView'])->toEqual('test');
-    expect($event['params'][0]['modalTitle'])->toEqual('Preview');
-    expect($event['params'][0]['editorTitle'])->toEqual('Editor');
-    expect($event['params'][0]['builderName'])->toEqual('blocks');
-    expect($event['params'][0]['pageClass'])->not()->toBeEmpty();
-    expect($event['params'][0]['editorData'])->toBeArray();
+    foreach ($store->lookup as $item) {
+        expect($item['dispatched'])->toBeArray();
+        expect($item['dispatched'][0]->serialize()['name'])->toEqual('openBuilderEditor');
+        expect($item['dispatched'][0]->serialize()['params']['previewView'])->toEqual('test');
+        expect($item['dispatched'][0]->serialize()['params']['modalTitle'])->toEqual('Preview');
+        expect($item['dispatched'][0]->serialize()['params']['editorTitle'])->toEqual('Editor');
+        expect($item['dispatched'][0]->serialize()['params']['builderName'])->toEqual('blocks');
+        expect($item['dispatched'][0]->serialize()['params']['pageClass'])->not()->toBeEmpty();
+        expect($item['dispatched'][0]->serialize()['params']['editorData'])->toBeArray();
+    }
 });
 
+// @todo: Rewrite test
 it('mutates initial builder editor data', function () {
     $page = invade(new class extends Fixtures\EditRecordDummy
     {
@@ -92,11 +97,19 @@ it('mutates initial builder editor data', function () {
         }
     });
 
+    $store = invade(app(\Livewire\Mechanisms\DataStore::class));
+
+    expect($store->lookup)->toBeEmpty();
+
     $page->openPreviewModalForBuidler('blocks');
 
-    $event = $page->eventQueue[0]->serialize();
+    expect($store->lookup)->not->toBeEmpty();
 
-    expect($event['params'][0]['editorData']['mutated'])->toBeTrue();
+    foreach ($store->lookup as $item) {
+        expect($item['dispatched'])->toBeArray();
+        expect($item['dispatched'][0]->serialize()['name'])->toEqual('openBuilderEditor');
+        expect($item['dispatched'][0]->serialize()['params']['editorData']['mutated'])->toBeTrue();
+    }
 });
 
 it('throws an exception for missing event listener', function () {

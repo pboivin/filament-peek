@@ -101,31 +101,40 @@ class BuilderEditor extends Component implements HasForms
         return false;
     }
 
-    public function openBuilderEditor(array $event): void
-    {
-        $this->previewUrl = $event['previewUrl'];
-        $this->previewView = $event['previewView'];
-        $this->pageClass = $event['pageClass'];
-        $this->builderName = $event['builderName'];
+    public function openBuilderEditor(
+        array $editorData,
+        string $builderName,
+        string $pageClass,
+        ?string $previewView,
+        ?string $previewUrl,
+        ?string $modalTitle,
+        ?string $editorTitle,
+    ): void {
+        $this->previewUrl = $previewUrl;
+        $this->previewView = $previewView;
+        $this->pageClass = $pageClass;
+        $this->builderName = $builderName;
 
-        $this->form->fill($event['editorData']);
+        $this->form->fill($editorData);
 
-        $this->dispatchBrowserEvent('open-preview-modal', [
-            'modalTitle' => $event['modalTitle'] ?? '',
-            'editorTitle' => $event['editorTitle'] ?? '',
-            'withEditor' => true,
-            'editorHasSidebarActions' => $this->pageClass::builderEditorHasSidebarActions($this->builderName),
-        ]);
+        $this->dispatch(
+            'open-preview-modal',
+            modalTitle: $modalTitle ?: '',
+            editorTitle: $editorTitle ?: '',
+            withEditor: true,
+            editorHasSidebarActions: $this->pageClass::builderEditorHasSidebarActions($this->builderName),
+        );
 
         $this->refreshBuilderPreview();
     }
 
     public function refreshBuilderPreview(): void
     {
-        $this->dispatchBrowserEvent('refresh-preview-modal', [
-            'iframeUrl' => $this->previewUrl,
-            'iframeContent' => $this->getPreviewModalHtmlContent(),
-        ]);
+        $this->dispatch(
+            'refresh-preview-modal',
+            iframeUrl: $this->previewUrl,
+            iframeContent: $this->getPreviewModalHtmlContent(),
+        );
     }
 
     public function closeBuilderEditor(): void
@@ -133,11 +142,18 @@ class BuilderEditor extends Component implements HasForms
         // Trigger validation
         $this->form->getState();
 
-        $this->emit('updateBuilderFieldWithEditorData', $this->builderName, $this->editorData);
+        $this->dispatch(
+            'updateBuilderFieldWithEditorData',
+            builderName: $this->builderName,
+            editorData: $this->editorData,
+        );
 
-        $this->dispatchBrowserEvent('close-preview-modal', ['delay' => true]);
+        $this->dispatch(
+            'close-preview-modal',
+            delay: true,
+        );
 
-        $this->emitSelf('resetBuilderEditor');
+        $this->dispatch('resetBuilderEditor')->self();
     }
 
     public function resetBuilderEditor(): void
