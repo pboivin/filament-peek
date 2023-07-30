@@ -23,7 +23,7 @@ it('has a default action', function () {
     $previewAction = PreviewAction::make()
         ->livewire($this->mock(Page::class));
 
-    expect(is_callable($previewAction->getAction()))->toBeTrue();
+    expect(is_callable($previewAction->getActionFunction()))->toBeTrue();
 });
 
 it('sets the view hook to render the modal', function () {
