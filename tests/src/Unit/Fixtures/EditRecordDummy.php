@@ -14,7 +14,7 @@ class EditRecordDummy extends EditRecord
 
     protected static string $resource = ResourceDummy::class;
 
-    public $data = [];
+    public ?array $data = [];
 
     public function getRecord(): Model
     {

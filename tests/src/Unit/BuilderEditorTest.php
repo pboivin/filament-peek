@@ -58,7 +58,7 @@ it('renders the preview blade view', function () {
         ->set('builderName', 'test')
         ->set('previewView', 'preview')
         ->call('refreshBuilderPreview')
-        ->assertDispatchedBrowserEvent('refresh-preview-modal');
+        ->assertDispatched('refresh-preview-modal');
 });
 
 it('renders the preview url', function () {
@@ -75,7 +75,7 @@ it('renders the preview url', function () {
         ->set('builderName', 'test')
         ->set('previewUrl', 'https://example.com')
         ->call('refreshBuilderPreview')
-        ->assertDispatchedBrowserEvent('refresh-preview-modal');
+        ->assertDispatched('refresh-preview-modal');
 });
 
 it('mutates the builder preview data', function () {
@@ -109,7 +109,7 @@ it('mutates the builder preview data', function () {
         ->set('builderName', 'test')
         ->set('previewView', 'preview-data')
         ->call('refreshBuilderPreview')
-        ->assertDispatchedBrowserEvent('refresh-preview-modal');
+        ->assertDispatched('refresh-preview-modal');
 
     /** @var TestCase $this */
     $this->assertStringContainsString('isPeekPreviewModal:1', $livewire->get('html'));
