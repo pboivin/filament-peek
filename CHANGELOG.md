@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.0.0-alpha1 - 2023-07-30
+
+* feat!: Initial support for Filament 3
+
+
 ## 1.1.0 - 2023-07-26
 
 * feat: Add preview modal JavaScript hooks
