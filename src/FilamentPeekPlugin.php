@@ -39,15 +39,15 @@ class FilamentPeekPlugin implements Plugin
             fn () => view('filament-peek::preview-modal'),
         );
 
-        if (!config('filament-peek.disablePluginScripts', false)) {
+        if (! config('filament-peek.disablePluginScripts', false)) {
             FilamentAsset::register([
-                Js::make(static::ID, __DIR__ . '/../resources/dist/filament-peek.js'),
+                Js::make(static::ID, __DIR__.'/../resources/dist/filament-peek.js'),
             ], package: static::PACKAGE);
         }
 
-        if (!config('filament-peek.disablePluginStyles', false)) {
+        if (! config('filament-peek.disablePluginStyles', false)) {
             FilamentAsset::register([
-                Css::make(static::ID, __DIR__ . '/../resources/dist/filament-peek.css'),
+                Css::make(static::ID, __DIR__.'/../resources/dist/filament-peek.css'),
             ], package: static::PACKAGE);
         }
     }
