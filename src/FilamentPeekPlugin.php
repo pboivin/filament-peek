@@ -7,6 +7,7 @@ use Filament\Panel;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
+use Livewire\Livewire;
 
 class FilamentPeekPlugin implements Plugin
 {
@@ -28,6 +29,11 @@ class FilamentPeekPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
+        Livewire::component(
+            'filament-peek::builder-editor',
+            config('filament-peek.builderEditor.livewireComponentClass', BuilderEditor::class)
+        );
+
         $panel->renderHook(
             'panels::body.end',
             fn () => view('filament-peek::preview-modal'),

@@ -96,6 +96,20 @@ body.is-filament-peek-preview-modal-open {
 
 .filament-peek-editor-icon {
     @apply gap-0 border-0 p-2 !important;
+
+    &:not(:focus) {
+        box-shadow: none !important;
+    }
+
+    svg {
+        @apply text-gray-900;
+    }
+
+    &.is-icon-active {
+        svg {
+            @apply text-primary-600;
+        }
+    }
 }
 
 .filament-peek-editor-auto-refresh-label {

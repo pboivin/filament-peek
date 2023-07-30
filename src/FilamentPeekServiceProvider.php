@@ -14,18 +14,4 @@ class FilamentPeekServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews();
     }
-
-    // public function packageRegistered(): void
-    // {
-    //     parent::packageRegistered();
-    //     // $this->app->resolving('filament', function () {
-    //     //     Filament::serving(function () {
-    //     //         Livewire::component(
-    //     //             'filament-peek::builder-editor',
-    //     //             config('filament-peek.builderEditor.livewireComponentClass', BuilderEditor::class)
-    //     //         );
-    //     //     });
-    //     // });
-    // }
-
 }

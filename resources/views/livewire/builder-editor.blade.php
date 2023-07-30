@@ -10,34 +10,34 @@
 
         <div class="inline-flex items-center">
             <x-filament::button
-                color="secondary"
-                icon="heroicon-o-refresh"
-                :label-sr-only="true"
-                x-on:click="Livewire.emit('refreshBuilderPreview')"
+                color="gray"
+                icon="heroicon-o-arrow-path"
                 class="{{ Arr::toCssClasses([
                     'filament-peek-editor-refresh',
                     'filament-peek-editor-icon',
-                    'text-primary-600' => $this->shouldAutoRefresh(),
+                    'is-icon-active' => $this->shouldAutoRefresh(),
                 ]) }}"
+                :label-sr-only="true"
                 :title="__('filament-peek::ui.refresh-action-label')"
+                x-on:click="Livewire.dispatch('refreshBuilderPreview')"
             ></x-filament::button>
 
             @if ($this->canAutoRefresh())
-                <x-filament-support::dropdown
+                <x-filament::dropdown
                     :dark-mode="config('filament.dark_mode')"
                     placement="bottom-end"
                 >
                     <x-slot name="trigger">
                         <x-filament::button
                             color="secondary"
-                            icon="heroicon-s-cog"
-                            :label-sr-only="true"
+                            icon="heroicon-o-cog-6-tooth"
                             class="filament-peek-editor-settings filament-peek-editor-icon"
+                            :label-sr-only="true"
                             :title="__('filament-peek::ui.editor-settings-label')"
                         ></x-filament::button>
                     </x-slot>
 
-                    <x-filament-support::dropdown.list>
+                    <x-filament::dropdown.list>
                         <label
                             for="filament-peek-editor-auto-refresh"
                             class="filament-peek-editor-auto-refresh-label"
@@ -46,12 +46,12 @@
                                 type="checkbox"
                                 id="filament-peek-editor-auto-refresh"
                                 class="block rounded border-gray-300 text-primary-600 shadow-sm outline-none focus:ring focus:ring-primary-200 focus:ring-opacity-50 dark:border-gray-600 dark:bg-gray-700 dark:checked:border-primary-600 dark:checked:bg-primary-600"
-                                wire:model="autoRefresh"
+                                wire:model.live="autoRefresh"
                             >
                             <span>{{ __('filament-peek::ui.editor-auto-refresh-label') }}</span>
                         </label>
-                    </x-filament-support::dropdown.list>
-                </x-filament-support::dropdown>
+                    </x-filament::dropdown.list>
+                </x-filament::dropdown>
             @endif
         </div>
     </div>
@@ -67,7 +67,7 @@
             }"
         >
             <div class="filament-peek-builder-content">
-                <form wire:submit.prevent="submit">
+                <form wire:submit="submit">
                     {{ $this->form }}
 
                     <button type="submit" style="display: none">
@@ -75,7 +75,8 @@
                     </button>
                 </form>
 
-                {{ $this->modal }}
+                {{-- @todo --}}
+                {{-- {{ $this->modal }} --}}
             </div>
 
             <div class="filament-peek-builder-actions"></div>

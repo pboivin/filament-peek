@@ -29,9 +29,7 @@
         x-cloak
     >
         @if (\Pboivin\FilamentPeek\Support\View::needsBuilderPreview())
-            @dump('todo / Builder Editor')
-
-            {{-- @livewire('filament-peek::builder-editor') --}}
+            @livewire('filament-peek::builder-editor')
         @endif
 
         <div class="filament-peek-panel filament-peek-preview">
