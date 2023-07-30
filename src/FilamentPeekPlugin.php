@@ -8,6 +8,7 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Livewire\Livewire;
+use Pboivin\FilamentPeek\Livewire\BuilderEditor;
 
 class FilamentPeekPlugin implements Plugin
 {
