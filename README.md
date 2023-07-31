@@ -25,7 +25,7 @@ composer require pboivin/filament-peek:"^1.0"
 |------|----------|-----|--------|
 | [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | Unmaintained | ^2.0 | ^8.0 |
 | [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Current | ^2.0 | ^8.0 |
-| [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Alpha | ^3.0 | ^8.1 |
+| [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Beta | ^3.0 | ^8.1 |
 
 #### Demo Project
 
