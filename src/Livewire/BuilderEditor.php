@@ -7,7 +7,6 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View as ViewContract;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Livewire\Component;
 
@@ -50,7 +49,13 @@ class BuilderEditor extends Component implements HasForms
 
     public function render(): ViewContract
     {
-        return view('filament-peek::livewire.builder-editor');
+        $view = view('filament-peek::livewire.builder-editor');
+
+        if ($this->shouldAutoRefresh()) {
+            $this->refreshBuilderPreview();
+        }
+
+        return $view;
     }
 
     public function canAutoRefresh(): bool
@@ -73,32 +78,6 @@ class BuilderEditor extends Component implements HasForms
         if ($this->shouldAutoRefresh()) {
             $this->refreshBuilderPreview();
         }
-    }
-
-    public function dispatchFormEvent(...$args): void
-    {
-        foreach ($this->getCachedForms() as $form) {
-            $form->dispatchEvent(...$args);
-        }
-
-        if ($this->shouldAutoRefresh() && ! $this->shouldIgnoreFormEvent(...$args)) {
-            $this->refreshBuilderPreview();
-        }
-    }
-
-    protected function shouldIgnoreFormEvent(...$args): bool
-    {
-        $eventName = $args[0] ?? false;
-
-        if (in_array($eventName, ['builder::createItem', 'repeater::createItem'])) {
-            return true;
-        }
-
-        if (Str::of($eventName)->startsWith('tiptap::')) {
-            return true;
-        }
-
-        return false;
     }
 
     public function openBuilderEditor(
