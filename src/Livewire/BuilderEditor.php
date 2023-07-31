@@ -49,7 +49,13 @@ class BuilderEditor extends Component implements HasForms
 
     public function render(): ViewContract
     {
-        return view('filament-peek::livewire.builder-editor');
+        $view = view('filament-peek::livewire.builder-editor');
+
+        if ($this->shouldAutoRefresh()) {
+            $this->refreshBuilderPreview();
+        }
+
+        return $view;
     }
 
     public function canAutoRefresh(): bool
