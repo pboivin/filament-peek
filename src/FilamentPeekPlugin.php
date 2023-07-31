@@ -16,7 +16,7 @@ class FilamentPeekPlugin implements Plugin
 
     const ID = 'filament-peek';
 
-    const VERSION = '2.0.0-alpha1';
+    const VERSION = '2.0.0-beta1';
 
     public static function make(): static
     {

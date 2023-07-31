@@ -16,7 +16,7 @@ A Filament plugin to add a full-screen preview modal to your Edit pages. The mod
 You can install the package via composer:
 
 ```bash
-composer require pboivin/filament-peek:"^2.0.0-alpha1"
+composer require pboivin/filament-peek:"^2.0.0-beta1"
 ```
 
 #### Compatibility
@@ -25,9 +25,7 @@ composer require pboivin/filament-peek:"^2.0.0-alpha1"
 |------|----------|-----|--------|
 | [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | Unmaintained | ^2.0 | ^8.0 |
 | [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Current | ^2.0 | ^8.0 |
-| [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Alpha | ^3.0 | ^8.1 |
-
-**Note: The demo project and documentation are not yet updated for Filament 3**
+| [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Beta | ^3.0 | ^8.1 |
 
 #### Demo Project
 
