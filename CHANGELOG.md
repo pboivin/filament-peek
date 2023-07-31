@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.0.0-beta1 - 2023-07-31
+
+* fix: Refresh on render if needed
+
+
 ## 2.0.0-alpha1 - 2023-07-30
 
 * feat!: Initial support for Filament 3
