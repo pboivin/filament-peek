@@ -16,7 +16,10 @@ use Livewire\Component;
  */
 class BuilderEditor extends Component implements HasForms
 {
-    use InteractsWithForms;
+    use InteractsWithForms {
+        dispatchFormEvent as baseDispatchFormEvent;
+        mountFormComponentAction as baseMountFormComponentAction;
+    }
 
     public ?string $previewUrl = null;
 
@@ -77,9 +80,7 @@ class BuilderEditor extends Component implements HasForms
 
     public function dispatchFormEvent(...$args): void
     {
-        foreach ($this->getCachedForms() as $form) {
-            $form->dispatchEvent(...$args);
-        }
+        $this->baseDispatchFormEvent(...$args);
 
         if ($this->shouldAutoRefresh() && ! $this->shouldIgnoreFormEvent(...$args)) {
             $this->refreshBuilderPreview();
@@ -90,14 +91,26 @@ class BuilderEditor extends Component implements HasForms
     {
         $eventName = $args[0] ?? false;
 
-        if (in_array($eventName, ['builder::createItem', 'repeater::createItem'])) {
-            return true;
-        }
-
         if (Str::of($eventName)->startsWith('tiptap::')) {
             return true;
         }
 
+        return false;
+    }
+
+    public function mountFormComponentAction(string $component, string $name, array $arguments = []): mixed
+    {
+        $value = $this->baseMountFormComponentAction($component, $name, $arguments);
+
+        if ($this->shouldAutoRefresh() && ! $this->shouldIgnoreComponentAction($component, $name, $arguments)) {
+            $this->refreshBuilderPreview();
+        }
+
+        return $value;
+    }
+
+    protected function shouldIgnoreComponentAction(string $component, string $name, array $arguments = []): bool
+    {
         return false;
     }
 
