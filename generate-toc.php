@@ -1,20 +1,22 @@
 <?php
 
+namespace Pboivin\FilamentPeek;
+
 use Illuminate\Support\Str;
 
 require_once './vendor/autoload.php';
 
 define('BASE_URL', 'https://github.com/pboivin/filament-peek/blob/2.x/');
 
-function generateToc(string $prefix): string
+function generateToc(string $prefix, int $level = 2): string
 {
     $toc = [];
 
     $files = [
-        'configuration.md',
-        'page-previews.md',
-        'builder-previews.md',
-        'javascript-hooks.md',
+        'docs/configuration.md',
+        'docs/page-previews.md',
+        'docs/builder-previews.md',
+        'docs/javascript-hooks.md',
     ];
 
     foreach ($files as $file) {
@@ -24,6 +26,7 @@ function generateToc(string $prefix): string
                 $slug = Str::slug($title);
                 $toc[] = "- [$title]({$prefix}{$file})";
             } elseif (preg_match('/^## /', $line)) {
+                if ($level < 2) continue;
                 $title = preg_replace('/^## /', '', trim($line));
                 $slug = Str::slug($title);
                 $toc[] = "    - [$title]({$prefix}{$file}#{$slug})";
@@ -40,12 +43,12 @@ function generateToc(string $prefix): string
     ]);
 }
 
-function updateReadme($toc): string
+function updateReadme(string $file, string $toc): string
 {
     $readme = [];
     $in_toc = false;
 
-    foreach (file('./README.md') as $line) {
+    foreach (file($file) as $line) {
         if (preg_match('/BEGIN_TOC/', $line)) {
             $in_toc = true;
 
@@ -72,9 +75,15 @@ function updateReadme($toc): string
     ]);
 }
 
-file_put_contents('./README.new.md', updateReadme(generateToc(BASE_URL, 'docs')));
+// Main README
+file_put_contents('./README.new.md', updateReadme('./README.md', generateToc(BASE_URL)));
 unlink('./README.md');
 rename('./README.new.md', './README.md');
+
+// Docs index
+file_put_contents('./docs/README.new.md', updateReadme('./docs/README.md', generateToc(BASE_URL)));
+unlink('./docs/README.md');
+rename('./docs/README.new.md', './docs/README.md');
 
 echo "\nDONE!\n\n";
 
