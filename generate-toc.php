@@ -4,15 +4,17 @@ use Illuminate\Support\Str;
 
 require_once './vendor/autoload.php';
 
-function generateToc(): string
+define('BASE_URL', 'https://github.com/pboivin/filament-peek/blob/2.x/');
+
+function generateToc(string $prefix): string
 {
     $toc = [];
 
     $files = [
-        './docs/configuration.md',
-        './docs/page-previews.md',
-        './docs/builder-previews.md',
-        './docs/javascript-hooks.md',
+        'configuration.md',
+        'page-previews.md',
+        'builder-previews.md',
+        'javascript-hooks.md',
     ];
 
     foreach ($files as $file) {
@@ -20,11 +22,11 @@ function generateToc(): string
             if (preg_match('/^# /', $line)) {
                 $title = preg_replace('/^# /', '', trim($line));
                 $slug = Str::slug($title);
-                $toc[] = "- [$title]($file)";
+                $toc[] = "- [$title]({$prefix}{$file})";
             } elseif (preg_match('/^## /', $line)) {
                 $title = preg_replace('/^## /', '', trim($line));
                 $slug = Str::slug($title);
-                $toc[] = "    - [$title]($file#$slug)";
+                $toc[] = "    - [$title]({$prefix}{$file}#{$slug})";
             }
         }
     }
@@ -70,7 +72,7 @@ function updateReadme($toc): string
     ]);
 }
 
-file_put_contents('./README.new.md', updateReadme(generateToc()));
+file_put_contents('./README.new.md', updateReadme(generateToc(BASE_URL, 'docs')));
 unlink('./README.md');
 rename('./README.new.md', './README.md');
 
