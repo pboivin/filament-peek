@@ -8,25 +8,24 @@ require_once './vendor/autoload.php';
 
 define('BASE_URL', 'https://github.com/pboivin/filament-peek/blob/2.x/');
 
-function generateToc(string $prefix, int $level = 2): string
+define('DOC_FILES', [
+    'docs/configuration.md',
+    'docs/page-previews.md',
+    'docs/builder-previews.md',
+    'docs/javascript-hooks.md',
+]);
+
+function generateToc(string $prefix): string
 {
     $toc = [];
 
-    $files = [
-        'docs/configuration.md',
-        'docs/page-previews.md',
-        'docs/builder-previews.md',
-        'docs/javascript-hooks.md',
-    ];
-
-    foreach ($files as $file) {
+    foreach (DOC_FILES as $file) {
         foreach (file($file) as $line) {
             if (preg_match('/^# /', $line)) {
                 $title = preg_replace('/^# /', '', trim($line));
                 $slug = Str::slug($title);
                 $toc[] = "- [$title]({$prefix}{$file})";
             } elseif (preg_match('/^## /', $line)) {
-                if ($level < 2) continue;
                 $title = preg_replace('/^## /', '', trim($line));
                 $slug = Str::slug($title);
                 $toc[] = "    - [$title]({$prefix}{$file}#{$slug})";
@@ -43,7 +42,31 @@ function generateToc(string $prefix, int $level = 2): string
     ]);
 }
 
-function updateReadme(string $file, string $toc): string
+function generateFooter(string $prefix): string
+{
+    $toc = [];
+
+    foreach (DOC_FILES as $file) {
+        foreach (file($file) as $line) {
+            $file = basename($file);
+
+            if (preg_match('/^# /', $line)) {
+                $title = preg_replace('/^# /', '', trim($line));
+                $toc[] = "- [$title]({$prefix}{$file})";
+            }
+        }
+    }
+
+    return implode("\n", [
+        '<!-- BEGIN_TOC -->',
+        '',
+        ...$toc,
+        '',
+        '<!-- END_TOC -->',
+    ]);
+}
+
+function updateMarkdown(string $file, string $toc): string
 {
     $readme = [];
     $in_toc = false;
@@ -76,14 +99,22 @@ function updateReadme(string $file, string $toc): string
 }
 
 // Main README
-file_put_contents('./README.new.md', updateReadme('./README.md', generateToc(BASE_URL)));
+file_put_contents('./README.md.new', updateMarkdown('./README.md', generateToc(BASE_URL)));
 unlink('./README.md');
-rename('./README.new.md', './README.md');
+rename('./README.md.new', './README.md');
 
 // Docs index
-file_put_contents('./docs/README.new.md', updateReadme('./docs/README.md', generateToc(BASE_URL)));
+file_put_contents('./docs/README.md.new', updateMarkdown('./docs/README.md', generateToc(BASE_URL)));
 unlink('./docs/README.md');
-rename('./docs/README.new.md', './docs/README.md');
+rename('./docs/README.md.new', './docs/README.md');
+
+// Page footers
+$footer = generateFooter('./');
+foreach (DOC_FILES as $file) {
+    file_put_contents("./{$file}.new", updateMarkdown("./{$file}", $footer));
+    unlink("./{$file}");
+    rename("./{$file}.new", "./{$file}");
+}
 
 echo "\nDONE!\n\n";
 

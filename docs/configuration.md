@@ -41,7 +41,11 @@ Builder Editor options:
 
 **Documentation**
 
+<!-- BEGIN_TOC -->
+
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
 - [Builder Previews](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
+
+<!-- END_TOC -->

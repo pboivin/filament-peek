@@ -106,7 +106,7 @@ The example above uses a dedicated Blade view to be rendered in the preview moda
     @isset($isPeekPreviewModal)
         <x-preview-banner />
     @endisset
-    
+
     <x-container>
         ...
     </x-container>
@@ -176,7 +176,7 @@ class PostController extends Controller
         $previewData = session("preview-$token");
 
         abort_if(is_null($previewData), 404);
-        
+
         // ...
     }
 }
@@ -195,7 +195,7 @@ See also: [JavaScript Hooks](./javascript-hooks.md)
 
 Instead of a `PreviewAction`, you can use the `PreviewLink` component to integrate a button directly into your form (e.g. in a sidebar):
 
-```php 
+```php
 use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
 
 class PostResource extends Resource
@@ -245,7 +245,11 @@ If you need finer control over pointer events in your previews, first set this o
 
 **Documentation**
 
+<!-- BEGIN_TOC -->
+
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
 - [Builder Previews](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
+
+<!-- END_TOC -->

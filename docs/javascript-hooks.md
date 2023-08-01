@@ -32,7 +32,11 @@ Have a look at the [Including Frontend Assets](https://filamentphp.com/docs/2.x/
 
 **Documentation**
 
+<!-- BEGIN_TOC -->
+
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
 - [Builder Previews](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
+
+<!-- END_TOC -->
