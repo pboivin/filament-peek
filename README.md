@@ -9,7 +9,7 @@
 
 A Filament plugin to add a full-screen preview modal to your Edit pages. The modal can be used before saving to preview a modified record.
 
-![Screenshots of the edit page and preview modal](https://raw.githubusercontent.com/pboivin/filament-peek/2.x/art/01-page-preview.jpg)
+<img src="https://raw.githubusercontent.com/pboivin/filament-peek/2.x/art/01-page-preview.jpg" alt="Screenshots of the edit page and preview modal" class="filament-hidden">
 
 ## Installation
 
