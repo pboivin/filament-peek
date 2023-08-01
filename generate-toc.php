@@ -13,6 +13,7 @@ define('DOC_FILES', [
     'docs/page-previews.md',
     'docs/builder-previews.md',
     'docs/javascript-hooks.md',
+    'docs/upgrade-guide.md',
 ]);
 
 function generateToc(string $prefix): string

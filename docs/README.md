@@ -25,5 +25,6 @@
     - [Customizing the Preview Link](https://github.com/pboivin/filament-peek/blob/2.x/docs/builder-previews.md#customizing-the-preview-link)
     - [Automatically Updating the Builder Preview](https://github.com/pboivin/filament-peek/blob/2.x/docs/builder-previews.md#automatically-updating-the-builder-preview)
 - [JavaScript Hooks](https://github.com/pboivin/filament-peek/blob/2.x/docs/javascript-hooks.md)
+- [Upgrading from v1](https://github.com/pboivin/filament-peek/blob/2.x/docs/upgrade-guide.md)
 
 <!-- END_TOC -->

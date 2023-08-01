@@ -47,5 +47,6 @@ Builder Editor options:
 - [Page Previews](./page-previews.md)
 - [Builder Previews](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
+- [Upgrading from v1](./upgrade-guide.md)
 
 <!-- END_TOC -->

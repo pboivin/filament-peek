@@ -29,6 +29,10 @@ composer require pboivin/filament-peek:"^2.0.0-beta1"
 | [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Current | ^2.0 | ^8.0 |
 | [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Beta ✨️ | ^3.0 | ^8.1 |
 
+#### Upgrading from v1
+
+Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/2.x/docs/upgrade-guide.md).
+
 #### Demo Project
 
 For an easy way to try out the plugin on a simple Filament project, have a look at the [filament-peek-demo](https://github.com/pboivin/filament-peek-demo/tree/2.x) repository.
@@ -62,6 +66,7 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
     - [Customizing the Preview Link](https://github.com/pboivin/filament-peek/blob/2.x/docs/builder-previews.md#customizing-the-preview-link)
     - [Automatically Updating the Builder Preview](https://github.com/pboivin/filament-peek/blob/2.x/docs/builder-previews.md#automatically-updating-the-builder-preview)
 - [JavaScript Hooks](https://github.com/pboivin/filament-peek/blob/2.x/docs/javascript-hooks.md)
+- [Upgrading from v1](https://github.com/pboivin/filament-peek/blob/2.x/docs/upgrade-guide.md)
 
 <!-- END_TOC -->
 
