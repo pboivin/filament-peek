@@ -73,20 +73,20 @@ composer test
 
 ## Changelog
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+Please see [CHANGELOG](https://github.com/pboivin/filament-peek/blob/2.x/CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/pboivin/filament-peek/blob/2.x/.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+Please review [our security policy](https://github.com/pboivin/filament-peek/security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
 - [Patrick Boivin](https://github.com/pboivin)
-- [All Contributors](../../contributors)
+- [All Contributors](https://github.com/pboivin/filament-peek/contributors)
 
 ## Acknowledgements
 
@@ -94,4 +94,4 @@ The initial idea is heavily inspired by module previews in [Twill CMS](https://t
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/pboivin/filament-peek/blob/2.x/LICENSE.md) for more information.
