@@ -1,18 +1,20 @@
-# Upgrading from v1
+# Upgrading from v1.x
 
-Not much has changed in Peek from v1 to v2. Here are the steps to follow when upgrading:
+> If you see anything missing from this guide, please do not hesitate to [send me a pull request(https://github.com/pboivin/filament-peek/edit/2.x/docs/upgrade-guide.md)]. Any help is appreciated!
 
-### 1. Upgrade Filament
+Not much has changed in Peek from v1 to v2, aside from basic Filament v3 and Livewire v3 compatibility. Here are the steps to follow when upgrading:
 
-Make sure to follow the [Upgrade Guide from Filament](https://filamentphp.com/docs/3.x/panels/upgrade-guide). It's essential to get your app ready for Filament v3 (and Livewire v3) before upgrading the plugin.
+#### 1. Upgrade Filament
 
-### 2. Upgrade Peek
+Make sure to follow the [Upgrade Guide from Filament](https://filamentphp.com/docs/3.x/panels/upgrade-guide). It's essential to get your app ready for Filament v3 and Livewire v3 before upgrading the plugin.
+
+#### 2. Upgrade Peek
 
 ```
 composer require pboivin/filament-peek:"^2.0"
 ```
 
-### 3. Register the plugin in your Panel
+#### 3. Register the plugin in your Panel
 
 In your `AdminPanelProvider`, register the `FilamentPeekPlugin` class:
 
@@ -27,19 +29,19 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-### 4. Publish the assets
+#### 4. Publish the assets
 
 ```
 php artisan filament:assets
 ```
 
-### 5. Clear your view cache
+#### 5. Clear your view cache
 
 ```
 php artisan view:clear
 ```
 
-### 6. (Optional) Republish the configuration
+#### 6. (Optional) Republish the configuration
 
 This is only needed if you have published the config file before:
 
@@ -57,6 +59,6 @@ php artisan vendor:publish --force --tag=filament-peek-config
 - [Page Previews](./page-previews.md)
 - [Builder Previews](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
-- [Upgrading from v1](./upgrade-guide.md)
+- [Upgrading from v1.x](./upgrade-guide.md)
 
 <!-- END_TOC -->

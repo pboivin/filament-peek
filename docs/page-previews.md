@@ -251,6 +251,6 @@ If you need finer control over pointer events in your previews, first set this o
 - [Page Previews](./page-previews.md)
 - [Builder Previews](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
-- [Upgrading from v1](./upgrade-guide.md)
+- [Upgrading from v1.x](./upgrade-guide.md)
 
 <!-- END_TOC -->
