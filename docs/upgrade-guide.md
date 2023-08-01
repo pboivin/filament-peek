@@ -1,6 +1,6 @@
 # Upgrading from v1.x
 
-> If you see anything missing from this guide, please do not hesitate to [send me a pull request(https://github.com/pboivin/filament-peek/edit/2.x/docs/upgrade-guide.md)]. Any help is appreciated!
+> If you see anything missing from this guide, please do not hesitate to [send me a pull request](https://github.com/pboivin/filament-peek/edit/2.x/docs/upgrade-guide.md). Any help is appreciated!
 
 Not much has changed in Peek from v1 to v2, aside from basic Filament v3 and Livewire v3 compatibility. Here are the steps to follow when upgrading:
 
