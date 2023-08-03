@@ -21,6 +21,25 @@ You can install the package via composer:
 composer require pboivin/filament-peek:"^2.0.0-beta1"
 ```
 
+Register a `FilamentPeekPlugin` instance in your Panel provider:
+
+```php
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        // ...
+        ->plugins([
+            FilamentPeekPlugin::make(),
+        ]);
+}
+```
+
+Then, publish the assets:
+
+```bash
+php artisan filament:assets
+```
+
 #### Compatibility
 
 | Peek | Status | Filament | PHP |
