@@ -170,7 +170,7 @@ class PostResource extends Resource
 
 #### Demo Project
 
-For an easy way to try out the plugin on a simple Filament project, have a look at the [filament-peek-demo](https://github.com/pboivin/filament-peek-demo/tree/1.x) repository.
+For an easy way to try out the plugin on a simple Filament project, have a look at the [filament-peek-demo](https://github.com/pboivin/filament-peek-demo/tree/2.x) repository.
 
 ## Using Multiple Builder Fields
 
