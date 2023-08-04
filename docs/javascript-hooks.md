@@ -26,7 +26,7 @@ document.addEventListener('peek:modal-closing', (e) => {
 });
 ```
 
-Have a look at the [Including Frontend Assets](https://filamentphp.com/docs/2.x/admin/appearance#including-frontend-assets) section of the Filament documentation to learn how to load custom JavaScript files into your admin pages.
+Have a look at the [Registering JavaScript Files](https://filamentphp.com/docs/3.x/support/assets#registering-javascript-files) section of the Filament documentation to learn how to load custom scripts into your Panel.
 
 ---
 
