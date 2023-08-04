@@ -4,6 +4,7 @@ namespace Pboivin\FilamentPeek\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
+use Filament\Actions\ActionsServiceProvider;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
@@ -28,6 +29,7 @@ class TestCase extends Orchestra
             SupportServiceProvider::class,
             FormsServiceProvider::class,
             TablesServiceProvider::class,
+            ActionsServiceProvider::class,
             NotificationsServiceProvider::class,
             FilamentServiceProvider::class,
             FilamentPeekServiceProvider::class,

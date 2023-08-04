@@ -75,8 +75,7 @@
                     </button>
                 </form>
 
-                {{-- @todo --}}
-                {{-- {{ $this->modal }} --}}
+                <x-filament-actions::modals />
             </div>
 
             <div class="filament-peek-builder-actions"></div>
