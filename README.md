@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/pboivin/filament-peek"><img src="https://img.shields.io/packagist/l/pboivin/filament-peek" alt="License"></a>
 </p>
 
-A Filament plugin to add a full-screen preview modal to your PAnel pages. The modal can be used before saving to preview a modified record.
+A Filament plugin to add a full-screen preview modal to your Panel pages. The modal can be used before saving to preview a modified record.
 
 <p class="filament-hidden">
 <img src="https://raw.githubusercontent.com/pboivin/filament-peek/2.x/art/01-page-preview.jpg" alt="Screenshots of the edit page and preview modal">
