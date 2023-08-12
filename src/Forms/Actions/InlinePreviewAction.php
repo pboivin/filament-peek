@@ -11,7 +11,7 @@ class InlinePreviewAction extends Action
 
     public static function getDefaultName(): ?string
     {
-        return 'inlinePreview' . static::$count++;
+        return 'inlinePreview'.static::$count++;
     }
 
     protected function setUp(): void
