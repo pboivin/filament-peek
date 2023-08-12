@@ -95,14 +95,14 @@ body.is-filament-peek-preview-modal-open {
 }
 
 .filament-peek-editor-icon {
-    @apply gap-0 border-0 p-2 !important;
+    @apply gap-0 border-0 p-2 bg-transparent !important;
 
     &:not(:focus) {
         box-shadow: none !important;
     }
 
     svg {
-        @apply text-gray-900;
+        @apply text-gray-900 dark:text-white;
     }
 
     &.is-icon-active {
