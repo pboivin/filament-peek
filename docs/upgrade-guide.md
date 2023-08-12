@@ -19,6 +19,8 @@ composer require pboivin/filament-peek:"^2.0"
 In your `AdminPanelProvider`, register the `FilamentPeekPlugin` class:
 
 ```php
+use Pboivin\FilamentPeek\FilamentPeekPlugin;
+
 public function panel(Panel $panel): Panel
 {
     return $panel
@@ -51,7 +53,27 @@ php artisan vendor:publish --force --tag=filament-peek-config
 
 #### 7. (Optional) Replace `PreviewLink` with `InlinePreviewAction`
 
-The `PreviewLink` component has been deprecated. Consider switching to the more powerful and customizable [`InlinePreviewAction`](./page-previews.md#embedding-a-preview-action-into-the-form) component.
+The `PreviewLink` component has been deprecated. Consider switching to the more powerful and customizable [`InlinePreviewAction`](./page-previews.md#embedding-a-preview-action-into-the-form) component:
+
+```diff
+-use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
++use Filament\Forms\Components\Actions;
++use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
+
+public static function form(Form $form): Form
+{
+    return $form->schema(['
+-        PreviewLink::make(),
++        Actions::make([
++            InlinePreviewAction::make(),
++        ]),
+
+        // ...
+    ]);
+}
+```
+
+You can find more information on Form Actions in the [Filament Documentation](https://filamentphp.com/docs/3.x/forms/actions).
 
 ---
 
