@@ -191,7 +191,7 @@ This technique can also be used to implement page previews with a decoupled fron
 
 See also: [JavaScript Hooks](./javascript-hooks.md)
 
-## Embedding the Preview Action into the Form
+## Embedding a Preview Action into the Form
 
 Instead of a `PreviewAction`, you can use the `InlinePreviewAction` component to integrate a button directly into your form (e.g. in a sidebar):
 
