@@ -60,14 +60,17 @@ To reduce duplication, the Builder field definition can also be extracted to a s
 
 #### Update the Resource Class
 
-Add the `PreviewLink` component to your form, above or below the Builder field:
+Add the `InlinePreviewAction` action to your form, above or below the Builder field:
 
 ```php
-use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
+use Filament\Forms\Components\Actions;
+use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 
-PreviewLink::make()
-    ->label('Preview Content Blocks')
-    ->builderPreview('content_blocks'),
+Actions::make([
+    InlinePreviewAction::make()
+        ->label('Preview Content Blocks')
+        ->builderPreview('content_blocks'),
+]),
 ```
 
 #### Complete Example
@@ -107,13 +110,14 @@ class EditPost extends EditRecord
 ```php
 namespace App\Filament\Resources;
 
+use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
+use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 // ...
 
 class PostResource extends Resource
@@ -154,11 +158,13 @@ class PostResource extends Resource
                 ->columnSpanFull()
                 ->required(),
 
-            PreviewLink::make()
-                ->label('Preview Content Blocks')
-                ->builderPreview('content_blocks')
+            Actions::make([
+                InlinePreviewAction::make()
+                    ->label('Preview Content Blocks')
+                    ->builderPreview('content_blocks'),
+            ])
                 ->columnSpanFull()
-                ->alignRight(),
+                ->alignEnd(),
 
             self::contentBuilderField(),
         ]);
@@ -174,7 +180,7 @@ For an easy way to try out the plugin on a simple Filament project, have a look 
 
 ## Using Multiple Builder Fields
 
-Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview link's `builderPreview()` method. Therefore, it's possible to support independent previews for multiple Builder fields in the same page:
+Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview action's `builderPreview()` method. Therefore, it's possible to support independent previews for multiple Builder fields in the same page:
 
 ```php
 protected function getBuilderPreviewView(string $builderName): ?string
@@ -267,17 +273,16 @@ public static function renderBuilderPreview(string $view, array $data): string
 }
 ```
 
-## Customizing the Preview Link
+## Customizing the Preview Action
 
-By default, the preview link is styled as a primary link. Use the `button()` method to style it as a Filament button.
+By default, the action is styled as a primary link. Use the `button()` method to style it as a Filament button.
 
-Use one of the following methods to adjust the horizontal alignment:
+Use one of the following methods on the `Actions` wrapper to adjust the horizontal alignment:
 
-- `alignLeft()`
+- `alignStart()`
 - `alignCenter()`
-- `alignRight()`
-
-Use the `extraAttributes()` method to add any other HTML attributes.
+- `alignEnd()`
+- `alignJustify()`
 
 <a name="preview-auto-refresh"></a>
 

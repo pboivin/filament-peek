@@ -6,6 +6,9 @@ use Filament\Forms\Components\Component;
 use Filament\Forms\Contracts\HasForms;
 use Pboivin\FilamentPeek\Support;
 
+/**
+ * @deprecated Use InlinePreviewAction instead.
+ */
 class PreviewLink extends Component
 {
     protected string $view = 'filament-peek::components.preview-link';
