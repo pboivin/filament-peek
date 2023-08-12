@@ -180,7 +180,7 @@ For an easy way to try out the plugin on a simple Filament project, have a look 
 
 ## Using Multiple Builder Fields
 
-Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview link's `builderPreview()` method. Therefore, it's possible to support independent previews for multiple Builder fields in the same page:
+Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview action's `builderPreview()` method. Therefore, it's possible to support independent previews for multiple Builder fields in the same page:
 
 ```php
 protected function getBuilderPreviewView(string $builderName): ?string
@@ -273,17 +273,16 @@ public static function renderBuilderPreview(string $view, array $data): string
 }
 ```
 
-## Customizing the Preview Link
+## Customizing the Preview Action
 
-By default, the preview link is styled as a primary link. Use the `button()` method to style it as a Filament button.
+By default, the action is styled as a primary link. Use the `button()` method to style it as a Filament button.
 
-Use one of the following methods to adjust the horizontal alignment:
+Use one of the following methods on the `Actions` wrapper to adjust the horizontal alignment:
 
-- `alignLeft()`
+- `alignStart()`
 - `alignCenter()`
-- `alignRight()`
-
-Use the `extraAttributes()` method to add any other HTML attributes.
+- `alignEnd()`
+- `alignJustify()`
 
 <a name="preview-auto-refresh"></a>
 
