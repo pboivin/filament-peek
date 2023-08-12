@@ -60,14 +60,17 @@ To reduce duplication, the Builder field definition can also be extracted to a s
 
 #### Update the Resource Class
 
-Add the `PreviewLink` component to your form, above or below the Builder field:
+Add the `InlinePreviewAction` action to your form, above or below the Builder field:
 
 ```php
-use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
+use Filament\Forms\Components\Actions;
+use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 
-PreviewLink::make()
-    ->label('Preview Content Blocks')
-    ->builderPreview('content_blocks'),
+Actions::make([
+    InlinePreviewAction::make()
+        ->label('Preview Content Blocks')
+        ->builderPreview('content_blocks'),
+]),
 ```
 
 #### Complete Example
@@ -107,13 +110,14 @@ class EditPost extends EditRecord
 ```php
 namespace App\Filament\Resources;
 
+use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
+use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 // ...
 
 class PostResource extends Resource
@@ -154,11 +158,13 @@ class PostResource extends Resource
                 ->columnSpanFull()
                 ->required(),
 
-            PreviewLink::make()
-                ->label('Preview Content Blocks')
-                ->builderPreview('content_blocks')
+            Actions::make([
+                InlinePreviewAction::make()
+                    ->label('Preview Content Blocks')
+                    ->builderPreview('content_blocks'),
+            ])
                 ->columnSpanFull()
-                ->alignRight(),
+                ->alignEnd(),
 
             self::contentBuilderField(),
         ]);

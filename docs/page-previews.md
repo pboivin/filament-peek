@@ -191,37 +191,34 @@ This technique can also be used to implement page previews with a decoupled fron
 
 See also: [JavaScript Hooks](./javascript-hooks.md)
 
-## Embedding a Preview Link into the Form
+## Embedding the Preview Action into the Form
 
-Instead of a `PreviewAction`, you can use the `PreviewLink` component to integrate a button directly into your form (e.g. in a sidebar):
+Instead of a `PreviewAction`, you can use the `InlinePreviewAction` component to integrate a button directly into your form (e.g. in a sidebar):
 
 ```php
-use Pboivin\FilamentPeek\Forms\Components\PreviewLink;
+use Filament\Forms\Components\Actions;
+use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 
-class PostResource extends Resource
+public static function form(Form $form): Form
 {
-    // ...
+    return $form->schema([
+        Actions::make([
+            InlinePreviewAction::make()
+        ]),
 
-    public static function form(Form $form): Form
-    {
-        return $form->schema([
-            PreviewLink::make(),
-
-            // ...
-        ]);
-    }
+        // ...
+    ]);
 }
 ```
 
-By default, the preview link is styled as a primary link. Use the `button()` method to style it as a Filament button.
+By default, the action is styled as a primary link. Use the `button()` method to style it as a Filament button.
 
-Use one of the following methods to adjust the horizontal alignment:
+Use one of the following methods on the `Actions` wrapper to adjust the horizontal alignment:
 
-- `alignLeft()`
+- `alignStart()`
 - `alignCenter()`
-- `alignRight()`
-
-Use the `extraAttributes()` method to add any other HTML attributes.
+- `alignEnd()`
+- `alignJustify()`
 
 ## Preview Pointer Events
 
