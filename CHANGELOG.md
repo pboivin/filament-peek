@@ -3,6 +3,14 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.0.0-beta2 - 2023-08-12
+
+* feat: Add InlinePreviewAction (Deprecate PreviewLink)
+* fix: Add missing modal tag
+* fix: Dark mode styles
+* chore: Update illuminate/contracts requirement
+
+
 ## 2.0.0-beta1 - 2023-07-31
 
 * fix: Refresh on render if needed
