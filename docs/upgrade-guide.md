@@ -49,6 +49,10 @@ This is only needed if you have published the config file before:
 php artisan vendor:publish --force --tag=filament-peek-config
 ```
 
+#### 7. (Optional) Replace `PreviewLink` with `InlinePreviewAction`
+
+The `PreviewLink` component has been deprecated. Consider switching to the more powerful and customizable [`InlinePreviewAction`](./page-previews.md#embedding-a-preview-action-into-the-form) component.
+
 ---
 
 **Documentation**
