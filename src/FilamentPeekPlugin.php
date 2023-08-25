@@ -13,10 +13,13 @@ use Pboivin\FilamentPeek\Livewire\BuilderEditor;
 class FilamentPeekPlugin implements Plugin
 {
     const PACKAGE = 'pboivin/filament-peek';
+
     const ID = 'filament-peek';
+
     const VERSION = '2.0.0-beta2';
 
     protected bool $shouldLoadPluginScripts = true;
+
     protected bool $shouldLoadPluginStyles = true;
 
     public function disablePluginScripts(): self
@@ -67,13 +70,13 @@ class FilamentPeekPlugin implements Plugin
 
         if ($this->shouldLoadPluginScripts()) {
             FilamentAsset::register([
-                Js::make(static::ID, __DIR__ . '/../resources/dist/filament-peek.js'),
+                Js::make(static::ID, __DIR__.'/../resources/dist/filament-peek.js'),
             ], package: static::PACKAGE);
         }
 
         if ($this->shouldLoadPluginStyles()) {
             FilamentAsset::register([
-                Css::make(static::ID, __DIR__ . '/../resources/dist/filament-peek.css'),
+                Css::make(static::ID, __DIR__.'/../resources/dist/filament-peek.css'),
             ], package: static::PACKAGE);
         }
     }
