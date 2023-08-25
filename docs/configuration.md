@@ -39,7 +39,7 @@ Builder Editor options:
 
 ## Integrating With a Custom Theme
 
-With Filament, you to change the CSS used inside of a given Panel by compiling a custom stylesheet (a "theme"). With this approach, it's also possible to modify the internal stylesheet of the plugin for a seamless integration.
+With Filament, you may change the CSS used inside of a given Panel by compiling a custom stylesheet (a "theme"). With this approach, it's also possible to modify the internal stylesheet of the plugin for a seamless integration.
 
 #### 1. Create your custom theme
 
