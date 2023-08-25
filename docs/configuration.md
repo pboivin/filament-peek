@@ -51,7 +51,7 @@ In your `AdminPanelProvider`, call the `disablePluginStyles()` method on the plu
 
 ```diff
  use Pboivin\FilamentPeek\FilamentPeekPlugin;
- 
+
  public function panel(Panel $panel): Panel
  {
      return $panel
