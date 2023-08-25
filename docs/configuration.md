@@ -49,18 +49,18 @@ Follow the instructions on the [Creating a custom theme](https://filamentphp.com
 
 In your `AdminPanelProvider`, call the `disablePluginStyles()` method on the plugin object:
 
-```php
-use Pboivin\FilamentPeek\FilamentPeekPlugin;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        // ...
-        ->plugins([
-            FilamentPeekPlugin::make()
-                ->disablePluginStyles(),
-        ]);
-}
+```diff
+ use Pboivin\FilamentPeek\FilamentPeekPlugin;
+ 
+ public function panel(Panel $panel): Panel
+ {
+     return $panel
+         // ...
+         ->plugins([
+             FilamentPeekPlugin::make()
++                ->disablePluginStyles(),
+         ]);
+ }
 ```
 
 #### 3. Import the source stylesheet in your `theme.css`
