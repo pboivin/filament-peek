@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.0.0-beta3 - 2023-08-25
+
+* enh: Replace assets config with plugin methods
+* docs: Add documentation on custom theme integration
+
+
 ## 2.0.0-beta2 - 2023-08-12
 
 * feat: Add InlinePreviewAction (Deprecate PreviewLink)
