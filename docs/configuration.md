@@ -37,6 +37,77 @@ Builder Editor options:
 | `autoRefreshStrategy` | `string` | Possible values: `simple` or `reactive`. (See [Automatically Updating the Builder Preview](./builder-previews.md#preview-auto-refresh)) |
 | `livewireComponentClass` | `string` | Livewire component class for the Builder Editor sidebar. |
 
+## Integrating With a Custom Theme
+
+With Filament, you to change the CSS used inside of a given Panel by compiling a custom stylesheet (a "theme"). With this approach, it's also possible to modify the internal stylesheet of the plugin for a seamless integration.
+
+#### 1. Create your custom theme
+
+Follow the instructions on the [Creating a custom theme](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) section of the Filament documentation.
+
+#### 2. Disable the plugin's compiled stylesheet
+
+In your `AdminPanelProvider`, call the `disablePluginStyles()` method on the plugin object:
+
+```diff
+ use Pboivin\FilamentPeek\FilamentPeekPlugin;
+
+ public function panel(Panel $panel): Panel
+ {
+     return $panel
+         // ...
+         ->plugins([
+             FilamentPeekPlugin::make()
++                ->disablePluginStyles(),
+         ]);
+ }
+```
+
+#### 3. Import the source stylesheet in your `theme.css`
+
+**`resources/css/filament/admin/theme.css`**
+```diff
+ @import '../../../../vendor/filament/filament/resources/css/theme.css';
+
++@import '../../../../vendor/pboivin/filament-peek/resources/css/plugin.css';
+
+ @config './tailwind.config.js';
+```
+
+#### 4. Include the plugin views in your theme's `tailwind.config.js`
+
+**`resources/css/filament/admin/tailwind.config.js`**
+```diff
+ export default {
+     presets: [preset],
+     content: [
+         './app/Filament/**/*.php',
+         './resources/views/filament/**/*.blade.php',
+         './vendor/filament/**/*.blade.php',
++        './vendor/pboivin/filament-peek/resources/**/*.blade.php',
+     ]
+ }
+```
+
+#### 5. Make sure to include the `nesting` plugin in your `postcss.config.js`
+
+**`postcss.config.js`**
+```diff
+ module.exports = {
+     plugins: {
++        'tailwindcss/nesting': {},
+         tailwindcss: {},
+         autoprefixer: {},
+     },
+ }
+```
+
+#### 6. Rebuild your theme
+
+```
+npm run build
+```
+
 ---
 
 **Documentation**

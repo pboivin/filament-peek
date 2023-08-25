@@ -5,6 +5,7 @@
 - [Configuration](https://github.com/pboivin/filament-peek/blob/2.x/docs/configuration.md)
     - [Publishing the Config File](https://github.com/pboivin/filament-peek/blob/2.x/docs/configuration.md#publishing-the-config-file)
     - [Available Options](https://github.com/pboivin/filament-peek/blob/2.x/docs/configuration.md#available-options)
+    - [Integrating With a Custom Theme](https://github.com/pboivin/filament-peek/blob/2.x/docs/configuration.md#integrating-with-a-custom-theme)
 - [Page Previews](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md)
     - [Overview](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#overview)
     - [Using the Preview Modal with Blade Views](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#using-the-preview-modal-with-blade-views)

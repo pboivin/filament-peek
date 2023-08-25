@@ -18,6 +18,34 @@ class FilamentPeekPlugin implements Plugin
 
     const VERSION = '2.0.0-beta2';
 
+    protected bool $shouldLoadPluginScripts = true;
+
+    protected bool $shouldLoadPluginStyles = true;
+
+    public function disablePluginScripts(): self
+    {
+        $this->shouldLoadPluginScripts = false;
+
+        return $this;
+    }
+
+    public function disablePluginStyles(): self
+    {
+        $this->shouldLoadPluginStyles = false;
+
+        return $this;
+    }
+
+    public function shouldLoadPluginScripts(): bool
+    {
+        return $this->shouldLoadPluginScripts;
+    }
+
+    public function shouldLoadPluginStyles(): bool
+    {
+        return $this->shouldLoadPluginStyles;
+    }
+
     public static function make(): static
     {
         return app(static::class);
@@ -40,13 +68,13 @@ class FilamentPeekPlugin implements Plugin
             fn () => view('filament-peek::preview-modal'),
         );
 
-        if (! config('filament-peek.disablePluginScripts', false)) {
+        if ($this->shouldLoadPluginScripts()) {
             FilamentAsset::register([
                 Js::make(static::ID, __DIR__.'/../resources/dist/filament-peek.js'),
             ], package: static::PACKAGE);
         }
 
-        if (! config('filament-peek.disablePluginStyles', false)) {
+        if ($this->shouldLoadPluginStyles()) {
             FilamentAsset::register([
                 Css::make(static::ID, __DIR__.'/../resources/dist/filament-peek.css'),
             ], package: static::PACKAGE);
