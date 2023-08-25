@@ -24,6 +24,8 @@ composer require pboivin/filament-peek:"^2.0.0-beta2"
 Register a `FilamentPeekPlugin` instance in your Panel provider:
 
 ```php
+use Pboivin\FilamentPeek\FilamentPeekPlugin;
+
 public function panel(Panel $panel): Panel
 {
     return $panel
