@@ -4,6 +4,7 @@ namespace Pboivin\FilamentPeek\Tests\Feature;
 
 use Pboivin\FilamentPeek\Tests\Models\Post;
 use Pboivin\FilamentPeek\Tests\Models\User;
+
 use function Pest\Laravel\get;
 
 it('can login', function () {
