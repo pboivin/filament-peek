@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.1.1 - 2023-08-26
+
+* fix: Don't attach keyup listener if not needed
+* fix: Try/catch iframe operations
+
+
 ## 1.1.0 - 2023-07-26
 
 * feat: Add preview modal JavaScript hooks
