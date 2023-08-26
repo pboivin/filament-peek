@@ -18,7 +18,7 @@ A Filament plugin to add a full-screen preview modal to your Panel pages. The mo
 You can install the package via composer:
 
 ```bash
-composer require pboivin/filament-peek:"^2.0.0-beta3"
+composer require pboivin/filament-peek:"^2.0.0-beta4"
 ```
 
 Register a `FilamentPeekPlugin` instance in your Panel provider:
