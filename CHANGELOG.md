@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.0.0-beta4 - 2023-08-26
+
+* fix: Don't attach keyup listener if not needed
+* fix: Try/catch iframe operations
+
+
 ## 2.0.0-beta3 - 2023-08-25
 
 * enh: Replace assets config with plugin methods
@@ -25,6 +31,12 @@ All notable changes to `filament-peek` will be documented in this file.
 ## 2.0.0-alpha1 - 2023-07-30
 
 * feat!: Initial support for Filament 3
+
+
+## 1.1.1 - 2023-08-26
+
+* fix: Don't attach keyup listener if not needed
+* fix: Try/catch iframe operations
 
 
 ## 1.1.0 - 2023-07-26
