@@ -139,13 +139,17 @@ document.addEventListener('alpine:init', () => {
         _attachIframeEscapeKeyListener() {
             if (!this.config.shouldCloseModalWithEscapeKey) return;
 
-            const iframe = this.$refs.previewModalBody.querySelector('iframe');
+            try {
+                const iframe = this.$refs.previewModalBody.querySelector('iframe');
 
-            if (!(iframe && iframe.contentWindow)) return;
+                if (!(iframe && iframe.contentWindow)) return;
 
-            iframe.contentWindow.addEventListener('keyup', (e) => {
-                if (e.key === 'Escape') this.handleEscapeKey();
-            });
+                iframe.contentWindow.addEventListener('keyup', (e) => {
+                    if (e.key === 'Escape') this.handleEscapeKey();
+                });
+            } catch (e) {
+                // pass
+            }
         },
 
         onRefreshPreviewModal($event) {
@@ -158,15 +162,19 @@ document.addEventListener('alpine:init', () => {
         },
 
         _restoreIframeScrollPosition() {
-            const iframe = this.$refs.previewModalBody.querySelector('iframe');
+            try {
+                const iframe = this.$refs.previewModalBody.querySelector('iframe');
 
-            if (iframe && iframe.contentWindow) {
-                this._iframeScrollPosition = iframe.contentWindow.scrollY;
+                if (iframe && iframe.contentWindow) {
+                    this._iframeScrollPosition = iframe.contentWindow.scrollY;
 
-                setTimeout(() => {
-                    const iframe = this.$refs.previewModalBody.querySelector('iframe');
-                    iframe?.contentWindow?.scrollTo(0, this._iframeScrollPosition || 0);
-                }, 60);
+                    setTimeout(() => {
+                        const iframe = this.$refs.previewModalBody.querySelector('iframe');
+                        iframe?.contentWindow?.scrollTo(0, this._iframeScrollPosition || 0);
+                    }, 60);
+                }
+            } catch (e) {
+                // pass
             }
         },
 
