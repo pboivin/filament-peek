@@ -11,7 +11,7 @@ use Spatie\LaravelPackageTools\Package;
 
 class FilamentPeekServiceProvider extends PluginServiceProvider
 {
-    const VERSION = '1.1.0';
+    const VERSION = '1.1.1';
 
     public static string $name = 'filament-peek';
 
