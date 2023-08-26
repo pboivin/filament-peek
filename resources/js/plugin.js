@@ -137,6 +137,8 @@ document.addEventListener('alpine:init', () => {
         },
 
         _attachIframeEscapeKeyListener() {
+            if (!this.config.shouldCloseModalWithEscapeKey) return;
+
             const iframe = this.$refs.previewModalBody.querySelector('iframe');
 
             if (!(iframe && iframe.contentWindow)) return;
