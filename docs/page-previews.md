@@ -241,6 +241,8 @@ If you need finer control over pointer events in your previews, first set this o
 @endisset
 ```
 
+**Note**: The `allowIframePointerEvents` option may not work when using a preview URL on another domain. If you run into any issues, use the CSS code above in your preview templates.
+
 ---
 
 **Documentation**
