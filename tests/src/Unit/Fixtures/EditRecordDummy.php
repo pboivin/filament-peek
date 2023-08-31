@@ -9,8 +9,8 @@ use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 
 class EditRecordDummy extends EditRecord
 {
-    use HasPreviewModal;
     use HasBuilderPreview;
+    use HasPreviewModal;
 
     protected static string $resource = ResourceDummy::class;
 

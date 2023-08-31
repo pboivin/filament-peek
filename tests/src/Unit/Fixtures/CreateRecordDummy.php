@@ -8,8 +8,8 @@ use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
 
 class CreateRecordDummy extends CreateRecord
 {
-    use HasPreviewModal;
     use HasBuilderPreview;
+    use HasPreviewModal;
 
     protected static string $resource = ResourceDummy::class;
 
