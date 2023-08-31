@@ -56,7 +56,7 @@ From the [Filament documentation](https://filamentphp.com/docs/3.x/panels/instal
 > **Livewire v3 is recently released!**
 > The Livewire team have done a great job in making it stable, but it was a complete rewrite of Livewire v2. You may encounter issues, so we recommend testing your application thoroughly before using Filament v3 in production.
 
-Please feel free to report any issues you encounter with Peek in this repository. I'll work with you to determine where the issue is coming from.
+Please feel free to report any issues you encounter with Peek [in this repository](https://github.com/pboivin/filament-peek/issues). I'll work with you to determine where the issue is coming from.
 
 #### Upgrading from `1.x`
 
