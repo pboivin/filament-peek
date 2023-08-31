@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.0.0 - 2023-08-31
+
+Stable release
+
+
 ## 2.0.0-beta4 - 2023-08-26
 
 * fix: Don't attach keyup listener if not needed
