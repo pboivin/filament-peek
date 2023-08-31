@@ -18,7 +18,7 @@ A Filament plugin to add a full-screen preview modal to your Panel pages. The mo
 You can install the package via composer:
 
 ```bash
-composer require pboivin/filament-peek:"^2.0.0-beta4"
+composer require pboivin/filament-peek:"^2.0"
 ```
 
 Register a `FilamentPeekPlugin` instance in your Panel provider:
@@ -46,11 +46,19 @@ php artisan filament:assets
 
 | Peek | Status | Filament | PHP |
 |------|----------|-----|--------|
-| [0.x](https://github.com/pboivin/filament-peek/tree/0.x) | Unmaintained | ^2.0 | ^8.0 |
-| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Current | ^2.0 | ^8.0 |
-| [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Beta ✨️ | ^3.0 | ^8.1 |
+| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Bugfixes only | ^2.0 | ^8.0 |
+| [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Current version | ^3.0 | ^8.1 |
 
-#### Upgrading from v1.x
+#### Stability
+
+From the [Filament documentation](https://filamentphp.com/docs/3.x/panels/installation):
+
+> **Livewire v3 is recently released!**
+> The Livewire team have done a great job in making it stable, but it was a complete rewrite of Livewire v2. You may encounter issues, so we recommend testing your application thoroughly before using Filament v3 in production.
+
+Please feel free to report any issues you encounter with Peek in this repository. I'll work with you to determine where the issue is coming from.
+
+#### Upgrading from `1.x`
 
 Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/2.x/docs/upgrade-guide.md).
 
@@ -91,12 +99,6 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
 - [Upgrading from v1.x](https://github.com/pboivin/filament-peek/blob/2.x/docs/upgrade-guide.md)
 
 <!-- END_TOC -->
-
-## Testing
-
-```bash
-composer test
-```
 
 ## Changelog
 
