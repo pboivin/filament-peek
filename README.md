@@ -42,6 +42,10 @@ Then, publish the assets:
 php artisan filament:assets
 ```
 
+#### Upgrading from `1.x`
+
+Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/2.x/docs/upgrade-guide.md).
+
 ## Compatibility
 
 | Peek | Status | Filament | PHP |
@@ -57,10 +61,6 @@ From the [Filament documentation](https://filamentphp.com/docs/3.x/panels/instal
 > The Livewire team have done a great job in making it stable, but it was a complete rewrite of Livewire v2. You may encounter issues, so we recommend testing your application thoroughly before using Filament v3 in production.
 
 Please feel free to report any issues you encounter with Peek [in this repository](https://github.com/pboivin/filament-peek/issues). I'll work with you to determine where the issue is coming from.
-
-## Upgrading from `1.x`
-
-Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/2.x/docs/upgrade-guide.md).
 
 ## Demo Projects
 
