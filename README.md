@@ -64,7 +64,7 @@ Please feel free to report any issues you encounter with Peek [in this repositor
 
 ## Demo Projects
 
-There a 2 demo projects available to try out the plugin:
+There are 2 demo projects available to try the plugin:
 
 | Repository | Description |
 |------|----------|
