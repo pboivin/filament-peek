@@ -42,14 +42,14 @@ Then, publish the assets:
 php artisan filament:assets
 ```
 
-#### Compatibility
+## Compatibility
 
 | Peek | Status | Filament | PHP |
 |------|----------|-----|--------|
 | [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Bugfixes only | ^2.0 | ^8.0 |
 | [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Current version | ^3.0 | ^8.1 |
 
-#### Stability
+## Stability
 
 From the [Filament documentation](https://filamentphp.com/docs/3.x/panels/installation):
 
@@ -58,13 +58,18 @@ From the [Filament documentation](https://filamentphp.com/docs/3.x/panels/instal
 
 Please feel free to report any issues you encounter with Peek [in this repository](https://github.com/pboivin/filament-peek/issues). I'll work with you to determine where the issue is coming from.
 
-#### Upgrading from `1.x`
+## Upgrading from `1.x`
 
 Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/2.x/docs/upgrade-guide.md).
 
-#### Demo Project
+## Demo Projects
 
-For an easy way to try out the plugin on a simple Filament project, have a look at the [filament-peek-demo](https://github.com/pboivin/filament-peek-demo/tree/2.x) repository.
+There a 2 demo projects available to try out the Plugin:
+
+| Repository | Description |
+|------|----------|
+| [filament-peek-demo](https://github.com/pboivin/filament-peek-demo) | Content previews on a simple Filament project with Laravel Blade views. |
+| [filament-peek-demo-with-astro](https://github.com/pboivin/filament-peek-demo-with-astro) | Content previews on a more complex project with Filament as "headless CMS", and Astro.js on the frontend. (Work in progress) |
 
 ## Documentation
 
