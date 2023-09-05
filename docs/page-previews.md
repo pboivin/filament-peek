@@ -149,16 +149,16 @@ protected function renderPreviewModalView(string $view, array $data): string
 
 ## Using a Preview URL
 
-Instead of rendering a view, you may implement page previews using a custom URL and a storage driver such as the Laravel Cache or the PHP session. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
+Instead of rendering a view, you may implement page previews using a custom URL and a storage driver such as the Laravel Cache. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
 
 ```php
 protected function getPreviewModalUrl(): ?string
 {
-    $token = uniqid();
+    $postId = $this->previewModalData['post']->id ?: uniqid();
+    $userId = auth()->user()->id;
+    $token = md5("post-{$postId}-{$userId}");
 
-    $sessionKey = "preview-$token";
-
-    session()->put($sessionKey, $this->previewModalData);
+    cache()->put("preview-{$token}", $this->previewModalData, 5 * 60); // 5 minutes
 
     return route('posts.preview', ['token' => $token]);
 }
@@ -169,13 +169,11 @@ Then, you can fetch the preview data from the controller:
 ```php
 class PostController extends Controller
 {
-    // ...
-
-    public function preview($token)
+    public function preview(string $token)
     {
-        $previewData = session("preview-$token");
+        $previewData = cache("preview-$token");
 
-        abort_if(is_null($previewData), 404);
+        abort_unless($previewData, 404);
 
         // ...
     }
