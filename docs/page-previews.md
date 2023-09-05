@@ -171,7 +171,7 @@ class PostController extends Controller
 {
     public function preview(string $token)
     {
-        $previewData = cache("preview-$token");
+        $previewData = cache("preview-{$token}");
 
         abort_unless($previewData, 404);
 
