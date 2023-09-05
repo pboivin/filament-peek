@@ -69,7 +69,7 @@ There a 2 demo projects available to try out the plugin:
 | Repository | Description |
 |------|----------|
 | [filament-peek-demo](https://github.com/pboivin/filament-peek-demo) | Content previews on a simple Filament project with Laravel Blade views. |
-| [filament-peek-demo-with-astro](https://github.com/pboivin/filament-peek-demo-with-astro) | Content previews on a more complex project with Filament as "headless CMS", and Astro.js on the frontend. (Work in progress) |
+| [filament-peek-demo-with-astro](https://github.com/pboivin/filament-peek-demo-with-astro) | Content previews on a more complex project with Filament as "headless CMS", and [Astro](https://astro.build/) on the front-end. (Work in progress) |
 
 ## Documentation
 
