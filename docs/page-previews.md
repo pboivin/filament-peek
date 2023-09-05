@@ -184,12 +184,15 @@ class PostController extends Controller
 
 #### Filament as Headless CMS
 
-This technique can also be used to implement page previews with a decoupled front-end (e.g. Next.js):
+This technique can also be used to implement page previews with a decoupled front-end (e.g. Next.js, Nuxt, Astro):
 
 - From `getPreviewModalUrl()`, generate the preview token and return a front-end preview URL. This would usually render a full page component.
 - From the front-end page component, fetch the preview data from the back-end preview URL, as shown above.
 
-See also: [JavaScript Hooks](./javascript-hooks.md)
+See also: 
+
+- [JavaScript hooks documentation](./javascript-hooks.md)
+- [Demo project using Astro](https://github.com/pboivin/filament-peek-demo-with-astro)
 
 ## Embedding a Preview Action into the Form
 
