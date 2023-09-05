@@ -64,7 +64,7 @@ Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek
 
 ## Demo Projects
 
-There a 2 demo projects available to try out the Plugin:
+There a 2 demo projects available to try out the plugin:
 
 | Repository | Description |
 |------|----------|
