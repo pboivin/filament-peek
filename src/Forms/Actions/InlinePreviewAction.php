@@ -9,6 +9,8 @@ class InlinePreviewAction extends Action
 {
     public static int $count = 1;
 
+    protected ?string $builderField = null;
+
     public static function getDefaultName(): ?string
     {
         return 'inlinePreview'.static::$count++;
@@ -25,12 +27,10 @@ class InlinePreviewAction extends Action
 
                 Support\Page::ensurePreviewModalSupport($livewire);
 
-                $arguments = $this->getArguments();
-
-                if ($builderField = $arguments['builderField'] ?? false) {
+                if ($this->builderField) {
                     Support\Page::ensureBuilderPreviewSupport($livewire);
 
-                    $livewire->openPreviewModalForBuidler($builderField);
+                    $livewire->openPreviewModalForBuidler($this->builderField);
                 } else {
                     $livewire->openPreviewModal();
                 }
@@ -43,7 +43,7 @@ class InlinePreviewAction extends Action
     {
         Support\View::setupBuilderEditor();
 
-        $this->arguments(['builderField' => $builderField]);
+        $this->builderField = $builderField;
 
         return $this;
     }
