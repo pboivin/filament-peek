@@ -7,6 +7,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View as ViewContract;
 use Illuminate\Support\Arr;
+use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Component;
 
@@ -49,13 +50,15 @@ class BuilderEditor extends Component implements HasForms
 
     public function render(): ViewContract
     {
-        $view = view('filament-peek::livewire.builder-editor');
-
         if ($this->shouldAutoRefresh()) {
-            $this->refreshBuilderPreview();
+            try {
+                $this->refreshBuilderPreview();
+            } catch (ValidationException $e) {
+                // pass
+            }
         }
 
-        return $view;
+        return view('filament-peek::livewire.builder-editor');
     }
 
     public function canAutoRefresh(): bool
