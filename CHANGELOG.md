@@ -3,6 +3,14 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.0.1 - 2023-09-16
+
+* fix: Ensure builder field is remembered in InlinePreviewAction
+* chore: Rework integration tests
+* chore: Update run-tests workflow
+* chore: Bump actions/checkout
+
+
 ## 2.0.0 - 2023-08-31
 
 Stable release
