@@ -7,5 +7,7 @@ use Pboivin\FilamentPeek\Tests\Filament\Resources\PostResource;
 
 class CreatePost extends CreateRecord
 {
+    use HasPostPreview;
+
     protected static string $resource = PostResource::class;
 }
