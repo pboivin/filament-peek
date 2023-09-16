@@ -25,36 +25,17 @@ it('does not see preview modal on dashboard', function () {
         ->assertDontSee('x-ref="previewModalBody"', escape: false);
 });
 
-it('sees preview modal on create page', function () {
+it('sees preview modal when creating a page', function () {
     actingAs(User::factory()->create());
 
     get('/admin/pages/create')
         ->assertSuccessful()
         ->assertSee('Test_Preview_Action')
-        ->assertSee('x-ref="previewModalBody"', escape: false);
-});
-
-it('sees preview modal on edit page', function () {
-    actingAs(User::factory()->create());
-
-    $page = Page::factory()->create();
-
-    get('/admin/pages/'.$page->id.'/edit')
-        ->assertSuccessful()
-        ->assertSee('Test_Preview_Action')
-        ->assertSee('x-ref="previewModalBody"', escape: false);
-});
-
-it('does not see builder editor on create page', function () {
-    actingAs(User::factory()->create());
-
-    get('/admin/pages/create')
-        ->assertSuccessful()
-        ->assertSee('Test_Preview_Action')
+        ->assertSee('x-ref="previewModalBody"', escape: false)
         ->assertDontSee('x-ref="builderEditor"', escape: false);
 });
 
-it('does not see builder editor edit page', function () {
+it('sees preview modal when editing a page', function () {
     actingAs(User::factory()->create());
 
     $page = Page::factory()->create();
@@ -62,5 +43,6 @@ it('does not see builder editor edit page', function () {
     get('/admin/pages/'.$page->id.'/edit')
         ->assertSuccessful()
         ->assertSee('Test_Preview_Action')
+        ->assertSee('x-ref="previewModalBody"', escape: false)
         ->assertDontSee('x-ref="builderEditor"', escape: false);
 });
