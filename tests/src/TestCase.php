@@ -10,6 +10,7 @@ use Filament\Forms\FormsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
+use Filament\Widgets\WidgetsServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
@@ -18,8 +19,14 @@ use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 class TestCase extends Orchestra
 {
+    protected function configurePackageProviders($app)
+    {
+        TestPanelProvider::$should_load_plugin_assets = true;
+    }
+
     protected function getPackageProviders($app)
     {
+        $this->configurePackageProviders($app);
 
         return [
             BladeCaptureDirectiveServiceProvider::class,
@@ -31,12 +38,10 @@ class TestCase extends Orchestra
             TablesServiceProvider::class,
             ActionsServiceProvider::class,
             NotificationsServiceProvider::class,
+            WidgetsServiceProvider::class,
             FilamentServiceProvider::class,
             FilamentPeekServiceProvider::class,
-
-            // @todo: Redo full integration tests with Laravel Dusk
-            // AdminPanelProvider::class,
-            // TestServiceProvider::class,
+            TestPanelProvider::class,
         ];
     }
 
