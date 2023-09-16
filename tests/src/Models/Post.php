@@ -4,6 +4,7 @@ namespace Pboivin\FilamentPeek\Tests\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Pboivin\FilamentPeek\Tests\Database\Factories\PostFactory;
 
 class Post extends Model
@@ -26,6 +27,11 @@ class Post extends Model
         'updated_at' => 'datetime',
         'published_at' => 'datetime',
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     protected static function newFactory()
     {
