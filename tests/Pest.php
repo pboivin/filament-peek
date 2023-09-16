@@ -5,6 +5,6 @@ use Pboivin\FilamentPeek\Tests\TestCaseAssetsDisabled;
 
 uses(TestCase::class)->in('src/Unit');
 
-uses(TestCase::class)->in('src/Feature/IntegrationTest.php');
+uses(TestCase::class)->in('src/Integration/Preview*.php');
 
-uses(TestCaseAssetsDisabled::class)->in('src/Feature/AssetsDisabledTest.php');
+uses(TestCaseAssetsDisabled::class)->in('src/Integration/AssetsDisabledTest.php');
