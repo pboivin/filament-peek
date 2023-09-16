@@ -32,6 +32,8 @@ class BuilderEditor extends Component implements HasForms
 
     public string $autoRefreshStrategy = 'simple';
 
+    private bool $refreshRequested = false;
+
     protected $listeners = [
         'refreshBuilderPreview',
         'resetBuilderEditor',
@@ -112,6 +114,12 @@ class BuilderEditor extends Component implements HasForms
 
     public function refreshBuilderPreview(): void
     {
+        if ($this->refreshRequested) {
+            return;
+        }
+
+        $this->refreshRequested = true;
+
         $this->dispatch(
             'refresh-preview-modal',
             iframeUrl: $this->previewUrl,
