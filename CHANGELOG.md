@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.0.2 - 2023-09-16
+
+* fix: Prevent validation issue with auto-refresh option
+* enh: Prevent multiple refreshes in one request
+
+
 ## 2.0.1 - 2023-09-16
 
 * fix: Ensure builder field is remembered in InlinePreviewAction
