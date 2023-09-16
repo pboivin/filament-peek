@@ -16,6 +16,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Pboivin\FilamentPeek\FilamentPeekPlugin;
+use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource;
 
 class TestPanelProvider extends PanelProvider
 {
@@ -31,7 +32,9 @@ class TestPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
             ])
-            ->widgets([])
+            ->resources([
+                PageResource::class,
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
