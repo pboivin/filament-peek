@@ -54,8 +54,6 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
 
 To reduce duplication, the Builder field definition can also be extracted to a static method on the resource class (see [Complete Example](#complete-example) below).
 
-**Note**: Builder previews can also be used on `Create` pages.
-
 #### Update the Resource Class
 
 Add the `InlinePreviewAction` action to your form, above or below the Builder field:
