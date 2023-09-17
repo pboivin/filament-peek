@@ -12,7 +12,9 @@ Closing the preview modal does not update the record in the database, only the f
 
 #### A note on stability
 
-This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), using Blocks composed of [built-in Filament fields]([url](https://filamentphp.com/docs/3.x/forms/fields/getting-started#available-fields)). It's possible to integrate with custom field types and 3rd party plugins but obviously, not all combinations have been tested. Please feel free to report any issues you encounter with custom fields [in this repository](https://github.com/pboivin/filament-peek/issues). I can with you to determine where the issue is coming from.
+This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), using Blocks composed of [built-in Filament fields](https://filamentphp.com/docs/3.x/forms/fields/getting-started#available-fields). It's possible to integrate with custom field types and 3rd party plugins but obviously, not all combinations have been tested.
+
+Please feel free to report any issues you encounter with custom fields [in this repository](https://github.com/pboivin/filament-peek/issues). I can with you to determine where the issue is coming from.
 
 ## Using the Builder Preview with Blade Views
 
