@@ -4,17 +4,11 @@
 
 ## Overview
 
-Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the Builder field, and an iframe on the right to render the preview.
+Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), and an iframe on the right to render the preview.
 
 As you edit the Builder blocks, the preview can be refreshed manually or automatically. When the modal is closed, the Builder field in the main form is synchronized with the changes from the preview editor.
 
 Closing the preview modal does not update the record in the database, only the form state is updated.
-
-#### A note on stability
-
-This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), using Blocks composed of [built-in Filament fields](https://filamentphp.com/docs/3.x/forms/fields/getting-started#available-fields). It's possible to integrate with custom field types and 3rd party plugins but obviously, not all combinations have been tested.
-
-Please feel free to report any issues you encounter with custom fields [in this repository](https://github.com/pboivin/filament-peek/issues). I can work with you to determine where the issue is coming from.
 
 ## Using the Builder Preview with Blade Views
 
@@ -237,6 +231,12 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
     ])->statePath('post_content');
 }
 ```
+
+#### A note on stability
+
+This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), using Blocks composed of [built-in Filament fields](https://filamentphp.com/docs/3.x/forms/fields/getting-started#available-fields). It's possible to integrate with custom field types and 3rd party plugins but obviously, not all combinations have been tested.
+
+Please feel free to report any issues you encounter with custom fields [in this repository](https://github.com/pboivin/filament-peek/issues). I can work with you to determine where the issue is coming from.
 
 ## Adding Extra Data to the Builder Editor State
 
