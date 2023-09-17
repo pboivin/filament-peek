@@ -10,7 +10,7 @@ As you edit the Builder blocks, the preview can be refreshed manually or automat
 
 Closing the preview modal does not update the record in the database, only the form state is updated.
 
-**Note**: This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder) but can be used with any other field type. Make sure to check out the [Using Custom Fields](#using-custom-fields) section below.
+**Note**: This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder) but can be used with other field types. Make sure to check out the [Using Custom Fields](#using-custom-fields) section below.
 
 ## Using the Builder Preview with Blade Views
 
