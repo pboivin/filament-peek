@@ -9,6 +9,8 @@ use Pboivin\FilamentPeek\Support;
 
 trait HasPreviewModal
 {
+    protected array $initialPreviewModalData = [];
+
     protected array $previewModalData = [];
 
     protected ?Model $previewableRecord = null;
@@ -64,10 +66,13 @@ trait HasPreviewModal
             $record = $this->getRecord();
         }
 
-        return [
-            $this->getPreviewModalDataRecordKey() => $record,
-            'isPeekPreviewModal' => true,
-        ];
+        return array_merge(
+            $this->initialPreviewModalData,
+            [
+                $this->getPreviewModalDataRecordKey() => $record,
+                'isPeekPreviewModal' => true,
+            ]
+        );
     }
 
     /** @internal */
@@ -110,5 +115,11 @@ trait HasPreviewModal
     public function setPreviewableRecord(Model $record): void
     {
         $this->previewableRecord = $record;
+    }
+
+    /** @internal */
+    public function initialPreviewModalData(array $data): void
+    {
+        $this->initialPreviewModalData = $data;
     }
 }
