@@ -17,7 +17,8 @@ class EditPage extends EditRecord
     {
         return [
             PreviewAction::make()
-                ->label('Test_Preview_Action'),
+                ->label('Test_Preview_Action')
+                ->previewModalData(fn () => ['initial_data' => 'PreviewAction']),
         ];
     }
 
