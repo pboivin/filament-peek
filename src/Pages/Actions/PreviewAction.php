@@ -2,13 +2,12 @@
 
 namespace Pboivin\FilamentPeek\Pages\Actions;
 
-use Closure;
 use Filament\Actions\Action;
 use Pboivin\FilamentPeek\Support;
 
 class PreviewAction extends Action
 {
-    protected array|Closure $previewModalData = [];
+    use Support\Concerns\SetsInitialPreviewModalData;
 
     public static function getDefaultName(): ?string
     {
@@ -34,12 +33,5 @@ class PreviewAction extends Action
             });
 
         Support\View::setupPreviewModal();
-    }
-
-    public function previewModalData(array|Closure $previewModalData): static
-    {
-        $this->previewModalData = $previewModalData;
-
-        return $this;
     }
 }
