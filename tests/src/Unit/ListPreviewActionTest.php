@@ -4,8 +4,8 @@ namespace Pboivin\FilamentPeek\Tests\Unit;
 
 use Filament\Pages\Page;
 use Illuminate\Support\Facades\View;
-use Pboivin\FilamentPeek\Tables\Actions\ListPreviewAction;
 use Pboivin\FilamentPeek\Support;
+use Pboivin\FilamentPeek\Tables\Actions\ListPreviewAction;
 
 it('has a default name', function () {
     $previewAction = ListPreviewAction::make();
