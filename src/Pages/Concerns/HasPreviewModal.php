@@ -3,12 +3,15 @@
 namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Support\Exceptions\Halt;
+use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\Support;
 
 trait HasPreviewModal
 {
     protected array $previewModalData = [];
+
+    protected ?Model $previewableRecord = null;
 
     protected function getPreviewModalUrl(): ?string
     {
@@ -46,18 +49,16 @@ trait HasPreviewModal
     /** @internal */
     protected function preparePreviewModalData(): array
     {
-        $data = $this->form->getState();
         $record = null;
 
-        if (method_exists($this, 'mutateFormDataBeforeCreate')) {
-            $data = $this->mutateFormDataBeforeCreate($data);
-
+        if ($this->previewableRecord) {
+            $record = $this->previewableRecord;
+        } elseif (method_exists($this, 'mutateFormDataBeforeCreate')) {
+            $data = $this->mutateFormDataBeforeCreate($this->form->getState());
             $record = $this->getModel()::make($data);
         } elseif (method_exists($this, 'mutateFormDataBeforeSave')) {
-            $data = $this->mutateFormDataBeforeSave($data);
-
+            $data = $this->mutateFormDataBeforeSave($this->form->getState());
             $record = $this->getRecord();
-
             $record->fill($data);
         } elseif (method_exists($this, 'getRecord')) {
             $record = $this->getRecord();
@@ -103,5 +104,11 @@ trait HasPreviewModal
     public function closePreviewModal(): void
     {
         $this->dispatch('close-preview-modal');
+    }
+
+    /** @internal */
+    public function setPreviewableRecord(Model $record): void
+    {
+        $this->previewableRecord = $record;
     }
 }
