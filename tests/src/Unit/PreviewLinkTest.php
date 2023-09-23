@@ -9,7 +9,7 @@ use Pboivin\FilamentPeek\Support;
 it('has a default label', function () {
     $previewLink = PreviewLink::make();
 
-    expect($previewLink->getLabel())->toBe(__('filament-peek::ui.preview-action-label'));
+    expect($previewLink->getLabel())->toEqual('Preview');
 });
 
 it('can render', function () {

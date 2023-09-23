@@ -10,13 +10,13 @@ use Pboivin\FilamentPeek\Support;
 it('has a default name', function () {
     $previewAction = PreviewAction::make();
 
-    expect($previewAction->getDefaultName())->toBe('preview');
+    expect($previewAction->getDefaultName())->toEqual('preview');
 });
 
 it('has a default label', function () {
     $previewAction = PreviewAction::make();
 
-    expect($previewAction->getLabel())->toBe(__('filament-peek::ui.preview-action-label'));
+    expect($previewAction->getLabel())->toEqual('Preview');
 });
 
 it('has a default action', function () {
