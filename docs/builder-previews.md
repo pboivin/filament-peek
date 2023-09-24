@@ -10,7 +10,7 @@ As you edit the Builder blocks, the preview can be refreshed manually or automat
 
 Closing the preview modal does not update the record in the database, only the form state is updated.
 
-## Using the Builder Preview with Blade Views
+## Using Builder Previews on Edit pages
 
 #### Update the Edit Page Class
 
@@ -230,11 +230,37 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
 }
 ```
 
-#### A note on stability
+#### Compatibility
 
 This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), using Blocks composed of [built-in Filament fields](https://filamentphp.com/docs/3.x/forms/fields/getting-started#available-fields). It's possible to integrate with custom field types and 3rd party plugins but obviously, not all combinations have been tested.
 
 Please feel free to report any issues you encounter with custom fields [in this repository](https://github.com/pboivin/filament-peek/issues). I can work with you to determine where the issue is coming from.
+
+## Customizing the Preview Action
+
+By default, the action is styled as a primary link. Use the `button()` method to style it as a Filament button.
+
+Use one of the following methods on the `Actions` wrapper to adjust the horizontal alignment:
+
+- `alignStart()`
+- `alignCenter()`
+- `alignEnd()`
+- `alignJustify()`
+
+<a name="preview-auto-refresh"></a>
+
+## Automatically Updating the Builder Preview
+
+By default, the Editor sidebar is not reactive: updating the fields won't automatically refresh the preview iframe. Use the `canEnableAutoRefresh` option in the [configuration](./configuration.md) to add a checkbox in the header of the sidebar. The checkbox lets users opt into the auto-refresh behavior.
+
+Additionally, you may choose between two auto-refresh strategies with the `autoRefreshStrategy` option:
+
+| Name | Description |
+|---|---|
+| `simple` | The default strategy, which makes all fields in the sidebar behave as `lazy()`, without any other configuration. The preview modal is refreshed automatically each time the focus is taken out of a field (e.g. pressing the `Tab` key or clicking away). Because the preview iframe renders a full Blade view, this is a good compromise between user experience and performance. |
+| `reactive` | The alternative strategy, which lets you make fields `lazy()` or `reactive()` as needed. Any field not explicitly configured as lazy or reactive will not trigger a refresh. |
+
+**Important**: Making all fields reactive will have a significant performance penalty and add unnecessary strain on your Web server. Consider using `debounce()` in addition to `reactive()` on your form fields.
 
 ## Adding Extra Data to the Builder Editor State
 
@@ -274,32 +300,6 @@ public static function renderBuilderPreview(string $view, array $data): string
     return MyTemplateEngine::render($view, $data);
 }
 ```
-
-## Customizing the Preview Action
-
-By default, the action is styled as a primary link. Use the `button()` method to style it as a Filament button.
-
-Use one of the following methods on the `Actions` wrapper to adjust the horizontal alignment:
-
-- `alignStart()`
-- `alignCenter()`
-- `alignEnd()`
-- `alignJustify()`
-
-<a name="preview-auto-refresh"></a>
-
-## Automatically Updating the Builder Preview
-
-By default, the Editor sidebar is not reactive: updating the fields won't automatically refresh the preview iframe. Use the `canEnableAutoRefresh` option in the [configuration](./configuration.md) to add a checkbox in the header of the sidebar. The checkbox lets users opt into the auto-refresh behavior.
-
-Additionally, you may choose between two auto-refresh strategies with the `autoRefreshStrategy` option:
-
-| Name | Description |
-|---|---|
-| `simple` | The default strategy, which makes all fields in the sidebar behave as `lazy()`, without any other configuration. The preview modal is refreshed automatically each time the focus is taken out of a field (e.g. pressing the `Tab` key or clicking away). Because the preview iframe renders a full Blade view, this is a good compromise between user experience and performance. |
-| `reactive` | The alternative strategy, which lets you make fields `lazy()` or `reactive()` as needed. Any field not explicitly configured as lazy or reactive will not trigger a refresh. |
-
-**Important**: Making all fields reactive will have a significant performance penalty and add unnecessary strain on your Web server. Consider using `debounce()` in addition to `reactive()` on your form fields.
 
 ---
 
