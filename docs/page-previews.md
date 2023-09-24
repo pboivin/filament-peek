@@ -8,7 +8,7 @@ Clicking the preview action button at the top of the page opens a full-screen mo
 
 Opening and closing the preview modal does not update the record in the database, the form state is unchanged.
 
-## Using the Preview Modal with Blade Views
+## Using the Preview Modal on Edit pages
 
 In your `Edit` page, start by adding the `HasPreviewModal` trait:
 
@@ -93,7 +93,26 @@ class EditPost extends EditRecord
 }
 ```
 
-**Note**: Previews can be added on all types of pages: `View`, `Create`, `List` and custom pages.
+**Note**: The same steps can be used to add preview on other types of pages in your Panel: `View`, `Create`, `List` and even custom pages.
+
+## Using the Preview Modal on List pages
+
+As described above, add the `HasPreviewModal` trait and the `getPreviewModalView()` method to your `List` page.
+
+Then, add the `ListPreviewAction` class to your resource table:
+
+```php
+use Pboivin\FilamentPeek\Tables\Actions\ListPreviewAction;
+
+public static function table(Table $table): Table
+{
+    return $table
+        ->actions([
+            ListPreviewAction::make(),
+        ])
+        // ...
+}
+```
 
 ## Detecting the Preview Modal
 
