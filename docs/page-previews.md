@@ -123,7 +123,9 @@ The `EditPost` example above uses a dedicated Blade view to be rendered in the p
 ```blade
 <x-layout>
     @isset($isPeekPreviewModal)
-        <x-preview-banner />
+        <div class="preview-banner">
+            This is a preview.
+        </div>
     @endisset
 
     <x-container>
