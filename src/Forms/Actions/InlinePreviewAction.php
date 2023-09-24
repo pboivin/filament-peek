@@ -53,4 +53,12 @@ class InlinePreviewAction extends Action
 
         return $this;
     }
+
+    /** Alias for builderPreview */
+    public function builderName(string $builderField = 'blocks'): static
+    {
+        $this->builderPreview($builderField);
+
+        return $this;
+    }
 }

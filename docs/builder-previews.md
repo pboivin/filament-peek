@@ -65,7 +65,7 @@ use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 Actions::make([
     InlinePreviewAction::make()
         ->label('Preview Content Blocks')
-        ->builderPreview('content_blocks'),
+        ->builderName('content_blocks'),
 ]),
 ```
 
@@ -157,7 +157,7 @@ class PostResource extends Resource
             Actions::make([
                 InlinePreviewAction::make()
                     ->label('Preview Content Blocks')
-                    ->builderPreview('content_blocks'),
+                    ->builderName('content_blocks'),
             ])
                 ->columnSpanFull()
                 ->alignEnd(),
@@ -176,7 +176,7 @@ For an easy way to try out the plugin on a simple Filament project, have a look 
 
 ## Using Multiple Builder Fields
 
-Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview action's `builderPreview()` method. Therefore, it's possible to support independent previews for multiple Builder fields in the same form:
+Most methods in the `HasBuilderPreview` trait receive a `$builderName` argument. This corresponds to the value defined in the preview action's `builderName()` method. Therefore, it's possible to support independent previews for multiple Builder fields in the same form:
 
 ```php
 protected function getBuilderPreviewView(string $builderName): ?string

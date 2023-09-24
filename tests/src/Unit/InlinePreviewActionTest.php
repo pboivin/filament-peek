@@ -44,3 +44,13 @@ it('sets the view hook to render a builder preview', function () {
     expect($shared[Support\View::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
     expect($shared[Support\View::BUILDER_PREVIEW_SETUP_HOOK])->toBeTrue();
 });
+
+it('supports the builderName alias for builderPreview', function () {
+    InlinePreviewAction::make()
+        ->builderName('test');
+
+    $shared = View::getShared();
+
+    expect($shared[Support\View::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
+    expect($shared[Support\View::BUILDER_PREVIEW_SETUP_HOOK])->toBeTrue();
+});
