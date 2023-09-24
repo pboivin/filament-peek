@@ -172,7 +172,7 @@ This technique can also be used to implement page previews with a decoupled fron
 - From `getPreviewModalUrl()`, generate the preview token and return a front-end preview URL. This would usually render a full page component.
 - From the front-end page component, fetch the preview data from the back-end preview URL, as shown above.
 
-See also: 
+See also:
 
 - [JavaScript hooks documentation](./javascript-hooks.md)
 - [Demo project using Astro](https://github.com/pboivin/filament-peek-demo-with-astro)
