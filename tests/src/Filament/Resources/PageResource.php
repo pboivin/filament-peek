@@ -34,7 +34,8 @@ class PageResource extends Resource
                 TextColumn::make('title'),
             ])
             ->actions([
-                ListPreviewAction::make(),
+                ListPreviewAction::make()
+                    ->previewModalData(fn () => ['initial_data' => 'ListPreviewAction']),
             ])
             ->filters([])
             ->bulkActions([]);
