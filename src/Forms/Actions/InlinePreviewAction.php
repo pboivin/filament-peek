@@ -7,6 +7,8 @@ use Pboivin\FilamentPeek\Support;
 
 class InlinePreviewAction extends Action
 {
+    use Support\Concerns\SetsInitialPreviewModalData;
+
     public static int $count = 1;
 
     protected ?string $builderField = null;
@@ -32,6 +34,10 @@ class InlinePreviewAction extends Action
 
                     $livewire->openPreviewModalForBuidler($this->builderField);
                 } else {
+                    $livewire->initialPreviewModalData(
+                        $this->evaluate($this->previewModalData)
+                    );
+
                     $livewire->openPreviewModal();
                 }
             });

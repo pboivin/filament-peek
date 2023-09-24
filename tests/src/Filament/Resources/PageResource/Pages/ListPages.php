@@ -14,7 +14,7 @@ class ListPages extends ListRecords
 
     protected function getPreviewModalView(): ?string
     {
-        return 'page-preview';
+        return 'preview-page';
     }
 
     protected function getPreviewModalDataRecordKey(): ?string

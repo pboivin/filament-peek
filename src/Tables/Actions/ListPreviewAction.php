@@ -7,6 +7,8 @@ use Pboivin\FilamentPeek\Support;
 
 class ListPreviewAction extends Action
 {
+    use Support\Concerns\SetsInitialPreviewModalData;
+
     public static function getDefaultName(): ?string
     {
         return 'listPreview';
@@ -22,6 +24,10 @@ class ListPreviewAction extends Action
                 Support\Panel::ensurePluginIsLoaded();
 
                 Support\Page::ensurePreviewModalSupport($livewire);
+
+                $livewire->initialPreviewModalData(
+                    $this->evaluate($this->previewModalData)
+                );
 
                 $livewire->setPreviewableRecord($record);
 

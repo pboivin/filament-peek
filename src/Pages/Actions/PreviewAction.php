@@ -7,6 +7,8 @@ use Pboivin\FilamentPeek\Support;
 
 class PreviewAction extends Action
 {
+    use Support\Concerns\SetsInitialPreviewModalData;
+
     public static function getDefaultName(): ?string
     {
         return 'preview';
@@ -22,6 +24,10 @@ class PreviewAction extends Action
                 Support\Panel::ensurePluginIsLoaded();
 
                 Support\Page::ensurePreviewModalSupport($livewire);
+
+                $livewire->initialPreviewModalData(
+                    $this->evaluate($this->previewModalData)
+                );
 
                 $livewire->openPreviewModal();
             });
