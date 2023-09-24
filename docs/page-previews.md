@@ -116,7 +116,7 @@ public static function table(Table $table): Table
 
 ## Detecting the Preview Modal
 
-The example above uses a dedicated Blade view to be rendered in the preview modal. It's also possible to use the same view for the site page and the preview modal. In this case, you can detect if the view is being used for a preview by checking for the `$isPeekPreviewModal` variable:
+The `EditPost` example above uses a dedicated Blade view to be rendered in the preview modal. It's also possible to use the same view for the site page and the preview modal. In this case, you can detect if the view is being used for a preview by checking for the `$isPeekPreviewModal` variable:
 
 **`resources/views/posts/show.blade.php`**
 
@@ -132,43 +132,9 @@ The example above uses a dedicated Blade view to be rendered in the preview moda
 </x-layout>
 ```
 
-## Adding Extra Data to Previews
-
-By default, the `$record` and `$isPeekPreviewModal` variables are made available to the rendered Blade view. If your form is relatively simple and all fields belong directly to the record, this may be all you need. However, if you have complex relationships or heavily customized form fields, you may need to include some additional data in order to render your page preview. You can do so with the `mutatePreviewModalData()` method:
-
-```php
-protected function mutatePreviewModalData(array $data): array
-{
-    $data['message'] = 'This is a preview';
-
-    return $data;
-}
-```
-
-This would make a `$message` variable available to the Blade view when rendered in the iframe.
-
-Inside of `mutatePreviewModalData()` you can access:
-
-| What | Where |
-|---|---|
-| The modified record with unsaved changes | `$data['record']` |
-| The original record | `$this->record` |
-| Any other field from the form | `$this->data['my_custom_field']` |
-
-## Alternate Templating Engines
-
-If you're not using Blade views on the front-end, override the `renderPreviewModalView()` method and render the preview with your solution of choice:
-
-```php
-protected function renderPreviewModalView(string $view, array $data): string
-{
-    return MyTemplateEngine::render($view, $data);
-}
-```
-
 ## Using a Preview URL
 
-Instead of rendering a view, you may implement page previews using a custom URL and a storage driver such as the Laravel Cache. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
+Instead of rendering a view, you may also implement page previews using a custom URL and a storage driver such as the Laravel Cache. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
 
 ```php
 protected function getPreviewModalUrl(): ?string
@@ -259,6 +225,49 @@ If you need finer control over pointer events in your previews, first set this o
 ```
 
 **Note**: The `allowIframePointerEvents` option will not work when using a preview URL. If you run into any issues, use the CSS code above in your preview templates.
+
+## Adding Extra Data to Previews
+
+By default, the `$record` and `$isPeekPreviewModal` variables are made available to the rendered Blade view. If your form is relatively simple and all fields belong directly to the record, this may be all you need. However, if you have complex relationships or heavily customized form fields, you may need to include some additional data in order to render your page preview.
+
+#### Using the `mutatePreviewModalData()` Method on the Page
+
+```php
+protected function mutatePreviewModalData(array $data): array
+{
+    $data['message'] = 'This is a preview';
+
+    return $data;
+}
+```
+
+This would make a `$message` variable available to the Blade view when rendered in the iframe.
+
+Inside of `mutatePreviewModalData()` you can access:
+
+| What | Where |
+|---|---|
+| The modified record with unsaved changes | `$data['record']` |
+| The original record | `$this->record` |
+| Any other field from the form | `$this->data['my_custom_field']` |
+
+#### Using the `previewModalData()` Method on the Action
+
+```php
+PreviewAction::make()
+    ->previewModalData(['message' => 'This is a preview']),
+```
+
+## Alternate Templating Engines
+
+If you're not using Blade views on the front-end, override the `renderPreviewModalView()` method and render the preview with your solution of choice:
+
+```php
+protected function renderPreviewModalView(string $view, array $data): string
+{
+    return MyTemplateEngine::render($view, $data);
+}
+```
 
 ---
 
