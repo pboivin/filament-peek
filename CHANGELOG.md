@@ -3,6 +3,14 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.1.0 - 2023-09-24
+
+* feat: Add ListPreviewAction component
+* feat: Add preview modal data from PreviewAction
+* enh: Add builderName() method alias
+* docs: Update documentation
+
+
 ## 2.0.2 - 2023-09-16
 
 * fix: Prevent validation issue with auto-refresh option
