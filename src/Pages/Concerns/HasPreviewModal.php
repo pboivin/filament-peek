@@ -4,7 +4,10 @@ namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Support\Exceptions\Halt;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
+use Pboivin\FilamentPeek\CachedPreview;
 use Pboivin\FilamentPeek\Support;
 
 trait HasPreviewModal
@@ -88,7 +91,21 @@ trait HasPreviewModal
             if ($previewModalUrl = $this->getPreviewModalUrl()) {
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
-                $previewModalHtmlContent = $this->renderPreviewModalView($view, $this->previewModalData);
+                $useInternalUrl = true; // @todo: Add config
+
+                if ($useInternalUrl) {
+                    $token = md5("preview-" . Auth::user()->getAuthIdentifier() . (Auth::user()->password ?? ''));
+
+                    Cache::put(
+                        "filament-peek-preview-{$token}",
+                        CachedPreview::make(static::class, $view, $this->previewModalData),
+                        60
+                    );
+
+                    $previewModalUrl = route('filament-peek.preview', ['token' => $token]);
+                } else {
+                    $previewModalHtmlContent = $this->renderPreviewModalView($view, $this->previewModalData);
+                }
             } else {
                 throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
             }
