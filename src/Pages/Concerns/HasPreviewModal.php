@@ -96,11 +96,7 @@ trait HasPreviewModal
                 if ($useInternalUrl) {
                     $token = md5("preview-" . Auth::user()->getAuthIdentifier() . (Auth::user()->password ?? ''));
 
-                    Cache::put(
-                        "filament-peek-preview-{$token}",
-                        CachedPreview::make(static::class, $view, $this->previewModalData),
-                        60
-                    );
+                    CachedPreview::make(static::class, $view, $this->previewModalData)->put($token);
 
                     $previewModalUrl = route('filament-peek.preview', ['token' => $token]);
                 } else {
