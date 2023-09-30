@@ -20,7 +20,7 @@ class CachedPreview
         string $view,
         array $data,
     ): CachedPreview {
-        return new static($pageClass, $view, $data);
+        return new CachedPreview($pageClass, $view, $data);
     }
 
     public function render(): string
