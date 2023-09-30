@@ -40,8 +40,9 @@ trait HasPreviewModal
         return $data;
     }
 
+    // @todo: Document internal change
     /** @internal */
-    protected function renderPreviewModalView(?string $view, array $data): string
+    public static function renderPreviewModalView(?string $view, array $data): string
     {
         return Support\Html::injectPreviewModalStyle(
             view($view, $data)->render()
