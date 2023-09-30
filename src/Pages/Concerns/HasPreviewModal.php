@@ -90,9 +90,7 @@ trait HasPreviewModal
             if ($previewModalUrl = $this->getPreviewModalUrl()) {
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
-                $useInternalUrl = true; // @todo: Add config
-
-                if ($useInternalUrl) {
+                if (config('filament-peek.useInternalPreviewUrl', false)) {
                     $token = md5('preview-'.Auth::user()->getAuthIdentifier().(Auth::user()->password ?? ''));
 
                     CachedPreview::make(static::class, $view, $this->previewModalData)->put($token);
