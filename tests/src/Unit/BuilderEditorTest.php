@@ -58,7 +58,11 @@ it('renders the preview blade view', function () {
         ->set('builderName', 'test')
         ->set('previewView', 'preview')
         ->call('refreshBuilderPreview')
-        ->assertDispatched('refresh-preview-modal');
+        ->assertDispatched(
+            'refresh-preview-modal',
+            iframeUrl: null,
+            iframeContent: "Preview\n",
+        );
 });
 
 it('renders the preview url', function () {
@@ -75,7 +79,11 @@ it('renders the preview url', function () {
         ->set('builderName', 'test')
         ->set('previewUrl', 'https://example.com')
         ->call('refreshBuilderPreview')
-        ->assertDispatched('refresh-preview-modal');
+        ->assertDispatched(
+            'refresh-preview-modal',
+            iframeUrl: 'https://example.com',
+            iframeContent: null,
+        );
 });
 
 it('mutates the builder preview data', function () {

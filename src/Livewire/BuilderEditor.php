@@ -10,6 +10,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Component;
+use Pboivin\FilamentPeek\CachedBuilderPreview;
+use Pboivin\FilamentPeek\Support;
 
 /**
  * @property ComponentContainer $form
@@ -32,7 +34,11 @@ class BuilderEditor extends Component implements HasForms
 
     public string $autoRefreshStrategy = 'simple';
 
+    public int $refreshCount = 1;
+
     private bool $refreshRequested = false;
+
+    private ?array $previewData = null;
 
     protected $listeners = [
         'refreshBuilderPreview',
@@ -114,6 +120,14 @@ class BuilderEditor extends Component implements HasForms
 
     public function refreshBuilderPreview(): void
     {
+        if (! $this->pageClass || ! $this->builderName) {
+            return;
+        }
+
+        if (! $this->previewUrl && ! $this->previewView) {
+            throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
+        }
+
         if ($this->refreshRequested) {
             return;
         }
@@ -122,9 +136,11 @@ class BuilderEditor extends Component implements HasForms
 
         $this->dispatch(
             'refresh-preview-modal',
-            iframeUrl: $this->previewUrl,
+            iframeUrl: $this->getPreviewModalUrl(),
             iframeContent: $this->getPreviewModalHtmlContent(),
         );
+
+        $this->refreshCount++;
     }
 
     public function closeBuilderEditor(): void
@@ -177,31 +193,72 @@ class BuilderEditor extends Component implements HasForms
         return 'editorData';
     }
 
-    protected function getPreviewModalHtmlContent(): ?string
+    protected function getPreviewData(): array
     {
         if (! $this->pageClass || ! $this->builderName) {
-            return '';
+            return [];
         }
 
-        $formState = $this->form->getState();
+        if (! $this->previewData) {
+            $formState = $this->form->getState();
 
-        $previewData = $this->pageClass::mutateBuilderPreviewData(
-            $this->builderName,
-            $this->editorData,
-            $this->pageClass::prepareBuilderPreviewData($formState),
-        );
+            $this->previewData = $this->pageClass::mutateBuilderPreviewData(
+                $this->builderName,
+                $this->editorData,
+                $this->pageClass::prepareBuilderPreviewData($formState),
+            );
+        }
 
+        return $this->previewData;
+    }
+
+    protected function getPreviewModalUrl(): ?string
+    {
         if ($this->previewUrl) {
+            return $this->previewUrl;
+        }
+
+        if ($this->previewView && $this->shouldUseInternalPreviewUrl()) {
+            $token = app(Support\Cache::class)->createPreviewToken();
+
+            CachedBuilderPreview::make($this->pageClass, $this->previewView, $this->getPreviewData())
+                ->put($token);
+
+            return route('filament-peek.preview', [
+                'token' => $token,
+                'refresh' => $this->refreshCount,
+            ]);
+        }
+
+        return null;
+    }
+
+    protected function getPreviewModalHtmlContent(): ?string
+    {
+        if ($this->previewUrl) {
+            return null;
+        }
+
+        if ($this->shouldUseInternalPreviewUrl()) {
             return null;
         }
 
         if ($this->previewView) {
             return $this->pageClass::renderBuilderPreview(
                 $this->previewView,
-                $previewData
+                $this->getPreviewData(),
             );
         }
 
-        throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
+        return null;
+    }
+
+    protected function shouldUseInternalPreviewUrl()
+    {
+        if (! is_null($config = config('filament-peek.builderEditor.useInternalPreviewUrl'))) {
+            return $config;
+        }
+
+        return config('filament-peek.useInternalPreviewUrl', false);
     }
 }

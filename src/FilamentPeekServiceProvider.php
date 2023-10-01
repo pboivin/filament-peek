@@ -12,6 +12,7 @@ class FilamentPeekServiceProvider extends PackageServiceProvider
         $package->name(FilamentPeekPlugin::ID)
             ->hasTranslations()
             ->hasConfigFile()
-            ->hasViews();
+            ->hasViews()
+            ->hasRoute('web');
     }
 }

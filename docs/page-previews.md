@@ -265,7 +265,7 @@ PreviewAction::make()
 If you're not using Blade views on the front-end, override the `renderPreviewModalView()` method and render the preview with your solution of choice:
 
 ```php
-protected function renderPreviewModalView(string $view, array $data): string
+public static function renderPreviewModalView(string $view, array $data): string
 {
     return MyTemplateEngine::render($view, $data);
 }
