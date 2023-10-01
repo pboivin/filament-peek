@@ -4,7 +4,6 @@ namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Support\Exceptions\Halt;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\CachedPreview;
 use Pboivin\FilamentPeek\Support;
@@ -90,7 +89,7 @@ trait HasPreviewModal
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
                 if (config('filament-peek.useInternalPreviewUrl', false)) {
-                    $token = md5('preview-'.Auth::user()->getAuthIdentifier().(Auth::user()->password ?? ''));
+                    $token = app(Support\Cache::class)->createPreviewToken();
 
                     CachedPreview::make(static::class, $view, $this->previewModalData)->put($token);
 
