@@ -93,6 +93,8 @@ return [
 
     'useInternalPreviewUrl' => false,
 
+    'internalPreviewUrlMiddleWare' => [],
+
     /*
     |--------------------------------------------------------------------------
     | Builder Editor
