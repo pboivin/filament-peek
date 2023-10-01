@@ -83,6 +83,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Use Internal Preview URL
+    |--------------------------------------------------------------------------
+    |
+    | Set this to `true` to render all Blade previews through an internal URL.
+    | This improves the isolation of the iframe in the context of the page.
+    |
+    */
+
+    'useInternalPreviewUrl' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Builder Editor
     |--------------------------------------------------------------------------
     |

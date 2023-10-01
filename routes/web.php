@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Pboivin\FilamentPeek\CachedPreview;
 
-// @todo: Document config
 if (config('filament-peek.useInternalPreviewUrl', false)) {
     Route::prefix('filament-peek')->group(function () {
         Route::get('preview', function () {
