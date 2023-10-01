@@ -42,7 +42,6 @@ trait HasPreviewModal
         return $data;
     }
 
-    // @todo: Document internal change
     /** @internal */
     public static function renderPreviewModalView(?string $view, array $data): string
     {
@@ -97,7 +96,7 @@ trait HasPreviewModal
 
                     $previewModalUrl = route('filament-peek.preview', ['token' => $token]);
                 } else {
-                    $previewModalHtmlContent = $this->renderPreviewModalView($view, $this->previewModalData);
+                    $previewModalHtmlContent = static::renderPreviewModalView($view, $this->previewModalData);
                 }
             } else {
                 throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
