@@ -1,2 +1,2 @@
 KEY:{{ $KEY }}
-isPeekPreviewModal:{{ (int) $isPeekPreviewModal }}
+isPeekPreviewModal:{{ (int) ($isPeekPreviewModal ?? 0) }}
