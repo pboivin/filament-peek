@@ -1,6 +1,6 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Feature;
+namespace Pboivin\FilamentPeek\Tests\Integration;
 
 use Pboivin\FilamentPeek\Tests\Models\User;
 

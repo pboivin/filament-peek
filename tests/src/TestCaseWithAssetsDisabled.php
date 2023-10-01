@@ -2,7 +2,7 @@
 
 namespace Pboivin\FilamentPeek\Tests;
 
-class TestCaseAssetsDisabled extends TestCase
+class TestCaseWithAssetsDisabled extends TestCase
 {
     protected function configurePackageProviders($app)
     {
