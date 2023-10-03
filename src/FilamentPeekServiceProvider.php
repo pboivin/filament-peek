@@ -13,6 +13,6 @@ class FilamentPeekServiceProvider extends PackageServiceProvider
             ->hasTranslations()
             ->hasConfigFile()
             ->hasViews()
-            ->hasRoute('web');
+            ->hasRoute('preview');
     }
 }
