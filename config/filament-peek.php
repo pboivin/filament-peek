@@ -83,17 +83,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Use Internal Preview URL
+    | Internal Preview URL
     |--------------------------------------------------------------------------
     |
-    | Set this to `true` to render all Blade previews through an internal URL.
+    | Enable this option to render all Blade previews through an internal URL.
     | This improves the isolation of the iframe in the context of the page.
+    | Add additional middleware for this URL in the `middleware` array.
     |
     */
 
-    'useInternalPreviewUrl' => false,
-
-    'internalPreviewUrlMiddleWare' => [],
+    'internalPreviewUrl' => [
+        'enabled' => false,
+        'middleware' => [],
+    ],
 
     /*
     |--------------------------------------------------------------------------

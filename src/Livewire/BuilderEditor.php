@@ -120,11 +120,11 @@ class BuilderEditor extends Component implements HasForms
 
     public function refreshBuilderPreview(): void
     {
-        if (! $this->pageClass || ! $this->builderName) {
+        if (!$this->pageClass || !$this->builderName) {
             return;
         }
 
-        if (! $this->previewUrl && ! $this->previewView) {
+        if (!$this->previewUrl && !$this->previewView) {
             throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
         }
 
@@ -177,7 +177,7 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getFormSchema(): array
     {
-        if (! $this->pageClass || ! $this->builderName) {
+        if (!$this->pageClass || !$this->builderName) {
             return [];
         }
 
@@ -195,11 +195,11 @@ class BuilderEditor extends Component implements HasForms
 
     protected function getPreviewData(): array
     {
-        if (! $this->pageClass || ! $this->builderName) {
+        if (!$this->pageClass || !$this->builderName) {
             return [];
         }
 
-        if (! $this->previewData) {
+        if (!$this->previewData) {
             $formState = $this->form->getState();
 
             $this->previewData = $this->pageClass::mutateBuilderPreviewData(
@@ -255,10 +255,7 @@ class BuilderEditor extends Component implements HasForms
 
     protected function shouldUseInternalPreviewUrl()
     {
-        if (! is_null($config = config('filament-peek.builderEditor.useInternalPreviewUrl'))) {
-            return $config;
-        }
-
-        return config('filament-peek.useInternalPreviewUrl', false);
+        return config('filament-peek.builderEditor.useInternalPreviewUrl', true)
+            && config('filament-peek.internalPreviewUrl.enabled', false);
     }
 }
