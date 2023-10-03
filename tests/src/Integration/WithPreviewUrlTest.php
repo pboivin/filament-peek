@@ -25,6 +25,17 @@ it('can access preview url if enabled', function () {
         ->assertSee('KEY:VALUE');
 });
 
+it('can access preview data as json', function () {
+    actingAs(User::factory()->create());
+
+    CachedPreview::make(EditPost::class, 'preview-data', ['KEY' => 'VALUE'])
+        ->put('test');
+
+    get('/filament-peek/preview/?token=test', ['Accept' => 'application/json'])
+        ->assertSuccessful()
+        ->assertJson(['KEY' => 'VALUE']);
+});
+
 it('can use internal preview url for page preview', function () {
     $this->mock(Support\Cache::class)
         ->shouldReceive('createPreviewToken')
@@ -57,4 +68,21 @@ it('can use internal preview url for builder preview', function () {
             iframeUrl: 'http://peek.test/filament-peek/preview?token=test&refresh=1',
             iframeContent: null
         );
+});
+
+it('sets the isPeekPreviewModal flag', function () {
+    $this->mock(Support\Cache::class)
+        ->shouldReceive('createPreviewToken')
+        ->andReturn('test');
+
+    $page = Page::factory()->create(['title' => 'Test Page']);
+
+    Livewire::test(EditPage::class, ['record' => $page->id])
+        ->assertSeeHtml('Test Page')
+        ->callAction('preview');
+
+    $preview = CachedPreview::get('test');
+
+    /** @var TestCase $this */
+    $this->assertTrue($preview->data['isPeekPreviewModal']);
 });
