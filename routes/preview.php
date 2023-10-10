@@ -13,6 +13,10 @@ if (config('filament-peek.internalPreviewUrl.enabled', false)) {
 
                 abort_unless($preview = CachedPreview::get($token), 404);
 
+                if (Request::wantsJson()) {
+                    return $preview->data;
+                }
+
                 return $preview->render();
             })->name('filament-peek.preview');
         });
