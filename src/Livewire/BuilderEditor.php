@@ -255,10 +255,7 @@ class BuilderEditor extends Component implements HasForms
 
     protected function shouldUseInternalPreviewUrl()
     {
-        if (! is_null($config = config('filament-peek.builderEditor.useInternalPreviewUrl'))) {
-            return $config;
-        }
-
-        return config('filament-peek.useInternalPreviewUrl', false);
+        return config('filament-peek.builderEditor.useInternalPreviewUrl', true)
+            && config('filament-peek.internalPreviewUrl.enabled', false);
     }
 }
