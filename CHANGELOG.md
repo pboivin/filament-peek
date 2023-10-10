@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.2.0 - 2023-10-10
+
+* feat: Add option to use internal preview URL
+* chore: Bump stefanzweifel/git-auto-commit-action
+
+
 ## 2.1.0 - 2023-09-24
 
 * feat: Add ListPreviewAction component
