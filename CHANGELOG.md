@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.1.2 - 2023-11-13
+
+* enh: Spanish translations by @kennyhorna
+
+
 ## 1.1.1 - 2023-08-26
 
 * fix: Don't attach keyup listener if not needed
