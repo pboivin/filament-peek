@@ -141,17 +141,20 @@ Instead of rendering a view, you may also implement page previews using a custom
 ```php
 protected function getPreviewModalUrl(): ?string
 {
+    // Generate a unique token for this preview
     $postId = $this->previewModalData['post']->id ?: uniqid();
     $userId = auth()->user()->id;
     $token = md5("post-{$postId}-{$userId}");
 
+    // Store the preview data in the cache to be retrieved from the controller
     cache()->put("preview-{$token}", $this->previewModalData, 5 * 60); // 5 minutes
 
+    // Return the preview URL
     return route('posts.preview', ['token' => $token]);
 }
 ```
 
-Then, you can fetch the preview data from the controller:
+Then, fetch the preview data from the controller:
 
 ```php
 class PostController extends Controller
