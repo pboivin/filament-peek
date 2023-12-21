@@ -57,12 +57,13 @@ Please feel free to report any issues you encounter with Peek [in this repositor
 
 ## Demo Projects
 
-There are 2 demo projects available to try the plugin:
+Here are a few example projects available to give this plugin a try:
 
 | Repository | Description |
 |------|----------|
 | [filament-peek-demo](https://github.com/pboivin/filament-peek-demo) | Content previews on a simple Filament project with Laravel Blade views. |
 | [filament-peek-demo-with-astro](https://github.com/pboivin/filament-peek-demo-with-astro) | Content previews on a more complex project with Filament as "headless CMS", and [Astro](https://astro.build/) on the front-end. (Work in progress) |
+| [Log1x/filament-starter](https://github.com/Log1x/filament-starter) | A great starting point for TALL stack projects using Filament. Implements content previews using full-page Livewire components. |
 
 ## Documentation
 
