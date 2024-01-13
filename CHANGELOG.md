@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.1.3 - 2024-01-13
+
+* fix: Don't call state hooks by default when opening the preview modal
+
+
 ## 1.1.2 - 2023-11-13
 
 * enh: Spanish translations by @kennyhorna
