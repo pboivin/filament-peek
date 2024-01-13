@@ -10,6 +10,8 @@ trait HasPreviewModal
 {
     protected array $previewModalData = [];
 
+    protected bool $shouldCallHooksBeforePreview = false;
+
     protected function getPreviewModalUrl(): ?string
     {
         return null;
@@ -46,7 +48,7 @@ trait HasPreviewModal
     /** @internal */
     protected function preparePreviewModalData(): array
     {
-        $data = $this->form->getState();
+        $data = $this->form->getState($this->shouldCallHooksBeforePreview);
         $record = null;
 
         if (method_exists($this, 'mutateFormDataBeforeCreate')) {
