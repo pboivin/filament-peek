@@ -3,9 +3,17 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.2.2 - 2024-01-13
+
+* fix: Don't call state hooks by default when opening the preview modal
+* chore: Fix tests
+* chore: PHP 8.3
+* chore: bump aglipanci/laravel-pint-action from 2.3.0 to 2.3.1
+
+
 ## 2.2.1 - 2023-11-13
 
-enh: Spanish translations by @kennyhorna
+* enh: Spanish translations by @kennyhorna
 
 
 ## 2.2.0 - 2023-10-10
