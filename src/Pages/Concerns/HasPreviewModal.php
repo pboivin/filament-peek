@@ -16,6 +16,8 @@ trait HasPreviewModal
 
     protected ?Model $previewableRecord = null;
 
+    protected bool $shouldCallHooksBeforePreview = false;
+
     protected function getPreviewModalUrl(): ?string
     {
         return null;
@@ -57,10 +59,14 @@ trait HasPreviewModal
         if ($this->previewableRecord) {
             $record = $this->previewableRecord;
         } elseif (method_exists($this, 'mutateFormDataBeforeCreate')) {
-            $data = $this->mutateFormDataBeforeCreate($this->form->getState());
+            $data = $this->mutateFormDataBeforeCreate(
+                $this->form->getState($this->shouldCallHooksBeforePreview)
+            );
             $record = $this->getModel()::make($data);
         } elseif (method_exists($this, 'mutateFormDataBeforeSave')) {
-            $data = $this->mutateFormDataBeforeSave($this->form->getState());
+            $data = $this->mutateFormDataBeforeSave(
+                $this->form->getState($this->shouldCallHooksBeforePreview)
+            );
             $record = $this->getRecord();
             $record->fill($data);
         } elseif (method_exists($this, 'getRecord')) {
