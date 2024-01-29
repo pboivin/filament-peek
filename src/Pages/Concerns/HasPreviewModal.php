@@ -18,6 +18,8 @@ trait HasPreviewModal
 
     protected bool $shouldCallHooksBeforePreview = false;
 
+    protected bool $shouldDehydrateBeforePreview = true;
+
     protected function getPreviewModalUrl(): ?string
     {
         return null;
@@ -54,16 +56,25 @@ trait HasPreviewModal
     /** @internal */
     protected function preparePreviewModalData(): array
     {
+        $shouldDehydrate = ! $this->shouldCallHooksBeforePreview && $this->shouldDehydrateBeforePreview;
         $record = null;
 
         if ($this->previewableRecord) {
             $record = $this->previewableRecord;
         } elseif (method_exists($this, 'mutateFormDataBeforeCreate')) {
+            if ($shouldDehydrate) {
+                $this->form->validate();
+                $this->form->callBeforeStateDehydrated();
+            }
             $data = $this->mutateFormDataBeforeCreate(
                 $this->form->getState($this->shouldCallHooksBeforePreview)
             );
             $record = $this->getModel()::make($data);
         } elseif (method_exists($this, 'mutateFormDataBeforeSave')) {
+            if ($shouldDehydrate) {
+                $this->form->validate();
+                $this->form->callBeforeStateDehydrated();
+            }
             $data = $this->mutateFormDataBeforeSave(
                 $this->form->getState($this->shouldCallHooksBeforePreview)
             );
