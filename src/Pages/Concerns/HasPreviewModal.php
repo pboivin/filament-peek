@@ -45,6 +45,16 @@ trait HasPreviewModal
         return $data;
     }
 
+    protected function getShouldCallHooksBeforePreview(): bool
+    {
+        return $this->shouldCallHooksBeforePreview;
+    }
+
+    protected function getShouldDehydrateBeforePreview(): bool
+    {
+        return $this->shouldDehydrateBeforePreview;
+    }
+
     /** @internal */
     public static function renderPreviewModalView(?string $view, array $data): string
     {
@@ -56,13 +66,14 @@ trait HasPreviewModal
     /** @internal */
     protected function preparePreviewModalData(): array
     {
-        $shouldDehydrate = ! $this->shouldCallHooksBeforePreview && $this->shouldDehydrateBeforePreview;
+        $shouldCallHooks = $this->getShouldCallHooksBeforePreview();
+        $shouldDehydrate = $this->getShouldDehydrateBeforePreview();
         $record = null;
 
         if ($this->previewableRecord) {
             $record = $this->previewableRecord;
         } elseif (method_exists($this, 'mutateFormDataBeforeCreate')) {
-            if ($shouldDehydrate) {
+            if (! $shouldCallHooks && $shouldDehydrate) {
                 $this->form->validate();
                 $this->form->callBeforeStateDehydrated();
             }
@@ -71,7 +82,7 @@ trait HasPreviewModal
             );
             $record = $this->getModel()::make($data);
         } elseif (method_exists($this, 'mutateFormDataBeforeSave')) {
-            if ($shouldDehydrate) {
+            if (! $shouldCallHooks && $shouldDehydrate) {
                 $this->form->validate();
                 $this->form->callBeforeStateDehydrated();
             }
