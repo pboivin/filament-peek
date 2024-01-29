@@ -77,18 +77,14 @@ trait HasPreviewModal
                 $this->form->validate();
                 $this->form->callBeforeStateDehydrated();
             }
-            $data = $this->mutateFormDataBeforeCreate(
-                $this->form->getState($this->shouldCallHooksBeforePreview)
-            );
+            $data = $this->mutateFormDataBeforeCreate($this->form->getState($shouldCallHooks));
             $record = $this->getModel()::make($data);
         } elseif (method_exists($this, 'mutateFormDataBeforeSave')) {
             if (! $shouldCallHooks && $shouldDehydrate) {
                 $this->form->validate();
                 $this->form->callBeforeStateDehydrated();
             }
-            $data = $this->mutateFormDataBeforeSave(
-                $this->form->getState($this->shouldCallHooksBeforePreview)
-            );
+            $data = $this->mutateFormDataBeforeSave($this->form->getState($shouldCallHooks));
             $record = $this->getRecord();
             $record->fill($data);
         } elseif (method_exists($this, 'getRecord')) {
