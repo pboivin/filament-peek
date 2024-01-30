@@ -18,6 +18,8 @@ trait HasPreviewModal
 
     protected bool $shouldCallHooksBeforePreview = false;
 
+    protected bool $shouldDehydrateBeforePreview = true;
+
     protected function getPreviewModalUrl(): ?string
     {
         return null;
@@ -43,6 +45,16 @@ trait HasPreviewModal
         return $data;
     }
 
+    protected function getShouldCallHooksBeforePreview(): bool
+    {
+        return $this->shouldCallHooksBeforePreview;
+    }
+
+    protected function getShouldDehydrateBeforePreview(): bool
+    {
+        return $this->shouldDehydrateBeforePreview;
+    }
+
     /** @internal */
     public static function renderPreviewModalView(?string $view, array $data): string
     {
@@ -54,19 +66,25 @@ trait HasPreviewModal
     /** @internal */
     protected function preparePreviewModalData(): array
     {
+        $shouldCallHooks = $this->getShouldCallHooksBeforePreview();
+        $shouldDehydrate = $this->getShouldDehydrateBeforePreview();
         $record = null;
 
         if ($this->previewableRecord) {
             $record = $this->previewableRecord;
         } elseif (method_exists($this, 'mutateFormDataBeforeCreate')) {
-            $data = $this->mutateFormDataBeforeCreate(
-                $this->form->getState($this->shouldCallHooksBeforePreview)
-            );
+            if (! $shouldCallHooks && $shouldDehydrate) {
+                $this->form->validate();
+                $this->form->callBeforeStateDehydrated();
+            }
+            $data = $this->mutateFormDataBeforeCreate($this->form->getState($shouldCallHooks));
             $record = $this->getModel()::make($data);
         } elseif (method_exists($this, 'mutateFormDataBeforeSave')) {
-            $data = $this->mutateFormDataBeforeSave(
-                $this->form->getState($this->shouldCallHooksBeforePreview)
-            );
+            if (! $shouldCallHooks && $shouldDehydrate) {
+                $this->form->validate();
+                $this->form->callBeforeStateDehydrated();
+            }
+            $data = $this->mutateFormDataBeforeSave($this->form->getState($shouldCallHooks));
             $record = $this->getRecord();
             $record->fill($data);
         } elseif (method_exists($this, 'getRecord')) {
