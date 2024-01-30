@@ -12,6 +12,8 @@ trait HasPreviewModal
 
     protected bool $shouldCallHooksBeforePreview = false;
 
+    protected bool $shouldDehydrateBeforePreview = true;
+
     protected function getPreviewModalUrl(): ?string
     {
         return null;
@@ -45,10 +47,28 @@ trait HasPreviewModal
         );
     }
 
+    protected function getShouldCallHooksBeforePreview(): bool
+    {
+        return $this->shouldCallHooksBeforePreview;
+    }
+
+    protected function getShouldDehydrateBeforePreview(): bool
+    {
+        return $this->shouldDehydrateBeforePreview;
+    }
+
     /** @internal */
     protected function preparePreviewModalData(): array
     {
-        $data = $this->form->getState($this->shouldCallHooksBeforePreview);
+        $shouldCallHooks = $this->getShouldCallHooksBeforePreview();
+        $shouldDehydrate = $this->getShouldDehydrateBeforePreview();
+
+        if (! $shouldCallHooks && $shouldDehydrate) {
+            $this->form->validate();
+            $this->form->callBeforeStateDehydrated();
+        }
+
+        $data = $this->form->getState($shouldCallHooks);
         $record = null;
 
         if (method_exists($this, 'mutateFormDataBeforeCreate')) {
