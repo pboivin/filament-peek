@@ -16,7 +16,7 @@ class FilamentPeekPlugin implements Plugin
 
     const ID = 'filament-peek';
 
-    const VERSION = '2.2.2';
+    const VERSION = '2.2.3';
 
     protected bool $shouldLoadPluginScripts = true;
 
