@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.1.4 - 2024-01-31
+
+* fix: Call beforeStateDehydrated hook by default to handle image uploads
+
+
 ## 1.1.3 - 2024-01-13
 
 * fix: Don't call state hooks by default when opening the preview modal
