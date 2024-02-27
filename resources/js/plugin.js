@@ -167,7 +167,7 @@ document.addEventListener('alpine:init', () => {
 
                 if (iframe && iframe.contentWindow) {
                     this._iframeScrollPosition = iframe.contentWindow.scrollY;
-                    iframe.onload = ()=>{
+                    iframe.onload = () => {
                         iframe?.contentWindow?.scrollTo(0, this._iframeScrollPosition || 0);
                     }
                 }
