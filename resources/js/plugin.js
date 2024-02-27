@@ -167,11 +167,9 @@ document.addEventListener('alpine:init', () => {
 
                 if (iframe && iframe.contentWindow) {
                     this._iframeScrollPosition = iframe.contentWindow.scrollY;
-
-                    setTimeout(() => {
-                        const iframe = this.$refs.previewModalBody.querySelector('iframe');
+                    iframe.onload = ()=>{
                         iframe?.contentWindow?.scrollTo(0, this._iframeScrollPosition || 0);
-                    }, 60);
+                    }
                 }
             } catch (e) {
                 // pass
