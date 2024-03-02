@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 1.1.5 - 2024-03-02
+
+* fix: Fix iframe not refreshing when using internalPreviewUrl by @FDT2k
+
+
 ## 1.1.4 - 2024-01-31
 
 * fix: Call beforeStateDehydrated hook by default to handle image uploads
