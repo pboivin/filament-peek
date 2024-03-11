@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.2.5 - 2024-03-11
+
+* chore: Add Laravel 11 compatibility by @bambamboole
+* chore: bump ramsey/composer-install from 2 to 3
+
+
 ## 2.2.4 - 2024-03-02
 
 * fix: Fix iframe not refreshing when using internalPreviewUrl by @FDT2k
