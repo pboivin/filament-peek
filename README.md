@@ -102,7 +102,7 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
 
 ## FAQ and Known Issues
 
-I've started compiling a some notes and solutions to common issues in [Discussions](https://github.com/pboivin/filament-peek/discussions/categories/general). Feel free to contribute your own tips and tricks.
+I've started compiling some notes and solutions to common issues in [Discussions](https://github.com/pboivin/filament-peek/discussions/categories/general). Feel free to contribute your own tips and tricks.
 
 ## Changelog
 
