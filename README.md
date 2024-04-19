@@ -100,6 +100,10 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
 
 <!-- END_TOC -->
 
+## FAQ and Known Issues
+
+I've started compiling a some notes and solutions to common issues in [Discussions](https://github.com/pboivin/filament-peek/discussions/categories/general). Feel free to contribute your own tips and tricks.
+
 ## Changelog
 
 Please see [CHANGELOG](https://github.com/pboivin/filament-peek/blob/2.x/CHANGELOG.md) for more information on what has changed recently.
