@@ -3,6 +3,13 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.2.6 - 2024-04-24
+
+* enh: Support ListPreviewAction with relation managers
+* chore: bump dependabot/fetch-metadata from 1.6.0 to 2.0.0
+* chore: bump aglipanci/laravel-pint-action from 2.3.1 to 2.4
+
+
 ## 2.2.5 - 2024-03-11
 
 * chore: Add Laravel 11 compatibility by @bambamboole
