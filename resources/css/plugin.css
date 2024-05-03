@@ -45,10 +45,10 @@ body.is-filament-peek-preview-modal-open {
 /*** Preview ***/
 
 .filament-peek-preview {
-    @apply flex-grow;
+    @apply flex-grow max-w-full;
 
     .filament-peek-panel-header > * {
-        @apply min-w-[14rem];
+        @apply min-w-[10rem];
     }
 }
 
