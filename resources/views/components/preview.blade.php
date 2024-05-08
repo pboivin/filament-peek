@@ -9,6 +9,8 @@
         devicePresets: @js(config('filament-peek.devicePresets', false)),
         initialDevicePreset: @js(config('filament-peek.initialDevicePreset', 'fullscreen')),
         allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
+        previewUrl: @js($getPreviewUrl(), null),
+        previewContent: @js($getPreviewContent(), null),
     })"
     {{ $attributes->class('filament-peek-form-preview') }}
 >

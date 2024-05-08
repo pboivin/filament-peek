@@ -289,6 +289,9 @@ document.addEventListener('alpine:init', () => {
             console.log("PeekPreviewComponent :: init");
             ////////////////////////////////////////////
 
+            this.iframeUrl = this.config.previewUrl || null;
+            this.iframeContent = this.config.previewContent || null;
+
             this.setDevicePreset();
         },
 

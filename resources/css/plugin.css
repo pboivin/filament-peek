@@ -197,5 +197,16 @@ body.is-filament-peek-preview-modal-open {
 /*** Form Preview Component ***/
 
 .filament-peek-form-preview {
-    @apply rounded-xl shadow-sm ring-1 ring-gray-950/5 dark:ring-white/10 overflow-hidden;
+    @apply shadow-sm ring-1 ring-gray-950/5 dark:ring-white/10;
+    @apply rounded-xl overflow-hidden;
+    @apply flex flex-col h-[600px];
+
+    .filament-peek-panel {
+        @apply flex-grow;
+    }
+
+    iframe {
+        @apply mx-auto shadow-none border-none;
+        transition: all 200ms;
+    }
 }
