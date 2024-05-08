@@ -193,3 +193,9 @@ body.is-filament-peek-preview-modal-open {
         @apply block fixed inset-0 z-[9010];
     }
 }
+
+/*** Form Preview Component ***/
+
+.filament-peek-form-preview {
+    @apply rounded-xl shadow-sm ring-1 ring-gray-950/5 dark:ring-white/10 overflow-hidden;
+}

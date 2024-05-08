@@ -272,6 +272,71 @@ document.addEventListener('alpine:init', () => {
         },
     }));
 
+    Alpine.data('PeekPreviewComponent', (config) => ({
+        config,
+        canRotatePreset: false,
+        activeDevicePreset: null,
+        iframeUrl: null,
+        iframeContent: null,
+        iframeStyle: {
+            width: '100%',
+            height: '100%',
+            maxWidth: '100%',
+            maxHeight: '100%',
+        },
+
+        init() {
+            console.log("PeekPreviewComponent :: init");
+            ////////////////////////////////////////////
+
+            this.setDevicePreset();
+        },
+
+        setIframeDimensions(width, height) {
+            this.iframeStyle.maxWidth = width;
+            this.iframeStyle.maxHeight = height;
+
+            if (this.config.allowIframeOverflow) {
+                this.iframeStyle.width = width;
+                this.iframeStyle.height = height;
+            }
+        },
+
+        setDevicePreset(name) {
+            name = name || this.config.initialDevicePreset;
+
+            if (!this.config.devicePresets) return;
+            if (!this.config.devicePresets[name]) return;
+            if (!this.config.devicePresets[name].width) return;
+            if (!this.config.devicePresets[name].height) return;
+
+            this.setIframeDimensions(this.config.devicePresets[name].width, this.config.devicePresets[name].height);
+
+            this.canRotatePreset = this.config.devicePresets[name].canRotatePreset || false;
+
+            this.activeDevicePreset = name;
+        },
+
+        isActiveDevicePreset(name) {
+            return this.activeDevicePreset === name;
+        },
+
+        rotateDevicePreset() {
+            const newMaxWidth = this.iframeStyle.maxHeight;
+            const newMaxHeight = this.iframeStyle.maxWidth;
+
+            this.setIframeDimensions(newMaxWidth, newMaxHeight);
+        },
+
+        onRefreshPreviewModal($event) {
+            // TODO
+        },
+
+        _restoreIframeScrollPosition() {
+            // TODO
+        },
+    }));
+
     dispatch(document, 'peek:initialized');
 });
 
@@ -309,3 +374,5 @@ document.addEventListener('peek:initializing', () => {
 });
 
 window.FilamentPeek = Peek;
+
+console.log('READY');
