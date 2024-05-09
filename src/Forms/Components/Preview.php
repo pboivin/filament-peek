@@ -9,18 +9,18 @@ class Preview extends Component
 {
     protected string $view = 'filament-peek::components.preview';
 
-    protected null | string | Closure $previewView = null;
+    protected null|string|Closure $previewView = null;
 
-    protected null | string | Closure $previewUrl = null;
+    protected null|string|Closure $previewUrl = null;
 
-    protected array | Closure $previewData = [];
+    protected array|Closure $previewData = [];
 
     public static function make(): static
     {
         return app(static::class)->configure();
     }
 
-    public function previewView(null | string | Closure $view): self
+    public function previewView(null|string|Closure $view): self
     {
         $this->previewView = $view;
 
@@ -32,7 +32,7 @@ class Preview extends Component
         return $this->evaluate($this->previewView);
     }
 
-    public function previewUrl(null | string | Closure $url): self
+    public function previewUrl(null|string|Closure $url): self
     {
         $this->previewUrl = $url;
 
@@ -44,7 +44,7 @@ class Preview extends Component
         return $this->evaluate($this->previewUrl);
     }
 
-    public function previewData(array | Closure $data): self
+    public function previewData(array|Closure $data): self
     {
         $this->previewData = $data;
 
@@ -62,7 +62,7 @@ class Preview extends Component
             return null;
         }
 
-        if (!($view = $this->getPreviewView())) {
+        if (! ($view = $this->getPreviewView())) {
             return null;
         }
 
