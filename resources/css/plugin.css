@@ -196,7 +196,7 @@ body.is-filament-peek-preview-modal-open {
 
 /*** Form Preview Component ***/
 
-.filament-peek-form-preview {
+.filament-peek-preview-component {
     @apply shadow-sm ring-1 ring-gray-950/5 dark:ring-white/10;
     @apply rounded-xl overflow-hidden;
     @apply flex flex-col h-[600px];

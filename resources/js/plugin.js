@@ -286,12 +286,6 @@ document.addEventListener('alpine:init', () => {
         },
 
         init() {
-            console.log("PeekPreviewComponent :: init");
-            ////////////////////////////////////////////
-
-            this.iframeUrl = this.config.previewUrl || null;
-            this.iframeContent = this.config.previewContent || null;
-
             this.setDevicePreset();
         },
 
@@ -331,12 +325,27 @@ document.addEventListener('alpine:init', () => {
             this.setIframeDimensions(newMaxWidth, newMaxHeight);
         },
 
-        onRefreshPreviewModal($event) {
-            // TODO
+        onRefreshPreviewComponent($event) {
+            if (this.config.previewId !== $event.detail.previewId) {
+                return;
+            }
+
+            this.iframeUrl = $event.detail.previewUrl;
+            this.iframeContent = $event.detail.previewContent;
         },
 
         _restoreIframeScrollPosition() {
             // TODO
+        },
+    }));
+
+    Alpine.data('PeekPreviewSentinel', (config) => ({
+        config,
+
+        init() {
+            this.$nextTick(() => {
+                this.$dispatch('refresh-preview-component', this.config);
+            });
         },
     }));
 
@@ -377,5 +386,3 @@ document.addEventListener('peek:initializing', () => {
 });
 
 window.FilamentPeek = Peek;
-
-console.log('READY');
