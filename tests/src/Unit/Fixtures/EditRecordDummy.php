@@ -18,6 +18,6 @@ class EditRecordDummy extends EditRecord
 
     public function getRecord(): Model
     {
-        return new ModelDummy();
+        return new ModelDummy;
     }
 }

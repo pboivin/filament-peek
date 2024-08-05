@@ -12,8 +12,7 @@ class CachedPreview
         public string $pageClass,
         public string $view,
         public array $data,
-    ) {
-    }
+    ) {}
 
     public static function make(
         string $pageClass,

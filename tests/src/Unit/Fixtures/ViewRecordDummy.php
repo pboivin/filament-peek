@@ -14,6 +14,6 @@ class ViewRecordDummy extends ViewRecord
 
     public function getRecord(): Model
     {
-        return new ModelDummy();
+        return new ModelDummy;
     }
 }
