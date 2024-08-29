@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.2.8 - 2024-08-29
+
+* enh: Add Dutch translations by @el-klo
+* chore: bump dependabot/fetch-metadata from 2.1.0 to 2.2.0
+
+
 ## 2.2.7 - 2024-05-03
 
 * fix: Remove filament vendor views from tailwind content config
