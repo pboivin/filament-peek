@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.2.9 - 2024-09-04
+
+* enh: Add czech translations by @JarkaP
+
+
 ## 2.2.8 - 2024-08-29
 
 * enh: Add Dutch translations by @el-klo
