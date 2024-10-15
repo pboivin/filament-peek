@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.2.10 - 2024-10-15
+
+* fix: Remove tailwind utils from plugin.css
+
+
 ## 2.2.9 - 2024-09-04
 
 * enh: Add czech translations by @JarkaP
