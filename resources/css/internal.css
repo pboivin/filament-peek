@@ -1,0 +1,203 @@
+/**
+ * NOTE:
+ * This file is for the internal CSS build distributed with the plugin.
+ * Use `plugin.css` if you are trying to integrate with a custom Filament Theme.
+ *
+ * @see https://github.com/pboivin/filament-peek/blob/2.x/docs/configuration.md#integrating-with-a-custom-theme
+ */
+
+@tailwind utilities;
+
+/*** Modal structure ***/
+
+.filament-peek-modal {
+    @apply fixed left-0 top-0 z-[9000] h-screen w-screen;
+    @apply flex bg-gray-50 text-gray-950;
+    @apply m-0 p-0 !important;
+    @apply dark:bg-gray-950 dark:text-white;
+
+    --filament-peek-panel-header-height: 4.8rem;
+    --filament-peek-builder-actions-height: 4.25rem;
+}
+
+.filament-peek-panel {
+    @apply flex flex-col;
+}
+
+.filament-peek-panel-header {
+    @apply flex items-center justify-between border-b bg-white p-4;
+    @apply text-sm font-medium text-gray-900;
+    @apply dark:border-gray-800 dark:bg-gray-900 dark:text-white;
+    min-height: var(--filament-peek-panel-header-height);
+    user-select: none;
+}
+
+.filament-peek-panel-body {
+    @apply flex-grow bg-gray-100 p-4;
+    @apply dark:bg-gray-950;
+
+    iframe {
+        @apply mx-auto shadow-2xl;
+        transition: all 200ms;
+    }
+
+    &.allow-iframe-overflow {
+        @apply overflow-y-auto;
+    }
+}
+
+body.is-filament-peek-preview-modal-open {
+    @apply overflow-hidden;
+}
+
+/*** Preview ***/
+
+.filament-peek-preview {
+    @apply flex-grow max-w-full;
+
+    .filament-peek-panel-header > * {
+        @apply min-w-[10rem];
+    }
+}
+
+.filament-peek-device-presets {
+    @apply hidden justify-center xl:flex;
+
+    button {
+        @apply mx-2 inline-flex flex-col items-center disabled:opacity-25;
+
+        svg {
+            @apply h-6 w-6;
+        }
+
+        &:after {
+            @apply mt-1 block h-1 w-1 rounded-full bg-transparent;
+            content: '';
+        }
+
+        &.is-active-device-preset:after {
+            @apply bg-current opacity-25;
+        }
+    }
+}
+
+.filament-peek-rotate-preset {
+    svg {
+        @apply relative -top-1;
+    }
+}
+
+.filament-peek-modal-actions {
+    @apply flex justify-end;
+}
+
+/*** Editor ***/
+
+.filament-peek-editor {
+    @apply hidden border-r rtl:border-l;
+    @apply dark:border-gray-700;
+
+    .filament-peek-panel-body {
+        @apply flex h-full w-full p-0;
+    }
+}
+
+.filament-peek-editor-icon {
+    @apply gap-0 border-0 p-2 bg-transparent !important;
+
+    &:not(:focus) {
+        box-shadow: none !important;
+    }
+
+    svg {
+        @apply text-gray-900 dark:text-white;
+    }
+
+    &.is-icon-active {
+        svg {
+            @apply text-primary-600;
+        }
+    }
+}
+
+.filament-peek-editor-auto-refresh-label {
+    @apply inline-flex items-center gap-2 p-2;
+}
+
+.filament-peek-builder-editor {
+    @apply relative flex h-full w-full flex-col;
+}
+
+.filament-peek-builder-content {
+    @apply w-full overflow-y-auto p-4;
+    height: calc(100vh - var(--filament-peek-panel-header-height));
+    max-height: calc(100vh - var(--filament-peek-panel-header-height));
+
+    .tippy-content [x-ref="panel"] {
+        @apply text-gray-900 dark:text-gray-300;
+    }
+}
+
+.filament-peek-builder-actions {
+    @apply hidden;
+}
+
+.filament-peek-builder-editor.has-sidebar-actions {
+    .filament-peek-builder-content {
+        @apply w-full overflow-y-auto p-4;
+        height: calc(
+            100vh - var(--filament-peek-panel-header-height) -
+                var(--filament-peek-builder-actions-height)
+        );
+        max-height: calc(
+            100vh - var(--filament-peek-panel-header-height) -
+                var(--filament-peek-builder-actions-height)
+        );
+    }
+
+    .filament-peek-builder-actions {
+        @apply block w-full border-t dark:border-gray-700;
+        height: var(--filament-peek-builder-actions-height);
+    }
+
+    /* Main builder */
+    .fi-fo-builder > .fi-fo-builder-block-picker {
+        @apply absolute bottom-0 left-0 w-full p-4;
+    }
+
+    /* Nested buidlers */
+    .fi-fo-builder .fi-fo-builder > .fi-fo-builder-block-picker {
+        position: initial;
+        padding: initial;
+    }
+}
+
+/*** Resizer ***/
+
+.filament-peek-editor-resizer {
+    @apply absolute left-[100%] top-0 h-full w-[9px] bg-transparent;
+    @apply border-l-[3px] border-transparent;
+    @apply rtl:right-[100%] rtl:border-l-0 rtl:border-r-[3px];
+
+    &:hover {
+        @apply border-gray-500;
+        cursor: ew-resize;
+    }
+}
+
+.filament-peek-iframe-cover {
+    @apply hidden;
+}
+
+.is-filament-peek-editor-resizing {
+    user-select: none;
+    cursor: ew-resize;
+
+    .filament-peek-editor-resizer {
+        @apply border-gray-500;
+    }
+
+    .filament-peek-iframe-cover {
+        @apply block fixed inset-0 z-[9010];
+    }
+}
