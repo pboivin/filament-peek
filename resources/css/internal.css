@@ -1,3 +1,13 @@
+/**
+ * NOTE:
+ * This file is for the internal CSS build distributed with the plugin.
+ * Use `plugin.css` if you are trying to integrate with a custom Filament Theme.
+ *
+ * @see https://github.com/pboivin/filament-peek/blob/2.x/docs/configuration.md#integrating-with-a-custom-theme
+ */
+
+@tailwind utilities;
+
 /*** Modal structure ***/
 
 .filament-peek-modal {
