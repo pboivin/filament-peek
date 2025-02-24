@@ -128,3 +128,4 @@ The initial idea is heavily inspired by module previews in [Twill CMS](https://t
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/pboivin/filament-peek/blob/2.x/LICENSE.md) for more information.
+ 
