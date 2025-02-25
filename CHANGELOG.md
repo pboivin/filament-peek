@@ -3,6 +3,14 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.3.0 - 2025-02-25
+
+* chore: Laravel 12.x Compatibility
+* chore: Update Github Actions
+* chore: bump dependabot/fetch-metadata from 2.2.0 to 2.3.0
+* chore: bump aglipanci/laravel-pint-action from 2.4 to 2.5
+
+
 ## 2.2.11 - 2025-01-03
 
 * enh: Add Turkish translations by @AzizEmir
