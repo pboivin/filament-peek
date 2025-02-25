@@ -5,6 +5,10 @@ on:
     paths:
       - '**.php'
       - 'phpstan.neon.dist'
+  pull_request:
+    branches:
+      - 2.x
+      - 1.x
 
 jobs:
   phpstan:
