@@ -1,0 +1,19 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Property Pboivin\\FilamentPeek\\Forms\\Components\\PreviewLink\:\:\$view \(view\-string\) does not accept default value of type string\.$#'
+			identifier: property.defaultValue
+			count: 1
+			path: src/Forms/Components/PreviewLink.php
+
+		-
+			message: '#^Trait Pboivin\\FilamentPeek\\Pages\\Concerns\\HasBuilderPreview is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Pages/Concerns/HasBuilderPreview.php
+
+		-
+			message: '#^Trait Pboivin\\FilamentPeek\\Pages\\Concerns\\HasPreviewModal is used zero times and is not analysed\.$#'
+			identifier: trait.unused
+			count: 1
+			path: src/Pages/Concerns/HasPreviewModal.php
