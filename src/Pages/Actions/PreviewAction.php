@@ -8,6 +8,7 @@ use Pboivin\FilamentPeek\Support;
 class PreviewAction extends Action
 {
     use Support\Concerns\SetsInitialPreviewModalData;
+    use Support\Concerns\CanPreviewInNewTab;
 
     public static function getDefaultName(): ?string
     {
@@ -29,7 +30,11 @@ class PreviewAction extends Action
                     $this->evaluate($this->previewModalData)
                 );
 
-                $livewire->openPreviewModal();
+                if ($this->shouldPreviewInNewTab()) {
+                    $livewire->openPreviewTab();
+                } else {
+                    $livewire->openPreviewModal();
+                }
             });
 
         Support\View::setupPreviewModal();
