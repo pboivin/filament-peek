@@ -144,8 +144,8 @@ trait HasPreviewModal
     {
         $previewModalUrl = null;
 
-        if (!config('filament-peek.internalPreviewUrl.enabled')) {
-            throw new PreviewModalException("You must enable the `internalPreviewUrl` configuration to open the preview in a new tab.");
+        if (! config('filament-peek.internalPreviewUrl.enabled')) {
+            throw new PreviewModalException('You must enable the `internalPreviewUrl` configuration to open the preview in a new tab.');
         }
 
         try {

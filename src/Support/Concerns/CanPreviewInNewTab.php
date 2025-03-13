@@ -6,9 +6,9 @@ use Closure;
 
 trait CanPreviewInNewTab
 {
-    protected bool | Closure $shouldPreviewInNewTab = false;
+    protected bool|Closure $shouldPreviewInNewTab = false;
 
-    public function previewInNewTab(bool | Closure $condition = true): static
+    public function previewInNewTab(bool|Closure $condition = true): static
     {
         $this->shouldPreviewInNewTab = $condition;
 

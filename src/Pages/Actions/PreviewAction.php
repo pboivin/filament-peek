@@ -7,8 +7,8 @@ use Pboivin\FilamentPeek\Support;
 
 class PreviewAction extends Action
 {
-    use Support\Concerns\SetsInitialPreviewModalData;
     use Support\Concerns\CanPreviewInNewTab;
+    use Support\Concerns\SetsInitialPreviewModalData;
 
     public static function getDefaultName(): ?string
     {
