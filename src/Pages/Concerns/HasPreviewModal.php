@@ -116,7 +116,8 @@ trait HasPreviewModal
                 if (config('filament-peek.internalPreviewUrl.enabled', false)) {
                     $token = app(Support\Cache::class)->createPreviewToken();
 
-                    CachedPreview::make(static::class, $view, $this->previewModalData)->put($token);
+                    CachedPreview::make(static::class, $view, $this->previewModalData)
+                        ->put($token, config('filament-peek.internalPreviewUrl.cacheDuration', 60));
 
                     $previewModalUrl = route('filament-peek.preview', ['token' => $token]);
                 } else {
@@ -156,7 +157,8 @@ trait HasPreviewModal
             } elseif ($view = $this->getPreviewModalView()) {
                 $token = app(Support\Cache::class)->createPreviewToken();
 
-                CachedPreview::make(static::class, $view, $this->previewModalData)->put($token);
+                CachedPreview::make(static::class, $view, $this->previewModalData)
+                    ->put($token, config('filament-peek.internalPreviewUrl.cacheDuration', 60));
 
                 $previewModalUrl = route('filament-peek.preview', ['token' => $token]);
             } else {
