@@ -6,6 +6,7 @@ use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use InvalidArgumentException;
 use Mockery;
+use Pboivin\FilamentPeek\Exceptions\PreviewModalException;
 use Tests\TestCase;
 
 it('has no initial preview modal url', function () {
@@ -174,5 +175,41 @@ it('renders the preview modal view', function () {
         expect($item['dispatched'])->toBeArray();
         expect($item['dispatched'][0]->serialize()['name'])->toEqual('open-preview-modal');
         expect($item['dispatched'][0]->serialize()['params']['iframeContent'])->toEqual('TEST');
+    }
+});
+
+it('requires internal preview url for preview tab', function () {
+    /** @var TestCase $this */
+    $this->expectException(PreviewModalException::class);
+    $this->expectExceptionMessage('You must enable the `internalPreviewUrl` configuration to open the preview in a new tab.');
+
+    $page = invade(new Fixtures\EditRecordDummy);
+
+    $page->openPreviewTab();
+});
+
+// @todo: Rewrite test
+it('dispatches open preview tab browser event', function () {
+    config()->set('filament-peek.internalPreviewUrl.enabled', true);
+
+    $page = invade(new class extends Fixtures\EditRecordDummy
+    {
+        protected function getPreviewModalUrl(): ?string
+        {
+            return 'https://example.com';
+        }
+    });
+
+    $store = invade(app(\Livewire\Mechanisms\DataStore::class));
+
+    expect($store->lookup)->toBeEmpty();
+
+    $page->openPreviewTab();
+
+    expect($store->lookup)->not->toBeEmpty();
+
+    foreach ($store->lookup as $item) {
+        expect($item['dispatched'])->toBeArray();
+        expect($item['dispatched'][0]->serialize()['name'])->toEqual('open-preview-tab');
     }
 });

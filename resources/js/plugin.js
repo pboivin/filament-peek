@@ -105,6 +105,20 @@ document.addEventListener('alpine:init', () => {
             this.setIframeDimensions(newMaxWidth, newMaxHeight);
         },
 
+        onOpenPreviewTab($event) {
+            dispatch(document, 'peek:tab-opening', { modal: this });
+
+            this.previewTabUrl = $event.detail.url;
+
+            if (this.previewTab && this.previewTab.closed === false) {
+                this.previewTab.location = this.previewTabUrl;
+            } else {
+                this.previewTab = window.open(this.previewTabUrl);
+            }
+
+            setTimeout(() => dispatch(document, 'peek:tab-opened', { modal: this }), 0);
+        },
+
         onOpenPreviewModal($event) {
             dispatch(document, 'peek:modal-opening', { modal: this });
 

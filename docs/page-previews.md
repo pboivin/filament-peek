@@ -276,6 +276,17 @@ public static function renderPreviewModalView(string $view, array $data): string
 }
 ```
 
+## Opening the Preview in a New Tab
+
+You may choose to open the preview in a new tab, instead of a full-screen modal:
+
+```php
+PreviewAction::make()
+    ->previewInNewTab(),
+```
+
+**Note**: You must enable the [`internalPreviewUrl` option](https://github.com/pboivin/filament-peek/blob/2.x/config/filament-peek.php#L86) in the configuration to open previews in tabs.
+
 ---
 
 **Documentation**

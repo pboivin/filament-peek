@@ -19,6 +19,7 @@
             'is-filament-peek-editor-resizing': editorIsResizing,
         }"
         x-bind:style="modalStyle"
+        x-on:open-preview-tab.window="onOpenPreviewTab($event)"
         x-on:open-preview-modal.window="onOpenPreviewModal($event)"
         x-on:refresh-preview-modal.window="onRefreshPreviewModal($event)"
         x-on:close-preview-modal.window="onClosePreviewModal($event)"

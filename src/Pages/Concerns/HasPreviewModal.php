@@ -6,6 +6,7 @@ use Filament\Support\Exceptions\Halt;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\CachedPreview;
+use Pboivin\FilamentPeek\Exceptions\PreviewModalException;
 use Pboivin\FilamentPeek\Support;
 
 trait HasPreviewModal
@@ -115,7 +116,8 @@ trait HasPreviewModal
                 if (config('filament-peek.internalPreviewUrl.enabled', false)) {
                     $token = app(Support\Cache::class)->createPreviewToken();
 
-                    CachedPreview::make(static::class, $view, $this->previewModalData)->put($token);
+                    CachedPreview::make(static::class, $view, $this->previewModalData)
+                        ->put($token, config('filament-peek.internalPreviewUrl.cacheDuration', 60));
 
                     $previewModalUrl = route('filament-peek.preview', ['token' => $token]);
                 } else {
@@ -136,6 +138,37 @@ trait HasPreviewModal
             iframeUrl: $previewModalUrl,
             iframeContent: $previewModalHtmlContent,
         );
+    }
+
+    /** @internal */
+    public function openPreviewTab(): void
+    {
+        $previewModalUrl = null;
+
+        if (! config('filament-peek.internalPreviewUrl.enabled')) {
+            throw new PreviewModalException('You must enable the `internalPreviewUrl` configuration to open the preview in a new tab.');
+        }
+
+        try {
+            $this->previewModalData = $this->mutatePreviewModalData($this->preparePreviewModalData());
+
+            if ($previewModalUrl = $this->getPreviewModalUrl()) {
+                // pass
+            } elseif ($view = $this->getPreviewModalView()) {
+                $token = app(Support\Cache::class)->createPreviewToken();
+
+                CachedPreview::make(static::class, $view, $this->previewModalData)
+                    ->put($token, config('filament-peek.internalPreviewUrl.cacheDuration', 60));
+
+                $previewModalUrl = route('filament-peek.preview', ['token' => $token]);
+            } else {
+                throw new InvalidArgumentException('Missing preview modal URL or Blade view.');
+            }
+        } catch (Halt $exception) {
+            return;
+        }
+
+        $this->dispatch('open-preview-tab', url: $previewModalUrl);
     }
 
     /** @internal */

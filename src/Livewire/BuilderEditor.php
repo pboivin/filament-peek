@@ -222,7 +222,7 @@ class BuilderEditor extends Component implements HasForms
             $token = app(Support\Cache::class)->createPreviewToken();
 
             CachedBuilderPreview::make($this->pageClass, $this->previewView, $this->getPreviewData())
-                ->put($token);
+                ->put($token, config('filament-peek.internalPreviewUrl.cacheDuration', 60));
 
             return route('filament-peek.preview', [
                 'token' => $token,
