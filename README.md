@@ -85,6 +85,7 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
     - [Preview Pointer Events](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#preview-pointer-events)
     - [Adding Extra Data to Previews](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#adding-extra-data-to-previews)
     - [Alternate Templating Engines](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#alternate-templating-engines)
+    - [Opening the Preview in a New Tab](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#opening-the-preview-in-a-new-tab)
 - [Builder Previews](https://github.com/pboivin/filament-peek/blob/2.x/docs/builder-previews.md)
     - [Overview](https://github.com/pboivin/filament-peek/blob/2.x/docs/builder-previews.md#overview)
     - [Using Builder Previews on Edit pages](https://github.com/pboivin/filament-peek/blob/2.x/docs/builder-previews.md#using-builder-previews-on-edit-pages)
@@ -128,4 +129,4 @@ The initial idea is heavily inspired by module previews in [Twill CMS](https://t
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/pboivin/filament-peek/blob/2.x/LICENSE.md) for more information.
- 
+

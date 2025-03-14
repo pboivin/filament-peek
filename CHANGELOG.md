@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 2.4.0 - 2025-03-14
+
+* feat: Open preview in new browser tab
+
+
 ## 2.3.0 - 2025-02-25
 
 * chore: Laravel 12.x Compatibility

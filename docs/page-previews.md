@@ -114,7 +114,7 @@ public static function table(Table $table): Table
 }
 ```
 
-**Note**: `ListPreviewAction` does not support [Builder Previews](./builder-previews.md). 
+**Note**: `ListPreviewAction` does not support [Builder Previews](./builder-previews.md).
 
 ## Detecting the Preview Modal
 
