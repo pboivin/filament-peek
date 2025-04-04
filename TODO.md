@@ -3,8 +3,13 @@
 Cleanup:
 
 - [x] Remove PreviewLink component
-- [ ] Default to internal preview url
+- [x] Default to internal preview url
 - [ ] Change modal z-index
+
+Tests:
+
+- [ ] Rewrite tests with internal preview url as default
+- [ ] Rewrite all tests as Livewire tests
 
 Features:
 

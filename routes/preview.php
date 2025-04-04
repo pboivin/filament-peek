@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 use Pboivin\FilamentPeek\CachedPreview;
 
-if (config('filament-peek.internalPreviewUrl.enabled', false)) {
+if (config('filament-peek.internalPreviewUrl.enabled', true)) {
     Route::prefix('filament-peek')
         ->middleware(config('filament-peek.internalPreviewUrl.middleware', []))
         ->group(function () {

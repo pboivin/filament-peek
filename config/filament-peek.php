@@ -93,7 +93,7 @@ return [
     */
 
     'internalPreviewUrl' => [
-        'enabled' => false,
+        'enabled' => true,
         'middleware' => [],
         'cacheDuration' => 60,
     ],

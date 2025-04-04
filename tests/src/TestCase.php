@@ -11,6 +11,7 @@ use Filament\Notifications\NotificationsServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
+use Illuminate\Support\Facades\Config;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
@@ -21,6 +22,9 @@ class TestCase extends Orchestra
 {
     protected function configurePackageProviders($app)
     {
+        // @todo: Rewrite tests with 'true' as default
+        Config::set('filament-peek.internalPreviewUrl.enabled', false);
+
         TestPanelProvider::$should_load_plugin_assets = true;
     }
 

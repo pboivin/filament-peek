@@ -113,7 +113,7 @@ trait HasPreviewModal
             if ($previewModalUrl = $this->getPreviewModalUrl()) {
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
-                if (config('filament-peek.internalPreviewUrl.enabled', false)) {
+                if (config('filament-peek.internalPreviewUrl.enabled', true)) {
                     $token = app(Support\Cache::class)->createPreviewToken();
 
                     CachedPreview::make(static::class, $view, $this->previewModalData)
@@ -145,7 +145,7 @@ trait HasPreviewModal
     {
         $previewModalUrl = null;
 
-        if (! config('filament-peek.internalPreviewUrl.enabled')) {
+        if (! config('filament-peek.internalPreviewUrl.enabled', true)) {
             throw new PreviewModalException('You must enable the `internalPreviewUrl` configuration to open the preview in a new tab.');
         }
 
