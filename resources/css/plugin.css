@@ -1,7 +1,7 @@
 /*** Modal structure ***/
 
 .filament-peek-modal {
-    @apply fixed left-0 top-0 z-[9000] h-screen w-screen;
+    @apply fixed left-0 top-0 z-[39] h-screen w-screen;
     @apply flex bg-gray-50 text-gray-950;
     @apply m-0 p-0 !important;
     @apply dark:bg-gray-950 dark:text-white;
@@ -187,7 +187,8 @@ body.is-filament-peek-preview-modal-open {
         @apply border-gray-500;
     }
 
+    /* This must be above everything to prevent resizing glitches */
     .filament-peek-iframe-cover {
-        @apply block fixed inset-0 z-[9010];
+        @apply block fixed inset-0 z-[9999];
     }
 }

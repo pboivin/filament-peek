@@ -4,7 +4,7 @@ Cleanup:
 
 - [x] Remove PreviewLink component
 - [x] Default to internal preview url
-- [ ] Change modal z-index
+- [x] Change modal z-index value
 
 Tests:
 
