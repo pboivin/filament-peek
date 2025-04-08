@@ -8,6 +8,8 @@ class CachedPreview
 {
     public static ?string $cacheStore = null;
 
+    public static int $cacheDuration = 60;
+
     public function __construct(
         public string $pageClass,
         public string $view,
@@ -27,8 +29,10 @@ class CachedPreview
         return $this->pageClass::renderPreviewModalView($this->view, $this->data);
     }
 
-    public function put(string $token, int $ttl = 60): bool
+    public function put(string $token, ?int $ttl = null): bool
     {
+        $ttl ??= self::$cacheDuration;
+
         return Cache::store(static::$cacheStore)->put("filament-peek-preview-{$token}", $this, $ttl);
     }
 

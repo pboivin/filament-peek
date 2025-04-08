@@ -221,8 +221,7 @@ class BuilderEditor extends Component implements HasForms
         if ($this->previewView && $this->shouldUseInternalPreviewUrl()) {
             $token = app(Support\Cache::class)->createPreviewToken();
 
-            CachedBuilderPreview::make($this->pageClass, $this->previewView, $this->getPreviewData())
-                ->put($token, config('filament-peek.internalPreviewUrl.cacheDuration', 60));
+            CachedBuilderPreview::make($this->pageClass, $this->previewView, $this->getPreviewData())->put($token);
 
             return route('filament-peek.preview', [
                 'token' => $token,
