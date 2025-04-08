@@ -15,4 +15,11 @@ class FilamentPeekServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasRoute('preview');
     }
+
+    public function packageRegistered(): void
+    {
+        $this->app->scoped('filament-peek', function (): FilamentPeekManager {
+            return new FilamentPeekManager;
+        });
+    }
 }
