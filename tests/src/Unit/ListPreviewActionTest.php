@@ -3,8 +3,7 @@
 namespace Pboivin\FilamentPeek\Tests\Unit;
 
 use Filament\Pages\Page;
-use Illuminate\Support\Facades\View;
-use Pboivin\FilamentPeek\Support;
+use Pboivin\FilamentPeek\Facades\Peek;
 use Pboivin\FilamentPeek\Tables\Actions\ListPreviewAction;
 
 it('has a default name', function () {
@@ -26,10 +25,10 @@ it('has a default action', function () {
     expect(is_callable($previewAction->getActionFunction()))->toBeTrue();
 });
 
-it('sets the view hook to render the modal', function () {
+it('registers the preview modal', function () {
+    expect(Peek::isPreviewModalRegistered())->toBeFalse();
+
     ListPreviewAction::make();
 
-    $shared = View::getShared();
-
-    expect($shared[Support\View::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
+    expect(Peek::isPreviewModalRegistered())->toBeTrue();
 });

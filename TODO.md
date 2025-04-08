@@ -13,7 +13,7 @@ Tests:
 
 Features:
 
-- [ ] Add Peek facade
+- [x] Add Peek facade
 - [ ] Rework Builder previews
 - [ ] Filament 4 compatibility (TBD)
 

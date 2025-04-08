@@ -3,9 +3,8 @@
 namespace Pboivin\FilamentPeek\Tests\Unit;
 
 use Filament\Pages\Page;
-use Illuminate\Support\Facades\View;
+use Pboivin\FilamentPeek\Facades\Peek;
 use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
-use Pboivin\FilamentPeek\Support;
 
 it('has a default name', function () {
     $previewAction = InlinePreviewAction::make();
@@ -26,31 +25,32 @@ it('has a default action', function () {
     expect(is_callable($previewAction->getActionFunction()))->toBeTrue();
 });
 
-it('sets the view hook to render the modal', function () {
+it('registers the preview modal without builder preview', function () {
+    expect(Peek::isPreviewModalRegistered())->toBeFalse();
+    expect(Peek::isBuilderPreviewRegistered())->toBeFalse();
+
     InlinePreviewAction::make();
 
-    $shared = View::getShared();
-
-    expect($shared[Support\View::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
-    expect(isset($shared[Support\View::BUILDER_PREVIEW_SETUP_HOOK]))->toBeFalse();
+    expect(Peek::isPreviewModalRegistered())->toBeTrue();
+    expect(Peek::isBuilderPreviewRegistered())->toBeFalse();
 });
 
-it('sets the view hook to render a builder preview', function () {
-    InlinePreviewAction::make()
-        ->builderPreview('test');
+it('registers the preview modal with builder preview', function () {
+    expect(Peek::isPreviewModalRegistered())->toBeFalse();
+    expect(Peek::isBuilderPreviewRegistered())->toBeFalse();
 
-    $shared = View::getShared();
+    InlinePreviewAction::make()->builderPreview('test');
 
-    expect($shared[Support\View::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
-    expect($shared[Support\View::BUILDER_PREVIEW_SETUP_HOOK])->toBeTrue();
+    expect(Peek::isPreviewModalRegistered())->toBeTrue();
+    expect(Peek::isBuilderPreviewRegistered())->toBeTrue();
 });
 
 it('supports the builderName alias for builderPreview', function () {
-    InlinePreviewAction::make()
-        ->builderName('test');
+    expect(Peek::isPreviewModalRegistered())->toBeFalse();
+    expect(Peek::isBuilderPreviewRegistered())->toBeFalse();
 
-    $shared = View::getShared();
+    InlinePreviewAction::make()->builderName('test');
 
-    expect($shared[Support\View::PREVIEW_ACTION_SETUP_HOOK])->toBeTrue();
-    expect($shared[Support\View::BUILDER_PREVIEW_SETUP_HOOK])->toBeTrue();
+    expect(Peek::isPreviewModalRegistered())->toBeTrue();
+    expect(Peek::isBuilderPreviewRegistered())->toBeTrue();
 });
