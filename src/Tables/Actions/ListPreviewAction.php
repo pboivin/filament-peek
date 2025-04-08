@@ -3,6 +3,7 @@
 namespace Pboivin\FilamentPeek\Tables\Actions;
 
 use Filament\Tables\Actions\Action;
+use Pboivin\FilamentPeek\Facades\Peek;
 use Pboivin\FilamentPeek\Support;
 
 class ListPreviewAction extends Action
@@ -21,9 +22,9 @@ class ListPreviewAction extends Action
         $this->label(__('filament-peek::ui.preview-action-label'))
             ->icon('heroicon-s-eye')
             ->action(function ($livewire, $record) {
-                Support\Panel::ensurePluginIsLoaded();
+                Peek::ensurePluginIsLoaded();
 
-                Support\Page::ensurePreviewModalSupport($livewire);
+                Peek::ensurePageSupportsPreviewModal($livewire);
 
                 $livewire->initialPreviewModalData(
                     $this->evaluate($this->previewModalData)
@@ -34,6 +35,6 @@ class ListPreviewAction extends Action
                 $livewire->openPreviewModal();
             });
 
-        Support\View::setupPreviewModal();
+        Peek::registerPreviewModal();
     }
 }

@@ -1,4 +1,4 @@
-@if (\Pboivin\FilamentPeek\Support\View::needsPreviewModal())
+@if (\Pboivin\FilamentPeek\Facades\Peek::isPreviewModalRegistered())
     <div
         role="alertdialog"
         aria-modal="true"
@@ -29,7 +29,7 @@
         x-trap="isOpen"
         x-cloak
     >
-        @if (\Pboivin\FilamentPeek\Support\View::needsBuilderEditor())
+        @if (\Pboivin\FilamentPeek\Facades\Peek::isBuilderPreviewRegistered())
             @livewire('filament-peek::builder-editor')
         @endif
 

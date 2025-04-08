@@ -3,6 +3,7 @@
 namespace Pboivin\FilamentPeek\Forms\Actions;
 
 use Filament\Forms\Components\Actions\Action;
+use Pboivin\FilamentPeek\Facades\Peek;
 use Pboivin\FilamentPeek\Support;
 
 class InlinePreviewAction extends Action
@@ -25,12 +26,12 @@ class InlinePreviewAction extends Action
         $this->label(__('filament-peek::ui.preview-action-label'))
             ->link()
             ->action(function ($livewire) {
-                Support\Panel::ensurePluginIsLoaded();
+                Peek::ensurePluginIsLoaded();
 
-                Support\Page::ensurePreviewModalSupport($livewire);
+                Peek::ensurePageSupportsPreviewModal($livewire);
 
                 if ($this->builderField) {
-                    Support\Page::ensureBuilderPreviewSupport($livewire);
+                    Peek::ensurePageSupportsBuilderPreview($livewire);
 
                     $livewire->openPreviewModalForBuidler($this->builderField);
                 } else {
@@ -42,12 +43,12 @@ class InlinePreviewAction extends Action
                 }
             });
 
-        Support\View::setupPreviewModal();
+        Peek::registerPreviewModal();
     }
 
     public function builderPreview(string $builderField = 'blocks'): static
     {
-        Support\View::setupBuilderEditor();
+        Peek::registerBuilderEditor();
 
         $this->builderField = $builderField;
 

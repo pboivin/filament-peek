@@ -4,7 +4,7 @@ namespace Pboivin\FilamentPeek\Support;
 
 class Html
 {
-    public static function injectPreviewModalStyle(string $htmlContent): string
+    public function injectPreviewModalStyle(string $htmlContent): string
     {
         if (config('filament-peek.allowIframePointerEvents', false)) {
             return $htmlContent;

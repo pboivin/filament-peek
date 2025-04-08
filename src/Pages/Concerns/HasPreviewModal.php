@@ -59,7 +59,7 @@ trait HasPreviewModal
     /** @internal */
     public static function renderPreviewModalView(?string $view, array $data): string
     {
-        return Support\Html::injectPreviewModalStyle(
+        return app(Support\Html::class)->injectPreviewModalStyle(
             view($view, $data)->render()
         );
     }
