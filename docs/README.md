@@ -10,7 +10,6 @@
     - [Overview](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#overview)
     - [Using the Preview Modal on Edit pages](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#using-the-preview-modal-on-edit-pages)
     - [Using the Preview Modal on List pages](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#using-the-preview-modal-on-list-pages)
-    - [Detecting the Preview Modal](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#detecting-the-preview-modal)
     - [Using a Preview URL](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#using-a-preview-url)
     - [Embedding a Preview Action into the Form](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#embedding-a-preview-action-into-the-form)
     - [Preview Pointer Events](https://github.com/pboivin/filament-peek/blob/2.x/docs/page-previews.md#preview-pointer-events)

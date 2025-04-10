@@ -8,63 +8,75 @@ require_once './vendor/autoload.php';
 
 define('BASE_URL', 'https://github.com/pboivin/filament-peek/blob/2.x/');
 
-define('DOC_FILES', [
-    'docs/configuration.md',
-    'docs/page-previews.md',
-    'docs/builder-previews.md',
-    'docs/javascript-hooks.md',
-    'docs/upgrade-guide.md',
-]);
-
-function generateToc(string $prefix): string
+class DocFile
 {
-    $toc = [];
+    public function __construct(
+        public string $path,
+        public string $prefix = '',
+        public int $levels = 1,
+    ) {}
 
-    foreach (DOC_FILES as $file) {
-        foreach (file($file) as $line) {
-            if (preg_match('/^# /', $line)) {
-                $title = preg_replace('/^# /', '', trim($line));
-                $slug = Str::slug($title);
-                $toc[] = "- [$title]({$prefix}{$file})";
-            } elseif (preg_match('/^## /', $line)) {
-                $title = preg_replace('/^## /', '', trim($line));
-                $slug = Str::slug($title);
-                $toc[] = "    - [$title]({$prefix}{$file}#{$slug})";
-            }
-        }
+    public function headings(): array
+    {
+        return collect(file($this->path))
+            ->map(function ($line) {
+                if ($this->levels >= 1 && (preg_match('/^# /', $line))) {
+                    $title = $this->title($line);
+                    return sprintf('- [%s](%s%s)', $title, $this->prefix, $this->path);
+                }
+                if ($this->levels >= 2 && (preg_match('/^## /', $line))) {
+                    $title = $this->title($line);
+                    return sprintf('    - [%s](%s%s#%s)', $title, $this->prefix, $this->path, Str::slug($title));
+                }
+                return false;
+            })
+            ->filter()
+            ->all();
     }
 
-    return implode("\n", [
-        '<!-- BEGIN_TOC -->',
-        '',
-        ...$toc,
-        '',
-        '<!-- END_TOC -->',
-    ]);
+    private function title(string $line): string
+    {
+        return preg_replace('/^#+ /', '', trim($line));
+    }
 }
 
-function generateFooter(string $prefix): string
+function tocFiles(): array
 {
-    $toc = [];
+    return [
+        new DocFile('docs/configuration.md', prefix: BASE_URL, levels: 2),
+        new DocFile('docs/page-previews.md', prefix: BASE_URL, levels: 2),
+        new DocFile('docs/builder-previews.md', prefix: BASE_URL, levels: 2),
+        new DocFile('docs/javascript-hooks.md', prefix: BASE_URL),
+        new DocFile('docs/upgrade-guide.md', prefix: BASE_URL),
+    ];
+}
 
-    foreach (DOC_FILES as $file) {
-        foreach (file($file) as $line) {
-            $file = basename($file);
+function footerFiles(): array
+{
+    return [
+        new DocFile('docs/configuration.md', prefix: './'),
+        new DocFile('docs/page-previews.md', prefix: './'),
+        new DocFile('docs/builder-previews.md', prefix: './'),
+        new DocFile('docs/javascript-hooks.md', prefix: './'),
+        new DocFile('docs/upgrade-guide.md', prefix: './'),
+    ];
+}
 
-            if (preg_match('/^# /', $line)) {
-                $title = preg_replace('/^# /', '', trim($line));
-                $toc[] = "- [$title]({$prefix}{$file})";
-            }
-        }
-    }
+function makeToc(): string
+{
+    $toc = collect(tocFiles())
+        ->flatMap(fn($f) => $f->headings());
 
-    return implode("\n", [
-        '<!-- BEGIN_TOC -->',
-        '',
-        ...$toc,
-        '',
-        '<!-- END_TOC -->',
-    ]);
+    return implode("\n", ['<!-- BEGIN_TOC -->', '', ...$toc, '', '<!-- END_TOC -->']);
+}
+
+function makeFooter(): string
+{
+    $toc = collect(footerFiles())
+        ->flatMap(fn($f) => $f->headings())
+        ->map(fn($line) => preg_replace('#docs/#', '', $line));
+
+    return implode("\n", ['<!-- BEGIN_TOC -->', '', ...$toc, '', '<!-- END_TOC -->']);
 }
 
 function updateMarkdown(string $file, string $toc): string
@@ -75,17 +87,13 @@ function updateMarkdown(string $file, string $toc): string
     foreach (file($file) as $line) {
         if (preg_match('/BEGIN_TOC/', $line)) {
             $in_toc = true;
-
             continue;
         }
-
         if (preg_match('/END_TOC/', $line)) {
             $in_toc = false;
             $readme[] = $toc;
-
             continue;
         }
-
         if ($in_toc) {
             continue;
         }
@@ -93,28 +101,25 @@ function updateMarkdown(string $file, string $toc): string
         $readme[] = rtrim($line);
     }
 
-    return implode("\n", [
-        ...$readme,
-        '',
-    ]);
+    return implode("\n", [...$readme, '']);
 }
 
 // Main README
-file_put_contents('./README.md.new', updateMarkdown('./README.md', generateToc(BASE_URL)));
+file_put_contents('./README.md.new', updateMarkdown('./README.md', makeToc()));
 unlink('./README.md');
 rename('./README.md.new', './README.md');
 
 // Docs index
-file_put_contents('./docs/README.md.new', updateMarkdown('./docs/README.md', generateToc(BASE_URL)));
+file_put_contents('./docs/README.md.new', updateMarkdown('./docs/README.md', makeToc()));
 unlink('./docs/README.md');
 rename('./docs/README.md.new', './docs/README.md');
 
 // Page footers
-$footer = generateFooter('./');
-foreach (DOC_FILES as $file) {
-    file_put_contents("./{$file}.new", updateMarkdown("./{$file}", $footer));
-    unlink("./{$file}");
-    rename("./{$file}.new", "./{$file}");
+$footer = makeFooter();
+foreach (footerFiles() as $file) {
+    file_put_contents("./{$file->path}.new", updateMarkdown("./{$file->path}", $footer));
+    unlink("./{$file->path}");
+    rename("./{$file->path}.new", "./{$file->path}");
 }
 
 echo "\nDONE!\n\n";
