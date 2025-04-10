@@ -96,7 +96,6 @@ trait HasPreviewModal
             $this->initialPreviewModalData,
             [
                 $this->getPreviewModalDataRecordKey() => $record,
-                'isPeekPreviewModal' => true,
             ]
         );
     }

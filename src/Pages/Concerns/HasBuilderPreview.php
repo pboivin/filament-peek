@@ -79,8 +79,6 @@ trait HasBuilderPreview
     /** @internal */
     public static function prepareBuilderPreviewData(array $data): array
     {
-        $data['isPeekPreviewModal'] = true;
-
         return $data;
     }
 

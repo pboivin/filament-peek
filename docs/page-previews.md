@@ -116,26 +116,6 @@ public static function table(Table $table): Table
 
 **Note**: `ListPreviewAction` does not support [Builder Previews](./builder-previews.md).
 
-## Detecting the Preview Modal
-
-The `EditPost` example above uses a dedicated Blade view to be rendered in the preview modal. It's also possible to use the same view for the site page and the preview modal. In this case, you can detect if the view is being used for a preview by checking for the `$isPeekPreviewModal` variable:
-
-**`resources/views/posts/show.blade.php`**
-
-```blade
-<x-layout>
-    @isset($isPeekPreviewModal)
-        <div class="preview-banner">
-            This is a preview.
-        </div>
-    @endisset
-
-    <x-container>
-        ...
-    </x-container>
-</x-layout>
-```
-
 ## Using a Preview URL
 
 Instead of rendering a view, you may also implement page previews using a custom URL and a storage driver such as the Laravel Cache. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
@@ -222,9 +202,7 @@ If you need finer control over pointer events in your previews, first set this o
 **`resources/views/posts/show.blade.php`**
 
 ```blade
-...
-
-@isset($isPeekPreviewModal)
+@isset($isPreview)
     <style>
         a { pointer-events: none !important; }
     </style>
@@ -235,7 +213,7 @@ If you need finer control over pointer events in your previews, first set this o
 
 ## Adding Extra Data to Previews
 
-By default, the `$record` and `$isPeekPreviewModal` variables are made available to the rendered Blade view. If your form is relatively simple and all fields belong directly to the record, this may be all you need. However, if you have complex relationships or heavily customized form fields, you may need to include some additional data in order to render your page preview.
+By default, the `$record` variable is made available to the rendered Blade view. If your form is relatively simple and all fields belong directly to the record, this may be all you need. However, if you have complex relationships or heavily customized form fields, you may need to include some additional data in order to render your page preview.
 
 #### Using the `mutatePreviewModalData()` Method on the Page
 

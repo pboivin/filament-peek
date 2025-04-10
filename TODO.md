@@ -5,6 +5,7 @@ Cleanup:
 - [x] Remove PreviewLink component
 - [x] Default to internal preview url
 - [x] Change modal z-index value
+- [x] Remove isPeekPreviewModal variable
 
 Tests:
 
