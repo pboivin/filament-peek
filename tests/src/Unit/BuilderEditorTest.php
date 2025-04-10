@@ -120,6 +120,5 @@ it('mutates the builder preview data', function () {
         ->assertDispatched('refresh-preview-modal');
 
     /** @var TestCase $this */
-    $this->assertStringContainsString('isPeekPreviewModal:1', $livewire->get('html'));
     $this->assertStringContainsString('KEY:VALUE', $livewire->get('html'));
 });

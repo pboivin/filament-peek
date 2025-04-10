@@ -37,17 +37,17 @@ it('has required event listener', function () {
 it('prepares builder preview data on create pages', function () {
     $page = invade(new Fixtures\CreateRecordDummy);
 
-    $data = $page->prepareBuilderPreviewData([]);
+    $data = $page->prepareBuilderPreviewData(['key' => 'value']);
 
-    expect($data['isPeekPreviewModal'])->toBeTrue();
+    expect($data['key'])->toEqual('value');
 });
 
 it('prepares builder preview data on edit pages', function () {
     $page = invade(new Fixtures\EditRecordDummy);
 
-    $data = $page->prepareBuilderPreviewData([]);
+    $data = $page->prepareBuilderPreviewData(['key' => 'value']);
 
-    expect($data['isPeekPreviewModal'])->toBeTrue();
+    expect($data['key'])->toEqual('value');
 });
 
 // @todo: Rewrite test

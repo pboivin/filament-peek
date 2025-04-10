@@ -69,20 +69,3 @@ it('can use internal preview url for builder preview', function () {
             iframeContent: null
         );
 });
-
-it('sets the isPeekPreviewModal flag', function () {
-    $this->mock(Support\Cache::class)
-        ->shouldReceive('createPreviewToken')
-        ->andReturn('test');
-
-    $page = Page::factory()->create(['title' => 'Test Page']);
-
-    Livewire::test(EditPage::class, ['record' => $page->id])
-        ->assertSeeHtml('Test Page')
-        ->callAction('preview');
-
-    $preview = CachedPreview::get('test');
-
-    /** @var TestCase $this */
-    $this->assertTrue($preview->data['isPeekPreviewModal']);
-});

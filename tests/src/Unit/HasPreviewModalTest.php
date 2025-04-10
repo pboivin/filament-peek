@@ -39,7 +39,6 @@ it('prepares preview modal data on create pages', function () {
     $data = $page->preparePreviewModalData();
 
     expect($data['record'] instanceof Fixtures\ModelDummy)->toBeTrue();
-    expect($data['isPeekPreviewModal'])->toBeTrue();
 });
 
 it('prepares preview modal data on view pages', function () {
@@ -48,7 +47,6 @@ it('prepares preview modal data on view pages', function () {
     $data = $page->preparePreviewModalData();
 
     expect($data['record'] instanceof Fixtures\ModelDummy)->toBeTrue();
-    expect($data['isPeekPreviewModal'])->toBeTrue();
 });
 
 it('prepares preview modal data on edit pages', function () {
@@ -57,16 +55,7 @@ it('prepares preview modal data on edit pages', function () {
     $data = $page->preparePreviewModalData();
 
     expect($data['record'] instanceof Fixtures\ModelDummy)->toBeTrue();
-    expect($data['isPeekPreviewModal'])->toBeTrue();
 });
-
-// @todo: Rewrite test
-// it('prepares preview modal data on list pages', function () {
-//     $page = invade(new Fixtures\ListRecordsDummy());
-//     $data = $page->preparePreviewModalData();
-//     expect($data['record'])->toBeNull();
-//     expect($data['isPeekPreviewModal'])->toBeTrue();
-// });
 
 it('requires url or blade view', function () {
     /** @var TestCase $this */
