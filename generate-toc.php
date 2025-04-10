@@ -22,12 +22,15 @@ class DocFile
             ->map(function ($line) {
                 if ($this->levels >= 1 && (preg_match('/^# /', $line))) {
                     $title = $this->title($line);
+
                     return sprintf('- [%s](%s%s)', $title, $this->prefix, $this->path);
                 }
                 if ($this->levels >= 2 && (preg_match('/^## /', $line))) {
                     $title = $this->title($line);
+
                     return sprintf('    - [%s](%s%s#%s)', $title, $this->prefix, $this->path, Str::slug($title));
                 }
+
                 return false;
             })
             ->filter()
@@ -65,7 +68,7 @@ function footerFiles(): array
 function makeToc(): string
 {
     $toc = collect(tocFiles())
-        ->flatMap(fn($f) => $f->headings());
+        ->flatMap(fn ($f) => $f->headings());
 
     return implode("\n", ['<!-- BEGIN_TOC -->', '', ...$toc, '', '<!-- END_TOC -->']);
 }
@@ -73,8 +76,8 @@ function makeToc(): string
 function makeFooter(): string
 {
     $toc = collect(footerFiles())
-        ->flatMap(fn($f) => $f->headings())
-        ->map(fn($line) => preg_replace('#docs/#', '', $line));
+        ->flatMap(fn ($f) => $f->headings())
+        ->map(fn ($line) => preg_replace('#docs/#', '', $line));
 
     return implode("\n", ['<!-- BEGIN_TOC -->', '', ...$toc, '', '<!-- END_TOC -->']);
 }
@@ -87,11 +90,13 @@ function updateMarkdown(string $file, string $toc): string
     foreach (file($file) as $line) {
         if (preg_match('/BEGIN_TOC/', $line)) {
             $in_toc = true;
+
             continue;
         }
         if (preg_match('/END_TOC/', $line)) {
             $in_toc = false;
             $readme[] = $toc;
+
             continue;
         }
         if ($in_toc) {
