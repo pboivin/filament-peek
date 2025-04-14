@@ -16,8 +16,8 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Pboivin\FilamentPeek\FilamentPeekPlugin;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PostResource;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PostResource;
 
 class TestPanelProvider extends PanelProvider
 {

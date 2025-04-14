@@ -4,7 +4,7 @@ namespace Pboivin\FilamentPeek\Tests\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Pboivin\FilamentPeek\Tests\Models\User;
+use Pboivin\FilamentPeek\Tests\App\Models\User;
 
 class UserFactory extends Factory
 {

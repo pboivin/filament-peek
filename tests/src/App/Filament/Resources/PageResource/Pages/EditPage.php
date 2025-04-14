@@ -1,13 +1,13 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource\Pages;
+namespace Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource\Pages;
 
-use Filament\Resources\Pages\CreateRecord;
+use Filament\Resources\Pages\EditRecord;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource;
 
-class CreatePage extends CreateRecord
+class EditPage extends EditRecord
 {
     use HasPreviewModal;
 
@@ -17,7 +17,8 @@ class CreatePage extends CreateRecord
     {
         return [
             PreviewAction::make()
-                ->label('Test_Preview_Action'),
+                ->label('Test_Preview_Action')
+                ->previewModalData(fn () => ['initial_data' => 'PreviewAction']),
         ];
     }
 

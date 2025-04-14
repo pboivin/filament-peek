@@ -1,6 +1,6 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Models;
+namespace Pboivin\FilamentPeek\Tests\App\Models;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;

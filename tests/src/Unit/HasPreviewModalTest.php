@@ -5,7 +5,8 @@ namespace Pboivin\FilamentPeek\Tests\Unit;
 use Illuminate\Support\Facades\Config;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\Exceptions\PreviewModalException;
-use Tests\TestCase;
+use Pboivin\FilamentPeek\Tests\Fixtures;
+use Pboivin\FilamentPeek\Tests\TestCase;
 
 it('has no initial preview modal url', function () {
     $page = invade(new Fixtures\EditRecordDummy);

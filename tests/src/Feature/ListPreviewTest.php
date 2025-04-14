@@ -3,8 +3,8 @@
 namespace Pboivin\FilamentPeek\Tests\Feature;
 
 use Livewire\Livewire;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource\Pages\ListPages;
-use Pboivin\FilamentPeek\Tests\Models\Page;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource\Pages\ListPages;
+use Pboivin\FilamentPeek\Tests\App\Models\Page;
 
 // @todo: Move unit tests to feature tests
 

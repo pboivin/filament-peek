@@ -3,6 +3,7 @@
 namespace Pboivin\FilamentPeek\Tests\Unit;
 
 use InvalidArgumentException;
+use Pboivin\FilamentPeek\Tests\Fixtures;
 
 it('has no initial builder preview url', function () {
     $page = invade(new Fixtures\EditRecordDummy);

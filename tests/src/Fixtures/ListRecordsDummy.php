@@ -1,6 +1,6 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Unit\Fixtures;
+namespace Pboivin\FilamentPeek\Tests\Fixtures;
 
 use Filament\Resources\Pages\ListRecords;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;

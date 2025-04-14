@@ -1,6 +1,6 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Models;
+namespace Pboivin\FilamentPeek\Tests\App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

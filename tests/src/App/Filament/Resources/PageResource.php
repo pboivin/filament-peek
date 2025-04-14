@@ -1,6 +1,6 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Filament\Resources;
+namespace Pboivin\FilamentPeek\Tests\App\Filament\Resources;
 
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Form;
@@ -9,8 +9,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 use Pboivin\FilamentPeek\Tables\Actions\ListPreviewAction;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource\Pages;
-use Pboivin\FilamentPeek\Tests\Models\Page;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource\Pages;
+use Pboivin\FilamentPeek\Tests\App\Models\Page;
 
 class PageResource extends Resource
 {

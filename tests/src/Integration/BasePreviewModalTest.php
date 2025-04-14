@@ -2,7 +2,7 @@
 
 namespace Pboivin\FilamentPeek\Tests\Integration;
 
-use Pboivin\FilamentPeek\Tests\Models\Page;
+use Pboivin\FilamentPeek\Tests\App\Models\Page;
 
 use function Pest\Laravel\get;
 

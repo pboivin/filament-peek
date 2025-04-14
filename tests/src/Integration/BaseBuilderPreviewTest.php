@@ -2,8 +2,8 @@
 
 namespace Pboivin\FilamentPeek\Tests\Integration;
 
-use Pboivin\FilamentPeek\Tests\Models\Category;
-use Pboivin\FilamentPeek\Tests\Models\Post;
+use Pboivin\FilamentPeek\Tests\App\Models\Category;
+use Pboivin\FilamentPeek\Tests\App\Models\Post;
 
 use function Pest\Laravel\get;
 

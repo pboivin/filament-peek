@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Config;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
-use Pboivin\FilamentPeek\Tests\Models\User;
+use Pboivin\FilamentPeek\Tests\App\Models\User;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 use function Pest\Laravel\actingAs;

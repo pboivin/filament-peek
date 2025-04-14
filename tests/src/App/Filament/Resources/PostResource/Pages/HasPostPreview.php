@@ -1,6 +1,6 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Filament\Resources\PostResource\Pages;
+namespace Pboivin\FilamentPeek\Tests\App\Filament\Resources\PostResource\Pages;
 
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\TextInput;

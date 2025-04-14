@@ -1,10 +1,10 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource\Pages;
+namespace Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource;
 
 class ListPages extends ListRecords
 {

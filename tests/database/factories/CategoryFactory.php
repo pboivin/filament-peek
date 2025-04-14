@@ -4,7 +4,7 @@ namespace Pboivin\FilamentPeek\Tests\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Pboivin\FilamentPeek\Tests\Models\Category;
+use Pboivin\FilamentPeek\Tests\App\Models\Category;
 
 class CategoryFactory extends Factory
 {

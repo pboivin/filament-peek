@@ -6,9 +6,9 @@ use Livewire\Livewire;
 use Pboivin\FilamentPeek\CachedPreview;
 use Pboivin\FilamentPeek\Livewire\BuilderEditor;
 use Pboivin\FilamentPeek\Support;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource\Pages\EditPage;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PostResource\Pages\EditPost;
-use Pboivin\FilamentPeek\Tests\Models\Page;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource\Pages\EditPage;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PostResource\Pages\EditPost;
+use Pboivin\FilamentPeek\Tests\App\Models\Page;
 
 use function Pest\Laravel\get;
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace Pboivin\FilamentPeek\Tests\Filament\Resources;
+namespace Pboivin\FilamentPeek\Tests\App\Filament\Resources;
 
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
-use Pboivin\FilamentPeek\Tests\Filament\Resources\PostResource\Pages;
-use Pboivin\FilamentPeek\Tests\Models\Post;
+use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PostResource\Pages;
+use Pboivin\FilamentPeek\Tests\App\Models\Post;
 
 class PostResource extends Resource
 {
