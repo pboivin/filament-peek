@@ -6,7 +6,11 @@ use Livewire\Livewire;
 use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource\Pages\EditPage;
 use Pboivin\FilamentPeek\Tests\Models\Page;
 
+// @todo: Move unit tests to feature tests
+
 it('can set initial preview modal data', function () {
+    $this->login();
+
     $page = Page::factory()->create(['title' => 'Test Page']);
 
     ($livewire = Livewire::test(EditPage::class, ['record' => $page->id]))

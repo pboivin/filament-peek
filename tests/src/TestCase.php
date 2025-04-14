@@ -18,6 +18,8 @@ use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
 use Pboivin\FilamentPeek\Tests\Models\User;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
+use function Pest\Laravel\actingAs;
+
 class TestCase extends Orchestra
 {
     protected function configurePackageProviders($app)
@@ -61,5 +63,15 @@ class TestCase extends Orchestra
             $app['config']->get('view.paths'),
             [__DIR__.'/../resources/views'],
         ));
+    }
+
+    public function login(?User $as = null): User
+    {
+        /** @var User */
+        $user = $as ?? User::factory()->create();
+
+        actingAs($user);
+
+        return $user;
     }
 }

@@ -6,7 +6,11 @@ use Livewire\Livewire;
 use Pboivin\FilamentPeek\Tests\Filament\Resources\PageResource\Pages\ListPages;
 use Pboivin\FilamentPeek\Tests\Models\Page;
 
+// @todo: Move unit tests to feature tests
+
 it('can open preview modal for a list item', function () {
+    $this->login();
+
     $page = Page::factory()->create(['title' => 'Test Page']);
 
     Livewire::test(ListPages::class)
@@ -16,6 +20,8 @@ it('can open preview modal for a list item', function () {
 });
 
 it('can set initial preview modal data', function () {
+    $this->login();
+
     $page = Page::factory()->create(['title' => 'Test Page']);
 
     $livewire = Livewire::test(ListPages::class);
