@@ -53,7 +53,7 @@ it('has required event listener', function () {
 it('throws an exception for missing event listener', function () {
     /** @var TestCase $this */
     $this->expectException(InvalidArgumentException::class);
-    $this->expectExceptionMessage("Missing [updateBuilderFieldWithEditorData] Livewire event listener");
+    $this->expectExceptionMessage('Missing [updateBuilderFieldWithEditorData] Livewire event listener');
 
     $page = invade(new class extends Fixtures\EditRecordDummy
     {
