@@ -9,12 +9,13 @@ Cleanup:
 
 Tests:
 
-- [ ] Rewrite tests with internal preview url as default
+- [//] Rewrite tests with internal preview url as default
 - [ ] Rewrite all tests as Livewire tests
 
 Features:
 
 - [x] Add Peek facade
+- [ ] Access support classes through facade
 - [ ] Rework Builder previews
 - [ ] Filament 4 compatibility (TBD)
 
