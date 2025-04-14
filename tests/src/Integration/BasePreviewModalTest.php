@@ -3,13 +3,11 @@
 namespace Pboivin\FilamentPeek\Tests\Integration;
 
 use Pboivin\FilamentPeek\Tests\Models\Page;
-use Pboivin\FilamentPeek\Tests\Models\User;
 
-use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
 it('sees preview modal assets by default', function () {
-    actingAs(User::factory()->create());
+    $this->login();
 
     get('/admin')
         ->assertSuccessful()
@@ -18,7 +16,7 @@ it('sees preview modal assets by default', function () {
 });
 
 it('does not see preview modal on dashboard', function () {
-    actingAs(User::factory()->create());
+    $this->login();
 
     get('/admin')
         ->assertSuccessful()
@@ -26,7 +24,7 @@ it('does not see preview modal on dashboard', function () {
 });
 
 it('sees preview modal when creating a page', function () {
-    actingAs(User::factory()->create());
+    $this->login();
 
     get('/admin/pages/create')
         ->assertSuccessful()
@@ -36,7 +34,7 @@ it('sees preview modal when creating a page', function () {
 });
 
 it('sees preview modal when editing a page', function () {
-    actingAs(User::factory()->create());
+    $this->login();
 
     $page = Page::factory()->create();
 

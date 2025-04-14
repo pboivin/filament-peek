@@ -1,1 +1,1 @@
-KEY:{{ $KEY }}
+KEY:{{ $KEY ?? 'empty' }}
