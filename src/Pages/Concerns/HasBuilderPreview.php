@@ -119,7 +119,7 @@ trait HasBuilderPreview
             ->contains('updateBuilderFieldWithEditorData');
 
         if (! $hasCustomListener) {
-            throw new InvalidArgumentException("Missing 'updateBuilderFieldWithEditorData' Livewire event listener. Add it to your Page's `\$listeners` array.");
+            throw new InvalidArgumentException("Missing [updateBuilderFieldWithEditorData] Livewire event listener. Add it to your Page's \$listeners array.");
         }
     }
 }

@@ -20,7 +20,7 @@ class FilamentPeekManager
     public function ensurePluginIsLoaded(): void
     {
         if (! static::pluginIsLoaded()) {
-            throw new PreviewModalException('The `FilamentPeekPlugin` class is not registered in the current Panel.');
+            throw new PreviewModalException('The [FilamentPeekPlugin] class is not registered in the current Panel.');
         }
     }
 
@@ -54,7 +54,7 @@ class FilamentPeekManager
         if (! $this->pageSupportsPreviewModal($page)) {
             $basename = class_basename($page);
 
-            throw new PreviewModalException("`{$basename}` class is missing the `HasPreviewModal` trait.");
+            throw new PreviewModalException("[{$basename}] class is missing the [HasPreviewModal] trait.");
         }
     }
 
@@ -70,7 +70,7 @@ class FilamentPeekManager
         if (! $this->pageSupportsBuilderPreview($page)) {
             $basename = class_basename($page);
 
-            throw new PreviewModalException("`{$basename}` class is missing the `HasBuilderPreview` trait.");
+            throw new PreviewModalException("[{$basename}] class is missing the [HasBuilderPreview] trait.");
         }
     }
 }
