@@ -22,8 +22,7 @@ class TestCase extends Orchestra
 {
     protected function configurePackageProviders($app)
     {
-        // @todo: Rewrite tests with 'true' as default
-        Config::set('filament-peek.internalPreviewUrl.enabled', false);
+        Config::set('filament-peek.internalPreviewUrl.enabled', true);
 
         TestPanelProvider::$should_load_plugin_assets = true;
     }

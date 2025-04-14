@@ -12,4 +12,4 @@ uses(TestCase::class)->in('src/Integration/Base*.php');
 
 uses(TestCaseWithAssetsDisabled::class)->in('src/Integration/WithAssetsDisabledTest.php');
 
-uses(TestCaseWithPreviewUrl::class)->in('src/Integration/WithPreviewUrlTest.php');
+// uses(TestCaseWithPreviewUrl::class)->in('src/Integration/WithPreviewUrlTest.php');
