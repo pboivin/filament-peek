@@ -6,8 +6,6 @@ use Livewire\Livewire;
 use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource\Pages\EditPage;
 use Pboivin\FilamentPeek\Tests\App\Models\Page;
 
-// @todo: Move unit tests to feature tests
-
 it('can set initial preview modal data', function () {
     $this->login();
 

@@ -10,7 +10,7 @@ Cleanup:
 Tests:
 
 - [x] Rewrite tests with internal preview url as default
-- [ ] Rewrite all tests as Livewire tests
+- [ ] Rewrite all tests as Livewire (Feature) tests
 
 Features:
 

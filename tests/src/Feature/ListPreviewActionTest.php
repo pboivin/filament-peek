@@ -6,8 +6,6 @@ use Livewire\Livewire;
 use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PageResource\Pages\ListPages;
 use Pboivin\FilamentPeek\Tests\App\Models\Page;
 
-// @todo: Move unit tests to feature tests
-
 it('can open preview modal for a list item', function () {
     $this->login();
 
