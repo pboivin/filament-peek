@@ -5,7 +5,7 @@ namespace Pboivin\FilamentPeek\Pages\Concerns;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Component;
 use InvalidArgumentException;
-use Pboivin\FilamentPeek\Support;
+use Pboivin\FilamentPeek\Facades\Peek;
 
 trait HasBuilderPreview
 {
@@ -49,7 +49,7 @@ trait HasBuilderPreview
     /** @internal */
     public static function renderBuilderPreview(string $view, array $data): string
     {
-        return app(Support\Html::class)->injectPreviewModalStyle(
+        return Peek::html()->injectPreviewModalStyle(
             view($view, $data)->render()
         );
     }

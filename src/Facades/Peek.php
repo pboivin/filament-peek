@@ -5,6 +5,8 @@ namespace Pboivin\FilamentPeek\Facades;
 use Illuminate\Support\Facades\Facade;
 use Livewire\Component;
 use Pboivin\FilamentPeek\FilamentPeekManager;
+use Pboivin\FilamentPeek\Support\Cache;
+use Pboivin\FilamentPeek\Support\Html;
 
 /**
  * @method static bool pluginIsLoaded()
@@ -17,6 +19,8 @@ use Pboivin\FilamentPeek\FilamentPeekManager;
  * @method static void ensurePageSupportsPreviewModal(Component $page)
  * @method static bool pageSupportsBuilderPreview(Component $page)
  * @method static void ensurePageSupportsBuilderPreview(Component $page)
+ * @method static Html html()
+ * @method static Cache cache()
  *
  * @see FilamentPeekManager
  */

@@ -73,4 +73,14 @@ class FilamentPeekManager
             throw new PreviewModalException("[{$basename}] class is missing the [HasBuilderPreview] trait.");
         }
     }
+
+    public function html(): Support\Html
+    {
+        return app(Support\Html::class);
+    }
+
+    public function cache(): Support\Cache
+    {
+        return app(Support\Cache::class);
+    }
 }

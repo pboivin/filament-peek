@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\CachedPreview;
 use Pboivin\FilamentPeek\Exceptions\PreviewModalException;
-use Pboivin\FilamentPeek\Support;
+use Pboivin\FilamentPeek\Facades\Peek;
 
 trait HasPreviewModal
 {
@@ -59,7 +59,7 @@ trait HasPreviewModal
     /** @internal */
     public static function renderPreviewModalView(?string $view, array $data): string
     {
-        return app(Support\Html::class)->injectPreviewModalStyle(
+        return Peek::html()->injectPreviewModalStyle(
             view($view, $data)->render()
         );
     }
@@ -113,7 +113,7 @@ trait HasPreviewModal
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
                 if (config('filament-peek.internalPreviewUrl.enabled', true)) {
-                    $token = app(Support\Cache::class)->createPreviewToken();
+                    $token = Peek::cache()->createPreviewToken();
 
                     CachedPreview::make(static::class, $view, $this->previewModalData)->put($token);
 
@@ -153,7 +153,7 @@ trait HasPreviewModal
             if ($previewModalUrl = $this->getPreviewModalUrl()) {
                 // pass
             } elseif ($view = $this->getPreviewModalView()) {
-                $token = app(Support\Cache::class)->createPreviewToken();
+                $token = Peek::cache()->createPreviewToken();
 
                 CachedPreview::make(static::class, $view, $this->previewModalData)->put($token);
 

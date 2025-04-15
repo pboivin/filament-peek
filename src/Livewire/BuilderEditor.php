@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Component;
 use Pboivin\FilamentPeek\CachedBuilderPreview;
-use Pboivin\FilamentPeek\Support;
+use Pboivin\FilamentPeek\Facades\Peek;
 
 /**
  * @property ComponentContainer $form
@@ -219,7 +219,7 @@ class BuilderEditor extends Component implements HasForms
         }
 
         if ($this->previewView && $this->shouldUseInternalPreviewUrl()) {
-            $token = app(Support\Cache::class)->createPreviewToken();
+            $token = Peek::cache()->createPreviewToken();
 
             CachedBuilderPreview::make($this->pageClass, $this->previewView, $this->getPreviewData())->put($token);
 
