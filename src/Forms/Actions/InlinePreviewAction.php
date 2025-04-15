@@ -4,11 +4,11 @@ namespace Pboivin\FilamentPeek\Forms\Actions;
 
 use Filament\Forms\Components\Actions\Action;
 use Pboivin\FilamentPeek\Facades\Peek;
-use Pboivin\FilamentPeek\Support;
+use Pboivin\FilamentPeek\Support\Concerns\SetsInitialPreviewModalData;
 
 class InlinePreviewAction extends Action
 {
-    use Support\Concerns\SetsInitialPreviewModalData;
+    use SetsInitialPreviewModalData;
 
     public static int $count = 1;
 

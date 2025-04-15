@@ -4,12 +4,13 @@ namespace Pboivin\FilamentPeek\Pages\Actions;
 
 use Filament\Actions\Action;
 use Pboivin\FilamentPeek\Facades\Peek;
-use Pboivin\FilamentPeek\Support;
+use Pboivin\FilamentPeek\Support\Concerns\CanPreviewInNewTab;
+use Pboivin\FilamentPeek\Support\Concerns\SetsInitialPreviewModalData;
 
 class PreviewAction extends Action
 {
-    use Support\Concerns\CanPreviewInNewTab;
-    use Support\Concerns\SetsInitialPreviewModalData;
+    use CanPreviewInNewTab;
+    use SetsInitialPreviewModalData;
 
     public static function getDefaultName(): ?string
     {

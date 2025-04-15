@@ -4,11 +4,11 @@ namespace Pboivin\FilamentPeek\Tables\Actions;
 
 use Filament\Tables\Actions\Action;
 use Pboivin\FilamentPeek\Facades\Peek;
-use Pboivin\FilamentPeek\Support;
+use Pboivin\FilamentPeek\Support\Concerns\SetsInitialPreviewModalData;
 
 class ListPreviewAction extends Action
 {
-    use Support\Concerns\SetsInitialPreviewModalData;
+    use SetsInitialPreviewModalData;
 
     public static function getDefaultName(): ?string
     {
