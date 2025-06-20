@@ -3,18 +3,25 @@
  * This file is for the internal CSS build distributed with the plugin.
  * Use `plugin.css` if you are trying to integrate with a custom Filament Theme.
  *
+ * TODO: Update Link
  * @see https://github.com/pboivin/filament-peek/blob/2.x/docs/configuration.md#integrating-with-a-custom-theme
  */
 
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "../views";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 /*** Modal structure ***/
 
 .filament-peek-modal {
     @apply fixed left-0 top-0 z-[39] h-screen w-screen;
     @apply flex bg-gray-50 text-gray-950;
-    @apply m-0 p-0 !important;
     @apply dark:bg-gray-950 dark:text-white;
+
+    margin: 0 !important;
+    padding: 0 !important;
 
     --filament-peek-panel-header-height: 4.8rem;
     --filament-peek-builder-actions-height: 4.25rem;
@@ -25,9 +32,10 @@
 }
 
 .filament-peek-panel-header {
-    @apply flex items-center justify-between border-b bg-white p-4;
-    @apply text-sm font-medium text-gray-900;
-    @apply dark:border-gray-800 dark:bg-gray-900 dark:text-white;
+    @apply flex items-center justify-between border-b border-gray-200 bg-white p-4;
+    @apply text-sm font-medium text-gray-950;
+    @apply dark:border-gray-800 dark:bg-gray-950 dark:text-white;
+
     min-height: var(--filament-peek-panel-header-height);
     user-select: none;
 }
@@ -103,19 +111,19 @@ body.is-filament-peek-preview-modal-open {
 }
 
 .filament-peek-editor-icon {
-    @apply gap-0 border-0 p-2 bg-transparent !important;
+    @apply gap-0 border-0 p-2 bg-transparent;
 
     &:not(:focus) {
         box-shadow: none !important;
     }
 
     svg {
-        @apply text-gray-900 dark:text-white;
+        @apply text-gray-950 dark:text-white;
     }
 
     &.is-icon-active {
         svg {
-            @apply text-primary-600;
+            color: var(--primary-600);
         }
     }
 }
@@ -134,7 +142,7 @@ body.is-filament-peek-preview-modal-open {
     max-height: calc(100vh - var(--filament-peek-panel-header-height));
 
     .tippy-content [x-ref="panel"] {
-        @apply text-gray-900 dark:text-gray-300;
+        @apply text-gray-950 dark:text-gray-300;
     }
 }
 
