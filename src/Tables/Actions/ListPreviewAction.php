@@ -2,7 +2,7 @@
 
 namespace Pboivin\FilamentPeek\Tables\Actions;
 
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action;
 use Pboivin\FilamentPeek\Facades\Peek;
 use Pboivin\FilamentPeek\Support\Concerns\SetsInitialPreviewModalData;
 
