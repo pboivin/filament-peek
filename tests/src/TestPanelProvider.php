@@ -31,11 +31,11 @@ class TestPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->pages([
-                //Dashboard::class,
+                Dashboard::class,
             ])
             ->resources([
-                //PageResource::class,
-                //PostResource::class,
+                PageResource::class,
+                PostResource::class,
             ])
             ->middleware([
                 EncryptCookies::class,

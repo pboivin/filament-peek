@@ -7,12 +7,15 @@ use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\Actions\ActionsServiceProvider;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
+use Filament\Infolists\InfolistsServiceProvider;
 use Filament\Notifications\NotificationsServiceProvider;
+use Filament\Schemas\SchemasServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Support\Facades\Config;
 use Livewire\LivewireServiceProvider;
+use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
 use Pboivin\FilamentPeek\Tests\App\Models\User;
@@ -22,6 +25,8 @@ use function Pest\Laravel\actingAs;
 
 class TestCase extends Orchestra
 {
+    use WithWorkbench;
+
     protected function configurePackageProviders($app)
     {
         Config::set('filament-peek.internalPreviewUrl.enabled', true);
@@ -37,15 +42,21 @@ class TestCase extends Orchestra
             BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
+
             LivewireServiceProvider::class,
-            SupportServiceProvider::class,
-            FormsServiceProvider::class,
-            TablesServiceProvider::class,
+
             ActionsServiceProvider::class,
-            NotificationsServiceProvider::class,
-            WidgetsServiceProvider::class,
             FilamentServiceProvider::class,
+            FormsServiceProvider::class,
+            InfolistsServiceProvider::class,
+            NotificationsServiceProvider::class,
+            SchemasServiceProvider::class,
+            SupportServiceProvider::class,
+            TablesServiceProvider::class,
+            WidgetsServiceProvider::class,
+
             FilamentPeekServiceProvider::class,
+
             TestPanelProvider::class,
         ];
     }
