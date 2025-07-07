@@ -2,7 +2,6 @@
 
 namespace Pboivin\FilamentPeek\Livewire;
 
-use Filament\Forms\ComponentContainer;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View as ViewContract;
@@ -14,7 +13,7 @@ use Pboivin\FilamentPeek\CachedBuilderPreview;
 use Pboivin\FilamentPeek\Facades\Peek;
 
 /**
- * @property ComponentContainer $form
+ * @property mixed $form
  */
 class BuilderEditor extends Component implements HasForms
 {

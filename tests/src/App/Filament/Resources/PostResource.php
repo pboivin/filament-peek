@@ -2,9 +2,9 @@
 
 namespace Pboivin\FilamentPeek\Tests\App\Filament\Resources;
 
-use Filament\Forms\Components\Actions;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Actions;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 use Pboivin\FilamentPeek\Tests\App\Filament\Resources\PostResource\Pages;
@@ -14,9 +14,9 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->schema([
             Actions::make([
                 InlinePreviewAction::make()
                     ->label('Test_Builder_Preview')
