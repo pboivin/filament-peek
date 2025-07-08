@@ -1,194 +1,302 @@
 /*** Modal structure ***/
 
 .filament-peek-modal {
-    @apply fixed left-0 top-0 z-[39] h-screen w-screen;
-    @apply flex bg-gray-50 text-gray-950;
-    @apply m-0 p-0 !important;
-    @apply dark:bg-gray-950 dark:text-white;
+    background-color: var(--gray-50);
+    color: var(--gray-950);
+    display: flex;
+    height: 100vh;
+    left: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 39;
 
     --filament-peek-panel-header-height: 4.8rem;
     --filament-peek-builder-actions-height: 4.25rem;
 }
 
+.filament-peek-modal:where(.dark, .dark *) {
+    background-color: var(--gray-950);
+    color: var(white);
+}
+
 .filament-peek-panel {
-    @apply flex flex-col;
+    display: flex;
+    flex-direction: column;
 }
 
 .filament-peek-panel-header {
-    @apply flex items-center justify-between border-b bg-white p-4;
-    @apply text-sm font-medium text-gray-900;
-    @apply dark:border-gray-800 dark:bg-gray-900 dark:text-white;
+    align-items: center;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--gray-200);
+    color: var(--gray-950);
+    display: flex;
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    justify-content: space-between;
     min-height: var(--filament-peek-panel-header-height);
+    padding: calc(var(--spacing) * 4);
     user-select: none;
 }
 
+.filament-peek-panel-header:where(.dark, .dark *) {
+    background-color: var(--gray-900);
+    border-bottom: 1px solid var(--gray-800);
+    color: var(--color-white);
+}
+
 .filament-peek-panel-body {
-    @apply flex-grow bg-gray-100 p-4;
-    @apply dark:bg-gray-950;
+    flex-grow: 1;
+    background-color: var(--gray-100);
+    padding: calc(var(--spacing) * 4);
+}
 
-    iframe {
-        @apply mx-auto shadow-2xl;
-        transition: all 200ms;
-    }
+.filament-peek-panel-body:where(.dark, .dark *) {
+    background-color: var(--gray-950);
+}
 
-    &.allow-iframe-overflow {
-        @apply overflow-y-auto;
-    }
+.filament-peek-panel-body iframe {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 200ms;
+}
+
+.filament-peek-panel-body.allow-iframe-overflow {
+    overflow-y: auto;
 }
 
 body.is-filament-peek-preview-modal-open {
-    @apply overflow-hidden;
+    overflow: hidden;
 }
 
 /*** Preview ***/
 
 .filament-peek-preview {
-    @apply flex-grow max-w-full;
+    flex-grow: 1;
+    max-width: 100%;
+}
 
-    .filament-peek-panel-header > * {
-        @apply min-w-[10rem];
-    }
+.filament-peek-preview .filament-peek-panel-header>* {
+    min-width: 10rem;
 }
 
 .filament-peek-device-presets {
-    @apply hidden justify-center xl:flex;
+    display: none;
+    justify-content: center;
+}
 
-    button {
-        @apply mx-2 inline-flex flex-col items-center disabled:opacity-25;
-
-        svg {
-            @apply h-6 w-6;
-        }
-
-        &:after {
-            @apply mt-1 block h-1 w-1 rounded-full bg-transparent;
-            content: '';
-        }
-
-        &.is-active-device-preset:after {
-            @apply bg-current opacity-25;
-        }
+@media screen and (min-width: 80rem) {
+    .filament-peek-device-presets {
+        display: flex;
     }
 }
 
-.filament-peek-rotate-preset {
-    svg {
-        @apply relative -top-1;
-    }
+.filament-peek-device-presets button {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: calc(var(--spacing) * 2);
+    margin-right: calc(var(--spacing) * 2);
+}
+
+.filament-peek-device-presets button:disabled {
+    opacity: 0.25;
+}
+
+.filament-peek-device-presets button svg {
+    width: calc(var(--spacing) * 6);
+    height: calc(var(--spacing) * 6);
+}
+
+.filament-peek-device-presets button:after {
+    background-color: transparent;
+    content: '';
+    display: block;
+    height: calc(var(--spacing) * 1);
+    margin-top: calc(var(--spacing) * 1);
+    width: calc(var(--spacing) * 1);
+    border-radius: calc(infinity * 1px);
+}
+
+.filament-peek-device-presets button.is-active-device-preset:after {
+    background-color: currentColor;
+    top: calc(var(--spacing) * -1);
+}
+
+.filament-peek-rotate-preset svg {
+    position: relative;
+    top: calc(var(--spacing) * -1);
 }
 
 .filament-peek-modal-actions {
-    @apply flex justify-end;
+    display: flex;
+    justify-content: end;
 }
 
 /*** Editor ***/
 
 .filament-peek-editor {
-    @apply hidden border-r rtl:border-l;
-    @apply dark:border-gray-700;
+    display: none;
+    border-right: 1px solid var(--gray-200);
 
-    .filament-peek-panel-body {
-        @apply flex h-full w-full p-0;
-    }
+    /* @apply rtl:border-l; */
+}
+
+.filament-peek-editor:where(.dark, .dark *) {
+    border-color: var(--gray-800);
+}
+
+.filament-peek-editor .filament-peek-panel-body {
+    display: flex;
+    height: 100%;
+    padding: 0;
+    width: 100%;
+}
+
+.filament-peek-editor-buttons {
+    display: inline-flex;
+    align-items: center;
+}
+
+.filament-peek-editor-actions {
+    display: flex;
+    gap: calc(var(--spacing) * 4);
 }
 
 .filament-peek-editor-icon {
-    @apply gap-0 border-0 p-2 bg-transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    gap: 0 !important;
+    padding: calc(var(--spacing) * 2) !important;
+}
 
-    &:not(:focus) {
-        box-shadow: none !important;
-    }
+.filament-peek-editor-icon:not(:focus) {
+    box-shadow: none !important;
+}
 
-    svg {
-        @apply text-gray-900 dark:text-white;
-    }
+.filament-peek-editor-icon svg {
+    color: var(--gray-900);
+}
 
-    &.is-icon-active {
-        svg {
-            @apply text-primary-600;
-        }
-    }
+.filament-peek-editor-icon svg:where(.dark, .dark *) {
+    color: var(--color-white);
+}
+
+.filament-peek-editor-icon.is-icon-active svg {
+    color: var(--primary-600);
 }
 
 .filament-peek-editor-auto-refresh-label {
-    @apply inline-flex items-center gap-2 p-2;
+    align-items: center;
+    display: inline-flex;
+    gap: calc(var(--spacing) * 2);
+    padding: calc(var(--spacing) * 2);
 }
 
 .filament-peek-builder-editor {
-    @apply relative flex h-full w-full flex-col;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .filament-peek-builder-content {
-    @apply w-full overflow-y-auto p-4;
     height: calc(100vh - var(--filament-peek-panel-header-height));
     max-height: calc(100vh - var(--filament-peek-panel-header-height));
+    overflow-y: auto;
+    padding: calc(var(--spacing) * 4);
+    width: 100%;
+}
 
-    .tippy-content [x-ref="panel"] {
-        @apply text-gray-900 dark:text-gray-300;
-    }
+.filament-peek-builder-content .tippy-content [x-ref="panel"] {
+    color: var(--gray-900);
+}
+
+.filament-peek-builder-content .tippy-content [x-ref="panel"]:where(.dark, .dark *) {
+    color: var(--gray-300);
 }
 
 .filament-peek-builder-actions {
-    @apply hidden;
+    display: none;
 }
 
-.filament-peek-builder-editor.has-sidebar-actions {
-    .filament-peek-builder-content {
-        @apply w-full overflow-y-auto p-4;
-        height: calc(
-            100vh - var(--filament-peek-panel-header-height) -
-                var(--filament-peek-builder-actions-height)
-        );
-        max-height: calc(
-            100vh - var(--filament-peek-panel-header-height) -
-                var(--filament-peek-builder-actions-height)
-        );
-    }
+.filament-peek-builder-editor.has-sidebar-actions .filament-peek-builder-content {
+    height: calc(100vh - var(--filament-peek-panel-header-height) - var(--filament-peek-builder-actions-height));
+    max-height: calc(100vh - var(--filament-peek-panel-header-height) - var(--filament-peek-builder-actions-height));
+    overflow-y: auto;
+    padding: calc(var(--spacing) * 4);
+    width: 100%;
+}
 
-    .filament-peek-builder-actions {
-        @apply block w-full border-t dark:border-gray-700;
-        height: var(--filament-peek-builder-actions-height);
-    }
+.filament-peek-builder-editor.has-sidebar-actions .filament-peek-builder-actions {
+    border-top: 1px solid var(--gray-200);
+    display: block;
+    height: var(--filament-peek-builder-actions-height);
+    width: 100%;
+}
 
-    /* Main builder */
-    .fi-fo-builder > .fi-fo-builder-block-picker {
-        @apply absolute bottom-0 left-0 w-full p-4;
-    }
+.filament-peek-builder-editor.has-sidebar-actions .filament-peek-builder-actions:where(.dark, .dark *) {
+    border-color: var(--gray-800);
+}
 
-    /* Nested buidlers */
-    .fi-fo-builder .fi-fo-builder > .fi-fo-builder-block-picker {
-        position: initial;
-        padding: initial;
-    }
+/* Main builder */
+.filament-peek-builder-editor.has-sidebar-actions .fi-fo-builder>.fi-fo-builder-block-picker {
+    bottom: 0;
+    left: 0;
+    padding: calc(var(--spacing) * 4);
+    position: absolute;
+    width: 100%;
+}
+
+/* Nested buidlers */
+.filament-peek-builder-editor.has-sidebar-actions .fi-fo-builder .fi-fo-builder>.fi-fo-builder-block-picker {
+    padding: initial;
+    position: initial;
 }
 
 /*** Resizer ***/
 
 .filament-peek-editor-resizer {
-    @apply absolute left-[100%] top-0 h-full w-[9px] bg-transparent;
-    @apply border-l-[3px] border-transparent;
-    @apply rtl:right-[100%] rtl:border-l-0 rtl:border-r-[3px];
+    background-color: transparent;
+    border-left: 3px solid tranparent;
+    height: 100%;
+    left: -100%;
+    position: absolute;
+    top: 0;
+    width: 9px;
 
-    &:hover {
-        @apply border-gray-500;
-        cursor: ew-resize;
-    }
+    /* @apply rtl:right-[100%] rtl:border-l-0 rtl:border-r-[3px]; */
+}
+
+.filament-peek-editor-resizer:hover {
+    border-color: var(--gray-500);
+    cursor: ew-resize;
 }
 
 .filament-peek-iframe-cover {
-    @apply hidden;
+    display: none;
 }
 
 .is-filament-peek-editor-resizing {
-    user-select: none;
     cursor: ew-resize;
+    user-select: none;
+}
 
-    .filament-peek-editor-resizer {
-        @apply border-gray-500;
-    }
+.is-filament-peek-editor-resizing .filament-peek-editor-resizer {
+    border-color: var(--gray-500);
+}
 
-    /* This must be above everything to prevent resizing glitches */
-    .filament-peek-iframe-cover {
-        @apply block fixed inset-0 z-[9999];
-    }
+/* This must be above everything to prevent resizing glitches */
+.is-filament-peek-editor-resizing .filament-peek-iframe-cover {
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9999;
 }
