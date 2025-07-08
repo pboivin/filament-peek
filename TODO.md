@@ -19,6 +19,10 @@ Features:
 - [x] Access support classes through facade
 - [x] Filament 4 compatibility
 - [x] Remove tailwind
+    - [ ] Fix RTL
+    - [ ] Fix sidebar resizer
+    - [ ] Fix builder field (can't add blocks)
+
 - [ ] Deprecate builder previews
 
 Docs:
@@ -27,6 +31,10 @@ Docs:
 - [ ] Finish README
 - [ ] Upgrade guide
 - [ ] Update page on Filament plugin directory
+
+Demo:
+
+- [ ] Try with custom theme
 
 ---
 
