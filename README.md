@@ -18,7 +18,7 @@ A Filament plugin to add a full-screen preview modal to your Panel pages. The mo
 You can install the package via composer:
 
 ```bash
-composer require pboivin/filament-peek:"^3.0"
+composer require pboivin/filament-peek:"^3.0.0-alpha1"
 ```
 
 Register a `FilamentPeekPlugin` instance in your Panel provider:
@@ -56,7 +56,7 @@ Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek
 |------|----------|-----|--------|
 | [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Bugfixes only | ^2.0 | ^8.0 |
 | [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Current version | ^3.0 | ^8.1 |
-| [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | TBD | ^4.0 | ^8.2 |
+| [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | Alpha | ^4.0 | ^8.2 |
 
 Please feel free to report any issues you encounter with Peek in [GitHub Issues](https://github.com/pboivin/filament-peek/issues).
 
@@ -127,7 +127,7 @@ Please review [our security policy](https://github.com/pboivin/filament-peek/sec
 
 ## Acknowledgements
 
-The initial idea is heavily inspired by module previews in [Twill CMS](https://twillcms.com/).
+The initial idea was inspired by module previews in [Twill CMS](https://twillcms.com/).
 
 ## License
 
