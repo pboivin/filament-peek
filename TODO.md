@@ -17,14 +17,21 @@ Features:
 
 - [x] Add Peek facade
 - [x] Access support classes through facade
-- [ ] Filament 4 compatibility (TBD)
+- [x] Filament 4 compatibility
+- [x] Remove tailwind
+- [ ] Fix builder field (can't add blocks)
 - [ ] Deprecate builder previews
 
 Docs:
 
+- [ ] Move builder editor config notes
 - [ ] Finish README
 - [ ] Upgrade guide
 - [ ] Update page on Filament plugin directory
+
+Demo:
+
+- [ ] Try with custom theme
 
 ---
 
