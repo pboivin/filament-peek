@@ -141,12 +141,14 @@ body.is-filament-peek-preview-modal-open {
 .filament-peek-editor {
     display: none;
     border-right: 1px solid var(--gray-200);
+}
 
-    /* @apply rtl:border-l; */
+:dir(rtl) .filament-peek-editor {
+    border-left: 1px solid var(--gray-200);
 }
 
 .filament-peek-editor:where(.dark, .dark *) {
-    border-color: var(--gray-800);
+    border-color: var(--gray-800) !important;
 }
 
 .filament-peek-editor .filament-peek-panel-body {
@@ -262,14 +264,19 @@ body.is-filament-peek-preview-modal-open {
 
 .filament-peek-editor-resizer {
     background-color: transparent;
-    border-left: 3px solid tranparent;
+    border-left: 3px solid transparent;
     height: 100%;
-    left: -100%;
+    left: 100%;
     position: absolute;
     top: 0;
     width: 9px;
+}
 
-    /* @apply rtl:right-[100%] rtl:border-l-0 rtl:border-r-[3px]; */
+:dir(rtl) .filament-peek-editor-resizer {
+    border-left: none;
+    border-right: 3px solid transparent;
+    left: initial;
+    right: 100%;
 }
 
 .filament-peek-editor-resizer:hover {
