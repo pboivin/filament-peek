@@ -1,5 +1,5 @@
 <template x-if="withEditor">
-    <div class="flex gap-4">
+    <div class="filament-peek-editor-actions">
         @if (\Pboivin\FilamentPeek\Facades\Peek::isBuilderPreviewRegistered() && config('filament-peek.builderEditor.canDiscardChanges', false) )
             <x-filament::button x-on:click="acceptEditorChanges()">
                 {{ __('filament-peek::ui.accept-action-label') }}

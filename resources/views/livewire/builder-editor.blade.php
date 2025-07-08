@@ -8,7 +8,7 @@
     <div class="filament-peek-panel-header">
         <div x-text="editorTitle"></div>
 
-        <div class="inline-flex items-center">
+        <div class="filament-peek-editor-buttons">
             <x-filament::button
                 color="gray"
                 icon="heroicon-o-arrow-path"
@@ -45,7 +45,6 @@
                             <input
                                 type="checkbox"
                                 id="filament-peek-editor-auto-refresh"
-                                class="block rounded border-gray-300 text-primary-600 shadow-sm outline-none focus:ring focus:ring-primary-200 focus:ring-opacity-50 dark:border-gray-600 dark:bg-gray-700 dark:checked:border-primary-600 dark:checked:bg-primary-600"
                                 wire:model.live="autoRefresh"
                             >
                             <span>{{ __('filament-peek::ui.editor-auto-refresh-label') }}</span>
