@@ -19,10 +19,7 @@ Features:
 - [x] Access support classes through facade
 - [x] Filament 4 compatibility
 - [x] Remove tailwind
-    - [ ] Fix RTL
-    - [ ] Fix sidebar resizer
-    - [ ] Fix builder field (can't add blocks)
-
+- [ ] Fix builder field (can't add blocks)
 - [ ] Deprecate builder previews
 
 Docs:
