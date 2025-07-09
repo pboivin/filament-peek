@@ -19,7 +19,7 @@
 
 .filament-peek-modal:where(.dark, .dark *) {
     background-color: var(--gray-950);
-    color: var(white);
+    color: var(--color-white);
 }
 
 .filament-peek-panel {
