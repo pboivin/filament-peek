@@ -10,7 +10,7 @@
 A Filament plugin to add a full-screen preview modal to your Panel pages. The modal can be used before saving to preview a modified record.
 
 <p class="filament-hidden">
-<img src="https://raw.githubusercontent.com/pboivin/filament-peek/2.x/art/01-page-preview.jpg" alt="Screenshots of the edit page and preview modal">
+<img src="https://raw.githubusercontent.com/pboivin/filament-peek/3.x/art/01-page-preview.jpg" alt="Screenshots of the edit page and preview modal">
 </p>
 
 ## Installation
@@ -48,7 +48,7 @@ TBD
 
 #### Upgrading from `1.x`
 
-Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/2.x/docs/upgrade-guide.md).
+Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/3.x/docs/upgrade-guide.md).
 
 ## Compatibility
 
@@ -71,7 +71,7 @@ Here are a few example projects available to give this plugin a try:
 
 ## Documentation
 
-The documentation is available in the ['docs' directory](https://github.com/pboivin/filament-peek/tree/2.x/docs) on GitHub:
+The documentation is available in the ['docs' directory](https://github.com/pboivin/filament-peek/tree/3.x/docs) on GitHub:
 
 <!-- BEGIN_TOC -->
 
@@ -110,11 +110,11 @@ I've started compiling some notes and solutions to common issues in [Discussions
 
 ## Changelog
 
-Please see [CHANGELOG](https://github.com/pboivin/filament-peek/blob/2.x/CHANGELOG.md) for more information on what has changed recently.
+Please see [CHANGELOG](https://github.com/pboivin/filament-peek/blob/3.x/CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/pboivin/filament-peek/blob/2.x/.github/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/pboivin/filament-peek/blob/3.x/.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
@@ -131,5 +131,5 @@ The initial idea was inspired by module previews in [Twill CMS](https://twillcms
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/pboivin/filament-peek/blob/2.x/LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/pboivin/filament-peek/blob/3.x/LICENSE.md) for more information.
 
