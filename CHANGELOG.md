@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 3.0.0-alpha2 - 2025-07-15
+
+* fix: BuilderEditor component
+
+
 ## 3.0.0-alpha1 - 2025-07-08
 
 * feat!: Filament 4 support
