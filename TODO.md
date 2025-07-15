@@ -19,7 +19,7 @@ Features:
 - [x] Access support classes through facade
 - [x] Filament 4 compatibility
 - [x] Remove tailwind
-- [ ] Fix builder field (can't add blocks)
+- [x] Fix builder field
 - [ ] Deprecate builder previews
 
 Docs:
@@ -31,10 +31,4 @@ Docs:
 
 Demo:
 
-- [ ] Try with custom theme
-
----
-
-Future:
-
-- [ ] Rethink builder previews
+- [x] Try with custom theme

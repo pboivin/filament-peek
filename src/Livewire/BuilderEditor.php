@@ -2,6 +2,8 @@
 
 namespace Pboivin\FilamentPeek\Livewire;
 
+use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Illuminate\Contracts\View\View as ViewContract;
@@ -15,8 +17,9 @@ use Pboivin\FilamentPeek\Facades\Peek;
 /**
  * @property mixed $form
  */
-class BuilderEditor extends Component implements HasForms
+class BuilderEditor extends Component implements HasActions, HasForms
 {
+    use InteractsWithActions;
     use InteractsWithForms;
 
     public ?string $previewUrl = null;
