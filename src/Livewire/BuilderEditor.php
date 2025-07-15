@@ -17,10 +17,10 @@ use Pboivin\FilamentPeek\Facades\Peek;
 /**
  * @property mixed $form
  */
-class BuilderEditor extends Component implements HasForms, HasActions
+class BuilderEditor extends Component implements HasActions, HasForms
 {
-    use InteractsWithForms;
     use InteractsWithActions;
+    use InteractsWithForms;
 
     public ?string $previewUrl = null;
 
