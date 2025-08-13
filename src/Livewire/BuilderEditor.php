@@ -16,6 +16,8 @@ use Pboivin\FilamentPeek\Facades\Peek;
 
 /**
  * @property mixed $form
+ *
+ * @deprecated 3.0.0
  */
 class BuilderEditor extends Component implements HasActions, HasForms
 {
@@ -73,7 +75,7 @@ class BuilderEditor extends Component implements HasActions, HasForms
 
     public function canAutoRefresh(): bool
     {
-        return (bool) config('filament-peek.builderEditor.canEnableAutoRefresh', false);
+        return (bool) config('filament-peek.builderEditor.canEnableAutoRefresh', true);
     }
 
     public function shouldAutoRefresh(): bool

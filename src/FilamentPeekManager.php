@@ -60,7 +60,7 @@ class FilamentPeekManager
 
     public function pageSupportsBuilderPreview(Component $page): bool
     {
-        return $this->pageSupportsPreviewModal($page) && method_exists($page, 'openPreviewModalForBuidler');
+        return $this->pageSupportsPreviewModal($page) && method_exists($page, 'openPreviewModalForBuilder');
     }
 
     public function ensurePageSupportsBuilderPreview(Component $page): void

@@ -18,15 +18,10 @@ Example:
 ```js
 document.addEventListener('peek:modal-closing', (e) => {
     console.log('The modal is closing...');
-
-    // You can access the full modal instance in `e.detail.modal`
-    if (e.detail.modal.withEditor) {
-        console.log('I hope you enjoyed using the new Builder Preview!');
-    }
 });
 ```
 
-Have a look at the [Registering JavaScript Files](https://filamentphp.com/docs/3.x/support/assets#registering-javascript-files) section of the Filament documentation to learn how to load custom scripts into your Panel.
+Have a look at the [Registering JavaScript Files](https://filamentphp.com/docs/4.x/advanced/assets#registering-javascript-files) section of the Filament documentation to learn how to load custom scripts into your Panel.
 
 ---
 
@@ -36,8 +31,8 @@ Have a look at the [Registering JavaScript Files](https://filamentphp.com/docs/3
 
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
-- [Builder Previews](./builder-previews.md)
+- [Builder Previews (deprecated)](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
-- [Upgrading from v1.x](./upgrade-guide.md)
+- [Upgrading from Peek 2.x](./upgrade-guide.md)
 
 <!-- END_TOC -->

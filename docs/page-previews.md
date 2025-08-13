@@ -114,8 +114,6 @@ public static function table(Table $table): Table
 }
 ```
 
-**Note**: `ListPreviewAction` does not support [Builder Previews](./builder-previews.md).
-
 ## Using a Preview URL
 
 Instead of rendering a view, you may also implement page previews using a custom URL and a storage driver such as the Laravel Cache. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
@@ -169,12 +167,12 @@ See also:
 Instead of a `PreviewAction`, you can use the `InlinePreviewAction` component to integrate a button directly into your form (e.g. in a sidebar):
 
 ```php
-use Filament\Forms\Components\Actions;
+use Filament\Schemas\Components\Actions;
 use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 
-public static function form(Form $form): Form
+public static function form(Schema $schema): Schema
 {
-    return $form->schema([
+    return $schema->components([
         Actions::make([
             InlinePreviewAction::make()
         ]),
@@ -273,8 +271,8 @@ PreviewAction::make()
 
 - [Configuration](./configuration.md)
 - [Page Previews](./page-previews.md)
-- [Builder Previews](./builder-previews.md)
+- [Builder Previews (deprecated)](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
-- [Upgrading from v1.x](./upgrade-guide.md)
+- [Upgrading from Peek 2.x](./upgrade-guide.md)
 
 <!-- END_TOC -->

@@ -3,10 +3,13 @@
 namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Forms\Components\Builder;
-use Filament\Forms\Components\Component;
+use Filament\Schemas\Components\Component;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\Facades\Peek;
 
+/**
+ * @deprecated 3.0.0
+ */
 trait HasBuilderPreview
 {
     protected function getListeners(): array
@@ -91,7 +94,7 @@ trait HasBuilderPreview
     }
 
     /** @internal */
-    public function openPreviewModalForBuidler(string $builderName): void
+    public function openPreviewModalForBuilder(string $builderName): void
     {
         $this->checkCustomListener();
 

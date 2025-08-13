@@ -44,19 +44,15 @@ php artisan filament:assets
 
 #### Upgrading from `2.x`
 
-TBD
-
-#### Upgrading from `1.x`
-
 Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/3.x/docs/upgrade-guide.md).
 
 ## Compatibility
 
 | Peek | Status | Filament | PHP |
 |------|----------|-----|--------|
-| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Bugfixes only | ^2.0 | ^8.0 |
-| [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Current version | ^3.0 | ^8.1 |
 | [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | Alpha | ^4.0 | ^8.2 |
+| [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Current version | ^3.0 | ^8.1 |
+| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Bugfixes only | ^2.0 | ^8.0 |
 
 Please feel free to report any issues you encounter with Peek in [GitHub Issues](https://github.com/pboivin/filament-peek/issues).
 
@@ -89,36 +85,27 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
     - [Adding Extra Data to Previews](https://github.com/pboivin/filament-peek/blob/3.x/docs/page-previews.md#adding-extra-data-to-previews)
     - [Alternate Templating Engines](https://github.com/pboivin/filament-peek/blob/3.x/docs/page-previews.md#alternate-templating-engines)
     - [Opening the Preview in a New Tab](https://github.com/pboivin/filament-peek/blob/3.x/docs/page-previews.md#opening-the-preview-in-a-new-tab)
-- [Builder Previews](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md)
-    - [Overview](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#overview)
-    - [Using Builder Previews on Edit pages](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#using-builder-previews-on-edit-pages)
-    - [Using Multiple Builder Fields](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#using-multiple-builder-fields)
-    - [Using Custom Fields](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#using-custom-fields)
-    - [Customizing the Preview Action](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#customizing-the-preview-action)
-    - [Automatically Updating the Builder Preview](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#automatically-updating-the-builder-preview)
-    - [Adding Extra Data to the Builder Editor State](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#adding-extra-data-to-the-builder-editor-state)
-    - [Adding Extra Data to the Builder Preview](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#adding-extra-data-to-the-builder-preview)
-    - [Alternate Templating Engines](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md#alternate-templating-engines)
+- [Builder Previews (deprecated)](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md)
 - [JavaScript Hooks](https://github.com/pboivin/filament-peek/blob/3.x/docs/javascript-hooks.md)
-- [Upgrading from v1.x](https://github.com/pboivin/filament-peek/blob/3.x/docs/upgrade-guide.md)
+- [Upgrading from Peek 2.x](https://github.com/pboivin/filament-peek/blob/3.x/docs/upgrade-guide.md)
 
 <!-- END_TOC -->
 
 ## FAQ and Known Issues
 
-I've started compiling some notes and solutions to common issues in [Discussions](https://github.com/pboivin/filament-peek/discussions/categories/general). Feel free to contribute your own tips and tricks.
+You'll find some notes and solutions to common issues in [GitHub Discussions](https://github.com/pboivin/filament-peek/discussions/categories/general). Feel free to contribute your own tips and tricks.
 
 ## Changelog
 
-Please see [CHANGELOG](https://github.com/pboivin/filament-peek/blob/3.x/CHANGELOG.md) for more information on what has changed recently.
+See [CHANGELOG.md](https://github.com/pboivin/filament-peek/blob/3.x/CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/pboivin/filament-peek/blob/3.x/.github/CONTRIBUTING.md) for details.
+See [CONTRIBUTING.md](https://github.com/pboivin/filament-peek/blob/3.x/.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](https://github.com/pboivin/filament-peek/security/policy) on how to report security vulnerabilities.
+Review [the security policy](https://github.com/pboivin/filament-peek/security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
@@ -127,9 +114,9 @@ Please review [our security policy](https://github.com/pboivin/filament-peek/sec
 
 ## Acknowledgements
 
-The initial idea was inspired by module previews in [Twill CMS](https://twillcms.com/).
+The initial idea was inspired by module previews in [Twill](https://twillcms.com/).
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/pboivin/filament-peek/blob/3.x/LICENSE.md) for more information.
+The MIT License (MIT). See [LICENSE.md](https://github.com/pboivin/filament-peek/blob/3.x/LICENSE.md) for more information.
 
