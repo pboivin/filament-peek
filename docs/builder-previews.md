@@ -199,40 +199,6 @@ public static function getBuilderEditorSchema(string $builderName): Component|ar
 }
 ```
 
-## Using Custom Fields
-
-![Screenshot of the Builder preview with the Tiptap editor](../art/03-tiptap.jpg)
-
-> [Filament Tiptap Editor](https://github.com/awcodes/filament-tiptap-editor) by Adam Weston
-
-You may have noticed that `getBuilderEditorSchema()` supports any type of form Component. Behind the scenes, the Editor sidebar of the preview modal is a full Filament form. Therefore, you are not restricted to using a Builder field, you may use any other field type:
-
-```php
-use FilamentTiptapEditor\TiptapEditor;
-
-public static function getBuilderEditorSchema(string $builderName): Component|array
-{
-    return TiptapEditor::make('post_content');
-}
-```
-
-Using a single field should work without any other modifications. To support multiple fields in the sidebar, consider using a `Group` component with a custom state path:
-
-```php
-public static function getBuilderEditorSchema(string $builderName): Component|array
-{
-    return Group::make([
-        TextInput::make('title'),
-
-        TextInput::make('tagline'),
-
-        TiptapEditor::make('body'),
-
-        // ...
-    ])->statePath('post_content');
-}
-```
-
 #### Compatibility
 
 This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), using Blocks composed of [built-in Filament fields](https://filamentphp.com/docs/3.x/forms/fields/getting-started#available-fields). It's possible to integrate with custom field types and 3rd party plugins but obviously, not all combinations have been tested.
