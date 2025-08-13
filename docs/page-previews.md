@@ -114,8 +114,6 @@ public static function table(Table $table): Table
 }
 ```
 
-**Note**: `ListPreviewAction` does not support [Builder Previews](./builder-previews.md).
-
 ## Using a Preview URL
 
 Instead of rendering a view, you may also implement page previews using a custom URL and a storage driver such as the Laravel Cache. Instead of `getPreviewModalView()`, use the `getPreviewModalUrl()` method to define the preview URL:
