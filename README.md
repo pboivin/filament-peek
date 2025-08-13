@@ -50,9 +50,9 @@ Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek
 
 | Peek | Status | Filament | PHP |
 |------|----------|-----|--------|
-| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Bugfixes only | ^2.0 | ^8.0 |
+| [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | Beta | ^4.0 | ^8.2 |
 | [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Current version | ^3.0 | ^8.1 |
-| [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | Alpha | ^4.0 | ^8.2 |
+| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Bugfixes only | ^2.0 | ^8.0 |
 
 Please feel free to report any issues you encounter with Peek [in this repository](https://github.com/pboivin/filament-peek/issues). I'll work with you to determine where the issue is coming from.
 
