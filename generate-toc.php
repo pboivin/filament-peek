@@ -48,7 +48,7 @@ function tocFiles(): array
     return [
         new DocFile('docs/configuration.md', prefix: BASE_URL, levels: 2),
         new DocFile('docs/page-previews.md', prefix: BASE_URL, levels: 2),
-        new DocFile('docs/builder-previews.md', prefix: BASE_URL, levels: 2),
+        new DocFile('docs/builder-previews.md', prefix: BASE_URL),
         new DocFile('docs/javascript-hooks.md', prefix: BASE_URL),
         new DocFile('docs/upgrade-guide.md', prefix: BASE_URL),
     ];
