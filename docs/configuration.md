@@ -56,39 +56,9 @@ In your `AdminPanelProvider`, call the `disablePluginStyles()` method on the plu
  @import '../../../../vendor/filament/filament/resources/css/theme.css';
 
 +@import '../../../../vendor/pboivin/filament-peek/resources/css/plugin.css';
-
- @config './tailwind.config.js';
 ```
 
-#### 4. Include the plugin views in your theme's `tailwind.config.js`
-
-**`resources/css/filament/admin/tailwind.config.js`**
-```diff
- export default {
-     presets: [preset],
-     content: [
-         './app/Filament/**/*.php',
-         './resources/views/filament/**/*.blade.php',
-         './vendor/filament/**/*.blade.php',
-+        './vendor/pboivin/filament-peek/resources/**/*.blade.php',
-     ]
- }
-```
-
-#### 5. Make sure to include the `nesting` plugin in your `postcss.config.js`
-
-**`postcss.config.js`**
-```diff
- module.exports = {
-     plugins: {
-+        'tailwindcss/nesting': {},
-         tailwindcss: {},
-         autoprefixer: {},
-     },
- }
-```
-
-#### 6. Rebuild your theme
+#### 4. Rebuild your theme
 
 ```
 npm run build
