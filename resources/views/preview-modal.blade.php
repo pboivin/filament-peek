@@ -9,7 +9,7 @@
             allowIframeOverflow: @js(config('filament-peek.allowIframeOverflow', false)),
             shouldCloseModalWithEscapeKey: @js(config('filament-peek.closeModalWithEscapeKey', true)),
             editorAutoRefreshDebounceTime: @js(config('filament-peek.builderEditor.autoRefreshDebounceMilliseconds', 500)),
-            shouldRestoreIframePositionOnRefresh: @js(config('filament-peek.builderEditor.preservePreviewScrollPosition', false)),
+            shouldRestoreIframePositionOnRefresh: @js(config('filament-peek.builderEditor.preservePreviewScrollPosition', true)),
             canResizeEditorSidebar: @js(config('filament-peek.builderEditor.canResizeSidebar', true)),
             editorSidebarMinWidth: @js(config('filament-peek.builderEditor.sidebarMinWidth', '30rem')),
             editorSidebarInitialWidth: @js(config('filament-peek.builderEditor.sidebarInitialWidth', '30rem')),

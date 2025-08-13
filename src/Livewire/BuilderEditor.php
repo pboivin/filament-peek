@@ -75,7 +75,7 @@ class BuilderEditor extends Component implements HasActions, HasForms
 
     public function canAutoRefresh(): bool
     {
-        return (bool) config('filament-peek.builderEditor.canEnableAutoRefresh', false);
+        return (bool) config('filament-peek.builderEditor.canEnableAutoRefresh', true);
     }
 
     public function shouldAutoRefresh(): bool
