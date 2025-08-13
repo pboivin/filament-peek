@@ -19,9 +19,7 @@ Features:
 - [x] Filament 4 compatibility
 - [x] Remove tailwind
 - [x] Fix builder field
-
 - [x] Deprecate builder previews
-    - [ ] Move builder editor config notes
 
 Docs:
 
