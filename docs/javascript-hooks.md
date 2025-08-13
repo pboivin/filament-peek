@@ -18,11 +18,6 @@ Example:
 ```js
 document.addEventListener('peek:modal-closing', (e) => {
     console.log('The modal is closing...');
-
-    // You can access the full modal instance in `e.detail.modal`
-    if (e.detail.modal.withEditor) {
-        console.log('I hope you enjoyed using the new Builder Preview!');
-    }
 });
 ```
 
