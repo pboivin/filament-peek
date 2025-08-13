@@ -7,6 +7,9 @@ use Filament\Schemas\Components\Component;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\Facades\Peek;
 
+/**
+ * @deprecated 3.0.0
+ */
 trait HasBuilderPreview
 {
     protected function getListeners(): array

@@ -6,12 +6,11 @@ Cleanup:
 - [x] Default to internal preview url
 - [x] Change modal z-index value
 - [x] Remove isPeekPreviewModal variable
-- [ ] Use livewire attributes if possible (e.g. `On` for events)
 
 Tests:
 
 - [x] Rewrite tests with internal preview url as default
-- [ ] Rewrite flaky tests as new livewire/feature tests
+- [ ] Fix flaky tests
 
 Features:
 
@@ -20,11 +19,12 @@ Features:
 - [x] Filament 4 compatibility
 - [x] Remove tailwind
 - [x] Fix builder field
-- [ ] Deprecate builder previews
+
+- [x] Deprecate builder previews
+    - [ ] Move builder editor config notes
 
 Docs:
 
-- [ ] Move builder editor config notes
 - [ ] Finish README
 - [ ] Upgrade guide
 - [ ] Update page on Filament plugin directory

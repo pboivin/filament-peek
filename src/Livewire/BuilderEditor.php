@@ -16,6 +16,8 @@ use Pboivin\FilamentPeek\Facades\Peek;
 
 /**
  * @property mixed $form
+ *
+ * @deprecated 3.0.0
  */
 class BuilderEditor extends Component implements HasActions, HasForms
 {
