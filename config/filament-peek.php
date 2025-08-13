@@ -97,44 +97,4 @@ return [
         'middleware' => [],
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Builder Editor
-    |--------------------------------------------------------------------------
-    |
-    | Options related to the Editor sidebar in Builder Previews.
-    |
-    */
-
-    'builderEditor' => [
-
-        // Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button.
-        'canDiscardChanges' => true,
-
-        // Allow users to resize the sidebar by clicking and dragging on the right edge.
-        'canResizeSidebar' => true,
-
-        // Minimum width for the sidebar, if resizable. Must be a valid CSS value.
-        'sidebarMinWidth' => '30rem',
-
-        // Initial width for the sidebar. Must be a valid CSS value.
-        'sidebarInitialWidth' => '30rem',
-
-        // Restore the preview scroll position when the preview is refreshed.
-        'preservePreviewScrollPosition' => true,
-
-        // Enable the auto-refresh option for the Builder preview.
-        'canEnableAutoRefresh' => true,
-
-        // Debounce time before refreshing the preview.
-        'autoRefreshDebounceMilliseconds' => 500,
-
-        // Possible values: 'simple' or 'reactive'.
-        'autoRefreshStrategy' => 'simple',
-
-        // Livewire component for the sidebar.
-        'livewireComponentClass' => \Pboivin\FilamentPeek\Livewire\BuilderEditor::class,
-
-    ],
-
 ];
