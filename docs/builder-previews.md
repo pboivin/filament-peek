@@ -41,7 +41,7 @@ protected function getBuilderPreviewView(string $builderName): ?string
 Then, add the `getBuilderEditorSchema()` method to define your Builder field:
 
 ```php
-use Filament\Forms\Components\Component;
+use Filament\Schemas\Components\Component;
 use Filament\Forms\Components\Builder;
 
 public static function getBuilderEditorSchema(string $builderName): Component|array
@@ -77,7 +77,7 @@ Actions::make([
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
-use Filament\Forms\Components\Component;
+use Filament\Schemas\Components\Component;
 use Filament\Resources\Pages\EditRecord;
 use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;
 use Pboivin\FilamentPeek\Pages\Concerns\HasPreviewModal;

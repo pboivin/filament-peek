@@ -3,7 +3,7 @@
 namespace Pboivin\FilamentPeek\Pages\Concerns;
 
 use Filament\Forms\Components\Builder;
-use Filament\Forms\Components\Component;
+use Filament\Schemas\Components\Component;
 use InvalidArgumentException;
 use Pboivin\FilamentPeek\Facades\Peek;
 

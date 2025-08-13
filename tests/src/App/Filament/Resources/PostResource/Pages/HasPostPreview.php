@@ -2,7 +2,7 @@
 
 namespace Pboivin\FilamentPeek\Tests\App\Filament\Resources\PostResource\Pages;
 
-use Filament\Forms\Components\Component;
+use Filament\Schemas\Components\Component;
 use Filament\Forms\Components\TextInput;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
 use Pboivin\FilamentPeek\Pages\Concerns\HasBuilderPreview;
