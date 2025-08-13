@@ -21,7 +21,7 @@ document.addEventListener('peek:modal-closing', (e) => {
 });
 ```
 
-Have a look at the [Registering JavaScript Files](https://filamentphp.com/docs/3.x/support/assets#registering-javascript-files) section of the Filament documentation to learn how to load custom scripts into your Panel.
+Have a look at the [Registering JavaScript Files](https://filamentphp.com/docs/4.x/advanced/assets#registering-javascript-files) section of the Filament documentation to learn how to load custom scripts into your Panel.
 
 ---
 
