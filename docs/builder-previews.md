@@ -62,7 +62,7 @@ To reduce duplication, the Builder field definition can also be extracted to a s
 Add the `InlinePreviewAction` action to your form, above or below the Builder field:
 
 ```php
-use Filament\Forms\Components\Actions;
+use Filament\Schemas\Components\Actions;
 use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 
 Actions::make([
@@ -109,13 +109,13 @@ class EditPost extends EditRecord
 ```php
 namespace App\Filament\Resources;
 
-use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Builder;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Actions;
 use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 // ...
 
@@ -150,9 +150,9 @@ class PostResource extends Resource
             ->collapsible();
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             TextInput::make('title')
                 ->columnSpanFull()
                 ->required(),

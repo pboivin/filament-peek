@@ -167,12 +167,12 @@ See also:
 Instead of a `PreviewAction`, you can use the `InlinePreviewAction` component to integrate a button directly into your form (e.g. in a sidebar):
 
 ```php
-use Filament\Forms\Components\Actions;
+use Filament\Schemas\Components\Actions;
 use Pboivin\FilamentPeek\Forms\Actions\InlinePreviewAction;
 
-public static function form(Form $form): Form
+public static function form(Schema $schema): Schema
 {
-    return $form->schema([
+    return $schema->components([
         Actions::make([
             InlinePreviewAction::make()
         ]),
