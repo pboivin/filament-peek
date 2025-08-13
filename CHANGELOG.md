@@ -3,6 +3,16 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 3.0.0-beta1 - 2025-08-13
+
+* feat: Deprecate builder previews
+* fix: Typo in internal method
+* docs: Add upgrade guide and cleanup
+* chore: Cleanup config
+* chore: bump aglipanci/laravel-pint-action from 2.5 to 2.6
+* chore: bump actions/checkout from 4 to 5
+
+
 ## 3.0.0-alpha2 - 2025-07-15
 
 * fix: BuilderEditor component
