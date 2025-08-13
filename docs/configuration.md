@@ -24,20 +24,6 @@ Here are the main options you can configure:
 | `internalPreviewUrl` | `array` | Render Blade previews through an internal URL. |
 | `builderEditor` | `array` | Options related to the Editor sidebar in [Builder Previews](./builder-previews.md). |
 
-Builder Editor options:
-
-| Name | Type | Description |
-|---|---|---|
-| `canDiscardChanges` | `bool` | Show 'Accept' and 'Discard' buttons in modal header instead of a single 'Close' button. |
-| `canResizeSidebar` | `bool` | Allow users to resize the sidebar by clicking and dragging on the right edge. |
-| `sidebarMinWidth` | `string` | Minimum width for the sidebar, if resizable. Must be a valid CSS `width` value. |
-| `sidebarInitialWidth` | `string` | Initial width for the sidebar. Must be a valid CSS `width` value. |
-| `preservePreviewScrollPosition` | `bool` | Restore the preview iframe scroll position when the preview is refreshed. |
-| `canEnableAutoRefresh` | `bool` | Enable the auto-refresh option for the Builder Editor. |
-| `autoRefreshDebounceMilliseconds` | `int` | Debounce time before refreshing the preview. |
-| `autoRefreshStrategy` | `string` | Possible values: `simple` or `reactive`. (See [Automatically Updating the Builder Preview](./builder-previews.md#preview-auto-refresh)) |
-| `livewireComponentClass` | `string` | Livewire component class for the Builder Editor sidebar. |
-
 ## Integrating With a Custom Theme
 
 With Filament, you can change the CSS used inside of a given Panel by compiling a custom stylesheet (a "theme"). With this approach, it's also possible to modify the internal stylesheet of the plugin for a seamless integration.
