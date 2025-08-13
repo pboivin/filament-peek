@@ -33,7 +33,7 @@ class InlinePreviewAction extends Action
                 if ($this->builderField) {
                     Peek::ensurePageSupportsBuilderPreview($livewire);
 
-                    $livewire->openPreviewModalForBuidler($this->builderField);
+                    $livewire->openPreviewModalForBuilder($this->builderField);
                 } else {
                     $livewire->initialPreviewModalData(
                         $this->evaluate($this->previewModalData)

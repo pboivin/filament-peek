@@ -91,7 +91,7 @@ trait HasBuilderPreview
     }
 
     /** @internal */
-    public function openPreviewModalForBuidler(string $builderName): void
+    public function openPreviewModalForBuilder(string $builderName): void
     {
         $this->checkCustomListener();
 
