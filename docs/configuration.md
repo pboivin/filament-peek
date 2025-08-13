@@ -22,7 +22,6 @@ Here are the main options you can configure:
 | `allowIframePointerEvents` | `bool` | Allow all pointer events within the iframe. By default, only scrolling is allowed. (Does not apply when using a preview URL. See [Pointer Events](./page-previews.md#preview-pointer-events)) |
 | `closeModalWithEscapeKey` | `bool` | Close the preview modal by pressing the Escape key. (Does not apply to Builder previews.) |
 | `internalPreviewUrl` | `array` | Render Blade previews through an internal URL. |
-| `builderEditor` | `array` | Options related to the Editor sidebar in [Builder Previews](./builder-previews.md). |
 
 ## Integrating With a Custom Theme
 
