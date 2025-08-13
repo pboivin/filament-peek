@@ -29,7 +29,7 @@ With Filament, you can change the CSS used inside of a given Panel by compiling 
 
 #### 1. Create your custom theme
 
-Follow the instructions on the [Creating a custom theme](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) section of the Filament documentation.
+Follow the instructions on the [Creating a custom theme](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) section of the Filament documentation.
 
 #### 2. Disable the plugin's compiled stylesheet
 

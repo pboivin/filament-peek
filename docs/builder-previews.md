@@ -7,7 +7,7 @@
 
 ## Overview
 
-Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), and an iframe on the right to render the preview.
+Clicking the preview link in the form opens a full-screen modal. The modal contains an editor on the left with a copy of the [Builder field](https://filamentphp.com/docs/4.x/forms/builder), and an iframe on the right to render the preview.
 
 As you edit the Builder blocks, the preview can be refreshed manually or automatically. When the modal is closed, the Builder field in the main form is synchronized with the changes from the preview editor.
 
@@ -175,9 +175,7 @@ class PostResource extends Resource
 
 ## Compatibility
 
-This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/3.x/forms/fields/builder), using Blocks composed of [built-in Filament fields](https://filamentphp.com/docs/3.x/forms/fields/getting-started#available-fields). It's possible to integrate with custom field types and 3rd party plugins but obviously, not all combinations have been tested.
-
-Please feel free to report any issues you encounter with custom fields [in this repository](https://github.com/pboivin/filament-peek/issues). I can work with you to determine where the issue is coming from.
+This feature was initially designed with a focus on the [Builder field](https://filamentphp.com/docs/4.x/forms/builder), using Blocks composed of built-in Filament fields. It's possible to integrate with custom field types and 3rd party plugins but obviously, not all combinations have been tested.
 
 ## Customizing the Preview Action
 
