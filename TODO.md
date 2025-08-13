@@ -23,8 +23,8 @@ Features:
 
 Docs:
 
+- [x] Upgrade guide
 - [ ] Finish README
-- [ ] Upgrade guide
 - [ ] Update page on Filament plugin directory
 
 Demo:
