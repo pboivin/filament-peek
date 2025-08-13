@@ -53,6 +53,6 @@ php artisan view:clear
 - [Page Previews](./page-previews.md)
 - [Builder Previews (deprecated)](./builder-previews.md)
 - [JavaScript Hooks](./javascript-hooks.md)
-- [Upgrading from v1.x](./upgrade-guide.md)
+- [Upgrading from Peek 2.x](./upgrade-guide.md)
 
 <!-- END_TOC -->

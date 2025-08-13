@@ -91,7 +91,7 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
     - [Opening the Preview in a New Tab](https://github.com/pboivin/filament-peek/blob/3.x/docs/page-previews.md#opening-the-preview-in-a-new-tab)
 - [Builder Previews (deprecated)](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md)
 - [JavaScript Hooks](https://github.com/pboivin/filament-peek/blob/3.x/docs/javascript-hooks.md)
-- [Upgrading from v1.x](https://github.com/pboivin/filament-peek/blob/3.x/docs/upgrade-guide.md)
+- [Upgrading from Peek 2.x](https://github.com/pboivin/filament-peek/blob/3.x/docs/upgrade-guide.md)
 
 <!-- END_TOC -->
 
