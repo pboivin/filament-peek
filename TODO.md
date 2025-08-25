@@ -24,7 +24,7 @@ Features:
 Docs:
 
 - [x] Upgrade guide
-- [ ] Finish README
+- [x] Finish README
 - [ ] Update page on Filament plugin directory
 
 Demo:
