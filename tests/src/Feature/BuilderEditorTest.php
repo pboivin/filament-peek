@@ -2,8 +2,8 @@
 
 namespace Pboivin\FilamentPeek\Tests\Feature;
 
-use Filament\Schemas\Components\Component;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Component;
 use InvalidArgumentException;
 use Livewire\Livewire;
 use Pboivin\FilamentPeek\CachedBuilderPreview;
