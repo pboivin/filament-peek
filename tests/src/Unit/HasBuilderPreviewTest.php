@@ -64,5 +64,5 @@ it('throws an exception for missing event listener', function () {
         }
     });
 
-    $page->openPreviewModalForBuidler('blocks');
+    $page->openPreviewModalForBuilder('blocks');
 });
