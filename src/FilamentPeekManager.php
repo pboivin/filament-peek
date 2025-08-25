@@ -14,6 +14,10 @@ class FilamentPeekManager
 
     public function pluginIsLoaded(): bool
     {
+        if (defined('IS_TESTING_FILAMENT_PEEK_PLUGIN')) {
+            return true;
+        }
+
         return (bool) Filament::getCurrentPanel()?->hasPlugin(FilamentPeekPlugin::ID);
     }
 

@@ -36,16 +36,16 @@ class TestCase extends Orchestra
 
     protected function getPackageProviders($app)
     {
+        defined('IS_TESTING_FILAMENT_PEEK_PLUGIN') || define('IS_TESTING_FILAMENT_PEEK_PLUGIN', true);
+
         $this->configurePackageProviders($app);
 
         return [
+            ActionsServiceProvider::class,
             BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
-
-            LivewireServiceProvider::class,
-
-            ActionsServiceProvider::class,
+            FilamentPeekServiceProvider::class,
             FilamentServiceProvider::class,
             FormsServiceProvider::class,
             InfolistsServiceProvider::class,
@@ -53,11 +53,11 @@ class TestCase extends Orchestra
             SchemasServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
+            TestPanelProvider::class,
             WidgetsServiceProvider::class,
 
-            FilamentPeekServiceProvider::class,
-
-            TestPanelProvider::class,
+            // This needs to be last, not sure why
+            LivewireServiceProvider::class,
         ];
     }
 
