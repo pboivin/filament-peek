@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 3.0.0 - 2025-08-29
+
+Stable release
+
+
 ## 3.0.0-beta1 - 2025-08-13
 
 * feat: Deprecate builder previews
