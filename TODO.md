@@ -10,7 +10,7 @@ Cleanup:
 Tests:
 
 - [x] Rewrite tests with internal preview url as default
-- [ ] Fix flaky tests
+- [x] Fix flaky tests
 
 Features:
 
@@ -24,7 +24,7 @@ Features:
 Docs:
 
 - [x] Upgrade guide
-- [ ] Finish README
+- [x] Finish README
 - [ ] Update page on Filament plugin directory
 
 Demo:

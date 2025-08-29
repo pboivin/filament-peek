@@ -254,7 +254,7 @@ body.is-filament-peek-preview-modal-open {
     width: 100%;
 }
 
-/* Nested buidlers */
+/* Nested builders */
 .filament-peek-builder-editor.has-sidebar-actions .fi-fo-builder .fi-fo-builder>.fi-fo-builder-block-picker {
     padding: initial;
     position: initial;

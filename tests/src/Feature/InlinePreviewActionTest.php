@@ -12,11 +12,16 @@ it('can set initial preview modal data', function () {
     $page = Page::factory()->create(['title' => 'Test Page']);
 
     ($livewire = Livewire::test(EditPage::class, ['record' => $page->id]))
-        ->assertSeeHtml('Test Page')
-        ->callAction('preview')
-        ->assertDispatched('open-preview-modal');
+        ->assertSeeHtml('Test Page');
+
+    $livewire
+        ->instance()
+        ->getSchema('form')
+        ->getComponents()[0]
+        ->getChildComponents()[0]
+        ->call();
 
     $instance = invade($livewire->instance());
 
-    expect($instance->previewModalData['initial_data'])->toEqual('PreviewAction');
+    expect($instance->previewModalData['initial_data'])->toEqual('InlinePreviewAction');
 });
