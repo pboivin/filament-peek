@@ -10,7 +10,7 @@ Cleanup:
 Tests:
 
 - [x] Rewrite tests with internal preview url as default
-- [ ] Fix flaky tests
+- [x] Fix flaky tests
 
 Features:
 
