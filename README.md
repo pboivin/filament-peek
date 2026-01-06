@@ -52,7 +52,7 @@ Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek
 |------|----------|-----|--------|
 | [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | Current version | ^4.0 | ^8.2 |
 | [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Bugfixes only | ^3.0 | ^8.1 |
-| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Bugfixes only | ^2.0 | ^8.0 |
+| [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Unsupported | ^2.0 | ^8.0 |
 
 Please feel free to report any issues you encounter with Peek in [GitHub Issues](https://github.com/pboivin/filament-peek/issues).
 
