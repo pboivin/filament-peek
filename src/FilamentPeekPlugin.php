@@ -59,7 +59,7 @@ class FilamentPeekPlugin implements Plugin
     public function register(Panel $panel): void
     {
         Livewire::component(
-            'filament-peek::builder-editor',
+            'filament-peek-builder-editor',
             /** @phpstan-ignore classConstant.deprecatedClass */
             config('filament-peek.builderEditor.livewireComponentClass', BuilderEditor::class)
         );
