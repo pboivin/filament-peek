@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 require_once './vendor/autoload.php';
 
-define('BASE_URL', 'https://github.com/pboivin/filament-peek/blob/3.x/');
+define('BASE_URL', 'https://github.com/pboivin/filament-peek/blob/4.x/');
 
 class DocFile
 {

@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 4.0.0-alpha1 - 2026-01-26
+
+* feat!: Filament 5 support
+
+
 ## 3.0.0 - 2025-08-29
 
 Stable release
