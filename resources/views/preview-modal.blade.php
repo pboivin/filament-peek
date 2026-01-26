@@ -30,7 +30,7 @@
         x-cloak
     >
         @if (\Pboivin\FilamentPeek\Facades\Peek::isBuilderPreviewRegistered())
-            @livewire('filament-peek::builder-editor')
+            @livewire('filament-peek-builder-editor')
         @endif
 
         <div class="filament-peek-panel filament-peek-preview">
