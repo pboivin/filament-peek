@@ -94,7 +94,7 @@ return [
 
     'internalPreviewUrl' => [
         'enabled' => true,
-        'middleware' => [],
+        'middleware' => ['web'],
     ],
 
 ];
