@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 4.0.0-beta1 - 2026-02-06
+
+* config: Add 'web' as default middleware for internal preview url
+* docs: Update docs
+
+
 ## 4.0.0-alpha1 - 2026-01-26
 
 * feat!: Filament 5 support
