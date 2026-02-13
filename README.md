@@ -87,7 +87,7 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
     - [Alternate Templating Engines](https://github.com/pboivin/filament-peek/blob/4.x/docs/page-previews.md#alternate-templating-engines)
     - [Opening the Preview in a New Tab](https://github.com/pboivin/filament-peek/blob/4.x/docs/page-previews.md#opening-the-preview-in-a-new-tab)
 - [JavaScript Hooks](https://github.com/pboivin/filament-peek/blob/4.x/docs/javascript-hooks.md)
-- [Upgrading from Peek 2.x](https://github.com/pboivin/filament-peek/blob/4.x/docs/upgrade-guide.md)
+- [Upgrading from Peek 3.x](https://github.com/pboivin/filament-peek/blob/4.x/docs/upgrade-guide.md)
 
 <!-- END_TOC -->
 
