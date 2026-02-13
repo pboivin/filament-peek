@@ -10,7 +10,7 @@
 A Filament plugin to add a full-screen preview modal to your Panel pages. The modal can be used before saving to preview a modified record.
 
 <p class="filament-hidden">
-<img src="https://raw.githubusercontent.com/pboivin/filament-peek/3.x/art/01-page-preview.jpg" alt="Screenshots of the edit page and preview modal">
+<img src="https://raw.githubusercontent.com/pboivin/filament-peek/4.x/art/01-page-preview.jpg" alt="Screenshots of the edit page and preview modal">
 </p>
 
 ## Installation
@@ -18,7 +18,7 @@ A Filament plugin to add a full-screen preview modal to your Panel pages. The mo
 You can install the package via composer:
 
 ```bash
-composer require pboivin/filament-peek:"^4.0.0-beta1"
+composer require pboivin/filament-peek:"^4.0.0"
 ```
 
 Register a `FilamentPeekPlugin` instance in your Panel provider:
@@ -42,16 +42,16 @@ Then, publish the assets:
 php artisan filament:assets
 ```
 
-#### Upgrading from `2.x`
+#### Upgrading from `3.x`
 
-Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/3.x/docs/upgrade-guide.md).
+Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/4.x/docs/upgrade-guide.md).
 
 ## Compatibility
 
 | Peek | Status | Filament | PHP |
 |------|----------|-----|--------|
-| [4.x](https://github.com/pboivin/filament-peek/tree/4.x) | Beta | ^5.0 | ^8.2 |
-| [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | Current version | ^4.0 | ^8.2 |
+| [4.x](https://github.com/pboivin/filament-peek/tree/4.x) | Supported | ^5.0 | ^8.2 |
+| [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | Supported | ^4.0 | ^8.2 |
 | [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Bugfixes only | ^3.0 | ^8.1 |
 | [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Unsupported | ^2.0 | ^8.0 |
 
@@ -87,7 +87,7 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
     - [Alternate Templating Engines](https://github.com/pboivin/filament-peek/blob/4.x/docs/page-previews.md#alternate-templating-engines)
     - [Opening the Preview in a New Tab](https://github.com/pboivin/filament-peek/blob/4.x/docs/page-previews.md#opening-the-preview-in-a-new-tab)
 - [JavaScript Hooks](https://github.com/pboivin/filament-peek/blob/4.x/docs/javascript-hooks.md)
-- [Upgrading from Peek 2.x](https://github.com/pboivin/filament-peek/blob/4.x/docs/upgrade-guide.md)
+- [Upgrading from Peek 3.x](https://github.com/pboivin/filament-peek/blob/4.x/docs/upgrade-guide.md)
 
 <!-- END_TOC -->
 
@@ -97,11 +97,11 @@ You'll find some notes and solutions to common issues in [GitHub Discussions](ht
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/pboivin/filament-peek/blob/3.x/CHANGELOG.md) for more information on what has changed recently.
+See [CHANGELOG.md](https://github.com/pboivin/filament-peek/blob/4.x/CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/pboivin/filament-peek/blob/3.x/.github/CONTRIBUTING.md) for details.
+See [CONTRIBUTING.md](https://github.com/pboivin/filament-peek/blob/4.x/.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
@@ -118,5 +118,5 @@ The initial idea was inspired by module previews in [Twill](https://twillcms.com
 
 ## License
 
-The MIT License (MIT). See [LICENSE.md](https://github.com/pboivin/filament-peek/blob/3.x/LICENSE.md) for more information.
+The MIT License (MIT). See [LICENSE.md](https://github.com/pboivin/filament-peek/blob/4.x/LICENSE.md) for more information.
 
