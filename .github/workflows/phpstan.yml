@@ -7,7 +7,7 @@ on:
       - 'phpstan.neon.dist'
   pull_request:
     branches:
-      - 3.x
+      - 4.x
 
 jobs:
   phpstan:
