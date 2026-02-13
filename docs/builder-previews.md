@@ -1,7 +1,7 @@
 # Builder Previews (deprecated)
 
 > [!WARNING]
-> This feature is now deprecated. It will be maintained for the duration of Peek 3.x, but will receive no further development. Some alternatives in Filament core: [Builder Block Previews](https://filamentphp.com/docs/4.x/forms/builder#previewing-blocks) and [Rich Editor Custom Blocks](https://filamentphp.com/docs/4.x/forms/rich-editor#using-custom-blocks).
+> This feature is now deprecated. It will be maintained for the duration of Peek 4.x, but will receive no further development. Some alternatives in Filament core: [Builder Block Previews](https://filamentphp.com/docs/4.x/forms/builder#previewing-blocks) and [Rich Editor Custom Blocks](https://filamentphp.com/docs/4.x/forms/rich-editor#using-custom-blocks).
 
 ![Screenshot of the Builder preview modal and editor](../art/02-builder-preview.jpg)
 

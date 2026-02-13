@@ -261,7 +261,7 @@ PreviewAction::make()
     ->previewInNewTab(),
 ```
 
-**Note**: You must enable the [`internalPreviewUrl` option](https://github.com/pboivin/filament-peek/blob/3.x/config/filament-peek.php#L86) in the configuration to open previews in tabs.
+**Note**: You must enable the [`internalPreviewUrl` option](https://github.com/pboivin/filament-peek/blob/4.x/config/filament-peek.php#L86) in the configuration to open previews in tabs.
 
 ---
 

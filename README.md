@@ -10,7 +10,7 @@
 A Filament plugin to add a full-screen preview modal to your Panel pages. The modal can be used before saving to preview a modified record.
 
 <p class="filament-hidden">
-<img src="https://raw.githubusercontent.com/pboivin/filament-peek/3.x/art/01-page-preview.jpg" alt="Screenshots of the edit page and preview modal">
+<img src="https://raw.githubusercontent.com/pboivin/filament-peek/4.x/art/01-page-preview.jpg" alt="Screenshots of the edit page and preview modal">
 </p>
 
 ## Installation
@@ -42,9 +42,9 @@ Then, publish the assets:
 php artisan filament:assets
 ```
 
-#### Upgrading from `2.x`
+#### Upgrading from `3.x`
 
-Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/3.x/docs/upgrade-guide.md).
+Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek/tree/4.x/docs/upgrade-guide.md).
 
 ## Compatibility
 
@@ -97,11 +97,11 @@ You'll find some notes and solutions to common issues in [GitHub Discussions](ht
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/pboivin/filament-peek/blob/3.x/CHANGELOG.md) for more information on what has changed recently.
+See [CHANGELOG.md](https://github.com/pboivin/filament-peek/blob/4.x/CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/pboivin/filament-peek/blob/3.x/.github/CONTRIBUTING.md) for details.
+See [CONTRIBUTING.md](https://github.com/pboivin/filament-peek/blob/4.x/.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
@@ -118,5 +118,5 @@ The initial idea was inspired by module previews in [Twill](https://twillcms.com
 
 ## License
 
-The MIT License (MIT). See [LICENSE.md](https://github.com/pboivin/filament-peek/blob/3.x/LICENSE.md) for more information.
+The MIT License (MIT). See [LICENSE.md](https://github.com/pboivin/filament-peek/blob/4.x/LICENSE.md) for more information.
 
