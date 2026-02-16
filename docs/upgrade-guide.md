@@ -6,7 +6,7 @@ On the surface, not much has changed in Peek from v3 to v4. The focus was entire
 
 #### 1. Upgrade Filament
 
-Make sure to follow the [Upgrade Guide from Filament](https://filamentphp.com/docs/4.x/upgrade-guide). It's essential to get your app ready for Filament v5 before upgrading the plugin.
+Make sure to follow the [Upgrade Guide from Filament](https://filamentphp.com/docs/5.x/upgrade-guide). It's essential to get your app ready for Filament v5 before upgrading the plugin.
 
 #### 2. Upgrade Peek
 
