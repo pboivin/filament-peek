@@ -68,7 +68,7 @@ function footerFiles(): array
 function makeToc(): string
 {
     $toc = collect(tocFiles())
-        ->flatMap(fn($f) => $f->headings());
+        ->flatMap(fn ($f) => $f->headings());
 
     return implode("\n", ['<!-- BEGIN_TOC -->', '', ...$toc, '', '<!-- END_TOC -->']);
 }
@@ -76,8 +76,8 @@ function makeToc(): string
 function makeFooter(): string
 {
     $toc = collect(footerFiles())
-        ->flatMap(fn($f) => $f->headings())
-        ->map(fn($line) => preg_replace('#docs/#', '', $line));
+        ->flatMap(fn ($f) => $f->headings())
+        ->map(fn ($line) => preg_replace('#docs/#', '', $line));
 
     return implode("\n", ['<!-- BEGIN_TOC -->', '', ...$toc, '', '<!-- END_TOC -->']);
 }
