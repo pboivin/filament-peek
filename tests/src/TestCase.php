@@ -19,7 +19,6 @@ use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
 use Pboivin\FilamentPeek\Tests\App\Models\User;
-use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 use function Pest\Laravel\actingAs;
 
@@ -42,7 +41,6 @@ class TestCase extends Orchestra
 
         return [
             ActionsServiceProvider::class,
-            BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
             FilamentPeekServiceProvider::class,
