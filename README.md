@@ -50,7 +50,7 @@ Follow the steps in the [Upgrade Guide](https://github.com/pboivin/filament-peek
 
 | Peek | Status | Filament | PHP |
 |------|----------|-----|--------|
-| [4.x](https://github.com/pboivin/filament-peek/tree/4.x) | Beta | ^5.0 | ^8.2 |
+| [4.x](https://github.com/pboivin/filament-peek/tree/4.x) | Current version | ^5.0 | ^8.2 |
 | [3.x](https://github.com/pboivin/filament-peek/tree/3.x) | Current version | ^4.0 | ^8.2 |
 | [2.x](https://github.com/pboivin/filament-peek/tree/2.x) | Bugfixes only | ^3.0 | ^8.1 |
 | [1.x](https://github.com/pboivin/filament-peek/tree/1.x) | Unsupported | ^2.0 | ^8.0 |
@@ -86,7 +86,6 @@ The documentation is available in the ['docs' directory](https://github.com/pboi
     - [Adding Extra Data to Previews](https://github.com/pboivin/filament-peek/blob/3.x/docs/page-previews.md#adding-extra-data-to-previews)
     - [Alternate Templating Engines](https://github.com/pboivin/filament-peek/blob/3.x/docs/page-previews.md#alternate-templating-engines)
     - [Opening the Preview in a New Tab](https://github.com/pboivin/filament-peek/blob/3.x/docs/page-previews.md#opening-the-preview-in-a-new-tab)
-- [Builder Previews (deprecated)](https://github.com/pboivin/filament-peek/blob/3.x/docs/builder-previews.md)
 - [JavaScript Hooks](https://github.com/pboivin/filament-peek/blob/3.x/docs/javascript-hooks.md)
 - [Upgrading from Peek 2.x](https://github.com/pboivin/filament-peek/blob/3.x/docs/upgrade-guide.md)
 

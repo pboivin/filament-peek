@@ -48,7 +48,7 @@ function tocFiles(): array
     return [
         new DocFile('docs/configuration.md', prefix: BASE_URL, levels: 2),
         new DocFile('docs/page-previews.md', prefix: BASE_URL, levels: 2),
-        new DocFile('docs/builder-previews.md', prefix: BASE_URL),
+        // new DocFile('docs/builder-previews.md', prefix: BASE_URL),
         new DocFile('docs/javascript-hooks.md', prefix: BASE_URL),
         new DocFile('docs/upgrade-guide.md', prefix: BASE_URL),
     ];
@@ -59,7 +59,7 @@ function footerFiles(): array
     return [
         new DocFile('docs/configuration.md', prefix: './'),
         new DocFile('docs/page-previews.md', prefix: './'),
-        new DocFile('docs/builder-previews.md', prefix: './'),
+        // new DocFile('docs/builder-previews.md', prefix: './'),
         new DocFile('docs/javascript-hooks.md', prefix: './'),
         new DocFile('docs/upgrade-guide.md', prefix: './'),
     ];
@@ -68,7 +68,7 @@ function footerFiles(): array
 function makeToc(): string
 {
     $toc = collect(tocFiles())
-        ->flatMap(fn ($f) => $f->headings());
+        ->flatMap(fn($f) => $f->headings());
 
     return implode("\n", ['<!-- BEGIN_TOC -->', '', ...$toc, '', '<!-- END_TOC -->']);
 }
@@ -76,8 +76,8 @@ function makeToc(): string
 function makeFooter(): string
 {
     $toc = collect(footerFiles())
-        ->flatMap(fn ($f) => $f->headings())
-        ->map(fn ($line) => preg_replace('#docs/#', '', $line));
+        ->flatMap(fn($f) => $f->headings())
+        ->map(fn($line) => preg_replace('#docs/#', '', $line));
 
     return implode("\n", ['<!-- BEGIN_TOC -->', '', ...$toc, '', '<!-- END_TOC -->']);
 }
