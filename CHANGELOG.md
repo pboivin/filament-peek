@@ -7,6 +7,7 @@ All notable changes to `filament-peek` will be documented in this file.
 
 * Laravel 13.x Compatibility
 * Fix TestCase
+* Add 'web' as default middleware for internal preview url
 * chore(deps): bump stefanzweifel/git-auto-commit-action from 6 to 7
 * chore(deps): bump actions/checkout from 5 to 6
 * chore(deps): bump dependabot/fetch-metadata from 2.4.0 to 2.5.0
