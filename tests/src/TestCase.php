@@ -19,7 +19,6 @@ use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Pboivin\FilamentPeek\FilamentPeekServiceProvider;
 use Pboivin\FilamentPeek\Tests\App\Models\User;
-use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 
 use function Pest\Laravel\actingAs;
 
@@ -42,7 +41,6 @@ class TestCase extends Orchestra
 
         return [
             ActionsServiceProvider::class,
-            BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
             FilamentPeekServiceProvider::class,
@@ -63,7 +61,7 @@ class TestCase extends Orchestra
 
     protected function defineDatabaseMigrations(): void
     {
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
     protected function getEnvironmentSetUp($app): void
@@ -72,7 +70,7 @@ class TestCase extends Orchestra
 
         $app['config']->set('view.paths', array_merge(
             $app['config']->get('view.paths'),
-            [__DIR__.'/../resources/views'],
+            [__DIR__ . '/../resources/views'],
         ));
     }
 
