@@ -16,7 +16,7 @@ class FilamentPeekPlugin implements Plugin
 
     const ID = 'filament-peek';
 
-    const VERSION = '3.0.0';
+    const VERSION = '3.1.0';
 
     protected bool $shouldLoadPluginScripts = true;
 
@@ -66,18 +66,18 @@ class FilamentPeekPlugin implements Plugin
 
         $panel->renderHook(
             'panels::body.end',
-            fn () => view('filament-peek::preview-modal'),
+            fn() => view('filament-peek::preview-modal'),
         );
 
         if ($this->shouldLoadPluginScripts()) {
             FilamentAsset::register([
-                Js::make(static::ID, __DIR__.'/../resources/dist/filament-peek.js'),
+                Js::make(static::ID, __DIR__ . '/../resources/dist/filament-peek.js'),
             ], package: static::PACKAGE);
         }
 
         if ($this->shouldLoadPluginStyles()) {
             FilamentAsset::register([
-                Css::make(static::ID, __DIR__.'/../resources/dist/filament-peek.css'),
+                Css::make(static::ID, __DIR__ . '/../resources/dist/filament-peek.css'),
             ], package: static::PACKAGE);
         }
     }

@@ -3,6 +3,15 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 3.1.0 - 2026-03-17
+
+* Laravel 13.x Compatibility
+* Fix TestCase
+* chore(deps): bump stefanzweifel/git-auto-commit-action from 6 to 7
+* chore(deps): bump actions/checkout from 5 to 6
+* chore(deps): bump dependabot/fetch-metadata from 2.4.0 to 2.5.0
+
+
 ## 3.0.0 - 2025-08-29
 
 Stable release
