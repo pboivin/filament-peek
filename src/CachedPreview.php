@@ -4,6 +4,7 @@ namespace Pboivin\FilamentPeek;
 
 use Illuminate\Support\Facades\Cache;
 
+/** @phpstan-consistent-constructor */
 class CachedPreview
 {
     public static ?string $cacheStore = null;
@@ -21,7 +22,25 @@ class CachedPreview
         string $view,
         array $data,
     ): CachedPreview {
-        return new CachedPreview($pageClass, $view, $data);
+        return new static($pageClass, $view, $data);
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'pageClass' => $this->pageClass,
+            'view' => $this->view,
+            'data' => $this->data,
+        ];
+    }
+
+    public static function fromArray(array $data): CachedPreview
+    {
+        return new static(
+            pageClass: $data['pageClass'],
+            view: $data['view'],
+            data: $data['data'],
+        );
     }
 
     public function render(): string
@@ -33,11 +52,13 @@ class CachedPreview
     {
         $ttl ??= self::$cacheDuration;
 
-        return Cache::store(static::$cacheStore)->put("filament-peek-preview-{$token}", $this, $ttl);
+        return Cache::store(static::$cacheStore)->put("filament-peek-preview-{$token}", $this->toArray(), $ttl);
     }
 
     public static function get(string $token): ?CachedPreview
     {
-        return Cache::store(static::$cacheStore)->get("filament-peek-preview-{$token}");
+        $data = Cache::store(static::$cacheStore)->get("filament-peek-preview-{$token}");
+
+        return is_array($data) ? self::fromArray($data) : null;
     }
 }
