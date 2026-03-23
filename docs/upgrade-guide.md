@@ -43,6 +43,19 @@ php artisan filament:assets
 php artisan view:clear
 ```
 
+#### 6. If you are using Laravel 13 +
+
+You may need to add your previewable models to the `serializable_classes` array in `config/cache.php` for previews to function correctly:
+
+```php
+    'serializable_classes' => [
+        App\Models\Page::class,
+        App\Models\Post::class,
+    ],
+```
+
+You can find more information on `serializable_classes` in the [Laravel 13 Upgrade Guide](https://laravel.com/docs/13.x/upgrade#cache-serializable_classes-configuration).
+
 ---
 
 **Documentation**
