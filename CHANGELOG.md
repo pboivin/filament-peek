@@ -3,6 +3,11 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 3.1.1 - 2026-03-24
+
+* fix: Update CachedPreview for Laravel 13
+
+
 ## 3.1.0 - 2026-03-17
 
 * Laravel 13.x Compatibility
