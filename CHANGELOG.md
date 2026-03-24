@@ -3,6 +3,12 @@
 All notable changes to `filament-peek` will be documented in this file.
 
 
+## 4.1.1 - 2026-03-24
+
+* fix: Update CachedPreview for Laravel 13
+* chore(deps): bump ramsey/composer-install from 3 to 4
+
+
 ## 4.1.0 - 2026-03-17
 
 * Laravel 13.x Compatibility by @laravel-shift
@@ -23,6 +29,11 @@ Stable release
 ## 4.0.0-alpha1 - 2026-01-26
 
 * feat!: Filament 5 support
+
+
+## 3.1.1 - 2026-03-24
+
+* fix: Update CachedPreview for Laravel 13
 
 
 ## 3.1.0 - 2026-03-17
