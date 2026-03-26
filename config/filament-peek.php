@@ -95,7 +95,7 @@ return [
     'internalPreviewUrl' => [
         'enabled' => true,
         'middleware' => ['web'],
-        'withSerializableClasses' => false,
+        'withSerializableClasses' => true,
     ],
 
 ];
