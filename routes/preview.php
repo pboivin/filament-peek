@@ -9,7 +9,7 @@ if (config('filament-peek.internalPreviewUrl.enabled', true)) {
         ->middleware(config('filament-peek.internalPreviewUrl.middleware', []))
         ->group(function () {
             Route::get('preview', function () {
-                if (config('filament-peek.internalPreviewUrl.withSerializableClasses', false)) {
+                if (config('filament-peek.internalPreviewUrl.withSerializableClasses', true)) {
                     config()->set('cache.serializable_classes', true);
                 }
 
