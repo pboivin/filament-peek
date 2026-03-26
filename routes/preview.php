@@ -9,6 +9,10 @@ if (config('filament-peek.internalPreviewUrl.enabled', true)) {
         ->middleware(config('filament-peek.internalPreviewUrl.middleware', []))
         ->group(function () {
             Route::get('preview', function () {
+                if (config('filament-peek.internalPreviewUrl.withSerializableClasses', true)) {
+                    config()->set('cache.serializable_classes', true);
+                }
+
                 abort_unless($token = Request::query('token'), 404);
 
                 abort_unless($preview = CachedPreview::get($token), 404);
